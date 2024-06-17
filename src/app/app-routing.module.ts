@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { TeacherComponent } from './teacher/teacher.component';
 import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { AcademicComponent } from './components/academic/academic.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin-dashboard', pathMatch: 'full' },
@@ -13,7 +13,10 @@ const routes: Routes = [
   { path: 'user-list', component: UserListComponent },
   { path: 'add-user', component: CreateUserComponent },
   { path: 'add-user/:id', component: CreateUserComponent },
-  { path: 'teacher', component: TeacherComponent }
+  { path: 'year', component: AcademicComponent },
+
+  
+
 
 
 ];
