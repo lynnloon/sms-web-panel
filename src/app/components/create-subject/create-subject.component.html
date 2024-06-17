@@ -1,0 +1,45 @@
+<div class="main" id="main">
+    <div class="pagetitle">
+        <h1 *ngIf="editSubject == false">Add New Subject</h1>
+        <h1 *ngIf="editSubject == true">Edit Subject</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="'/subject-list'">Subject Lists</a></li>
+                <li class="breadcrumb-item" *ngIf="editSubject == false">Add new Subject</li>
+                <li class="breadcrumb-item" *ngIf="editSubject == true">Edit new Subject</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" *ngIf="editSubject == false">Adding Subject Form</h5>
+                    <h5 class="card-title" *ngIf="editSubject == true">Subject Editing Form</h5>
+                    <!-- Horizontal Form -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="subject.name" id="inputText">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Module No</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="subject.moduleNo" id="inputText">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
+                        <button type="reset" class="btn btn-secondary" [routerLink]="'/subject-list'">Cancel</button>
+                    </div>
+                    <!-- End Horizontal Form -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

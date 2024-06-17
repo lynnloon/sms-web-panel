@@ -1,13 +1,13 @@
 <div class="main" id="main">
     <div class="pagetitle">
-        <h1 *ngIf="editDepartment == false">Add New Department</h1>
-        <h1 *ngIf="editDepartment == true">Edit Department</h1>
+        <h1 *ngIf="editPosition == false">Add New Position</h1>
+        <h1 *ngIf="editPosition == true">Edit Position</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="'/department-list'">Department Lists</a></li>
-                <li class="breadcrumb-item" *ngIf="editDepartment == false" >Add new Department</li>
-                <li class="breadcrumb-item" *ngIf="editDepartment == true">Edit new Department</li>
+                <li class="breadcrumb-item"><a [routerLink]="'/position-list'">Position Lists</a></li>
+                <li class="breadcrumb-item" *ngIf="editPosition == false" >Add new Position</li>
+                <li class="breadcrumb-item" *ngIf="editPosition == true">Edit new Position</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -16,18 +16,18 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title" *ngIf="editDepartment == false">Adding Department Form</h5>
-                    <h5 class="card-title" *ngIf="editDepartment == true">Department Editing Form</h5>
+                    <h5 class="card-title" *ngIf="editPosition == false">Adding Position Form</h5>
+                    <h5 class="card-title" *ngIf="editPosition == true">Position Editing Form</h5>
                     <!-- Horizontal Form -->
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Name</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="department.name"  id="inputText">
+                            <input type="text" class="form-control" [(ngModel)]="position.name"  id="inputText">
                         </div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
-                        <button type="reset" class="btn btn-secondary" [routerLink]="'/department-list'">Cancel</button>
+                        <button type="reset" class="btn btn-secondary" [routerLink]="'/position-list'">Cancel</button>
                     </div>
                     <!-- End Horizontal Form -->
 
@@ -36,3 +36,4 @@
         </div>
     </section>
 </div>
+

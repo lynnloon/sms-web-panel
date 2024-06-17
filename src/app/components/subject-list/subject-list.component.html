@@ -1,0 +1,49 @@
+<div class="main" id="main">
+    <div class="pagetitle">
+        <h1>Subject Lists</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item">Subject Lists</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <div>
+        <button type="submit" class="btn btn-primary bi bi-plus-circle" [routerLink]="'/add-subject'">
+            Add new subject</button>
+    </div>
+    <br />
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">ModuleNo</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sub of subjects;let i = index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{sub.name}}</td>
+                                <td>{{sub.moduleNo}}</td>
+                                <td>
+                                    <i class="bi bi-pencil-square" title="edit"  [routerLink]="['/add-subject',sub.id]"></i>&nbsp;
+                                    <i class="bi bi-trash" style="color: red;" title="delete" (click)="delete(sub.id)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

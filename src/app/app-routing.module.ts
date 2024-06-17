@@ -8,6 +8,10 @@ import { StaffListComponent } from './components/staff-list/staff-list.component
 import { CreateStaffComponent } from './components/create-staff/create-staff.component';
 import { DepartmentListsComponent } from './components/department-lists/department-lists.component';
 import { CreateDepartmentComponent } from './components/create-department/create-department.component';
+import { PositionListComponent } from './components/position-list/position-list.component';
+import { CreatePositionComponent } from './components/create-position/create-position.component';
+import { SubjectListComponent } from './components/subject-list/subject-list.component';
+import { CreateSubjectComponent } from './components/create-subject/create-subject.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin-dashboard', pathMatch: 'full' },
@@ -19,11 +23,16 @@ const routes: Routes = [
   
   { path: 'staff-list',component:StaffListComponent},
   { path: 'add-staff',component:CreateStaffComponent},
-  { path: 'add-staff/:id',component:CreateStaffComponent}
-
+  { path: 'add-staff/:id',component:CreateStaffComponent},
   { path: 'department-list', component: DepartmentListsComponent },
   { path: 'add-dept', component:CreateDepartmentComponent},
   { path: 'add-dept/:id', component:CreateDepartmentComponent},
+  { path: 'position-list', component:PositionListComponent},
+  { path: 'add-position', component:CreatePositionComponent},
+  { path: 'add-position/:id', component:CreatePositionComponent},
+  { path: 'subject-list', component:SubjectListComponent},
+  { path: 'add-subject', component:CreateSubjectComponent},
+   { path: 'add-subject/:id', component:CreateSubjectComponent},
 
 ];
 
