@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CommonService {
 
-  apiRoute = "http://localhost:8090/demo";
+  apiRoute = "http://localhost:3060/sms";
 
   constructor() { }
 }
