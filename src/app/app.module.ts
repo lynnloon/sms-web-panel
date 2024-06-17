@@ -7,24 +7,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { TeacherComponent } from './teacher/teacher.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { DepartmentListsComponent } from './components/department-lists/department-lists.component';
+import { CreateDepartmentComponent } from './components/create-department/create-department.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserListComponent,
-    TeacherComponent,
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
     AdminDashboardComponent,
     CreateUserComponent,
+    DepartmentListsComponent,
+    CreateDepartmentComponent,
   ],
   imports: [
     BrowserModule,
