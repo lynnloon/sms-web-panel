@@ -13,6 +13,8 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { StaffListComponent } from './components/staff-list/staff-list.component';
+import { CreateStaffComponent } from './components/create-staff/create-staff.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
     FooterComponent,
     AdminDashboardComponent,
     CreateUserComponent,
+    StaffListComponent,
+    CreateStaffComponent,
   ],
   imports: [
     BrowserModule,

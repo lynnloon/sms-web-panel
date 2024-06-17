@@ -1,0 +1,62 @@
+<div class="main" id="main">
+    <div class="pagetitle">
+        <h1>Staff Lists</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item">Staff Lists</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <div >
+        <button type="submit" class="btn btn-primary bi bi-plus-circle  float-right " [routerLink]="'/add-staff'">
+            Add new Staff</button>
+    </div>
+<br/>
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone No</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">NRC No</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Profile Picture</th>
+                                <th scope="col">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sta of staffs;let i = index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{sta.staffName}}</td>
+                                <td>{{sta.staffPhoneNo}}</td>
+                                <td>{{sta.staffAddress}}</td>
+                                <td>{{sta.staffEmail}}</td>
+                                <td>{{sta.staffGender}}</td>
+                                <td>{{sta.staffNrcNo}}</td>
+                                <td>{{sta.staffPosition}}</td>
+                                <td>{{sta.staffProfilePicture}}</td>
+                                <td>
+                                    <i class="bi bi-pencil-square" title="edit" [routerLink]="['/add-staff',sta.id]"></i>&nbsp;
+                                    <i class="bi bi-trash" style="color: red;" title="delete" (click)="delete(sta.id)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
