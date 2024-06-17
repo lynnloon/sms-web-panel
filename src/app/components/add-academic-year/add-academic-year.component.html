@@ -1,0 +1,58 @@
+<div class="main" id="main">
+    
+    <div class="pagetitle">
+         <h1 *ngIf="editAcademic == false">Add New Academic year</h1>
+        <h1 *ngIf="editAcademic == true">Edit Academic Year</h1> 
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="'/year'">All Academic Year List</a></li>
+                 <li class="breadcrumb-item" *ngIf="editAcademic == false">Add new Academic Year</li>
+                <li class="breadcrumb-item" *ngIf="editAcademic == true">Edit Academic Year</li> 
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" *ngIf="editAcademic == false">Academic Year Adding Form</h5>
+                    <h5 class="card-title" *ngIf="editAcademic == true">Academic Year Update Form</h5> 
+                    <!-- Horizontal Form -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="year.name"  id="inputText">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">currentStatus</label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" [(ngModel)]="year.currentStatus" id="inputEmail">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">start Date</label>
+                        <div class="col-sm-6">
+                            <textarea rows="3" class="form-control" [(ngModel)]="year.startDate" id="inputPassword"></textarea>
+                        </div>
+                    </div>      
+                    
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">end  Date</label>
+                        <div class="col-sm-6">
+                            <textarea rows="3" class="form-control" [(ngModel)]="year.endDate" id="inputPassword"></textarea>
+                        </div>
+                    </div>         
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
+                        <button type="reset" class="btn btn-secondary" [routerLink]="'/year'">Cancel</button>
+                    </div>
+                    <!-- End Horizontal Form -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
