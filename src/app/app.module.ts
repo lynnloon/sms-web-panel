@@ -16,6 +16,8 @@ import { StaffListComponent } from './components/staff-list/staff-list.component
 import { CreateStaffComponent } from './components/create-staff/create-staff.component';
 import { DepartmentListsComponent } from './components/department-lists/department-lists.component';
 import { CreateDepartmentComponent } from './components/create-department/create-department.component';
+import { SemesterListComponent } from './components/semester-list/semester-list.component';
+import { CreateSemesterComponent } from './components/create-semester/create-semester.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { CreateDepartmentComponent } from './components/create-department/create
     CreateStaffComponent,
     DepartmentListsComponent,
     CreateDepartmentComponent,
+    SemesterListComponent,
+    CreateSemesterComponent,
   ],
   imports: [
     BrowserModule,

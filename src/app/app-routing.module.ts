@@ -8,6 +8,8 @@ import { StaffListComponent } from './components/staff-list/staff-list.component
 import { CreateStaffComponent } from './components/create-staff/create-staff.component';
 import { DepartmentListsComponent } from './components/department-lists/department-lists.component';
 import { CreateDepartmentComponent } from './components/create-department/create-department.component';
+import { SemesterListComponent } from './components/semester-list/semester-list.component';
+import { CreateSemesterComponent } from './components/create-semester/create-semester.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin-dashboard', pathMatch: 'full' },
@@ -19,11 +21,15 @@ const routes: Routes = [
   
   { path: 'staff-list',component:StaffListComponent},
   { path: 'add-staff',component:CreateStaffComponent},
-  { path: 'add-staff/:id',component:CreateStaffComponent}
+  { path: 'add-staff/:id',component:CreateStaffComponent},
 
   { path: 'department-list', component: DepartmentListsComponent },
   { path: 'add-dept', component:CreateDepartmentComponent},
   { path: 'add-dept/:id', component:CreateDepartmentComponent},
+
+  { path: 'semester-list',component:SemesterListComponent},
+  { path: 'add-semester',component:CreateSemesterComponent},
+  { path: 'add-semester/:id',component:CreateSemesterComponent}
 
 ];
 

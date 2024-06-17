@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class CreateStaffComponent implements OnInit {
 
-  editStaff?: boolean=false;
+  editStaff?: boolean = false;
   staff: Staff = new Staff();
 
   constructor(
@@ -59,20 +59,35 @@ export class CreateStaffComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500
           });
-          this.router.navigate(['/user-list']);
+          this.router.navigate(['/staff-list']);
         }
       });
     }
   }
 
   checkValidation(): string {
-    
-    if (this.staff.staffName == undefined || this.staff.staffName.trim() == '')
-      return "Fill user name";
+    if (this.staff.staffName == undefined && this.staff.staffPhoneNo == undefined &&
+      this.staff.staffAddress == undefined && this.staff.staffGender == undefined && this.staff.staffEmail == undefined
+      && this.staff.staffNrcNo == undefined && this.staff.staffPosition == undefined
+      && this.staff.staffProfilePicture == undefined
+    )
+      return "Fill All Staff Data Please";
+    else if (this.staff.staffName == undefined || this.staff.staffName.trim() == '')
+      return "Fill Staff name please! ";
     else if (this.staff.staffPhoneNo == undefined || this.staff.staffPhoneNo.trim() == '')
-      return "Fill phone no";
+      return "Fill phone no please!";
     else if (this.staff.staffAddress == undefined || this.staff.staffAddress.trim() == '')
-      return "Fill address";
+      return "Fill address please!";
+    else if (this.staff.staffEmail == undefined || this.staff.staffEmail.trim() == '')
+      return "Fill email please!";
+    else if (this.staff.staffNrcNo == undefined || this.staff.staffNrcNo.trim() == '')
+      return "Fill NrcNo Please!";
+    else if (this.staff.staffGender == undefined || this.staff.staffGender.trim() == '')
+      return "Fill Gender Please!";
+    else if (this.staff.staffPosition == undefined || this.staff.staffPosition.trim() == '')
+      return "Fill Position Please!";
+    else if (this.staff.staffProfilePicture == undefined || this.staff.staffProfilePicture.trim() == '')
+      return "Fill ProfilePicture";
     else
       return "OK";
   }
