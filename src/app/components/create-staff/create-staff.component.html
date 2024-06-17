@@ -1,0 +1,85 @@
+<div class="main" id="main">
+    <div class="pagetitle">
+        <h1 *ngIf="editStaff == false">Add New Staff</h1>
+        <h1 *ngIf="editStaff == true">Edit Staff</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="'/staff-list'">Staff Lists</a></li>
+                <li class="breadcrumb-item" *ngIf="editStaff == false">Add new Staff</li>
+                <li class="breadcrumb-item" *ngIf="editStaff == true">Edit Staff</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" *ngIf="editStaff == false">Staff Registration Form</h5>
+                    <h5 class="card-title" *ngIf="editStaff == true">Staff Edit Form</h5>
+                    <!-- Horizontal Form -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="staff.staffName" id="inputText">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Phone No</label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" [(ngModel)]="staff.staffPhoneNo" id="inputEmail">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Address</label>
+                        <div class="col-sm-6">
+                            <textarea rows="3" class="form-control" [(ngModel)]="staff.staffAddress"
+                                id="inputText"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Email</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="staff.staffEmail" id="inputText">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Gender</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="staff.staffGender" id="inputText">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">NRC No</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="staff.staffNrcNo" id="inputText">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Position</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="staff.staffPosition" id="inputText">
+                        </div>
+                    </div>
+                        <div class="row mb-3">
+                            <label for="inputPassword3" class="col-sm-3 col-form-label required">Profile Picture</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" [(ngModel)]="staff.staffProfilePicture"
+                                    id="inputText">
+                            </div>
+                        </div>
+
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
+                            <button type="reset" class="btn btn-secondary" [routerLink]="'/staff-list'">Cancel</button>
+                        </div>
+                        <!-- End Horizontal Form -->
+
+                    </div>
+                </div>
+            
+        </div>
+    </section>
+</div>

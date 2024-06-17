@@ -14,6 +14,14 @@ import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboar
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { AcademicComponent } from './components/academic/academic.component';
 import { AddAcademicYearComponent } from './components/add-academic-year/add-academic-year.component';
+import { StaffListComponent } from './components/staff-list/staff-list.component';
+import { CreateStaffComponent } from './components/create-staff/create-staff.component';
+import { DepartmentListsComponent } from './components/department-lists/department-lists.component';
+import { CreateDepartmentComponent } from './components/create-department/create-department.component';
+import { PositionListComponent } from './components/position-list/position-list.component';
+import { CreatePositionComponent } from './components/create-position/create-position.component';
+import { SubjectListComponent } from './components/subject-list/subject-list.component';
+import { CreateSubjectComponent } from './components/create-subject/create-subject.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +35,14 @@ import { AddAcademicYearComponent } from './components/add-academic-year/add-aca
     CreateUserComponent,
     AcademicComponent,
     AddAcademicYearComponent,
+    StaffListComponent,
+    CreateStaffComponent,
+    DepartmentListsComponent,
+    CreateDepartmentComponent,
+    PositionListComponent,
+    CreatePositionComponent,
+    SubjectListComponent,
+    CreateSubjectComponent,
   ],
   imports: [
     BrowserModule,
