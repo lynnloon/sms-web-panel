@@ -14,8 +14,6 @@ import Swal from 'sweetalert2';
 export class AcademicComponent {
 
 
-
-
   year: AcademicYear = new AcademicYear();
 
   years: AcademicYear[] = [];

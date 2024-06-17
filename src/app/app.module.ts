@@ -13,6 +13,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { AcademicComponent } from './components/academic/academic.component';
+import { AddAcademicYearComponent } from './components/add-academic-year/add-academic-year.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AcademicComponent } from './components/academic/academic.component';
     AdminDashboardComponent,
     CreateUserComponent,
     AcademicComponent,
+    AddAcademicYearComponent,
   ],
   imports: [
     BrowserModule,
