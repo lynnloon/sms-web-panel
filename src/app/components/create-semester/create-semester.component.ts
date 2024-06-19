@@ -2,22 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Semester } from 'src/app/model/semester';
 import { SemesterService } from 'src/app/service/semester.service';
-import Swal from 'sweetalert2';
+import { CommonService } from 'src/app/util/common.service';
 
 @Component({
   selector: 'app-create-semester',
   templateUrl: './create-semester.component.html',
   styleUrls: ['./create-semester.component.css']
 })
-export class CreateSemesterComponent implements OnInit{
-  editSemester:boolean=false;
-  semester:Semester=new Semester();
+export class CreateSemesterComponent implements OnInit {
+  editSemester: boolean = false;
+  semester: Semester = new Semester();
   constructor(
-    private semesterService:SemesterService,
-    private activedRoute:ActivatedRoute,
-    private router:Router
-  ){}
-  
+    private semesterService: SemesterService,
+    private activedRoute: ActivatedRoute,
+    private router: Router,
+    private commonService: CommonService
+  ) { }
+
   ngOnInit() {
     this.activedRoute.params.subscribe(params => {
       const semesterid = params['id'];
@@ -42,21 +43,11 @@ export class CreateSemesterComponent implements OnInit{
   save() {
     var message = this.checkValidation();
     if (message != 'OK')
-      Swal.fire({
-        title: "something went wrong",
-        text: message,
-        icon: "error"
-      });
+      this.commonService.inputAlert(message, 'warning');
     else {
       this.semesterService.create(this.semester).subscribe((response: any) => {
         if (response.status) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500
-          });
+          this.commonService.inputAlert(message, 'success');
           this.router.navigate(['/semester-list']);
         }
       });
@@ -64,12 +55,7 @@ export class CreateSemesterComponent implements OnInit{
   }
 
   checkValidation(): string {
-    if(this.semester.semesterName == undefined && this.semester.semStartDate == undefined
-      && this.semester.semEndDate == undefined
-    )
-    return "Fill All Semester Data please!";
-
-    else if (this.semester.semesterName == undefined || this.semester.semesterName.trim() == '')
+    if (this.semester.semesterName == undefined || this.semester.semesterName.trim() == '')
       return "Fill Semester name";
     else if (this.semester.semStartDate == undefined || this.semester.semStartDate.trim() == '')
       return "Fill Start Date";

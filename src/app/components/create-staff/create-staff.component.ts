@@ -77,7 +77,7 @@ export class CreateStaffComponent implements OnInit {
     else {
       this.staffService.create(this.staff).subscribe((response: any) => {
         if (response.status) {
-          this.commonService.inputAlert(message,'Success'); 
+          this.commonService.inputAlert(message,'sucess'); 
           this.router.navigate(['/staff-list']);
         }
       });
@@ -85,13 +85,7 @@ export class CreateStaffComponent implements OnInit {
   }
 
   checkValidation(): string {
-    if (this.staff.staffName == undefined && this.staff.staffPhoneNo == undefined &&
-      this.staff.staffAddress == undefined && this.staff.staffGender == undefined && this.staff.staffEmail == undefined
-      && this.staff.staffNrcNo == undefined && this.staff.staffPosition == undefined
-      && this.staff.staffProfilePicture == undefined
-    )
-      return "Fill All Staff Data Please";
-    else if (this.staff.staffName == undefined || this.staff.staffName.trim() == '')
+   if (this.staff.staffName == undefined || this.staff.staffName.trim() == '')
       return "Fill Staff name please! ";
     else if (this.staff.staffPhoneNo == undefined || this.staff.staffPhoneNo.trim() == '')
       return "Fill phone no please!";
@@ -106,7 +100,7 @@ export class CreateStaffComponent implements OnInit {
     // else if (this.staff.staffPosition == undefined || this.staff.staffPosition.trim() == '')
     //   return "Fill Position Please!";
     else if (this.staff.staffProfilePicture == undefined || this.staff.staffProfilePicture.trim() == '')
-      return "Fill ProfilePicture";
+      return "Upload ProfilePicture Please!";
     else
       return "OK";
   }
