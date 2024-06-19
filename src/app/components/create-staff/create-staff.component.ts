@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Position } from 'src/app/model/position';
 import { Staff } from 'src/app/model/staff';
 import { StaffService } from 'src/app/service/staff.service';
 import { CommonService } from 'src/app/util/common.service';
@@ -14,6 +15,8 @@ export class CreateStaffComponent implements OnInit {
 
   editStaff?: boolean = false;
   staff: Staff = new Staff();
+  position:Position=new Position();
+  positions:Position[]=[];
 
   constructor(
     private staffService: StaffService,
