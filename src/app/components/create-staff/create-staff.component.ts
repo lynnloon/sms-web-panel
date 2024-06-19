@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Staff } from 'src/app/model/staff';
 import { StaffService } from 'src/app/service/staff.service';
+import { CommonService } from 'src/app/util/common.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +18,8 @@ export class CreateStaffComponent implements OnInit {
   constructor(
     private staffService: StaffService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private commonService :CommonService
   ) { }
 
   ngOnInit() {
@@ -44,21 +46,11 @@ export class CreateStaffComponent implements OnInit {
   save() {
     var message = this.checkValidation();
     if (message != 'OK')
-      Swal.fire({
-        title: "something went wrong",
-        text: message,
-        icon: "error"
-      });
+      this.commonService.inputAlert(message,'warning');     
     else {
       this.staffService.create(this.staff).subscribe((response: any) => {
         if (response.status) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500
-          });
+          this.commonService.inputAlert(message,'Success'); 
           this.router.navigate(['/staff-list']);
         }
       });

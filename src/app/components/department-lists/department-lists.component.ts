@@ -32,15 +32,16 @@ constructor(
   }
 
   delete(id: any) {
-
     Swal.fire({
-      title: "Are you sure?",
-      text: "!!!!!!!",
+      title: "Delete Confirmation",
+      text: "Are you sure to delete this record?.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Sure!"
+      confirmButtonText: "Yes",
+      cancelButtonText:"No",
+      position:'top'
     }).then((result) => {
       if (result.isConfirmed) {
         this.departmentService.delete(id).subscribe((response: any) => {

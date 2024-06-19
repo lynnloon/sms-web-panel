@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Department } from 'src/app/model/department';
 import { DepartmentService } from 'src/app/service/department.service';
+import { CommonService } from 'src/app/util/common.service';
 
 @Component({
   selector: 'app-create-department',
@@ -17,8 +18,8 @@ export class CreateDepartmentComponent implements OnInit {
   constructor(
     private departmentService: DepartmentService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
-
+    private activatedRoute: ActivatedRoute,
+    private commonService : CommonService
   ) { }
 
   ngOnInit(): void {
@@ -46,11 +47,11 @@ export class CreateDepartmentComponent implements OnInit {
   save() {
     var message = this.checkValidation();
     if (message != 'OK')
-      window.alert(message);
+      this.commonService.inputAlert(message,'warning')
     else {
       this.departmentService.create(this.department).subscribe((response: any) => {
         if (response.status) {
-          window.alert(response.message);
+          this.commonService.inputAlert(message,'info')
           this.router.navigate(['/department-list']);
         }
       });

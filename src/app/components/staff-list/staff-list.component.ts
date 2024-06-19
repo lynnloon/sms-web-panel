@@ -30,7 +30,6 @@ export class StaffListComponent implements OnInit {
   }
 
   delete(id: any) {
-
     Swal.fire({
       // delete,cancel alert
       title: "Are you sure?",
