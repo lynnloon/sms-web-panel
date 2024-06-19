@@ -67,7 +67,7 @@ export class AddAcademicYearComponent {
       return "Fill current status";
     else if (this.year.startDate == undefined)
       return "Fill start Date";
-    else if (this.year.startDate == undefined)
+    else if (this.year.endDate == undefined)
       return "Fill end Date";
     
     else
