@@ -44,7 +44,9 @@
                                 <td>{{sta.staffEmail}}</td>
                                 <td>{{sta.staffGender}}</td>
                                 <td>{{sta.staffNrcNo}}</td>
-                                <td>{{sta.staffPosition}}</td>
+                                <td>{{ sta.staffPosition?.name }}</td>
+
+
                                 <td>{{sta.staffProfilePicture}}</td>
                                 <td>
                                     <i class="bi bi-pencil-square" title="edit" [routerLink]="['/add-staff',sta.id]"></i>&nbsp;
