@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AcademicYear } from 'src/app/model/academic-year';
 import { AcademicService } from 'src/app/service/academic.service';
+import { CommonService } from 'src/app/util/common.service';
 
 @Component({
   selector: 'app-add-academic-year',
@@ -19,7 +20,8 @@ export class AddAcademicYearComponent {
 
   private yearService:AcademicService,
      private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+      private commonService :CommonService
   ){}
 
 
@@ -48,11 +50,11 @@ export class AddAcademicYearComponent {
 
     var message = this.checkValidation();
     if (message != 'OK')
-      window.alert(message);
+      this.commonService.inputAlert(message,'warning');   
     else {
       this.yearService.create(this.year).subscribe((response: any) => {
         if (response.status) {
-          window.alert(response.message);
+          this.commonService.inputAlert(message,'Success'); 
           this.router.navigate(['/year']);
         }
       });

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Position } from 'src/app/model/position';
 import { PositionService } from 'src/app/service/position.service';
+import { CommonService } from 'src/app/util/common.service';
 
 @Component({
   selector: 'app-create-position',
@@ -16,7 +17,8 @@ export class CreatePositionComponent implements OnInit {
   constructor(
     private positionService: PositionService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private commonService:CommonService
 
   ) { }
   ngOnInit(): void {
@@ -42,11 +44,12 @@ export class CreatePositionComponent implements OnInit {
   save() {
     var message = this.checkValidation();
     if (message != 'OK')
-      window.alert(message);
-    else {
+this.commonService.inputAlert(message,"warning");
+
+        else {
       this.positionService.create(this.position).subscribe((response: any) => {
         if (response.status) {
-          window.alert(response.message);
+this.commonService.inputAlert(message,"success");
           this.router.navigate(['/position-list']);
         }
       });
