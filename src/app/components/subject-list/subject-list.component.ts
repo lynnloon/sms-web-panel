@@ -33,22 +33,21 @@ export class SubjectListComponent implements OnInit {
   delete(id: any) {
 
     Swal.fire({
-      title: "Are you sure?",
-      text: "!!!!!!!",
+      title: "Delete Comfirmation",
+      text: "Are you sure to delete this record?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Sure!"
+      confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
         this.subjectService.delete(id).subscribe((response: any) => {
           if (response.status) {
             Swal.fire({
               title: "Deleted!",
-              text: "This  record  has been deleted.",
-              icon: "success"
-            });
+              text: response.message,
+              icon: "success"            });
             this.ngOnInit();
           }
 

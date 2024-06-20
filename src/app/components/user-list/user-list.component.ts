@@ -48,7 +48,7 @@ export class UserListComponent implements OnInit {
         this.userService.delete(id).subscribe((response: any) => {
           if (response.status) {
             Swal.fire({
-              title: "Deleted!",
+             title: "Deleted!",
             text: "This  record  has been deleted.",
            icon: "success"
           });

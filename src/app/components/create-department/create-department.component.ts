@@ -53,6 +53,8 @@ export class CreateDepartmentComponent implements OnInit {
         if (response.status) {
           this.commonService.inputAlert(message,'success')
           this.router.navigate(['/department-list']);
+        }else{
+          this.commonService.inputAlert(response.message,'error')
         }
       });
     }

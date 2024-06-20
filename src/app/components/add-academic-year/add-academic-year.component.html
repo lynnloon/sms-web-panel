@@ -1,14 +1,14 @@
 <div class="main" id="main">
-    
+
     <div class="pagetitle">
-         <h1 *ngIf="editAcademic == false">Add New Academic year</h1>
-        <h1 *ngIf="editAcademic == true">Edit Academic Year</h1> 
+        <h1 *ngIf="editAcademic == false">Add New Academic year</h1>
+        <h1 *ngIf="editAcademic == true">Edit Academic Year</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
                 <li class="breadcrumb-item"><a [routerLink]="'/year'">All Academic Year List</a></li>
-                 <li class="breadcrumb-item" *ngIf="editAcademic == false">Add new Academic Year</li>
-                <li class="breadcrumb-item" *ngIf="editAcademic == true">Edit Academic Year</li> 
+                <li class="breadcrumb-item" *ngIf="editAcademic == false">Add new Academic Year</li>
+                <li class="breadcrumb-item" *ngIf="editAcademic == true">Edit Academic Year</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -18,33 +18,47 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title" *ngIf="editAcademic == false">Academic Year Adding Form</h5>
-                    <h5 class="card-title" *ngIf="editAcademic == true">Academic Year Update Form</h5> 
+                    <h5 class="card-title" *ngIf="editAcademic == true">Academic Year Update Form</h5>
                     <!-- Horizontal Form -->
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Name</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required " >Name</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="year.name"  id="inputText">
+                            <input type="text" class="form-control" placeholder="20**-20**" [(ngModel)]="year.name" id="myLabel">
                         </div>
                     </div>
+                   
+
+
+
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">CurrentStatus</label>
+                        <!-- <div class="col-sm-6">
+                            <input type="" class="form-control" [(ngModel)]="year.currentStatus" id="inputEmail">
+                        </div> -->
+                        
                         <div class="col-sm-6">
-                            <input type="email" class="form-control" [(ngModel)]="year.currentStatus" id="inputEmail">
-                        </div>
+ 
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="year.currentStatus" >
+                                <option value="" selected>Choose..</option>
+                                <option> true</option>
+                                <option>false</option>
+                            </select>
+
+                    </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">Start Date</label>
                         <div class="col-sm-6">
                             <input type="date" class="form-control" [(ngModel)]="year.startDate" id="inputEmail">
                         </div>
-                    </div>      
-                    
+                    </div>
+
                     <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-3 col-form-label required">End  Date</label>
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">End Date</label>
                         <div class="col-sm-6">
                             <input type="date" class="form-control" [(ngModel)]="year.endDate" id="inputEmail">
                         </div>
-                    </div>         
+                    </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
                         <button type="reset" class="btn btn-secondary" [routerLink]="'/year'">Cancel</button>

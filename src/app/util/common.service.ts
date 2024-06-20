@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 })
 export class CommonService {
 
-  apiRoute = "http://localhost:3060/sms";
+  apiRoute = "http://localhost:3060/SMSAPI";
 
   constructor() { }
 
