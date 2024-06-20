@@ -33,8 +33,8 @@
                             <tr *ngFor="let sem of semesters;let i = index;">
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{sem.semesterName}}</td>
-                                <td>{{sem.semStartDate}}</td>
-                                <td>{{sem.semEndDate}}</td>
+                                <td>{{sem.semStartDate | date:'dd-MM-yyyy'}}</td>
+                                <td>{{sem.semEndDate | date:'dd-MM-yyyy'}}</td>
                                 <td>
                                     <i class="bi bi-pencil-square" title="edit" [routerLink]="['/add-semester',sem.id]"></i>&nbsp;
                                     <i class="bi bi-trash" style="color: red;" title="delete" (click)="delete(sem.id)"></i>

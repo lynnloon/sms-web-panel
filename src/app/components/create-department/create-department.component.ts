@@ -51,7 +51,7 @@ export class CreateDepartmentComponent implements OnInit {
     else {
       this.departmentService.create(this.department).subscribe((response: any) => {
         if (response.status) {
-          this.commonService.inputAlert(message,'info')
+          this.commonService.inputAlert(message,'success')
           this.router.navigate(['/department-list']);
         }
       });

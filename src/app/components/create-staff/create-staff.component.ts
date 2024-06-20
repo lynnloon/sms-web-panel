@@ -77,7 +77,7 @@ export class CreateStaffComponent implements OnInit {
     else {
       this.staffService.create(this.staff).subscribe((response: any) => {
         if (response.status) {
-          this.commonService.inputAlert(message,'sucess'); 
+          this.commonService.inputAlert(message,'success'); 
           this.router.navigate(['/staff-list']);
         }
       });
