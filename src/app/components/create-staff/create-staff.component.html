@@ -44,12 +44,26 @@
                             <input type="text" class="form-control" [(ngModel)]="staff.staffEmail" id="inputText">
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">Gender</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" [(ngModel)]="staff.staffGender" id="inputText">
                         </div>
+                    </div> -->
+
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Gender</label>
+                        <div class="col-sm-6">
+ 
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="staff.staffGender" >
+                                <option value="" selected>Choose..</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+
+                        </div>
                     </div>
+                    
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">NRC No</label>
                         <div class="col-sm-6">
