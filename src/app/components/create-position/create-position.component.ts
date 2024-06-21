@@ -18,7 +18,7 @@ export class CreatePositionComponent implements OnInit {
     private positionService: PositionService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private commonService:CommonService
+    private commonService: CommonService
 
   ) { }
   ngOnInit(): void {
@@ -44,13 +44,16 @@ export class CreatePositionComponent implements OnInit {
   save() {
     var message = this.checkValidation();
     if (message != 'OK')
-this.commonService.inputAlert(message,"warning");
+      this.commonService.inputAlert(message, "warning");
 
-        else {
+    else {
       this.positionService.create(this.position).subscribe((response: any) => {
         if (response.status) {
-this.commonService.inputAlert(message,"success");
+          this.commonService.inputAlert(message, "success");
           this.router.navigate(['/position-list']);
+        }
+        else {
+          this.commonService.inputAlert(response.message, 'error')
         }
       });
     }
