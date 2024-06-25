@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'student-sidebar',component:StudentSidebarComponent},
 
   // For Teacher
-  { path: 'teacher-sidebar',component:TeacherSidebarComponent}
+  { path: 'teacher-sidebar',component:TeacherSidebarComponent},
   { path: 'add-dept', component: CreateDepartmentComponent },
   { path: 'add-dept/:id', component: CreateDepartmentComponent },
   { path: 'position-list', component: PositionListComponent },
