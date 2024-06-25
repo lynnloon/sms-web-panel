@@ -16,8 +16,10 @@ import { PositionListComponent } from './components/position-list/position-list.
 import { CreatePositionComponent } from './components/create-position/create-position.component';
 import { SubjectListComponent } from './components/subject-list/subject-list.component';
 import { CreateSubjectComponent } from './components/create-subject/create-subject.component';
-import { StudentListComponent } from './components/student-list/student-list.component';
-import { CreateStudentComponent } from './components/create-student/create-student.component';
+import { StudentDashboardComponent } from './layout/student-dashboard/student-dashboard.component';
+import { StudentSidebarComponent } from './layout/student-sidebar/student-sidebar.component';
+import { TeacherSidebarComponent } from './layout/teacher-sidebar/teacher-sidebar.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -33,6 +35,24 @@ const routes: Routes = [
   { path: 'add-staff', component: CreateStaffComponent },
   { path: 'add-staff/:id', component: CreateStaffComponent },
   { path: 'department-list', component: DepartmentListsComponent },
+  { path: 'add-dept', component:CreateDepartmentComponent},
+  { path: 'add-dept/:id', component:CreateDepartmentComponent},
+  { path: 'position-list', component:PositionListComponent},
+  { path: 'add-position', component:CreatePositionComponent},
+  { path: 'add-position/:id', component:CreatePositionComponent},
+  { path: 'subject-list', component:SubjectListComponent},
+  { path: 'add-subject', component:CreateSubjectComponent},
+   { path: 'add-subject/:id', component:CreateSubjectComponent},
+  { path: 'semester-list',component:SemesterListComponent},
+  { path: 'add-semester',component:CreateSemesterComponent},
+  { path: 'add-semester/:id',component:CreateSemesterComponent},
+
+  // For Student Dashboard
+  { path: 'student-dashboard',component:StudentDashboardComponent},
+  { path: 'student-sidebar',component:StudentSidebarComponent},
+
+  // For Teacher
+  { path: 'teacher-sidebar',component:TeacherSidebarComponent}
   { path: 'add-dept', component: CreateDepartmentComponent },
   { path: 'add-dept/:id', component: CreateDepartmentComponent },
   { path: 'position-list', component: PositionListComponent },
@@ -43,10 +63,7 @@ const routes: Routes = [
   { path: 'add-subject/:id', component: CreateSubjectComponent },
   { path: 'semester-list', component: SemesterListComponent },
   { path: 'add-semester', component: CreateSemesterComponent },
-  { path: 'add-semester/:id', component: CreateSemesterComponent },
-  { path: 'student-list', component: StudentListComponent },
-  { path: 'add-student', component: CreateStudentComponent },
-  { path: 'add-student/:id', component: CreateStudentComponent },
+  { path: 'add-semester/:id', component: CreateSemesterComponent }
 
 ];
 

@@ -24,8 +24,6 @@ import { PositionListComponent } from './components/position-list/position-list.
 import { CreatePositionComponent } from './components/create-position/create-position.component';
 import { SubjectListComponent } from './components/subject-list/subject-list.component';
 import { CreateSubjectComponent } from './components/create-subject/create-subject.component';
-import { StudentListComponent } from './components/student-list/student-list.component';
-import { CreateStudentComponent } from './components/create-student/create-student.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +47,6 @@ import { CreateStudentComponent } from './components/create-student/create-stude
     CreatePositionComponent,
     SubjectListComponent,
     CreateSubjectComponent,
-    StudentListComponent,
-    CreateStudentComponent,
   ],
   imports: [
     BrowserModule,
