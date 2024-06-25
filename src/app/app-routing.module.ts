@@ -52,18 +52,7 @@ const routes: Routes = [
   { path: 'student-sidebar',component:StudentSidebarComponent},
 
   // For Teacher
-  { path: 'teacher-sidebar',component:TeacherSidebarComponent}
-  { path: 'add-dept', component: CreateDepartmentComponent },
-  { path: 'add-dept/:id', component: CreateDepartmentComponent },
-  { path: 'position-list', component: PositionListComponent },
-  { path: 'add-position', component: CreatePositionComponent },
-  { path: 'add-position/:id', component: CreatePositionComponent },
-  { path: 'subject-list', component: SubjectListComponent },
-  { path: 'add-subject', component: CreateSubjectComponent },
-  { path: 'add-subject/:id', component: CreateSubjectComponent },
-  { path: 'semester-list', component: SemesterListComponent },
-  { path: 'add-semester', component: CreateSemesterComponent },
-  { path: 'add-semester/:id', component: CreateSemesterComponent }
+  { path: 'teacher-sidebar',component:TeacherSidebarComponent},
 
 ];
 
