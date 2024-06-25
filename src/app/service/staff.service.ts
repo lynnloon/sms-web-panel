@@ -8,6 +8,10 @@ import { Staff } from '../model/staff';
 })
 export class StaffService {
 
+  filesave(formData: FormData) {
+    return this.httpClient.post(this.commonService.apiRoute+"/staff/uploadStaffFile", formData);
+  }
+
   
 
   constructor(

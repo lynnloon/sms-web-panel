@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Position } from 'src/app/model/position';
 import { Staff } from 'src/app/model/staff';
@@ -20,6 +21,12 @@ export class CreateStaffComponent implements OnInit {
   position: Position = new Position();
 
   positions: Position[] = [];
+  form !: FormGroup;
+  filepath !: string;
+  private _physical: any;
+  
+
+ 
  
 
   constructor(
@@ -27,8 +34,14 @@ export class CreateStaffComponent implements OnInit {
     private staffService: StaffService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private commonService :CommonService
+    private commonService :CommonService,
+    private fb: FormBuilder,
+    
+    
   ) { }
+
+
+  
 
   ngOnInit() {
     this.getAllPositionList();
@@ -39,8 +52,85 @@ export class CreateStaffComponent implements OnInit {
         this.getById(staffid)
       }
     });
+
+    this.form = this.fb.group({ //add constructor
+
+      cover: [null],
+    })
+
    
   }
+
+
+  oncoverChange(event: any) {
+    const tempfile = event.target.files[0];
+    if (tempfile.type == "image/png" || tempfile.type == "image/jpg" || tempfile.type == "image/jpeg") {
+      this.form?.patchValue({
+        cover: event.target.files[0]
+      });
+      this.form?.get('cover')?.updateValueAndValidity();
+      const reader = new FileReader();
+      reader.onload = (x: any) => {
+        this.filepath = reader.result as string;
+        const img = new Image();
+        img.src = x.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const maxWidth = 400;
+          const maxHeight = 300;
+
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > maxWidth) {
+              height *= maxWidth / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height >= maxHeight) {
+              width *= maxHeight / height;
+              height = maxHeight;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          if (ctx)
+            ctx.drawImage(img, 0, 0, width, height);
+
+          this.filepath = canvas.toDataURL(tempfile.type);
+          this.saveFile();
+        }
+      }
+      reader.readAsDataURL(tempfile);
+    }
+    else {
+      event.target.value = null;
+      Swal.fire("Please add only image-types");
+  
+    }
+  }
+saveFile() {
+    var formData: any = new FormData();
+    formData.append('uploadFile', this.form?.get('cover')?.value);
+    //formData.append('multipartFile', this.form?.get('cover')?.value);
+    this.staffService.filesave(formData).subscribe({
+      next: (response: any) => {
+        if (response) {
+          this._physical.uploadFile = response.data;
+        } else {
+          this.commonService.inputAlert(response.message, "warning");
+        }
+      },
+      error: (err: any) => {
+        Swal.fire("Please Choose book file");
+      }
+    });
+  }
+
+
 
   getAllPositionList() {
     this.positionService.getAllPositionList().subscribe((response: any) => {
