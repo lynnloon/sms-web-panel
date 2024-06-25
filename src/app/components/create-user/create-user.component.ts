@@ -10,13 +10,12 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-
-
   file:any;
 getFile(event: any) {
 
 this.file=event.target.file[0];
-console.log("uploa",this.file);
+(console.log("uploadFile",this.file));
+
 
 }
 
@@ -26,8 +25,13 @@ let formData=new FormData;
 formData.set("uploadFile",this.file);
 
 
-this.httpClient.post('http://localhost:3060/SMSAPI/staff/uploadStaffFile',formData).subscribe((response:any)=>{});
-
+this.httpClient.post('http://localhost:3060/SMSAPI/staff/uploadStaffFile',formData).subscribe((response:any)=>{
+  if(response.status)
+    {
+      window.alert(response.data);
+      
+    }
+});
 }
   editUser?: boolean = false;
 
