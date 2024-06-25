@@ -16,6 +16,9 @@ import { PositionListComponent } from './components/position-list/position-list.
 import { CreatePositionComponent } from './components/create-position/create-position.component';
 import { SubjectListComponent } from './components/subject-list/subject-list.component';
 import { CreateSubjectComponent } from './components/create-subject/create-subject.component';
+import { StudentDashboardComponent } from './layout/student-dashboard/student-dashboard.component';
+import { StudentSidebarComponent } from './layout/student-sidebar/student-sidebar.component';
+import { TeacherSidebarComponent } from './layout/teacher-sidebar/teacher-sidebar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/admin-dashboard', pathMatch: 'full' },
@@ -41,7 +44,14 @@ const routes: Routes = [
    { path: 'add-subject/:id', component:CreateSubjectComponent},
   { path: 'semester-list',component:SemesterListComponent},
   { path: 'add-semester',component:CreateSemesterComponent},
-  { path: 'add-semester/:id',component:CreateSemesterComponent}
+  { path: 'add-semester/:id',component:CreateSemesterComponent},
+
+  // For Student Dashboard
+  { path: 'student-dashboard',component:StudentDashboardComponent},
+  { path: 'student-sidebar',component:StudentSidebarComponent},
+
+  // For Teacher
+  { path: 'teacher-sidebar',component:TeacherSidebarComponent}
 
 ];
 
