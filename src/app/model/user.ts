@@ -6,4 +6,5 @@ export class User {
     userName?: string;
     phoneNo?: string;
     address?: string;
+    
 }
