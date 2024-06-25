@@ -14,7 +14,7 @@ export class UserService {
   ) { }
 
   getAllUserList() {
-    return this.httpClient.get(this.commonService.apiRoute + "/user/getAll")
+    return this.httpClient.get(this.commonService.apiRoute + "/user/getAll");
   }
 
   getById(id: any) {

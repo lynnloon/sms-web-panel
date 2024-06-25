@@ -32,6 +32,11 @@ export class StaffService {
     create(staff:Staff){
       return this.httpClient.post(this.commonService.apiRoute+"/staff/save",staff);
     }
+
+    update(staff:Staff){
+      return this.httpClient.post(this.commonService.apiRoute+"/staff/update",staff);
+    }
+
     delete(id:any){
       return this.httpClient.delete(this.commonService.apiRoute+"/staff/delete?id="+id);
     }

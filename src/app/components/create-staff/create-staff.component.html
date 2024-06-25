@@ -16,9 +16,21 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title" *ngIf="editStaff == false">Staff Registration Form</h5>
-                    <h5 class="card-title" *ngIf="editStaff == true">Staff Edit Form</h5>
+                    <h5 class="card-title text-center" *ngIf="editStaff == false">Staff Registration Form</h5>
+                    <h5 class="card-title text-center" *ngIf="editStaff == true">Staff Edit Form</h5>
                     <!-- Horizontal Form -->
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Profile Picture</label>
+                        <div class="col-sm-6">
+
+                            <!-- <input class="form-control" type="file" [(ngModel)]="staff.staffProfilePicture" id="formFile"> -->
+
+                            <input id="file" type="file" name="cover" class="form-control" accept=".png , .jpg , .jpeg"
+                                (change)="oncoverChange($event)" [(ngModel)]="staff.staffProfilePicture">
+                            <!-- <button type="submit" class="btn btn-primary" (click)="saveFile()">Submit</button>&nbsp; -->
+                        </div>
+                    </div>
+
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Name</label>
                         <div class="col-sm-6">
@@ -54,8 +66,8 @@
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">Gender</label>
                         <div class="col-sm-6">
- 
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="staff.staffGender" >
+
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="staff.staffGender">
                                 <option value="" selected>Choose..</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -63,7 +75,7 @@
 
                         </div>
                     </div>
-                    
+
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">NRC No</label>
                         <div class="col-sm-6">
@@ -73,28 +85,15 @@
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">Position</label>
                         <div class="col-sm-6">
- 
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="position" 
-                            [ngModelOptions]="{standalone: true}"
-                                (ngModelChange)="onChangeCombo()">
-                                <option value="" selected>Choose..</option>
+
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="position"
+                                [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
+                                <option value="">Choose..</option>
                                 <option *ngFor="let pos of positions;" [ngValue]="pos">{{pos.name}}</option>
                             </select>
 
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Profile Picture</label>
-                        <div class="col-sm-6">
-                            
-                            <!-- <input class="form-control" type="file" [(ngModel)]="staff.staffProfilePicture" id="formFile"> -->
-
-                            <input id="file" type="file" name="cover" class="form-control" accept=".png , .jpg , .jpeg"(change)="oncoverChange($event)" [(ngModel)]="staff.staffProfilePicture">
-                            <button type="submit" class="btn btn-primary" (click)="saveFile()">Submit</button>&nbsp;
-                        </div>
-                    </div>
-
-
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
                         <button type="reset" class="btn btn-secondary" [routerLink]="'/staff-list'">Cancel</button>

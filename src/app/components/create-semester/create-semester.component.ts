@@ -57,9 +57,9 @@ export class CreateSemesterComponent implements OnInit {
   checkValidation(): string {
     if (this.semester.semesterName == undefined || this.semester.semesterName.trim() == '')
       return "Fill Semester name";
-    else if (this.semester.semStartDate == undefined || this.semester.semStartDate.trim() == '')
+    else if (this.semester.semStartDate == undefined )
       return "Fill Start Date";
-    else if (this.semester.semEndDate == undefined || this.semester.semEndDate.trim() == '')
+    else if (this.semester.semEndDate == undefined)
       return "Fill End Date";
     else
       return "OK";

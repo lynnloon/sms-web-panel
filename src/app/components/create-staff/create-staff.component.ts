@@ -24,25 +24,18 @@ export class CreateStaffComponent implements OnInit {
   positions: Position[] = [];
   form !: FormGroup;
   filepath !: string;
-  private _physical: any;
-  
-
  
- 
-
   constructor(
     private positionService: PositionService,
     private staffService: StaffService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private commonService :CommonService,
-    private fb: FormBuilder,
-    
-    
+    private commonService: CommonService,
+    private fb: FormBuilder
   ) { }
 
 
-  
+
 
   ngOnInit() {
     this.getAllPositionList();
@@ -54,14 +47,12 @@ export class CreateStaffComponent implements OnInit {
       }
     });
 
-    this.form = this.fb.group({ //add constructor
-
+    this.form = this.fb.group({ 
       cover: [null],
     })
 
-   
-  }
 
+  }
 
   oncoverChange(event: any) {
     const tempfile = event.target.files[0];
@@ -110,17 +101,18 @@ export class CreateStaffComponent implements OnInit {
     else {
       event.target.value = null;
       Swal.fire("Please add only image-types");
-  
+
     }
   }
-saveFile() {
+
+  saveFile() {
     var formData: any = new FormData();
     formData.append('uploadFile', this.form?.get('cover')?.value);
     //formData.append('multipartFile', this.form?.get('cover')?.value);
     this.staffService.filesave(formData).subscribe({
       next: (response: any) => {
-        if (response) {
-          this._physical.uploadFile = response.data;
+        if (response) {          
+         this.staff.staffProfilePicture = response.data;
         } else {
           this.commonService.inputAlert(response.message, "warning");
         }
@@ -131,14 +123,10 @@ saveFile() {
     });
   }
 
-
-
   getAllPositionList() {
     this.positionService.getAllPositionList().subscribe((response: any) => {
       if (response.status) {
         this.positions = response.data;
-       
-        
       }
     });
   }
@@ -147,13 +135,11 @@ saveFile() {
     this.staffService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.staff = response.data;
-      
         const selectedPos = this.positions.find(u => u.id === this.staff.staffPosition?.id);
-
-        if(selectedPos){
+        if (selectedPos) {
           this.position = selectedPos;
         }
-         
+
       } else {
         window.alert('no record found');
       }
@@ -161,22 +147,31 @@ saveFile() {
   }
 
   save() {
-    debugger;
     var message = this.checkValidation();
     if (message != 'OK')
-      this.commonService.inputAlert(message,'warning');     
+      this.commonService.inputAlert(message, 'warning');
     else {
-      this.staffService.create(this.staff).subscribe((response: any) => {
-        if (response.status) {
-          this.commonService.inputAlert(message,'success'); 
-          this.router.navigate(['/staff-list']);
-        }
-      });
+      if(this.editStaff){
+        this.staffService.update(this.staff).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/staff-list']);
+          }
+        });
+      }else{
+        this.staffService.create(this.staff).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/staff-list']);
+          }
+        });
+      }
+      
     }
   }
 
   checkValidation(): string {
-   if (this.staff.staffName == undefined || this.staff.staffName.trim() == '')
+    if (this.staff.staffName == undefined || this.staff.staffName.trim() == '')
       return "Fill Staff name please! ";
     else if (this.staff.staffPhoneNo == undefined || this.staff.staffPhoneNo.trim() == '')
       return "Fill phone no please!";
@@ -196,8 +191,8 @@ saveFile() {
       return "OK";
   }
 
-  onChangeCombo(){
+  onChangeCombo() {
     this.staff.staffPosition = new Position();
-      this.staff.staffPosition=(this.position);
+    this.staff.staffPosition = (this.position);
   }
 }

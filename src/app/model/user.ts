@@ -4,7 +4,9 @@ export class User {
     modifyDate?: Date;
     activeStatus?: string;
     userName?: string;
-    phoneNo?: string;
-    address?: string;
-    
+    email?: string;
+    role?: string;
+    password?:string;
+    phoneNo?:string;
+    address?:string;
 }
