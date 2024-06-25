@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,13 @@ export class CommonService {
 
   apiRoute = "http://localhost:3060/SMSAPI";
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
+
+  login(user: User) {
+    return this.httpClient.post(this.apiRoute + "/login/checkUser", user);
+  }
 
   inputAlert(message: string, icon: any) {
     Swal.fire({
@@ -17,12 +25,12 @@ export class CommonService {
       showConfirmButton: false,
       icon: icon,
       text: message,
-      timer:3000
+      timer: 3000
     });
   }
 
-  confirmAlert(){
-    
+  confirmAlert() {
+
   }
 
 }

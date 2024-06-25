@@ -1,5 +1,5 @@
 <div class="main" id="main">
-    
+
     <div class="pagetitle">
         <h1 *ngIf="editUser == false">Add New Student</h1>
         <h1 *ngIf="editUser == true">Edit Student</h1>
@@ -23,25 +23,130 @@
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Name</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="user.userName"  id="inputText">
+                            <input type="text" class="form-control" [(ngModel)]="user.userName" id="inputText">
+                        </div>
+
+                    </div>
+
+                    <!-- input Email -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Email</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="user.phoneNo" id="inputEmail">
                         </div>
                     </div>
+
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Phone No</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control" [(ngModel)]="user.phoneNo" id="inputEmail">
+                            <input type="text" class="form-control" [(ngModel)]="user.phoneNo" id="inputEmail">
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required"> Current Address</label>
+                        <div class="col-sm-6">
+                            <textarea rows="2" class="form-control" [(ngModel)]="user.address"
+                                id="inputPassword"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- home address -->
+
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Home Address</label>
+                        <div class="col-sm-6">
+                            <textarea rows="2" class="form-control" [(ngModel)]="user.address"
+                                id="inputPassword"></textarea>
+                        </div>
+                    </div>
+
+
+                    <!-- input gender  create gender entry-->
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Gender</label>
+                        <div class="col-sm-6">
+ 
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="editUser" >
+                                <option value="" selected>Choose..</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <!-- create date of birth -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Date Of Birth </label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" [(ngModel)]="user.phoneNo" id="inputEmail">
+                        </div>
+                    </div>
+                    <!-- create nrc -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">NRC No :</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="user.phoneNo" id="inputEmail">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Address</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">National :</label>
                         <div class="col-sm-6">
-                            <textarea rows="3" class="form-control" [(ngModel)]="user.address" id="inputPassword"></textarea>
+                            <input type="text" class="form-control" [(ngModel)]="user.phoneNo" id="inputEmail">
                         </div>
-                    </div>                    
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Religion :</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="user.phoneNo" id="inputEmail">
+                        </div>
+                    </div>
+                    <!-- asking rquesting hostel (yes or no) -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Hostel Status :</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="editUser" >
+                                <option value="" selected>Choose..</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <!-- asking requesting ferry (yes or no) -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Ferry status :</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="editUser" >
+                                <option value="" selected>Choose..</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+              
+
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Profile Picture</label>
+                        <div class="col-sm-6">
+                             
+                            <input class="form-control" type="file"  [(ngModel)]="user" id="formFile">
+                        </div>
+                    </div>
+
+
+
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
                         <button type="reset" class="btn btn-secondary" [routerLink]="'/user-list'">Cancel</button>
-                        
+
                     </div>
                     <!-- End Horizontal Form -->
 
@@ -50,8 +155,8 @@
         </div>
 
         <div>
-        <input type="file" (change)="getFile($event)" accept=".png , .jpg , .jpeg">
-        <button type="submit" class="btn btn-primary" (click)="submitData()" > OK</button>&nbsp;
+            <input type="file" (change)="getFile($event)" accept=".png , .jpg , .jpeg">
+            <button type="submit" class="btn btn-primary" (click)="submitData()"> OK</button>&nbsp;
         </div>
     </section>
 </div>
