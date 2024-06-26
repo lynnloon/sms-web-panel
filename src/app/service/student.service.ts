@@ -7,6 +7,9 @@ import { CommonService } from '../util/common.service';
   providedIn: 'root'
 })
 export class StudentService {
+  filesave(formData: any) {
+    return this.httpClient.post(this.commonService.apiRoute+"/student/uploadStudentFile", formData);
+  }
 
   constructor(
     private httpClient: HttpClient,
