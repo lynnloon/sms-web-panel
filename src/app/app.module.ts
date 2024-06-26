@@ -24,8 +24,8 @@ import { PositionListComponent } from './components/position-list/position-list.
 import { CreatePositionComponent } from './components/create-position/create-position.component';
 import { SubjectListComponent } from './components/subject-list/subject-list.component';
 import { CreateSubjectComponent } from './components/create-subject/create-subject.component';
-import { StudentSidebarComponent } from './layout/student-sidebar/student-sidebar.component';
-import { TeacherSidebarComponent } from './layout/teacher-sidebar/teacher-sidebar.component';
+import { StudentListComponent } from './components/student-list/student-list.component';
+import { CreateStudentComponent } from './components/create-student/create-student.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +49,8 @@ import { TeacherSidebarComponent } from './layout/teacher-sidebar/teacher-sideba
     CreatePositionComponent,
     SubjectListComponent,
     CreateSubjectComponent,
-    StudentSidebarComponent,
-    TeacherSidebarComponent
+    StudentListComponent,
+    CreateStudentComponent,
   ],
   imports: [
     BrowserModule,
