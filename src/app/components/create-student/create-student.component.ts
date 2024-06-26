@@ -130,6 +130,7 @@ export class CreateStudentComponent implements OnInit {
   }
 
   save() {
+    
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
