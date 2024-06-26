@@ -21,6 +21,10 @@ export class StudentService {
     return this.httpClient.get(this.commonService.apiRoute + "/student/getById?id=" + id);
   }
 
+  update(student:Student){
+    return this.httpClient.post(this.commonService.apiRoute+"/student/update",student);
+  }
+
   delete(id: any) {
     return this.httpClient.delete(this.commonService.apiRoute+"/student/delete?id="+id);
   }

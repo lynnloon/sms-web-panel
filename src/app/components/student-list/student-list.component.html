@@ -27,14 +27,13 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone No</th>
                                 <th scope="col">Current Address</th>
-                                <th scope="col">Home Address</th>
-                                <th scope="col">Gender</th>
+                                <!-- <th scope="col">Home Address</th>
                                 <th scope="col">Date Of birth</th>
                                 <th scope="col">NRC No</th>
                                 <th scope="col">Profile picture</th>
                                 <th scope="col">Nation</th>
                                 <th scope="col">Religion</th>
-                                <th scope="col">Relationship Status</th>
+                                <th scope="col">Relationship Status</th> -->
                                 <th scope="col">Hostel</th>
                                 <th scope="col">Ferry</th>
                                 <th>Action</th>
@@ -43,18 +42,17 @@
                         <tbody>
                             <tr *ngFor="let stu of students;let i = index;">
                                 <th scope="row">{{i+1}}</th>
-                                <td>{{stu.stu_name}}</td>
+                                <td>{{stu.stu_gender== 'Male'? 'Mg ':'Ma '}}{{stu.stu_name}}</td>
                                 <td>{{stu.stu_email}}</td>
                                 <td>{{stu.phone_no}}</td>
                                 <td>{{stu.stu_currAddress}}</td>
-                                <td>{{stu.stu_homeAdd}}</td>
-                                <td>{{stu.stu_gender}}</td>
+                                <!-- <td>{{stu.stu_homeAdd}}</td>
                                 <td>{{stu.stu_dob}}</td>
                                 <td>{{stu.stu_nrc}}</td>
                                 <td>{{stu.stu_pp}}</td>
                                 <td>{{stu.stu_national}}</td>
                                 <td>{{stu.stu_religion}}</td>
-                                <td>{{stu.stu_relationshipStat}}</td>
+                                <td>{{stu.stu_relationshipStat}}</td> -->
                                 <td>{{stu.stu_hostel}}</td>
                                 <td>{{stu.stu_ferry}}</td>
                                 <td>

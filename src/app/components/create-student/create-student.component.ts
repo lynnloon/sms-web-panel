@@ -48,17 +48,26 @@ export class CreateStudentComponent implements OnInit {
   }
 
   save() {
-
     var message = this.checkValidation();
     if (message != 'OK')
-      this.commonService.inputAlert(message,'warning');
+      this.commonService.inputAlert(message, 'warning');
     else {
-      this.studentService.create(this.student).subscribe((response: any) => {
-        if (response.status) {
-          this.commonService.inputAlert(message,'success'); 
-          this.router.navigate(['/student-list']);
-        }
-      });
+      if(this.editStudent){
+        this.studentService.update(this.student).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/student-list']);
+          }
+        });
+      }else{
+        this.studentService.create(this.student).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/student-list']);
+          }
+        });
+      }
+      
     }
   }
 
@@ -66,8 +75,8 @@ export class CreateStudentComponent implements OnInit {
     
     if (this.student.stu_name == undefined || this.student.stu_name?.trim() == '')
       return "Fill student name";
-    else if (this.student.stu_email == undefined || this.student.stu_email.trim() == '')
-      return "Fill email address";
+    // else if (this.student.stu_email == undefined || this.student.stu_email.trim() == '')
+    //   return "Fill email address";
     else if (this.student.phone_no == undefined || this.student.phone_no.trim() == '')
       return "Fill phone number";
     else if (this.student.stu_currAddress == undefined || this.student.stu_currAddress.trim() == '')

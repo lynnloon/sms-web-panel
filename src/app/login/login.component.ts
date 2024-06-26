@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
       this.commonService.login(this.user).subscribe((response: any) => {
         if (response.status) {
           this.user = response.data;
-          if (this.user.role == 'ADMIN')
-            this.router.navigate(['/admin-dashboard'])
+          if (this.user.role == 'STUDENT')
+            this.router.navigate(['/student-list'])
           else if (this.user.role == 'TEACHER')
             this.router.navigate(['/admin-dashboard'])
         } else {

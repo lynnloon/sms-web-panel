@@ -29,7 +29,7 @@ export class AddAcademicYearComponent {
     this.activatedRoute.params.subscribe(params => {
       const yearid = params['id'];
       if (yearid) {
-        // this.editUser = true;
+        this.editAcademic = true;
         this.getById(yearid)
       }
 
