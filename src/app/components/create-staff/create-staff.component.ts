@@ -34,9 +34,6 @@ export class CreateStaffComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
-
-
-
   ngOnInit() {
     this.getAllPositionList();
     this.activatedRoute.params.subscribe(params => {
@@ -118,7 +115,7 @@ export class CreateStaffComponent implements OnInit {
         }
       },
       error: (err: any) => {
-        Swal.fire("Please Choose book file");
+        Swal.fire("Please Choose image file");
       }
     });
   }

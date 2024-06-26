@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from 'src/app/model/student';
 import { StudentService } from 'src/app/service/student.service';
 import { CommonService } from 'src/app/util/common.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-student',
@@ -16,14 +18,89 @@ export class CreateStudentComponent implements OnInit {
 
   student: Student = new Student();
 
+  form !: FormGroup;
+  filepath !: string;
+
+
 
   constructor(
     private httpClient:HttpClient,
     private studentService:StudentService,
     private commonService :CommonService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
   ) { }
+
+  oncoverChange(event: any) {
+    const tempfile = event.target.files[0];
+    if (tempfile.type == "image/png" || tempfile.type == "image/jpg" || tempfile.type == "image/jpeg") {
+      this.form?.patchValue({
+        cover: event.target.files[0]
+      });
+      this.form?.get('cover')?.updateValueAndValidity();
+      const reader = new FileReader();
+      reader.onload = (x: any) => {
+        this.filepath = reader.result as string;
+        const img = new Image();
+        img.src = x.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          const maxWidth = 400;
+          const maxHeight = 300;
+
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > maxWidth) {
+              height *= maxWidth / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height >= maxHeight) {
+              width *= maxHeight / height;
+              height = maxHeight;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          if (ctx)
+            ctx.drawImage(img, 0, 0, width, height);
+
+          this.filepath = canvas.toDataURL(tempfile.type);
+          this.saveFile();
+        }
+      }
+      reader.readAsDataURL(tempfile);
+    }
+    else {
+      event.target.value = null;
+      Swal.fire("Please add only image-types");
+
+    }
+  }
+
+
+  saveFile() {
+    var formData: any = new FormData();
+    formData.append('uploadFile', this.form?.get('cover')?.value);
+    //formData.append('multipartFile', this.form?.get('cover')?.value);
+    this.studentService.filesave(formData).subscribe({
+      next: (response: any) => {
+        if (response) {          
+         this.student.stu_pp = response.data;
+        } else {
+          this.commonService.inputAlert(response.message, "warning");
+        }
+      },
+      error: (err: any) => {
+        Swal.fire("Please Choose image file");
+      }
+    });
+  }
 
 
   ngOnInit(){
@@ -35,6 +112,11 @@ export class CreateStudentComponent implements OnInit {
       }
 
     });
+    this.form = this.fb.group({ 
+
+      cover: [null],
+    })
+
   }
 
   getById(id: any) {
@@ -48,6 +130,7 @@ export class CreateStudentComponent implements OnInit {
   }
 
   save() {
+    
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
