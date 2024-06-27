@@ -52,6 +52,15 @@ export class CreateSubjectComponent implements OnInit {
     if (message != 'OK')
       this.commonService.inputAlert(message, "warning");
     else {
+      if(this. editSubject){
+        this.subjectService.update(this.subject).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/student-list']);
+          }
+        });
+      }
+    else {
       this.subjectService.create(this.subject).subscribe((response: any) => {
         if (response.status) {
           this.commonService.inputAlert(message, "success");
@@ -65,7 +74,10 @@ export class CreateSubjectComponent implements OnInit {
 
 
 
-  checkValidation(): string {
+
+   
+  }
+  checkValidation() {
     if (this.subject.name == undefined || this.subject.name.trim() == "")
       return "Fill subject name"
     else
