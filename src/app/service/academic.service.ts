@@ -15,7 +15,7 @@ export class AcademicService {
     private httpClient: HttpClient,
     private commonService: CommonService
   ) {}
-  getAllUserList() {
+  getAllAcademicYear() {
     return this.httpClient.get(this.commonService.apiRoute + "/academic_years/getAll")
   }
 

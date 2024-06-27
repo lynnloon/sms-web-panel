@@ -25,11 +25,11 @@ export class AcademicComponent {
   ) {}
 
   ngOnInit() {
-    this.getAllUserList();
+    this.getAllAcademicYear();
   }
 
-  getAllUserList() {
-    this.yearService.getAllUserList().subscribe((response: any) => {
+  getAllAcademicYear() {
+    this.yearService.getAllAcademicYear().subscribe((response: any) => {
       if (response.status) {
         this.years = response.data;
       }

@@ -1,8 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AcademicYear } from 'src/app/model/academic-year';
 import { Student } from 'src/app/model/student';
+import { AcademicService } from 'src/app/service/academic.service';
 import { StudentService } from 'src/app/service/student.service';
 import { CommonService } from 'src/app/util/common.service';
 import Swal from 'sweetalert2';
@@ -17,6 +20,9 @@ export class CreateStudentComponent implements OnInit {
   editStudent?: boolean = false;
 
   student: Student = new Student();
+  year: AcademicYear = new AcademicYear();
+
+  years: AcademicYear[] = [];
 
   form !: FormGroup;
   filepath !: string;
@@ -26,10 +32,12 @@ export class CreateStudentComponent implements OnInit {
   constructor(
     private httpClient:HttpClient,
     private studentService:StudentService,
+    private academicService:AcademicService,
     private commonService :CommonService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
+    private datePipe:DatePipe
   ) { }
 
   oncoverChange(event: any) {
@@ -104,6 +112,7 @@ export class CreateStudentComponent implements OnInit {
 
 
   ngOnInit(){
+    this.getAllAcademicYearList();
     this.activatedRoute.params.subscribe(params => {
       const studentid = params['id'];
       if (studentid) {
@@ -123,6 +132,12 @@ export class CreateStudentComponent implements OnInit {
     this.studentService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.student = response.data;
+        
+        const selectedPos = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
+        if (selectedPos) {
+          this.year = selectedPos;
+        }
+        this.student.stu_dob=this.datePipe.transform(this.student.stu_dob,"yyyy-MM-dd");
       } else {
         window.alert('no record found');
       }
@@ -197,5 +212,16 @@ export class CreateStudentComponent implements OnInit {
     return "Fill Ferry Status";
   else
     return "OK";
+  }
+  getAllAcademicYearList() {
+    this.academicService.getAllAcademicYear().subscribe((response: any) => {
+      if (response.status) {
+        this.years = response.data;
+      }
+    });
+  }
+  onChangeCombo() {
+    this.student.stu_AcademicYear = new AcademicYear();
+    this.student.stu_AcademicYear = (this.year);
   }
 }

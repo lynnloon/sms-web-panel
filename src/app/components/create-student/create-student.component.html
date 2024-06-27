@@ -25,23 +25,24 @@
                     <form class="row g-3">
 
                         <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label  required">Name</label>
-                            <input type="text" class="form-control" [(ngModel)]="student.stu_name" id="inputText"
+                            <label for="inputEmail3" class=" col-form-label  required" >Name</label>
+                            <input type="text" class="form-control" placeholder="Name" [(ngModel)]="student.stu_name" id="inputText"
                                 [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-sm-3">
                             <label for="inputEmail3" class=" col-form-label  required">Roll No</label>
-                            <input type="text" class="form-control" id="inputText">
+                            <input type="text" class="form-control" id="inputText" [(ngModel)]="student.stuRoll_no"
+                            [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="col-sm-3">
-                            <label for="inputEmail3" class="col-form-label required">Phone No</label>
-                            <input type="text" class="form-control" [(ngModel)]="student.phone_no" id="inputText"
+                            <label for="inputEmail3" class="col-form-label required" >Phone No</label>
+                            <input type="text" class="form-control" placeholder="09-xxxxxxxxx" [(ngModel)]="student.phone_no" id="inputText"
                                 [ngModelOptions]="{standalone: true}">
                         </div>
                         <!-- input Email -->
                         <div class="col-sm-3">
-                            <label for="inputEmail3" class="col-form-label ">Email</label>
-                            <input type="email" class="form-control" [(ngModel)]="student.stu_email" id="inputEmail"
+                            <label for="inputEmail3" class="col-form-label " >Email</label>
+                            <input type="email" class="form-control" placeholder="xxx@gmail.com" [(ngModel)]="student.stu_email" id="inputEmail"
                                 [ngModelOptions]="{standalone: true}">
                         </div>
 
@@ -94,9 +95,10 @@
                         </div>
                         <div class="col-sm-3">
                             <label for="inputEmail3" class=" col-form-label required">Academic Year</label>
-                            <select class="form-select" id="inputGroupSelect01 ">
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="year"
+                                [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
                                 <option value="">Choose..</option>
-                                <option></option>
+                                <option *ngFor="let y of years;" [ngValue]="y">{{y.name}}</option>
                             </select>
 
                         </div>
