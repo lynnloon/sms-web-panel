@@ -8,7 +8,6 @@ import { Subject } from '../model/subject';
 })
 export class SubjectService {
  
-
   constructor(
     private httpClient: HttpClient,
     private commonService: CommonService
@@ -23,6 +22,10 @@ export class SubjectService {
     return this.httpClient.post(this.commonService.apiRoute + "/subject/save", subject);
   }
 
+  update(subject: Subject) {
+    return this.httpClient.post(this.commonService.apiRoute + "/subject/update", subject);
+  }
+ 
 
   getById(id: any) {
     return this.httpClient.get(this.commonService.apiRoute+"/subject/getById?id="+id);

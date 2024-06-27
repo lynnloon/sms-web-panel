@@ -24,6 +24,10 @@ export class PositionService {
   }
  
 
+  update(position: Position) {
+    return this.httpClient.post(this.commonService.apiRoute + "/position/update", position);
+  }
+
   getById(id: any) {
     return this.httpClient.get(this.commonService.apiRoute+"/position/getById?id="+id);
   }

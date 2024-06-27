@@ -29,6 +29,10 @@ export class SemesterService implements OnInit {
     return this.httpClient.post(this.commonService.apiRoute+"/semester/save",semester);
   }
 
+  update(semester: Semester) {
+    return this.httpClient.post(this.commonService.apiRoute+"/semester/update",semester);
+  }
+
   delete(id:any){
     return this.httpClient.delete(this.commonService.apiRoute+"/semester/delete?id="+id);
   }

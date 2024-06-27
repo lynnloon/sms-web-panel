@@ -6,12 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { UserListComponent } from './components/user-list/user-list.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AdminDashboardComponent } from './layout/admin-dashboard/admin-dashboard.component';
-import { CreateUserComponent } from './components/create-user/create-user.component';
 import { AcademicComponent } from './components/academic/academic.component';
 import { AddAcademicYearComponent } from './components/add-academic-year/add-academic-year.component';
 import { StaffListComponent } from './components/staff-list/staff-list.component';
@@ -29,17 +27,16 @@ import { CreateStudentComponent } from './components/create-student/create-stude
 import { TeacherSidebarComponent } from './layout/teacher-sidebar/teacher-sidebar.component';
 import { StudentSidebarComponent } from './layout/student-sidebar/student-sidebar.component';
 import { StudentDashboardComponent } from './layout/student-dashboard/student-dashboard.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserListComponent,
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
     AdminDashboardComponent,
-    CreateUserComponent,
     AcademicComponent,
     AddAcademicYearComponent,
     StaffListComponent,
@@ -64,7 +61,7 @@ import { StudentDashboardComponent } from './layout/student-dashboard/student-da
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -50,7 +50,16 @@ export class AddAcademicYearComponent {
 
     var message = this.checkValidation();
     if (message != 'OK')
-      this.commonService.inputAlert(message,'warning');   
+      this.commonService.inputAlert(message,'warning'); 
+    else {
+      if(this.editAcademic){
+        this.yearService.update(this.year).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/year']);
+          }
+        });
+      }  
     else {
       this.yearService.create(this.year).subscribe((response: any) => {
         if (response.status) {
@@ -61,8 +70,10 @@ export class AddAcademicYearComponent {
     }
   }
 
-  checkValidation(): string {
-    
+ 
+
+}
+  checkValidation() {
     if (this.year.name == undefined || this.year.name.trim() == '')
       return "Fill Academic Year";
     else if (this.year.currentStatus == undefined)
@@ -75,6 +86,4 @@ export class AddAcademicYearComponent {
     else
       return "OK";
   }
-
 }
-
