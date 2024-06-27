@@ -1,8 +1,8 @@
 export class Semester {
     id?:number;
     semesterName?:string;
-    semStartDate?:Date;
-    semEndDate?:Date;
+    semStartDate?:any;
+    semEndDate?:any;
     creationDate?:string;
     modifyDate?:string;
     activeStatus?:string;

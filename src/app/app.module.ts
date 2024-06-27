@@ -29,6 +29,7 @@ import { CreateStudentComponent } from './components/create-student/create-stude
 import { TeacherSidebarComponent } from './layout/teacher-sidebar/teacher-sidebar.component';
 import { StudentSidebarComponent } from './layout/student-sidebar/student-sidebar.component';
 import { StudentDashboardComponent } from './layout/student-dashboard/student-dashboard.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { StudentDashboardComponent } from './layout/student-dashboard/student-da
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

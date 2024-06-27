@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Semester } from 'src/app/model/semester';
@@ -16,7 +17,8 @@ export class CreateSemesterComponent implements OnInit {
     private semesterService: SemesterService,
     private activedRoute: ActivatedRoute,
     private router: Router,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private datepipe:DatePipe
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,9 @@ export class CreateSemesterComponent implements OnInit {
     this.semesterService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.semester = response.data;
+        this.semester.semStartDate=this.datepipe.transform(this.semester.semStartDate,"yyyy-MM-dd");
+        this.semester.semEndDate=this.datepipe.transform(this.semester.semEndDate,"yyyy-MM-dd");
+
       } else {
         window.alert('no record found');
       }
