@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AcademicYear } from 'src/app/model/academic-year';
 import { Student } from 'src/app/model/student';
 import { AcademicService } from 'src/app/service/academic.service';
+import { FamilyMember } from 'src/app/model/family-member';
+import { FamilyMemberService } from 'src/app/service/family-member.service';
 import { StudentService } from 'src/app/service/student.service';
 import { CommonService } from 'src/app/util/common.service';
 import Swal from 'sweetalert2';
@@ -23,6 +25,10 @@ export class CreateStudentComponent implements OnInit {
   year: AcademicYear = new AcademicYear();
 
   years: AcademicYear[] = [];
+  father :FamilyMember=new FamilyMember();
+  mother :FamilyMember=new FamilyMember();
+
+
 
   form !: FormGroup;
   filepath !: string;
@@ -33,6 +39,7 @@ export class CreateStudentComponent implements OnInit {
     private httpClient:HttpClient,
     private studentService:StudentService,
     private academicService:AcademicService,
+    private familyMemberService:FamilyMemberService,
     private commonService :CommonService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -167,8 +174,11 @@ export class CreateStudentComponent implements OnInit {
           }
         });
       }else{
+
         this.studentService.create(this.student).subscribe((response: any) => {
           if (response.status) {
+            this.familyMemberService.create(this.father).subscribe((response:any)=>{});
+          this.familyMemberService.create(this.mother).subscribe((response:any)=>{});
             this.commonService.inputAlert(message, 'success');
             this.router.navigate(['/student-list']);
           }

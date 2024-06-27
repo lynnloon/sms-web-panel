@@ -5,8 +5,8 @@ export class AcademicYear {
     activeStatus?: string;
     name?: string;
     currentStatus?:boolean;
-    startDate?:Date;
-    endDate?:Date;
+    startDate?:any;
+    endDate?:any;
 
 
 }

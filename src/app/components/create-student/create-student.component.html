@@ -152,27 +152,27 @@
                         <h5 class="card-title text-center">Parent Information</h5>
                         <div class="col-sm-3">
                             <label for="firstName" class=" col-form-label required">Father Name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="Name">
+                            <input type="text" class="form-control" id="firstName" placeholder="Name" [(ngModel)]="father.name">
                         </div>
                         <div class="col-sm-3">
                             <label for="firstName" class=" col-form-label required">Father's NRC No</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="NRC No">
+                            <input type="text" class="form-control" id="firstName" placeholder="NRC No" [(ngModel)]="father.nrcNo" >
                         </div>
                         <div class="col-sm-3">
                             <label for="lastName" class=" col-form-label required">Phone Number</label>
-                            <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx">
+                            <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx" [(ngModel)]="father.phoneNo">
                         </div>
                         <div class="col-sm-3">
                             <label for="relationship" class=" col-form-label required">Occupation</label>
-                            <input type="text" class="form-control" id="relationship" placeholder="">
+                            <input type="text" class="form-control" id="relationship" placeholder="" [(ngModel)]="father.occupation">
                         </div>
                         <div class="col-sm-6">
                             <label for="inputEmail3" class="col-form-label required">Nation :</label>
-                            <input type="text" class="form-control" id="inputEmail">
+                            <input type="text" class="form-control" id="inputEmail"[(ngModel)]="father.nation" >
                         </div>
                         <div class="col-sm-6">
                             <label for="inputEmail3" class=" col-form-label required">Religion :</label>
-                            <select class="form-select" id="inputGroupSelect01 ">
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="father.religion">
                                 <option value="" selected>Choose..</option>
                                 <option>Buddhism</option>
                                 <option>Christianity</option>
@@ -190,27 +190,27 @@
                         <!-- Mother info -->
                         <div class="col-sm-3">
                             <label for="firstName" class=" col-form-label required">Mother Name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="Name">
+                            <input type="text" class="form-control" id="firstName" placeholder="Name" [(ngModel)]="mother.name">
                         </div>
                         <div class="col-sm-3">
                             <label for="firstName" class=" col-form-label required">Mother's NRC No</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="NRC No">
+                            <input type="text" class="form-control" id="firstName" placeholder="NRC No" [(ngModel)]="mother.nrcNo">
                         </div>
                         <div class="col-sm-3">
                             <label for="lastName" class=" col-form-label required">Phone Number</label>
-                            <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx">
+                            <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx" [(ngModel)]="mother.phoneNo">
                         </div>
                         <div class="col-sm-3">
                             <label for="relationship" class=" col-form-label required">Occupation</label>
-                            <input type="text" class="form-control" id="relationship" placeholder="">
+                            <input type="text" class="form-control" id="relationship" placeholder="" [(ngModel)]="mother.occupation">
                         </div>
                         <div class="col-sm-6">
                             <label for="inputEmail3" class="col-form-label required">Nation :</label>
-                            <input type="text" class="form-control" id="inputEmail">
+                            <input type="text" class="form-control" id="inputEmail" [(ngModel)]="mother.nation">
                         </div>
                         <div class="col-sm-6">
                             <label for="inputEmail3" class=" col-form-label required">Religion :</label>
-                            <select class="form-select" id="inputGroupSelect01 ">
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="mother.religion">
                                 <option value="" selected>Choose..</option>
                                 <option>Buddhism</option>
                                 <option>Christianity</option>
@@ -222,7 +222,7 @@
                         <div class="form-group">
                             <label for="address" class=" col-form-label required">Mother Address</label>
                             <textarea rows="2" type="text" class="form-control" id="address"
-                                placeholder="Street Address">
+                                placeholder="Street Address" [(ngModel)]="mother.address" >
                                 </textarea>
                         </div>
 
