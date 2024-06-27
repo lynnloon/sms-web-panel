@@ -7,6 +7,7 @@ import { Department } from '../model/department';
   providedIn: 'root'
 })
 export class DepartmentService {
+  
 
   constructor(
     private httpClient: HttpClient,
@@ -19,6 +20,10 @@ export class DepartmentService {
 
   create(department: Department) {
     return this.httpClient.post(this.commonService.apiRoute + "/department/save", department);
+  }
+
+  update(department: Department) {
+    return this.httpClient.post(this.commonService.apiRoute + "/department/update", department);
   }
 
   getById(id: any) {

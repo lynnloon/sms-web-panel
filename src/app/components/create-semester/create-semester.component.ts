@@ -50,6 +50,15 @@ export class CreateSemesterComponent implements OnInit {
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
     else {
+      if(this.editSemester){
+        this. semesterService.update(this.semester).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/semester-list']);
+          }
+        });
+      }
+    else {
       this.semesterService.create(this.semester).subscribe((response: any) => {
         if (response.status) {
           this.commonService.inputAlert(message, 'success');
@@ -59,7 +68,9 @@ export class CreateSemesterComponent implements OnInit {
     }
   }
 
-  checkValidation(): string {
+  
+  }
+  checkValidation() {
     if (this.semester.semesterName == undefined || this.semester.semesterName.trim() == '')
       return "Fill Semester name";
     else if (this.semester.semStartDate == undefined )

@@ -9,6 +9,7 @@ import { AcademicYear } from '../model/academic-year';
   providedIn: 'root'
 })
 export class AcademicService {
+ 
 
   constructor(
     private httpClient: HttpClient,
@@ -26,7 +27,12 @@ export class AcademicService {
     return this.httpClient.get(this.commonService.apiRoute + "/academic_years/getById?id=" + id);
   }
 
-  create(user: AcademicYear) {
-    return this.httpClient.post(this.commonService.apiRoute + "/academic_years/save", user);
+  create(year: AcademicYear) {
+    return this.httpClient.post(this.commonService.apiRoute + "/academic_years/save", year);
   }
+
+  update(year: AcademicYear) {
+    return this.httpClient.post(this.commonService.apiRoute + "/academic_years/update", year);
+  }
+
 }

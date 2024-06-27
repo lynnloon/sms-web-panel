@@ -45,6 +45,15 @@ export class CreatePositionComponent implements OnInit {
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, "warning");
+    else {
+      if(this.editPosition){
+        this. positionService.update(this. position).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/position-list']);
+          }
+        });
+      }
 
     else {
       this.positionService.create(this.position).subscribe((response: any) => {
@@ -59,15 +68,13 @@ export class CreatePositionComponent implements OnInit {
     }
 
   }
-
-
-
-
-  checkValidation(): string {
-    if (this.position.name == undefined || this.position.name.trim() == "")
-      return "Fill Position name"
-    else
-      return "OK"
+} 
+ checkValidation() {
+  if (this.position.name == undefined || this.position.name.trim() == "")
+    return "Fill Position name"
+  else
+    return "OK"
   }
 
 }
+

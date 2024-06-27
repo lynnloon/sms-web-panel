@@ -49,6 +49,15 @@ export class CreateDepartmentComponent implements OnInit {
     if (message != 'OK')
       this.commonService.inputAlert(message,'warning')
     else {
+      if(this.editDepartment){
+        this. departmentService.update(this.department).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/department-list']);
+          }
+        });
+      }
+    else {
       this.departmentService.create(this.department).subscribe((response: any) => {
         if (response.status) {
           this.commonService.inputAlert(message,'success')
@@ -64,11 +73,11 @@ export class CreateDepartmentComponent implements OnInit {
 
 
 
-  checkValidation(): string {
+}
+  checkValidation() {
     if (this.department.name == undefined || this.department.name.trim() == "")
       return "Fill Department name"
     else
       return "OK"
   }
-
 }
