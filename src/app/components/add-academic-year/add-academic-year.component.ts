@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AcademicYear } from 'src/app/model/academic-year';
@@ -21,7 +22,8 @@ export class AddAcademicYearComponent {
   private yearService:AcademicService,
      private router: Router,
     private activatedRoute: ActivatedRoute,
-      private commonService :CommonService
+      private commonService :CommonService,
+      private datepipe:DatePipe
   ){}
 
 
@@ -40,6 +42,9 @@ export class AddAcademicYearComponent {
     this.yearService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.year = response.data;
+        this.year.startDate=this.datepipe.transform(this.year.startDate,"yyyy-MM-dd");
+        this.year.endDate=this.datepipe.transform(this.year.endDate,"yyyy-MM-dd");
+
       } else {
         window.alert('no record found');
       }

@@ -24,6 +24,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Roll No</th>
                                 <th scope="col">E-mail</th>
                                 <th scope="col">Phone No</th>
                                 <th scope="col">Current Address</th>
@@ -43,6 +44,7 @@
                             <tr *ngFor="let stu of students;let i = index;">
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{stu.stu_gender== 'Male'? 'Mg ':'Ma '}}{{stu.stu_name}}</td>
+                                <td>{{stu.stuRoll_no}}</td>
                                 <td>{{stu.stu_email}}</td>
                                 <td>{{stu.phone_no}}</td>
                                 <td>{{stu.stu_currAddress}}</td>

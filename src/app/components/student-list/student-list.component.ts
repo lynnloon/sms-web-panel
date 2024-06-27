@@ -14,6 +14,10 @@ student: Student= new Student();
 
 students: Student[]=[]
 
+
+
+
+
 constructor(
   private studentService: StudentService
 ){}
@@ -36,29 +40,38 @@ constructor(
   delete(id: any) {
 
     Swal.fire({
-      title: "Are you sure?",
-      text: "!!!!!!!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sure!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.studentService.delete(id).subscribe((response: any) => {
-          if (response.status) {
+      
+        // delete,cancel alert
+        title: "Delete Comfirmation",
+        text: "Are you sure to delete this record?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes",
+        cancelButtonText: "No"
+  
+      }//end delete,cancel alert
+    
+    ).then((result) => {
+        if (result.isConfirmed) {
+  
+          this.studentService.delete(id).subscribe((response: any) => {
+            if (response.status) {
             Swal.fire({
-             title: "Deleted!",
-            text: "This  record  has been deleted.",
-           icon: "success"
+            title: "Deleted!",
+             text: response.message,
+             icon: "success"
+           });
+              this.ngOnInit();
+            }
           });
-            this.ngOnInit();
-          }
+          
+        }
+      });
+  
+     
 
-        });
-        
-      }
-    });
     
   }
 
