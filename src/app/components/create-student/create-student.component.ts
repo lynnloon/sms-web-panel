@@ -177,8 +177,15 @@ export class CreateStudentComponent implements OnInit {
 
         this.studentService.create(this.student).subscribe((response: any) => {
           if (response.status) {
-            this.familyMemberService.create(this.father).subscribe((response:any)=>{});
-          this.familyMemberService.create(this.mother).subscribe((response:any)=>{});
+            this.father.relationStatus="FATHER";
+
+            this.familyMemberService.create(this.father).subscribe((response:any)=>{
+           
+            });
+            this.mother.relationStatus="MOTHER";
+          this.familyMemberService.create(this.mother).subscribe((response:any)=>{
+            
+          });
             this.commonService.inputAlert(message, 'success');
             this.router.navigate(['/student-list']);
           }
