@@ -12,256 +12,304 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
+    <div class="mb-3">
+        <ul class="nav nav-pills" id="myTab" role="tablist">
+            <li class="nav-item"><a class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home2"
+                    role="tab" aria-controls="home" aria-selected="true">Student Info</a></li>
+            <li class="nav-item"><a class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile2"
+                    role="tab" aria-controls="profile" aria-selected="false">Parent Info</a></li>
+            <li class="nav-item"><a class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact2"
+                    role="tab" aria-controls="contact" aria-selected="false">Emergency Contact</a></li>
+        </ul>
+    </div>
+    <div class="tab-content mb-4">
 
-    <section class="section">
-        <div class="row">
-            <div class="card">
-                <div class="card-body">
-
-                    <h5 class="card-title text-center" *ngIf="editStudent == false">Student Registration Form</h5>
-                    <h5 class="card-title text-center" *ngIf="editStudent == true">Student Editing Form</h5>
-                    <!-- Horizontal Form -->
-
-                    <form class="row g-3">
-
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label  required" >Name</label>
-                            <input type="text" class="form-control" placeholder="Name" [(ngModel)]="student.stu_name" id="inputText"
-                                [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label  required">Roll No</label>
-                            <input type="text" class="form-control" id="inputText" [(ngModel)]="student.stuRoll_no"
-                            [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class="col-form-label required" >Phone No</label>
-                            <input type="text" class="form-control" placeholder="09-xxxxxxxxx" [(ngModel)]="student.phone_no" id="inputText"
-                                [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <!-- input Email -->
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class="col-form-label " >Email</label>
-                            <input type="email" class="form-control" placeholder="xxx@gmail.com" [(ngModel)]="student.stu_email" id="inputEmail"
-                                [ngModelOptions]="{standalone: true}">
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <label for="inputPassword3" class=" col-form-label required"> Current Address</label>
-                            <textarea rows="2" class="form-control" [(ngModel)]="student.stu_currAddress"
-                                [ngModelOptions]="{standalone: true}" id="inputText"></textarea>
-                        </div>
-
-                        <!-- home address -->
-                        <div class="col-md-6">
-                            <label for="inputEmail3" class=" col-form-label required">Home Address</label>
-                            <textarea rows="2" class="form-control" [(ngModel)]="student.stu_homeAdd"
-                                [ngModelOptions]="{standalone: true}" id="inputPassword"></textarea>
-                        </div>
-                        <!-- for Profile picture -->
-                        <div class="col-md-6">
-                            <label for="inputEmail3" class="col-form-label required">Student Profile Picture
-                                :</label>
-                            <input id="file" type="file" name="cover" class="form-control" accept=".png , .jpg , .jpeg"
-                                (change)="oncoverChange($event)" >
-                        </div>
-                        <!-- create nrc -->
-                        <div class="col-md-6">
-                            <label for="inputEmail3" class=" col-form-label required">NRC No :</label>
-                            <input type="text" class="form-control" [(ngModel)]="student.stu_nrc" id="inputEmail"
-                                [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <!-- input gender  create gender entry-->
-                        <div class="col-sm-3">
-                            <label for="inputPassword3" class=" col-form-label required">Gender</label>
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="student.stu_gender"
-                                [ngModelOptions]="{standalone: true}">
-                                <option value="" selected>Choose..</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class="col-form-label required">Nation :</label>
-                            <input type="text" class="form-control" [(ngModel)]="student.stu_national" id="inputEmail"
-                                [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <!-- create date of birth -->
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label required">Date Of Birth </label>
-                            <input type="date" class="form-control" [(ngModel)]="student.stu_dob" id="inputEmail"
-                                [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label required">Academic Year</label>
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="year"
-                                [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
-                                <option value="">Choose..</option>
-                                <option *ngFor="let y of years;" [ngValue]="y">{{y.name}}</option>
-                            </select>
-
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label required">Religion :</label>
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="student.stu_religion"
-                                [ngModelOptions]="{standalone: true}">
-                                <option value="" selected>Choose..</option>
-                                <option>Buddhism</option>
-                                <option>Christianity</option>
-                                <option>Hinduism</option>
-                                <option>Islam</option>
-                                <option>other</option>
-                            </select>
-                        </div>
-
-                        <!-- asking rquesting relationshipStatus (yes or no) -->
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label required">Relationship Status :</label>
-                            <select class="form-select" id="inputGroupSelect01 "
-                                [(ngModel)]="student.stu_relationshipStat" [ngModelOptions]="{standalone: true}">
-                                <option value="" selected>Choose..</option>
-                                <option>Single</option>
-                                <option>Married</option>
-                                <option>Divorced</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <!-- asking rquesting hostel (yes or no) -->
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label required">Hostel Status :</label>
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="student.stu_hostel"
-                                [ngModelOptions]="{standalone: true}">
-                                <option value="" selected>Choose..</option>
-                                <option>Yes</option>
-                                <option>No</option>
-                            </select>
-                        </div>
-                        <!-- asking requesting ferry (yes or no) -->
-                        <div class="col-sm-3">
-                            <label for="inputEmail3" class=" col-form-label required">Ferry status :</label>
-
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="student.stu_ferry"
-                                [ngModelOptions]="{standalone: true}">
-                                <option value="" selected>Choose..</option>
-                                <option>Yes</option>
-                                <option>No</option>
-                            </select>
-
-                        </div><br /><br />
-                        <h5 class="card-title text-center">Parent Information</h5>
-                        <div class="col-sm-3">
-                            <label for="firstName" class=" col-form-label required">Father Name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="Name" [(ngModel)]="father.name" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="firstName" class=" col-form-label required">Father's NRC No</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="NRC No" [(ngModel)]="father.nrcNo" [ngModelOptions]="{standalone: true}" >
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="lastName" class=" col-form-label required">Phone Number</label>
-                            <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx" [(ngModel)]="father.phoneNo" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="relationship" class=" col-form-label required">Occupation</label>
-                            <input type="text" class="form-control" id="relationship" placeholder="" [(ngModel)]="father.occupation" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="inputEmail3" class="col-form-label required">Nation :</label>
-                            <input type="text" class="form-control" id="inputEmail"[(ngModel)]="father.nation" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="inputEmail3" class=" col-form-label required">Religion :</label>
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="father.religion" [ngModelOptions]="{standalone: true}">
-                                <option value="" selected>Choose..</option>
-                                <option>Buddhism</option>
-                                <option>Christianity</option>
-                                <option>Hinduism</option>
-                                <option>Islam</option>
-                                <option>other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="address" class=" col-form-label required">Mother Address</label>
-                            <textarea rows="2" type="text" class="form-control" id="address"
-                                placeholder="Street Address">
-                                </textarea>
-                        </div>
-                        <!-- Mother info -->
-                        <div class="col-sm-3">
-                            <label for="firstName" class=" col-form-label required">Mother Name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="Name" [(ngModel)]="mother.name" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="firstName" class=" col-form-label required">Mother's NRC No</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="NRC No" [(ngModel)]="mother.nrcNo" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="lastName" class=" col-form-label required">Phone Number</label>
-                            <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx" [(ngModel)]="mother.phoneNo" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="relationship" class=" col-form-label required">Occupation</label>
-                            <input type="text" class="form-control" id="relationship" placeholder="" [(ngModel)]="mother.occupation" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="inputEmail3" class="col-form-label required">Nation :</label>
-                            <input type="text" class="form-control" id="inputEmail" [(ngModel)]="mother.nation" [ngModelOptions]="{standalone: true}">
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="inputEmail3" class=" col-form-label required">Religion :</label>
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="mother.religion" [ngModelOptions]="{standalone: true}">
-                                <option value="" selected>Choose..</option>
-                                <option>Buddhism</option>
-                                <option>Christianity</option>
-                                <option>Hinduism</option>
-                                <option>Islam</option>
-                                <option>other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="address" class=" col-form-label required">Mother Address</label>
-                            <textarea rows="2" type="text" class="form-control" id="address"
-                                placeholder="Street Address" [(ngModel)]="mother.address" [ngModelOptions]="{standalone: true}">
-                                </textarea>
-                        </div>
+        <section class="section">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        
+                           
+                            <!-- Horizontal Form -->
+                            <div class="tab-content mb-4">
+                            <div class="tab-pane fade show active" id="home2" role="tabpanel" aria-labelledby="home-tab">
+                            <form class="row g-3">
+                                <h5 class="card-title text-center"  *ngIf="editStudent == false">Student Registration Form
+                                </h5>
+                                <h5 class="card-title text-center" *ngIf="editStudent == true">Student Editing Form</h5>
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class=" col-form-label  required">Name</label>
+                                    <input type="text" class="form-control" 
+                                        [(ngModel)]="student.stu_name" id="inputText"
+                                        [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class=" col-form-label  required">Roll No</label>
+                                    <input type="text" class="form-control" id="inputText"
+                                        [(ngModel)]="student.stuRoll_no" [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class="col-form-label required">Phone No</label>
+                                    <input type="text" class="form-control" placeholder="09-xxxxxxxxx"
+                                        [(ngModel)]="student.phone_no" id="inputText"
+                                        [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <!-- input Email -->
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class="col-form-label ">Email</label>
+                                    <input type="email" class="form-control" placeholder="xxx@gmail.com"
+                                        [(ngModel)]="student.stu_email" id="inputEmail"
+                                        [ngModelOptions]="{standalone: true}">
+                                </div>
 
 
-                        <form class="row g-3">
-                            <h5 class="card-title text-center">Emergency Contact</h5>
-                            <div class="col-sm-4">
-                                <label for="firstName" class=" col-form-label required">Person Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Name">
+                                
+                                <!-- for Profile picture -->
+                                <div class="col-md-6">
+                                    <label for="inputEmail3" class="col-form-label required">Student Profile Picture
+                                        :</label>
+                                    <input id="file" type="file" name="cover" class="form-control"
+                                        accept=".png , .jpg , .jpeg" (change)="oncoverChange($event)">
+                                </div>
+                                <!-- create nrc -->
+                                <div class="col-md-6">
+                                    <label for="inputEmail3" class=" col-form-label required">NRC No :</label>
+                                    <input type="text" class="form-control" [(ngModel)]="student.stu_nrc"
+                                        id="inputEmail" [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <!-- input gender  create gender entry-->
+                                <div class="col-sm-3">
+                                    <label for="inputPassword3" class=" col-form-label required">Gender</label>
+                                    <select class="form-select" id="inputGroupSelect01 "
+                                        [(ngModel)]="student.stu_gender" [ngModelOptions]="{standalone: true}">
+                                        <option value="" selected>Choose..</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class="col-form-label required">Nation :</label>
+                                    <input type="text" class="form-control" [(ngModel)]="student.stu_national"
+                                        id="inputEmail" [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <!-- create date of birth -->
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class=" col-form-label required">Date Of Birth </label>
+                                    <input type="date" class="form-control" [(ngModel)]="student.stu_dob"
+                                        id="inputEmail" [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class=" col-form-label required">Academic Year</label>
+                                    <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="year"
+                                        [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
+                                        <option value="">Choose..</option>
+                                        <option *ngFor="let y of years;" [ngValue]="y">{{y.name}}</option>
+                                    </select>
+
+                                </div>
+                                
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class=" col-form-label required">Religion :</label>
+                                    <select class="form-select" id="inputGroupSelect01 "
+                                        [(ngModel)]="student.stu_religion" [ngModelOptions]="{standalone: true}">
+                                        <option value="" selected>Choose..</option>
+                                        <option>Buddhism</option>
+                                        <option>Christianity</option>
+                                        <option>Hinduism</option>
+                                        <option>Islam</option>
+                                        <option>other</option>
+                                    </select>
+                                </div>
+
+                                <!-- asking rquesting relationshipStatus (yes or no) -->
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class=" col-form-label required">Relationship Status
+                                        :</label>
+                                    <select class="form-select" id="inputGroupSelect01 "
+                                        [(ngModel)]="student.stu_relationshipStat"
+                                        [ngModelOptions]="{standalone: true}">
+                                        <option value="" selected>Choose..</option>
+                                        <option>Single</option>
+                                        <option>Married</option>
+                                        <option>Divorced</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <!-- asking rquesting hostel (yes or no) -->
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class=" col-form-label required">Hostel Status :</label>
+                                    <select class="form-select" id="inputGroupSelect01 "
+                                        [(ngModel)]="student.stu_hostel" [ngModelOptions]="{standalone: true}">
+                                        <option value="" selected>Choose..</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                                <!-- asking requesting ferry (yes or no) -->
+                                <div class="col-sm-3">
+                                    <label for="inputEmail3" class=" col-form-label required">Ferry status :</label>
+
+                                    <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="student.stu_ferry"
+                                        [ngModelOptions]="{standalone: true}">
+                                        <option value="" selected>Choose..</option>
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputPassword3" class=" col-form-label required"> Current
+                                        Address</label>
+                                    <textarea rows="2" class="form-control" [(ngModel)]="student.stu_currAddress"
+                                        [ngModelOptions]="{standalone: true}" id="inputText"></textarea>
+                                </div>
+
+                                <!-- home address -->
+                                <div class="col-md-6">
+                                    <label for="inputEmail3" class=" col-form-label required">Home Address</label>
+                                    <textarea rows="2" class="form-control" [(ngModel)]="student.stu_homeAdd"
+                                        [ngModelOptions]="{standalone: true}" id="inputPassword"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                       
+                        <div class="tab-pane fade" id="profile2" role="tabpanel" aria-labelledby="profile-tab">
+                            <form class="row g-3">
+                                <h5 class="card-title text-center" *ngIf="editStudent == false">Student's Parent Information Form
+                                </h5>
+                                <h5 class="card-title text-center" *ngIf="editStudent == true">Student's Parent Information Editing Form</h5>
+                            <div class="col-sm-3">
+                                <label for="firstName" class=" col-form-label required">Father Name</label>
+                                <input type="text" class="form-control" id="firstName" 
+                                    [(ngModel)]="father.name" [ngModelOptions]="{standalone: true}">
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
+                                <label for="firstName" class=" col-form-label required"> NRC No</label>
+                                <input type="text" class="form-control" id="firstName" 
+                                    [(ngModel)]="father.nrcNo" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-sm-3">
                                 <label for="lastName" class=" col-form-label required">Phone Number</label>
-                                <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx">
+                                <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx"
+                                    [(ngModel)]="father.phoneNo" [ngModelOptions]="{standalone: true}">
                             </div>
-                            <div class="col-sm-4">
-                                <label for="inputEmail3" class=" col-form-label required">Relation</label>
-                                <select class="form-select" id="inputGroupSelect01 ">
-                                    <option value="">Choose..</option>
-                                    <option></option>
+                            <div class="col-sm-3">
+                                <label for="relationship" class=" col-form-label required">Occupation</label>
+                                <input type="text" class="form-control" id="relationship" placeholder=""
+                                    [(ngModel)]="father.occupation" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputEmail3" class="col-form-label required">Nation :</label>
+                                <input type="text" class="form-control" id="inputEmail" [(ngModel)]="father.nation"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputEmail3" class=" col-form-label required">Religion :</label>
+                                <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="father.religion"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option value="" selected>Choose..</option>
+                                    <option>Buddhism</option>
+                                    <option>Christianity</option>
+                                    <option>Hinduism</option>
+                                    <option>Islam</option>
+                                    <option>other</option>
                                 </select>
-    
                             </div>
                             <div class="form-group">
-                                <label for="address" class=" col-form-label required">Address Of Person To Contact In
-                                    Case Of Emergency</label>
+                                <label for="address" class=" col-form-label required">Address</label>
                                 <textarea rows="2" type="text" class="form-control" id="address"
                                     placeholder="Street Address">
-                                    </textarea>
+                                </textarea>
                             </div>
-
+                            <!-- Mother info -->
+                            <div class="col-sm-3">
+                                <label for="firstName" class=" col-form-label required">Mother Name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Name"
+                                    [(ngModel)]="mother.name" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="firstName" class=" col-form-label required"> NRC No</label>
+                                <input type="text" class="form-control" id="firstName" 
+                                    [(ngModel)]="mother.nrcNo" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="lastName" class=" col-form-label required">Phone Number</label>
+                                <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx"
+                                    [(ngModel)]="mother.phoneNo" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="relationship" class=" col-form-label required">Occupation</label>
+                                <input type="text" class="form-control" id="relationship" placeholder=""
+                                    [(ngModel)]="mother.occupation" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputEmail3" class="col-form-label required">Nation :</label>
+                                <input type="text" class="form-control" id="inputEmail" [(ngModel)]="mother.nation"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="inputEmail3" class=" col-form-label required">Religion :</label>
+                                <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="mother.religion"
+                                    [ngModelOptions]="{standalone: true}">
+                                    <option value="" selected>Choose..</option>
+                                    <option>Buddhism</option>
+                                    <option>Christianity</option>
+                                    <option>Hinduism</option>
+                                    <option>Islam</option>
+                                    <option>other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class=" col-form-label required"> Address</label>
+                                <textarea rows="2" type="text" class="form-control" id="address"
+                                    placeholder="Street Address" [(ngModel)]="mother.address"
+                                    [ngModelOptions]="{standalone: true}">
+                                </textarea>
+                            </div>
                         </form>
+                        </div>
+                        <div class="tab-pane fade" id="contact2" role="tabpanel" aria-labelledby="contact-tab">
+                            <form class="row g-3">
+                                <h5 class="card-title text-center" *ngIf="editStudent == false">Stuent Emergency Contact Form
+                                </h5>
+                                <h5 class="card-title text-center" *ngIf="editStudent == true">Student Emergency Contact Editing Form</h5>
+                                <div class="col-sm-4">
+                                    <label for="firstName" class=" col-form-label required">Person Name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="Name">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="lastName" class=" col-form-label required">Phone Number</label>
+                                    <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="inputEmail3" class=" col-form-label required">Relation</label>
+                                    <select class="form-select" id="inputGroupSelect01 ">
+                                        <option value="">Choose..</option>
+                                        <option></option>
+                                    </select>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class=" col-form-label required">Address Of Person To Contact
+                                        In
+                                        Case Of Emergency</label>
+                                    <textarea rows="2" type="text" class="form-control" id="address"
+                                        placeholder="Street Address">
+                                    </textarea>
+                                </div>
+
+                            </form>
+                        </div>
+                            </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
                             <button type="reset" class="btn btn-secondary"
                                 [routerLink]="'/student-list'">Cancel</button>
                         </div>
-                    </form>
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    
 </div>

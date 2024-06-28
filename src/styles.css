@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
 
 /**
 * Template Name: NiceAdmin
@@ -341,6 +343,7 @@ h6 {
   margin-bottom: -2px;
   border: none;
   color: #2c384e;
+  cursor:pointer;
 }
 
 .nav-tabs-bordered .nav-link:hover,
@@ -1133,10 +1136,11 @@ h6 {
 
 .contact .php-email-form input,
 .contact .php-email-form textarea {
+  border: 1px solid #000;
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
-  border-radius: 0;
+  
 }
 
 .contact .php-email-form input:focus,
@@ -1239,4 +1243,13 @@ h6 {
   content:'*';
   margin-right: 4px;
   color: red;
+}
+
+
+input.form-control, textarea.form-control, select.form-control {
+  border: 1px solid #5f5656; 
+}
+
+.form-select{
+  border: 1px solid #5f5656; 
 }
