@@ -1253,3 +1253,6 @@ input.form-control, textarea.form-control, select.form-control {
 .form-select{
   border: 1px solid #5f5656; 
 }
+.profileCss{
+  text-align: center;
+}
