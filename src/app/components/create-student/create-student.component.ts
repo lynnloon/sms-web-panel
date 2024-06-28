@@ -203,6 +203,8 @@ export class CreateStudentComponent implements OnInit {
     return "Fill student name";
   // else if (this.student.stu_email == undefined || this.student.stu_email.trim() == '')
   //   return "Fill email address";
+  else if (this.student.stuRoll_no == undefined || this.student.stuRoll_no.trim() == '')
+    return "Fill Roll number";
   else if (this.student.phone_no == undefined || this.student.phone_no.trim() == '')
     return "Fill phone number";
   else if (this.student.stu_currAddress == undefined || this.student.stu_currAddress.trim() == '')
@@ -241,4 +243,5 @@ export class CreateStudentComponent implements OnInit {
     this.student.stu_AcademicYear = new AcademicYear();
     this.student.stu_AcademicYear = (this.year);
   }
+  
 }
