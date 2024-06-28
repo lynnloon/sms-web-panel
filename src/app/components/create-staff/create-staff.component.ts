@@ -18,13 +18,15 @@ export class CreateStaffComponent implements OnInit {
 
   editStaff?: boolean = false;
   staff: Staff = new Staff();
+  staffs:Staff[]=[];
+
 
   position: Position = new Position();
 
   positions: Position[] = [];
   form !: FormGroup;
   filepath !: string;
- 
+
   constructor(
     private positionService: PositionService,
     private staffService: StaffService,
@@ -44,7 +46,7 @@ export class CreateStaffComponent implements OnInit {
       }
     });
 
-    this.form = this.fb.group({ 
+    this.form = this.fb.group({
       cover: [null],
     })
 
@@ -108,8 +110,8 @@ export class CreateStaffComponent implements OnInit {
     //formData.append('multipartFile', this.form?.get('cover')?.value);
     this.staffService.filesave(formData).subscribe({
       next: (response: any) => {
-        if (response) {          
-         this.staff.staffProfilePicture = response.data;
+        if (response) {
+          this.staff.staffProfilePicture = response.data;
         } else {
           this.commonService.inputAlert(response.message, "warning");
         }
@@ -132,30 +134,31 @@ export class CreateStaffComponent implements OnInit {
     this.staffService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.staff = response.data;
+       this.filepath= this.commonService.apiRoute+ this.staff.staffProfilePicture;
         const selectedPos = this.positions.find(u => u.id === this.staff.staffPosition?.id);
         if (selectedPos) {
           this.position = selectedPos;
         }
-
-      } else {
-        window.alert('no record found');
-      }
-    });
+        } else {
+          window.alert('no record found');
+        }
+      });
   }
 
   save() {
+
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
     else {
-      if(this.editStaff){
+      if (this.editStaff) {
         this.staffService.update(this.staff).subscribe((response: any) => {
           if (response.status) {
             this.commonService.inputAlert(message, 'success');
             this.router.navigate(['/staff-list']);
           }
         });
-      }else{
+      } else {
         this.staffService.create(this.staff).subscribe((response: any) => {
           if (response.status) {
             this.commonService.inputAlert(message, 'success');
@@ -163,7 +166,7 @@ export class CreateStaffComponent implements OnInit {
           }
         });
       }
-      
+
     }
   }
 
@@ -182,8 +185,8 @@ export class CreateStaffComponent implements OnInit {
       return "Fill Gender Please!";
     // else if (this.staff.staffPosition == undefined || this.staff.staffPosition.trim() == '')
     //   return "Fill Position Please!";
-    else if (this.staff.staffProfilePicture == undefined || this.staff.staffProfilePicture.trim() == '')
-      return "Upload ProfilePicture Please!";
+    // else if (this.staff.staffProfilePicture == undefined )
+    //   return "Upload ProfilePicture Please!";
     else
       return "OK";
   }
