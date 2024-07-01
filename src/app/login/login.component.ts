@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('userrole', this.user.role as string);
           localStorage.setItem('profile', this.user.userProfile as string);
           localStorage.setItem('userName', this.user.userName as string);
+          localStorage.setItem('email',this.user.email as string);
 
           if (this.user.role == 'STUDENT')
             this.router.navigate(['/student-dashboard'])

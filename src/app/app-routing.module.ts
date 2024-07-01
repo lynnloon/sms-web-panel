@@ -19,6 +19,7 @@ import { StudentSidebarComponent } from './layout/student-sidebar/student-sideba
 import { TeacherSidebarComponent } from './layout/teacher-sidebar/teacher-sidebar.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { CreateStudentComponent } from './components/create-student/create-student.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'student-list',component:StudentListComponent},
   { path: 'add-student',component:CreateStudentComponent},
   { path: 'add-student/:id',component:CreateStudentComponent},
+  { path: 'contact',component:ContactComponent},
 
   // For Student Dashboard
   { path: 'student-dashboard',component:StudentDashboardComponent},
