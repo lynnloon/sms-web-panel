@@ -300,17 +300,17 @@ export class CreateStudentComponent implements OnInit {
     /* Checking other 's information 
     Other may be uncle or anty or sister or other person*/
     else if (this.emergency.name == undefined || this.emergency.name.trim() == '')
-      return "Fill Other's's name";
+      return "Fill Other's name";
     else if (this.emergency.nrcNo == undefined || this.emergency.nrcNo.trim() == '')
-      return "Fill Other's's Nrc No ";
+      return "Fill Other's Nrc No ";
     else if (this.emergency.nation == undefined || this.emergency.nation.trim() == '')
-      return "Fill Other's's nation";
+      return "Fill Other's nation";
     else if (this.emergency.religion == undefined || this.emergency.religion.trim() == '')
-      return "Fill Other's's  religion";
+      return "Fill Other's  religion";
     else if (this.emergency.phoneNo == undefined || this.emergency.phoneNo.trim() == '')
-      return "Fill Other's's Phone number";
+      return "Fill Other's Phone number";
     else if (this.emergency.occupation == undefined || this.emergency.occupation.trim() == '')
-      return "Fill Other's's occupation";
+      return "Fill Other's occupation";
     else
       return "OK";
   }
