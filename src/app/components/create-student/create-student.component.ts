@@ -139,7 +139,7 @@ export class CreateStudentComponent implements OnInit {
     this.studentService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.student = response.data;
-        
+        this.filepath= this.commonService.apiRoute+ this.student.stu_pp;
         const selectedPos = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
         if (selectedPos) {
           this.year = selectedPos;
