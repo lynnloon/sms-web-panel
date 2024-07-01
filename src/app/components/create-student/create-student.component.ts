@@ -223,6 +223,14 @@ export class CreateStudentComponent implements OnInit {
     /* Checking Father Information */
     else if (this.father.name == undefined || this.father.name.trim() == '')
       return "Fill father name";
+    else if(this.father.nrcNo==undefined|| this.father.nrcNo?.trim()=='')
+      return "Fill Nrc No ";
+    else if (this.father.nation == undefined || this.father.nation .trim() == '')
+      return "Fill his nation";
+    else if (this.student.stu_religion == undefined || this.student.stu_religion.trim() == '')
+      return "Fill his  religion";
+    
+
 
     /* End of Checking Father Information */
     /* Checking Father Information */
