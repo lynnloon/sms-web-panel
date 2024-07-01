@@ -19,6 +19,36 @@ import Swal from 'sweetalert2';
 })
 export class CreateStudentComponent implements OnInit {
 
+  selectOption() {
+
+    if (this.emergency.relationStatus == "FATHER") {
+      this.emergency.name = this.father.name;
+      this.emergency.address = this.father.address;
+      this.emergency.phoneNo = this.father.phoneNo;
+      this.emergency.nation = this.father.nation;
+      this.emergency.occupation = this.father.occupation;
+      this.emergency.religion = this.father.religion;
+      this.emergency.nrcNo=this.father.nrcNo;
+
+
+
+
+    }
+    else if (this.emergency.relationStatus == "MOTHER") {
+      this.emergency.name = this.mother.name;
+      this.emergency.address = this.mother.address;
+      this.emergency.phoneNo = this.mother.phoneNo;
+      this.emergency.nation = this.mother.nation;
+      this.emergency.occupation = this.mother.occupation;
+      this.emergency.religion = this.mother.religion;
+      this.emergency.nrcNo=this.father.nrcNo;
+
+
+
+    }
+
+  }
+
   editStudent?: boolean = false;
 
   student: Student = new Student();
@@ -145,9 +175,11 @@ export class CreateStudentComponent implements OnInit {
   }
 
   save() {
+
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
+
     else {
       if (this.editStudent) {
         this.studentService.update(this.student).subscribe((response: any) => {
@@ -156,35 +188,46 @@ export class CreateStudentComponent implements OnInit {
             this.router.navigate(['/student-list']);
           }
         });
-      }
-      else {
-        if (this.editStudent) {
-          this.studentService.update(this.student).subscribe((response: any) => {
-            if (response.status) {
-              this.commonService.inputAlert(message, 'success');
-              this.router.navigate(['/student-list']);
+      } else {
+
+        this.studentService.create(this.student).subscribe((response: any) => {
+          if (response.status) {
+            this.father.relationStatus = "FATHER";
+
+            this.familyMemberService.create(this.father).subscribe((response: any) => {
+
+            });
+            this.mother.relationStatus = "MOTHER";
+            this.familyMemberService.create(this.mother).subscribe((response: any) => {
+
+            });
+
+            if (this.emergency.relationStatus == "FATHER") {
+
+              this.father.guardianStatus = true;
+              this.familyMemberService.update(this.father).subscribe((response: any) => { });
+
             }
-          });
-        } else {
+            else if (this.emergency.relationStatus == "MOTHER") {
 
-          this.studentService.create(this.student).subscribe((response: any) => {
-            if (response.status) {
-              this.father.relationStatus = "FATHER";
+              this.mother.guardianStatus = true;
+              this.familyMemberService.update(this.mother).subscribe((response: any) => { });
 
-              this.familyMemberService.create(this.father).subscribe((response: any) => {
-
-              });
-              this.mother.relationStatus = "MOTHER";
-              this.familyMemberService.create(this.mother).subscribe((response: any) => {
-
-              });
-              this.commonService.inputAlert(message, 'success');
-              this.router.navigate(['/student-list']);
             }
-          });
-        }
+            else {
 
+              this.emergency.guardianStatus = true;
+
+              this.familyMemberService.create(this.emergency).subscribe((response: any) => { });
+            }
+
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/student-list']);
+          }
+        });
       }
+
+
     }
   }
   checkValidation() {
@@ -222,15 +265,52 @@ export class CreateStudentComponent implements OnInit {
 
     /* Checking Father Information */
     else if (this.father.name == undefined || this.father.name.trim() == '')
-      return "Fill father name";
-
+      return "Fill Father's name";
+    else if (this.father.nrcNo == undefined || this.father.nrcNo.trim() == '')
+      return "Fill Father's Nrc No ";
+    else if (this.father.nation == undefined || this.father.nation.trim() == '')
+      return "Fill Father's nation";
+    else if (this.father.religion == undefined || this.father.religion.trim() == '')
+      return "Fill Father's  religion";
+    else if (this.father.phoneNo == undefined || this.father.phoneNo.trim() == '')
+      return "Fill Father's Phone number";
+    else if (this.father.occupation == undefined || this.father.occupation.trim() == '')
+      return "Fill Father's occupation";
     /* End of Checking Father Information */
     /* Checking Father Information */
 
     /* Checking Mother Information */
     else if (this.mother.name == undefined || this.mother.name.trim() == '')
-      return "Fill father name";
+      return "Fill mother's name";
+    else if (this.mother.nrcNo == undefined || this.mother.nrcNo.trim() == '')
+      return "Fill mother's NRC number";
+    else if (this.mother.phoneNo == undefined || this.mother.phoneNo.trim() == '')
+      return "Fill mother's Phone number";
+    else if (this.mother.occupation == undefined || this.mother.occupation.trim() == '')
+      return "Fill mother's occupation";
+    else if (this.mother.nation == undefined || this.mother.nation.trim() == '')
+      return "Fill mother nation";
+    else if (this.mother.religion == undefined || this.mother.religion.trim() == '')
+      return "Fill mother religion";
+    else if (this.mother.address == undefined || this.mother.address.trim() == '')
+      return "Fill mother's address";
+
     /* End of Checking Mother Information */
+
+    /* Checking other 's information 
+    Other may be uncle or anty or sister or other person*/
+    else if (this.emergency.name == undefined || this.emergency.name.trim() == '')
+      return "Fill Other's's name";
+    else if (this.emergency.nrcNo == undefined || this.emergency.nrcNo.trim() == '')
+      return "Fill Other's's Nrc No ";
+    else if (this.emergency.nation == undefined || this.emergency.nation.trim() == '')
+      return "Fill Other's's nation";
+    else if (this.emergency.religion == undefined || this.emergency.religion.trim() == '')
+      return "Fill Other's's  religion";
+    else if (this.emergency.phoneNo == undefined || this.emergency.phoneNo.trim() == '')
+      return "Fill Other's's Phone number";
+    else if (this.emergency.occupation == undefined || this.emergency.occupation.trim() == '')
+      return "Fill Other's's occupation";
     else
       return "OK";
   }

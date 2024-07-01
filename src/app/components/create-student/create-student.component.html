@@ -83,8 +83,8 @@
                                     <!-- create nrc -->
                                     <div class="col-md-6">
                                         <label for="inputEmail3" class=" col-form-label required">NRC No :</label>
-                                        <input type="text" class="form-control" [(ngModel)]="student.stu_nrc"
-                                            id="inputEmail" [ngModelOptions]="{standalone: true}">
+                                        <input type="text" class="form-control" [(ngModel)]="student.stu_nrc" id="nrc"
+                                            [ngModelOptions]="{standalone: true}">
                                     </div>
                                     <!-- input gender  create gender entry-->
                                     <div class="col-sm-3">
@@ -99,7 +99,7 @@
                                     <div class="col-sm-3">
                                         <label for="inputEmail3" class="col-form-label required">Nation :</label>
                                         <input type="text" class="form-control" [(ngModel)]="student.stu_national"
-                                            id="inputEmail" [ngModelOptions]="{standalone: true}">
+                                            id="nation" [ngModelOptions]="{standalone: true}">
                                     </div>
                                     <!-- create date of birth -->
                                     <div class="col-sm-3">
@@ -184,6 +184,7 @@
                             </div>
 
                             <div class="tab-pane fade" id="profile2" role="tabpanel" aria-labelledby="profile-tab">
+
                                 <form class="row g-3">
                                     <h5 class="card-title text-center" *ngIf="editStudent == false">Student's Parent
                                         Information Form
@@ -197,8 +198,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <label for="firstName" class=" col-form-label required"> NRC No</label>
-                                        <input type="text" class="form-control" id="firstName"
-                                            [(ngModel)]="father.nrcNo" [ngModelOptions]="{standalone: true}">
+                                        <input type="text" class="form-control" id="nrc" [(ngModel)]="father.nrcNo"
+                                            [ngModelOptions]="{standalone: true}">
                                     </div>
                                     <div class="col-sm-3">
                                         <label for="lastName" class=" col-form-label required">Phone Number</label>
@@ -230,7 +231,7 @@
                                     <div class="form-group">
                                         <label for="address" class=" col-form-label required">Address</label>
                                         <textarea rows="2" type="text" class="form-control" id="address"
-                                            placeholder="Street Address">
+                                            placeholder="Street Address" [(ngModel)]="father.address"  [ngModelOptions]="{standalone: true}">
                                 </textarea>
                                     </div>
                                     <!-- Mother info -->
@@ -256,8 +257,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="inputEmail3" class="col-form-label required">Nation :</label>
-                                        <input type="text" class="form-control" id="inputEmail"
-                                            [(ngModel)]="mother.nation" [ngModelOptions]="{standalone: true}">
+                                        <input type="text" class="form-control" id="nation" [(ngModel)]="mother.nation"
+                                            [ngModelOptions]="{standalone: true}">
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="inputEmail3" class=" col-form-label required">Religion :</label>
@@ -282,34 +283,61 @@
                             </div>
                             <div class="tab-pane fade" id="contact2" role="tabpanel" aria-labelledby="contact-tab">
                                 <form class="row g-3">
-                                    <h5 class="card-title text-center" *ngIf="editStudent == false">Stuent Emergency
+                                    <h5 class="card-title text-center" *ngIf="editStudent == false">Student Emergency
                                         Contact Form
                                     </h5>
                                     <h5 class="card-title text-center" *ngIf="editStudent == true">Student Emergency
                                         Contact Editing Form</h5>
-                                    <div class="col-sm-4">
-                                        <label for="firstName" class=" col-form-label required">Person Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="Name">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="lastName" class=" col-form-label required">Phone Number</label>
-                                        <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx">
-                                    </div>
+
                                     <div class="col-sm-4">
                                         <label for="inputEmail3" class=" col-form-label required">Relation</label>
-                                        <select class="form-select" id="inputGroupSelect01 ">
+                                        <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="emergency.relationStatus" [ngModelOptions]="{standalone: true}" (change)="selectOption()">
                                             <option value="">Choose..</option>
-                                            <option></option>
+                                            <option>FATHER</option>
+                                            <option>MOTHER</option>
+                                            <option>OTHER</option>
                                         </select>
 
                                     </div>
-                                    <div class="form-group">
-                                        <label for="address" class=" col-form-label required">Address Of Person To
-                                            Contact
-                                            In
-                                            Case Of Emergency</label>
+                                    <div class="col-sm-4">
+                                        <label for="firstName" class=" col-form-label required">Person Name</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="Name" [(ngModel)]="emergency.name" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="lastName" class=" col-form-label required">Phone Number</label>
+                                        <input type="text" class="form-control" id="PhoneNo" placeholder="09-xxxxxxxxx" [ngModelOptions]="{standalone: true}" [(ngModel)]="emergency.phoneNo">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="relationship" class=" col-form-label required">Occupation</label>
+                                        <input type="text" class="form-control" id="relationship" placeholder=""
+                                            [(ngModel)]="emergency.occupation" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="inputEmail3" class="col-form-label required">Nation :</label>
+                                        <input type="text" class="form-control" id="nation" [(ngModel)]="emergency.nation"
+                                            [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="inputEmail3" class=" col-form-label required">Religion :</label>
+                                        <select class="form-select" id="inputGroupSelect01 "
+                                            [(ngModel)]="emergency.religion" [ngModelOptions]="{standalone: true}">
+                                            <option value="" selected>Choose..</option>
+                                            <option>Buddhism</option>
+                                            <option>Christianity</option>
+                                            <option>Hinduism</option>
+                                            <option>Islam</option>
+                                            <option>other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="firstName" class=" col-form-label required"> NRC No</label>
+                                        <input type="text" class="form-control" id="firstName"
+                                            [(ngModel)]="emergency.nrcNo" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label for="address" class=" col-form-label required">Address Of Person Contact In Case Of Emergency</label>
                                         <textarea rows="2" type="text" class="form-control" id="address"
-                                            placeholder="Street Address">
+                                            placeholder="Street Address" [(ngModel)]="emergency.address" [ngModelOptions]="{standalone: true}">
                                     </textarea>
                                     </div>
 
