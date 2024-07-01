@@ -1,0 +1,57 @@
+/* Style for Profile Dropdown Menu */
+.dropdown-menu.profile {
+    width: 220px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 0; /* Align the dropdown to the right edge of the parent container */
+    top: 100%; /* Position the dropdown below the button */
+    display: none; /* Hide the dropdown by default */
+}
+
+.dropdown-menu.profile.show {
+    display: block; /* Show the dropdown when the 'show' class is added */
+}
+
+.dropdown-menu.profile .dropdown-header {
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.dropdown-menu.profile h6 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.dropdown-menu.profile span {
+    font-size: 14px;
+    color: #241c7b;
+}
+
+.dropdown-menu.profile .dropdown-divider {
+    margin: 5px 0;
+    border-top: 1px solid #e9ecef;
+}
+
+.dropdown-menu.profile .dropdown-item {
+    padding: 8px 10px;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.3s; /* Smooth transition for background color change */
+}
+
+.dropdown-menu.profile .dropdown-item:hover,
+.dropdown-menu.profile .dropdown-item:focus {
+    background-color: #a1a5b5; /* Change background color on hover or focus */
+}
+
+.dropdown-menu.profile .dropdown-item i {
+    margin-right: 10px;
+}
+
+.dropdown-menu.profile .dropdown-item span {
+    flex: 1;
+}
