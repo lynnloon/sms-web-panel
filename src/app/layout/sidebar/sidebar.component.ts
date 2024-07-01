@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  role : string  | null = null;
+
+  constructor(){
+    this.role = localStorage.getItem('userrole');
+  }
 }

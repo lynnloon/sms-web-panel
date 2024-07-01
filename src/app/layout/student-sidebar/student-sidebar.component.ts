@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./student-sidebar.component.css']
 })
 export class StudentSidebarComponent {
+  role : string | null = null;
 
+  constructor(){
+    this.role = localStorage.getItem('userrole');
+  }
 }

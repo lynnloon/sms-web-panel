@@ -157,28 +157,33 @@ export class CreateStudentComponent implements OnInit {
           }
         });
       }
-      else {
-        if (this.father == null || this.mother == null) {
-          this.commonService.inputAlert("Please complete parent Information", "warning");
-        }
-        else {
-          this.studentService.create(this.student).subscribe((response: any) => {
-            if (response.status) {
-              this.father.relationStatus = "FATHER";
-              this.familyMemberService.create(this.father).subscribe((response: any) => {
-              });
-              this.mother.relationStatus = "MOTHER";
-              this.familyMemberService.create(this.mother).subscribe((response: any) => {
+    else {
+      if(this.editStudent){
+        this.studentService.update(this.student).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/student-list']);
+          }
+        });
+      }else{
 
-              });
-              this.commonService.inputAlert(message, 'success');
-              this.router.navigate(['/student-list']);
-            }
+        this.studentService.create(this.student).subscribe((response: any) => {
+          if (response.status) {
+            this.father.relationStatus="FATHER";
+
+            this.familyMemberService.create(this.father).subscribe((response:any)=>{
+           
+            });
+            this.mother.relationStatus="MOTHER";
+          this.familyMemberService.create(this.mother).subscribe((response:any)=>{
+            
           });
-
-        }
-
-      } */
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/student-list']);
+          }
+        });
+      }
+      
     }
   }
 
