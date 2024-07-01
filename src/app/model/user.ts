@@ -7,4 +7,5 @@ export class User {
     email?: string;
     role?: string;
     password?:string;
+    userProfile?:string;
 }

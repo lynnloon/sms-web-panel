@@ -25,26 +25,23 @@ export class CreateStudentComponent implements OnInit {
   year: AcademicYear = new AcademicYear();
 
   years: AcademicYear[] = [];
-  father :FamilyMember=new FamilyMember();
-  mother :FamilyMember=new FamilyMember();
-
-
+  father: FamilyMember = new FamilyMember();
+  mother: FamilyMember = new FamilyMember();
+  emergency: FamilyMember = new FamilyMember();
 
   form !: FormGroup;
   filepath !: string;
 
-
-
   constructor(
-    private httpClient:HttpClient,
-    private studentService:StudentService,
-    private academicService:AcademicService,
-    private familyMemberService:FamilyMemberService,
-    private commonService :CommonService,
+    private httpClient: HttpClient,
+    private studentService: StudentService,
+    private academicService: AcademicService,
+    private familyMemberService: FamilyMemberService,
+    private commonService: CommonService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private datePipe:DatePipe
+    private datePipe: DatePipe
   ) { }
 
   oncoverChange(event: any) {
@@ -98,15 +95,14 @@ export class CreateStudentComponent implements OnInit {
     }
   }
 
-
   saveFile() {
     var formData: any = new FormData();
     formData.append('uploadFile', this.form?.get('cover')?.value);
     //formData.append('multipartFile', this.form?.get('cover')?.value);
     this.studentService.filesave(formData).subscribe({
       next: (response: any) => {
-        if (response) {          
-         this.student.stu_pp = response.data;
+        if (response) {
+          this.student.stu_pp = response.data;
         } else {
           this.commonService.inputAlert(response.message, "warning");
         }
@@ -117,8 +113,7 @@ export class CreateStudentComponent implements OnInit {
     });
   }
 
-
-  ngOnInit(){
+  ngOnInit() {
     this.getAllAcademicYearList();
     this.activatedRoute.params.subscribe(params => {
       const studentid = params['id'];
@@ -126,10 +121,8 @@ export class CreateStudentComponent implements OnInit {
         this.editStudent = true;
         this.getById(studentid)
       }
-
     });
-    this.form = this.fb.group({ 
-
+    this.form = this.fb.group({
       cover: [null],
     })
 
@@ -139,12 +132,11 @@ export class CreateStudentComponent implements OnInit {
     this.studentService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.student = response.data;
-        
         const selectedPos = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
         if (selectedPos) {
           this.year = selectedPos;
         }
-        this.student.stu_dob=this.datePipe.transform(this.student.stu_dob,"yyyy-MM-dd");
+        this.student.stu_dob = this.datePipe.transform(this.student.stu_dob, "yyyy-MM-dd");
       } else {
         window.alert('no record found');
       }
@@ -152,12 +144,11 @@ export class CreateStudentComponent implements OnInit {
   }
 
   save() {
-    
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
     else {
-      if(this. editStudent){
+      /* if (this.editStudent) {
         this.studentService.update(this.student).subscribe((response: any) => {
           if (response.status) {
             this.commonService.inputAlert(message, 'success');
@@ -165,73 +156,79 @@ export class CreateStudentComponent implements OnInit {
           }
         });
       }
-    else {
-      if(this.editStudent){
-        this.studentService.update(this.student).subscribe((response: any) => {
-          if (response.status) {
-            this.commonService.inputAlert(message, 'success');
-            this.router.navigate(['/student-list']);
-          }
-        });
-      }else{
+      else {
+        if (this.father == null || this.mother == null) {
+          this.commonService.inputAlert("Please complete parent Information", "warning");
+        }
+        else {
+          this.studentService.create(this.student).subscribe((response: any) => {
+            if (response.status) {
+              this.father.relationStatus = "FATHER";
+              this.familyMemberService.create(this.father).subscribe((response: any) => {
+              });
+              this.mother.relationStatus = "MOTHER";
+              this.familyMemberService.create(this.mother).subscribe((response: any) => {
 
-        this.studentService.create(this.student).subscribe((response: any) => {
-          if (response.status) {
-            this.father.relationStatus="FATHER";
-
-            this.familyMemberService.create(this.father).subscribe((response:any)=>{
-           
-            });
-            this.mother.relationStatus="MOTHER";
-          this.familyMemberService.create(this.mother).subscribe((response:any)=>{
-            
+              });
+              this.commonService.inputAlert(message, 'success');
+              this.router.navigate(['/student-list']);
+            }
           });
-            this.commonService.inputAlert(message, 'success');
-            this.router.navigate(['/student-list']);
-          }
-        });
-      }
-      
+
+        }
+
+      } */
     }
   }
 
+  checkValidation() {
 
+    if (this.student.stu_name == undefined || this.student.stu_name?.trim() == '')
+      return "Fill student name";
+    // else if (this.student.stu_email == undefined || this.student.stu_email.trim() == '')
+    //   return "Fill email address";
+    else if (this.student.stuRoll_no == undefined || this.student.stuRoll_no.trim() == '')
+      return "Fill Roll number";
+    else if (this.student.phone_no == undefined || this.student.phone_no.trim() == '')
+      return "Fill phone number";
+    else if (this.student.stu_currAddress == undefined || this.student.stu_currAddress.trim() == '')
+      return "Fill current address";
+    else if (this.student.stu_homeAdd == undefined || this.student.stu_homeAdd.trim() == '')
+      return "Fill Home address";
+    else if (this.student.stu_gender == undefined || this.student.stu_gender.trim() == '')
+      return "Fill Your gender";
+    else if (this.student.stu_dob == undefined)
+      return "Fill Your birth date";
+    else if (this.student.stu_nrc == undefined || this.student.stu_nrc.trim() == '')
+      return "Fill Your NRC Number";
+    else if (this.student.stu_pp == undefined || this.student.stu_pp.trim() == '')
+      return "Upload profile picture please";
+    else if (this.student.stu_national == undefined || this.student.stu_national.trim() == '')
+      return "Fill Your nation";
+    else if (this.student.stu_religion == undefined || this.student.stu_religion.trim() == '')
+      return "Fill Your religion";
+    else if (this.student.stu_relationshipStat == undefined || this.student.stu_relationshipStat.trim() == '')
+      return "Fill Your relationship Status";
+    else if (this.student.stu_hostel == undefined || this.student.stu_hostel.trim() == '')
+      return "Fill Your Hostel Active or Not";
+    else if (this.student.stu_ferry == undefined || this.student.stu_ferry.trim() == '')
+      return "Fill Ferry Status";
 
-} 
- checkValidation() {
-  if (this.student.stu_name == undefined || this.student.stu_name?.trim() == '')
-    return "Fill student name";
-  // else if (this.student.stu_email == undefined || this.student.stu_email.trim() == '')
-  //   return "Fill email address";
-  else if (this.student.stuRoll_no == undefined || this.student.stuRoll_no.trim() == '')
-    return "Fill Roll number";
-  else if (this.student.phone_no == undefined || this.student.phone_no.trim() == '')
-    return "Fill phone number";
-  else if (this.student.stu_currAddress == undefined || this.student.stu_currAddress.trim() == '')
-    return "Fill current address";
-  else if (this.student.stu_homeAdd == undefined || this.student.stu_homeAdd.trim() == '')
-    return "Fill Home address";
-  else if (this.student.stu_gender == undefined || this.student.stu_gender.trim() == '')
-    return "Fill Your gender";
-  else if (this.student.stu_dob == undefined)
-    return "Fill Your birth date";
-  else if (this.student.stu_nrc == undefined || this.student.stu_nrc.trim() == '')
-    return "Fill Your NRC Number";
-  else if (this.student.stu_pp == undefined || this.student.stu_pp.trim() == '')
-    return "Upload profile picture please";
-  else if (this.student.stu_national == undefined || this.student.stu_national.trim() == '')
-    return "Fill Your nation";
-  else if (this.student.stu_religion == undefined || this.student.stu_religion.trim() == '')
-    return "Fill Your religion";
-  else if (this.student.stu_relationshipStat == undefined || this.student.stu_relationshipStat.trim() == '')
-    return "Fill Your relationship Status";
-  else if (this.student.stu_hostel == undefined || this.student.stu_hostel.trim() == '')
-    return "Fill Your Hostel Active or Not";
-  else if (this.student.stu_ferry == undefined || this.student.stu_ferry.trim() == '')
-    return "Fill Ferry Status";
-  else
-    return "OK";
+    /* Checking Father Information */
+    else if(this.father.name == undefined || this.father.name.trim() == '')
+      return "Fill father name";
+
+    /* End of Checking Father Information */
+    /* Checking Father Information */
+
+    /* Checking Mother Information */
+    else if(this.mother.name == undefined || this.mother.name.trim() == '')
+      return "Fill father name";
+    /* End of Checking Mother Information */
+    else
+      return "OK";
   }
+
   getAllAcademicYearList() {
     this.academicService.getAllAcademicYear().subscribe((response: any) => {
       if (response.status) {
@@ -243,5 +240,5 @@ export class CreateStudentComponent implements OnInit {
     this.student.stu_AcademicYear = new AcademicYear();
     this.student.stu_AcademicYear = (this.year);
   }
-  
+
 }
