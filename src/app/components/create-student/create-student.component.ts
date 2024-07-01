@@ -132,6 +132,7 @@ export class CreateStudentComponent implements OnInit {
     this.studentService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.student = response.data;
+        
         const selectedPos = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
         if (selectedPos) {
           this.year = selectedPos;
