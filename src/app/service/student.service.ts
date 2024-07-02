@@ -35,4 +35,8 @@ export class StudentService {
     return this.httpClient.get(this.commonService.apiRoute + "/student/getAll");
   }
 
+  getStudentInfoByEmail(email:any){
+    return this.httpClient.get(this.commonService.apiRoute + "/student/getStudentInfoByEmail?email=" + email);
+  }
+
 }

@@ -29,6 +29,7 @@ import { StudentSidebarComponent } from './layout/student-sidebar/student-sideba
 import { StudentDashboardComponent } from './layout/student-dashboard/student-dashboard.component';
 import { DatePipe } from '@angular/common';
 import { ContactComponent } from './components/contact/contact.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ContactComponent } from './components/contact/contact.component';
     StudentSidebarComponent,
     StudentDashboardComponent,
     ContactComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,
