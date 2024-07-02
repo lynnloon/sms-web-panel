@@ -7,6 +7,7 @@ import { Staff } from '../model/staff';
   providedIn: 'root'
 })
 export class StaffService {
+ 
 
   filesave(formData: FormData) {
     return this.httpClient.post(this.commonService.apiRoute+"/staff/uploadStaffFile", formData);
@@ -27,6 +28,10 @@ export class StaffService {
 
     getById(id:any){
       return this.httpClient.get(this.commonService.apiRoute+"/staff/getById?id="+id);
+    }
+
+    getStaffInfoByEmail(email: string) {
+      return this.httpClient.get(this.commonService.apiRoute+"/staff/getStaffInfoByEmail?email="+email);
     }
 
     create(staff:Staff){
