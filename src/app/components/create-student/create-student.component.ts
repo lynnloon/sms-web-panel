@@ -28,7 +28,7 @@ export class CreateStudentComponent implements OnInit {
       this.emergency.nation = this.father.nation;
       this.emergency.occupation = this.father.occupation;
       this.emergency.religion = this.father.religion;
-      this.emergency.nrcNo=this.father.nrcNo;
+      this.emergency.nrcNo = this.father.nrcNo;
 
 
 
@@ -41,7 +41,7 @@ export class CreateStudentComponent implements OnInit {
       this.emergency.nation = this.mother.nation;
       this.emergency.occupation = this.mother.occupation;
       this.emergency.religion = this.mother.religion;
-      this.emergency.nrcNo=this.father.nrcNo;
+      this.emergency.nrcNo = this.father.nrcNo;
 
 
 
@@ -61,6 +61,7 @@ export class CreateStudentComponent implements OnInit {
 
   form !: FormGroup;
   filepath !: string;
+  relation!: string;
 
   constructor(
     private httpClient: HttpClient,
@@ -149,7 +150,8 @@ export class CreateStudentComponent implements OnInit {
       const studentid = params['id'];
       if (studentid) {
         this.editStudent = true;
-        this.getById(studentid)
+        this.getById(studentid);
+        
       }
     });
     this.form = this.fb.group({
@@ -162,10 +164,11 @@ export class CreateStudentComponent implements OnInit {
     this.studentService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.student = response.data;
-        this.filepath= this.commonService.apiRoute+ this.student.stu_pp;
-        const selectedPos = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
-        if (selectedPos) {
-          this.year = selectedPos;
+        this.filepath = this.commonService.apiRoute + this.student.stu_pp;
+// to test academic view
+        const selectAcademic = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
+        if (selectAcademic) {
+          this.year = selectAcademic;
         }
         this.student.stu_dob = this.datePipe.transform(this.student.stu_dob, "yyyy-MM-dd");
       } else {
@@ -179,7 +182,7 @@ export class CreateStudentComponent implements OnInit {
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
-
+    //editing form when editStudent is true
     else {
       if (this.editStudent) {
         this.studentService.update(this.student).subscribe((response: any) => {
@@ -188,46 +191,38 @@ export class CreateStudentComponent implements OnInit {
             this.router.navigate(['/student-list']);
           }
         });
-      } else {
 
+      } else {
+        //student create and guardian testing 
         this.studentService.create(this.student).subscribe((response: any) => {
           if (response.status) {
-            this.father.relationStatus = "FATHER";
-
-            this.familyMemberService.create(this.father).subscribe((response: any) => {
-
-            });
             this.mother.relationStatus = "MOTHER";
-            this.familyMemberService.create(this.mother).subscribe((response: any) => {
-
-            });
-
+            this.father.relationStatus = "FATHER";
             if (this.emergency.relationStatus == "FATHER") {
 
               this.father.guardianStatus = true;
-              this.familyMemberService.update(this.father).subscribe((response: any) => { });
-
+              this.familyMemberService.create(this.father).subscribe((response: any) => { });
+              this.familyMemberService.create(this.mother).subscribe((response: any) => { });
             }
             else if (this.emergency.relationStatus == "MOTHER") {
 
-              this.mother.guardianStatus = true;
-              this.familyMemberService.update(this.mother).subscribe((response: any) => { });
+                this.mother.guardianStatus = true;
+                this.familyMemberService.create(this.mother).subscribe((response: any) => { });
+                this.familyMemberService.create(this.father).subscribe((response: any) => { });
 
+              }
+              else {
+                this.emergency.guardianStatus = true;
+
+                this.familyMemberService.create(this.emergency).subscribe((response: any) => { });
+              }         
+              this.commonService.inputAlert(message, 'success');
+              this.router.navigate(['/student-list']);
             }
-            else {
-
-              this.emergency.guardianStatus = true;
-
-              this.familyMemberService.create(this.emergency).subscribe((response: any) => { });
-            }
-
-            this.commonService.inputAlert(message, 'success');
-            this.router.navigate(['/student-list']);
-          }
-        });
+          });
       }
 
-
+     
     }
   }
   checkValidation() {
