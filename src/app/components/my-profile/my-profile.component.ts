@@ -94,7 +94,6 @@ userchange:User=new User();
         if ( this.userchange !=null && this.newPassword == this.reTypePassword) {
          
           this.userchange.password = this.newPassword;
-         window.alert(this.userchange.email+"  "+this.userchange.password);
           this.commonService.changePass(this.userchange).subscribe((response:any)=>{
             if (response.status){
               this.commonService.inputAlert("changed password ", "success");
