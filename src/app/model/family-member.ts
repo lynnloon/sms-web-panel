@@ -8,7 +8,7 @@ export class FamilyMember {
         phoneNo?: string;
         relationStatus?: string;
         address?: string;
-        guardianStatus?: boolean;
+        guardianStatus: boolean = false;
         occupation?: string;
         nrcNo?: string;
         nation?: string;

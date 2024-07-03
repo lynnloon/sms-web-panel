@@ -1,4 +1,5 @@
 import { AcademicYear } from "./academic-year";
+import { FamilyMember } from "./family-member";
 
 export class Student {
     id?: number;
@@ -21,5 +22,6 @@ export class Student {
     stu_hostel?:string;
     stu_ferry?:string;
     stu_AcademicYear?: AcademicYear=new AcademicYear();
+    familyMembers ?:FamilyMember[]=[];
 
 }

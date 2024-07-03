@@ -19,41 +19,13 @@ import Swal from 'sweetalert2';
 })
 export class CreateStudentComponent implements OnInit {
 
-  selectOption() {
 
-    if (this.emergency.relationStatus == "FATHER") {
-      this.emergency.name = this.father.name;
-      this.emergency.address = this.father.address;
-      this.emergency.phoneNo = this.father.phoneNo;
-      this.emergency.nation = this.father.nation;
-      this.emergency.occupation = this.father.occupation;
-      this.emergency.religion = this.father.religion;
-      this.emergency.nrcNo = this.father.nrcNo;
-
-
-
-
-    }
-    else if (this.emergency.relationStatus == "MOTHER") {
-      this.emergency.name = this.mother.name;
-      this.emergency.address = this.mother.address;
-      this.emergency.phoneNo = this.mother.phoneNo;
-      this.emergency.nation = this.mother.nation;
-      this.emergency.occupation = this.mother.occupation;
-      this.emergency.religion = this.mother.religion;
-      this.emergency.nrcNo = this.father.nrcNo;
-
-
-
-    }
-
-  }
 
   editStudent?: boolean = false;
 
   student: Student = new Student();
   year: AcademicYear = new AcademicYear();
-
+  academic?: string;
   years: AcademicYear[] = [];
   father: FamilyMember = new FamilyMember();
   mother: FamilyMember = new FamilyMember();
@@ -74,6 +46,24 @@ export class CreateStudentComponent implements OnInit {
     private fb: FormBuilder,
     private datePipe: DatePipe
   ) { }
+
+  ngOnInit() {
+    this.father.relationStatus = "FATHER";
+    this.mother.relationStatus = "MOTHER";
+    this.getCurrentAcademic();
+    this.activatedRoute.params.subscribe(params => {
+      const studentid = params['id'];
+      if (studentid) {
+        this.editStudent = true;
+        this.getById(studentid);
+
+      }
+    });
+    this.form = this.fb.group({
+      cover: [null],
+    })
+
+  }
 
   oncoverChange(event: any) {
     const tempfile = event.target.files[0];
@@ -127,6 +117,7 @@ export class CreateStudentComponent implements OnInit {
   }
 
   saveFile() {
+
     var formData: any = new FormData();
     formData.append('uploadFile', this.form?.get('cover')?.value);
     //formData.append('multipartFile', this.form?.get('cover')?.value);
@@ -144,26 +135,55 @@ export class CreateStudentComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.getAllAcademicYearList();
-    this.activatedRoute.params.subscribe(params => {
-      const studentid = params['id'];
-      if (studentid) {
-        this.editStudent = true;
-        this.getById(studentid);
+  selectOption() {
+    if (this.emergency.relationStatus == "FATHER") {
+      this.father.guardianStatus = true;
+      this.mother.guardianStatus = false;
+      this.emergency = this.father;
+    }
+    else if (this.emergency.relationStatus == "MOTHER") {
+      this.mother.guardianStatus = true;
+      this.father.guardianStatus = false;
+      this.emergency = this.mother;
+    }
+    else this.emergency.guardianStatus = true;
 
+  }
+
+  getCurrentAcademic() {
+    this.academicService.getCurrent().subscribe((response: any) => {
+      if (response.status) {
+        if (response.data != null) {
+          this.academic = response.data.name;
+          this.student.stu_AcademicYear = response.data;
+        }
       }
     });
-    this.form = this.fb.group({
-      cover: [null],
-    })
-
   }
 
   getById(id: any) {
     this.studentService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.student = response.data;
+        //data binding to parent edit form and emergency form
+        if (this.student.familyMembers) {
+          for (var i = 0; i < this.student.familyMembers.length; i++) {
+            if (this.student.familyMembers[i].relationStatus == "FATHER") {
+              this.father = this.student.familyMembers[i];
+              if (this.father.guardianStatus)
+                this.emergency = this.father;
+            }
+
+            else if (this.student.familyMembers[i].relationStatus == "MOTHER") {
+              this.mother = this.student.familyMembers[i];
+              if (this.mother.guardianStatus)
+                this.emergency = this.mother;
+            }
+            else
+              this.emergency = this.student.familyMembers[i];
+
+          }
+        }
         this.filepath = this.commonService.apiRoute + this.student.stu_pp;
         // to test academic view
         const selectAcademic = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
@@ -178,12 +198,16 @@ export class CreateStudentComponent implements OnInit {
   }
 
   save() {
-
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
     //editing form when editStudent is true
     else {
+      this.student.familyMembers = [];
+      this.student.familyMembers.push(this.father);
+      this.student.familyMembers.push(this.mother);
+      if (!this.father.guardianStatus && !this.mother.guardianStatus)
+        this.student.familyMembers.push(this.emergency);
       if (this.editStudent) {
         this.studentService.update(this.student).subscribe((response: any) => {
           if (response.status) {
@@ -196,26 +220,6 @@ export class CreateStudentComponent implements OnInit {
         //student create and guardian testing 
         this.studentService.create(this.student).subscribe((response: any) => {
           if (response.status) {
-            this.mother.relationStatus = "MOTHER";
-            this.father.relationStatus = "FATHER";
-            if (this.emergency.relationStatus == "FATHER") {
-
-              this.father.guardianStatus = true;
-              this.familyMemberService.create(this.father).subscribe((response: any) => { });
-              this.familyMemberService.create(this.mother).subscribe((response: any) => { });
-            }
-            else if (this.emergency.relationStatus == "MOTHER") {
-
-              this.mother.guardianStatus = true;
-              this.familyMemberService.create(this.mother).subscribe((response: any) => { });
-              this.familyMemberService.create(this.father).subscribe((response: any) => { });
-
-            }
-            else {
-              this.emergency.guardianStatus = true;
-
-              this.familyMemberService.create(this.emergency).subscribe((response: any) => { });
-            }
             this.commonService.inputAlert(message, 'success');
             this.router.navigate(['/student-list']);
           }
@@ -310,17 +314,19 @@ export class CreateStudentComponent implements OnInit {
       return "OK";
   }
 
-  getAllAcademicYearList() {
-    this.academicService.getAllAcademicYear().subscribe((response: any) => {
-      if (response.status) {
-        this.years = response.data;
-      }
-    });
-  }
+  // getAllAcademicYearList() {
 
-  onChangeCombo() {
-    this.student.stu_AcademicYear = new AcademicYear();
-    this.student.stu_AcademicYear = (this.year);
-  }
+  //   this.academicService.getAllAcademicYear().subscribe((response: any) => {
+  //     if (response.status) {
+  //       this.years = response.data;
+  //     }
+  //   });
+  // }
+
+  // onChangeCombo() {
+  //   this.student.stu_AcademicYear = new AcademicYear();
+  //   this.student.stu_AcademicYear = (this.year);
+
+  // }
 
 }

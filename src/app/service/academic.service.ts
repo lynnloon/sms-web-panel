@@ -16,7 +16,10 @@ export class AcademicService {
     private commonService: CommonService
   ) {}
   getAllAcademicYear() {
-    return this.httpClient.get(this.commonService.apiRoute + "/academic_years/getAll")
+    return this.httpClient.get(this.commonService.apiRoute + "/academic_years/getAll");
+  }
+  getCurrent(){
+    return this.httpClient.get(this.commonService.apiRoute+"/academic_years/getCurrent");
   }
 
   delete(id:any){

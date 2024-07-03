@@ -83,6 +83,9 @@ userchange:User=new User();
       });
     }
   }
+
+
+  //change password for both staff and student
   changePassword() {
     this.user.email = this.email;
     this.user.password = this.currentPassword;
@@ -90,16 +93,20 @@ userchange:User=new User();
     this.commonService.checkpass(this.user).subscribe((response: any) => {
       if (response.status) {
         this.userchange = response.data;
-
-        if ( this.userchange !=null && this.newPassword == this.reTypePassword) {
-         
+        
+        if ( this.userchange !=null && this.newPassword == this.reTypePassword  ) {
+         if (this.newPassword.length >=6)
+          {
           this.userchange.password = this.newPassword;
           this.commonService.changePass(this.userchange).subscribe((response:any)=>{
             if (response.status){
               this.commonService.inputAlert("changed password ", "success");
             }
           });
-        
+          }
+          else 
+          this.commonService.inputAlert("Password length must be at least 6 character  ","warning");
+
         }
 
         else {
