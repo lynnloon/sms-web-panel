@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Position } from 'src/app/model/position';
 import { Staff } from 'src/app/model/staff';
 import { Student } from 'src/app/model/student';
+import { User } from 'src/app/model/user';
 import { PositionService } from 'src/app/service/position.service';
 import { StaffService } from 'src/app/service/staff.service';
 import { StudentService } from 'src/app/service/student.service';
@@ -16,13 +17,22 @@ import { CommonService } from 'src/app/util/common.service';
 })
 export class MyProfileComponent implements OnInit {
 
+
   profile!: string;
   name!: string;
-  email !: string;
+  email ?: string;
+  student: Student = new Student();
+  rollNo: string | undefined;
+  currentPassword?: string;
+  newPassword?: string;
+  reTypePassword!: string;
+  user: User = new User();
+userchange:User=new User();
+
   role!:string;
   pos:any;
   posId:any;
-  student: Student = new Student();
+  
   staff: Staff=new Staff();
   position:Position=new Position();
 
@@ -43,7 +53,12 @@ export class MyProfileComponent implements OnInit {
     this.profile = localStorage.getItem('profile') as string;
     this.profile = this.commonService.imageURL + this.profile;
     this.email = localStorage.getItem('email') as string;
-
+    this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {
+      if (response.status) {
+        this.student = response.data;
+      }
+    });
+  
     if ( this.role== "STUDENT") {
       this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {
         if (response.status) {
@@ -68,5 +83,31 @@ export class MyProfileComponent implements OnInit {
       });
     }
   }
+  changePassword() {
+    this.user.email = this.email;
+    this.user.password = this.currentPassword;
 
+    this.commonService.checkpass(this.user).subscribe((response: any) => {
+      if (response.status) {
+        this.userchange = response.data;
+
+        if ( this.userchange !=null && this.newPassword == this.reTypePassword) {
+         
+          this.userchange.password = this.newPassword;
+         window.alert(this.userchange.email+"  "+this.userchange.password);
+          this.commonService.changePass(this.userchange).subscribe((response:any)=>{
+            if (response.status){
+              this.commonService.inputAlert("changed password ", "success");
+            }
+          });
+        
+        }
+
+        else {
+          this.commonService.inputAlert("Incorrect email or password ","warning");
+        }
+      }
+
+    });
+  }
 }

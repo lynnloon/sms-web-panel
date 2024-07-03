@@ -19,6 +19,12 @@ export class CommonService {
     return this.httpClient.post(this.apiRoute + "/login/checkUser", user);
   }
 
+  checkpass(user:User){
+    return this.httpClient.post(this.apiRoute+"/login/checkPassword",user);
+  }
+  changePass(usr:User){
+    return this.httpClient.post(this.apiRoute+"/login/update",usr);
+  }
   inputAlert(message: string, icon: any) {
     Swal.fire({
       toast: true,
