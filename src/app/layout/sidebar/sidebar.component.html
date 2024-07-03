@@ -5,7 +5,7 @@
   <ul class="sidebar-nav" id="sidebar-nav">
 
     <li class="nav-item">
-      <a class="nav-link " [routerLink]="'/admin-dashboard'">
+      <a class="nav-link collapsed" [routerLink]="'/admin-dashboard'">
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
@@ -20,13 +20,18 @@
     <li class="nav-item">
       
       <a class="nav-link collapsed" [routerLink]="'/staff-list'" routerLinkActive="active">
-        <i class="bi bi-person-workspace fs-6"></i><span>Staff</span>
+        <i class="bi bi-person-workspace fs-6"></i><span>Teachers</span>
       </a>
     </li>
 
     <li class="nav-item">
       <a class="nav-link collapsed" [routerLink]="'/subject-list'" routerLinkActive="active">
         <i class="bi bi-book-half fs-6"></i><span>Subjects</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a  class="nav-link collapsed" [routerLink]="'/department-list'" routerLinkActive="active">
+        <i class="bi bi-building-fill fs-6"></i><span>Departments</span>
       </a>
     </li>
 
@@ -36,13 +41,8 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a [routerLink]="'/department-list'" routerLinkActive="active">
-              <i class="bi bi-building-fill fs-6"></i><span>Departments</span>
-            </a>
-          </li>
-          <li>
             <a [routerLink]="'/position-list'"  routerLinkActive="active">
-              <i class="bi bi-list-columns-reverse fs-6"></i><span>Positions</span>
+              <i class="bi bi-list-columns-reverse fs-6"></i><span>Positions Of Teacher List</span>
             </a>
           </li>
                   

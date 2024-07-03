@@ -151,7 +151,7 @@ export class CreateStudentComponent implements OnInit {
       if (studentid) {
         this.editStudent = true;
         this.getById(studentid);
-        
+
       }
     });
     this.form = this.fb.group({
@@ -165,7 +165,7 @@ export class CreateStudentComponent implements OnInit {
       if (response.status) {
         this.student = response.data;
         this.filepath = this.commonService.apiRoute + this.student.stu_pp;
-// to test academic view
+        // to test academic view
         const selectAcademic = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
         if (selectAcademic) {
           this.year = selectAcademic;
@@ -206,23 +206,23 @@ export class CreateStudentComponent implements OnInit {
             }
             else if (this.emergency.relationStatus == "MOTHER") {
 
-                this.mother.guardianStatus = true;
-                this.familyMemberService.create(this.mother).subscribe((response: any) => { });
-                this.familyMemberService.create(this.father).subscribe((response: any) => { });
+              this.mother.guardianStatus = true;
+              this.familyMemberService.create(this.mother).subscribe((response: any) => { });
+              this.familyMemberService.create(this.father).subscribe((response: any) => { });
 
-              }
-              else {
-                this.emergency.guardianStatus = true;
-
-                this.familyMemberService.create(this.emergency).subscribe((response: any) => { });
-              }         
-              this.commonService.inputAlert(message, 'success');
-              this.router.navigate(['/student-list']);
             }
-          });
+            else {
+              this.emergency.guardianStatus = true;
+
+              this.familyMemberService.create(this.emergency).subscribe((response: any) => { });
+            }
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/student-list']);
+          }
+        });
       }
 
-     
+
     }
   }
   checkValidation() {

@@ -828,17 +828,24 @@ h6 {
 
 .dashboard .sales-card .card-icon {
   color: #4154f1;
-  background: #f6f6fe;
+  background: #d3dde9;
 }
+
+
 
 .dashboard .revenue-card .card-icon {
   color: #2eca6a;
   background: #e0f8e9;
 }
 
-.dashboard .customers-card .card-icon {
+.dashboard .dept .card-icon {
   color: #ff771d;
   background: #ffecdf;
+}
+
+.dashboard .sub .card-icon {
+  color: #ac1dff;
+  background: #efd4ff;
 }
 
 /* Activity */
@@ -1255,4 +1262,8 @@ input.form-control, textarea.form-control, select.form-control {
 }
 .profileCss{
   text-align: center;
+}
+
+.link{
+  color: #000;
 }
