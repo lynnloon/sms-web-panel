@@ -2,13 +2,13 @@
 
     <div class="pagetitle">
         <h1 *ngIf="editStudent == false">Add New Student</h1>
-        <h1 *ngIf="editStudent == true">Edit Student</h1>
+        <h1 *ngIf="editStudent == true">Edit Student Info</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
                 <li class="breadcrumb-item"><a [routerLink]="'/student-list'">Student Lists</a></li>
                 <li class="breadcrumb-item" *ngIf="editStudent == false">Add new Student</li>
-                <li class="breadcrumb-item" *ngIf="editStudent == true">Edit Student</li>
+                <li class="breadcrumb-item" *ngIf="editStudent == true">Edit Student Info</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->

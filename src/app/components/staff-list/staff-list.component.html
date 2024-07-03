@@ -1,19 +1,19 @@
 <div class="main" id="main">
     <div class="pagetitle">
-        <h1>Staff Lists</h1>
+        <h1>Teacher Lists</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
-                <li class="breadcrumb-item">Staff Lists</li>
+                <li class="breadcrumb-item">Teacher Lists</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
 
-    <div >
+    <div>
         <button type="submit" class="btn btn-primary bi bi-plus-circle  float-right " [routerLink]="'/add-staff'">
-            Add new Staff</button>
+            Add new Teacher</button>
     </div>
-<br/>
+    <br />
     <section class="section">
         <div class="row">
             <div class="card">
@@ -26,8 +26,9 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Phone No</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Address</th>                               
+                                <th scope="col">Address</th>
                                 <th scope="col">Position</th>
+                                <th scope="col">Department</th>
                                 <th scope="col">Action</th>
 
                             </tr>
@@ -38,11 +39,14 @@
                                 <td>{{sta.staffGender == 'Male'? 'U ':'Daw '}}{{sta.staffName}}</td>
                                 <td>{{sta.staffPhoneNo}}</td>
                                 <td>{{sta.staffEmail}}</td>
-                                <td>{{sta.staffAddress}}</td>                               
+                                <td>{{sta.staffAddress}}</td>
                                 <td>{{ sta.staffPosition?.name }}</td>
+                                <td>{{ sta.staffDepartment?.name }}</td>
                                 <td>
-                                    <i class="bi bi-pencil-square" title="edit" [routerLink]="['/add-staff',sta.id]"></i>&nbsp;
-                                    <i class="bi bi-trash" style="color: red;" title="delete" (click)="delete(sta.id)"></i>
+                                    <i class="bi bi-pencil-square" title="edit"
+                                        [routerLink]="['/add-staff',sta.id]"></i>&nbsp;
+                                    <i class="bi bi-trash" style="color: red;" title="delete"
+                                        (click)="delete(sta.id)"></i>
                                 </td>
                             </tr>
                         </tbody>

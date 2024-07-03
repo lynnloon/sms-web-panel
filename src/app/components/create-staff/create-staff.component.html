@@ -1,13 +1,13 @@
 <div class="main" id="main">
     <div class="pagetitle">
-        <h1 *ngIf="editStaff == false">Add New Staff</h1>
-        <h1 *ngIf="editStaff == true">Edit Staff</h1>
+        <h1 *ngIf="editStaff == false">Add New Teacher</h1>
+        <h1 *ngIf="editStaff == true">Edit Teacher Info</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
-                <li class="breadcrumb-item"><a [routerLink]="'/staff-list'">Staff Lists</a></li>
-                <li class="breadcrumb-item" *ngIf="editStaff == false">Add new Staff</li>
-                <li class="breadcrumb-item" *ngIf="editStaff == true">Edit Staff</li>
+                <li class="breadcrumb-item"><a [routerLink]="'/staff-list'">Teacher Lists</a></li>
+                <li class="breadcrumb-item" *ngIf="editStaff == false">Add new Teacher</li>
+                <li class="breadcrumb-item" *ngIf="editStaff == true">Edit Teacher Info</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -16,13 +16,13 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title text-center" *ngIf="editStaff == false">Staff Registration Form</h5>
-                    <h5 class="card-title text-center" *ngIf="editStaff == true">Staff Editing Form</h5>
+                    <h5 class="card-title text-center" *ngIf="editStaff == false">Teacher Registration Form</h5>
+                    <h5 class="card-title text-center" *ngIf="editStaff == true">Teacher Editing Form</h5>
                     <!-- Horizontal Form -->
                     <div class="row mb-3">
                         <div *ngIf="editStaff == true" class="profileCss">
-                            <img [src]="filepath" alt="staff" style="margin: 5px;max-width: 25%; height: 80%;"  
-                            class="img-fluid img-thumbnail rounded">
+                            <img [src]="filepath" alt="staff" style="margin: 5px;max-width: 25%; height: 80%;"
+                                class="img-fluid img-thumbnail rounded">
                         </div>
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">Profile Picture</label>
                         <div class="col-sm-6">
@@ -38,9 +38,21 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">NRC No</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="staff.staffNrcNo" id="inputText">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Phone No</label>
                         <div class="col-sm-6">
                             <input type="email" class="form-control" [(ngModel)]="staff.staffPhoneNo" id="inputEmail">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Email</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="staff.staffEmail" id="inputText">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -51,23 +63,11 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Email</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="staff.staffEmail" id="inputText">
-                        </div>
-                    </div>
-                    <!-- <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Gender</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="staff.staffGender" id="inputText">
-                        </div>
-                    </div> -->
-
-                    <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">Gender</label>
                         <div class="col-sm-6">
 
-                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="staff.staffGender">
+                            <select class="form-select" id="inputGroupSelect01 " [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="staff.staffGender">
                                 <option value="" selected>Choose..</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -75,13 +75,19 @@
 
                         </div>
                     </div>
-
                     <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-3 col-form-label required">NRC No</label>
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Department</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="staff.staffNrcNo" id="inputText">
+
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="department"
+                                [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange()">
+                                <option value="">Choose..</option>
+                                <option *ngFor="let dept of departments;" [ngValue]="dept">{{dept.name}}</option>
+                            </select>
+
                         </div>
                     </div>
+
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label required">Position</label>
                         <div class="col-sm-6">

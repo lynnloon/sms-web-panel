@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Department } from 'src/app/model/department';
 import { Position } from 'src/app/model/position';
 import { Staff } from 'src/app/model/staff';
+import { DepartmentService } from 'src/app/service/department.service';
 import { PositionService } from 'src/app/service/position.service';
 import { StaffService } from 'src/app/service/staff.service';
 import { CommonService } from 'src/app/util/common.service';
@@ -18,18 +20,20 @@ export class CreateStaffComponent implements OnInit {
 
   editStaff?: boolean = false;
   staff: Staff = new Staff();
-  staffs:Staff[]=[];
-
-
+  staffs: Staff[] = [];
   position: Position = new Position();
-
   positions: Position[] = [];
+
+  department: Department = new Department();
+  departments: Department[] = [];
+
   form !: FormGroup;
   filepath !: string;
 
   constructor(
     private positionService: PositionService,
     private staffService: StaffService,
+    private departmentService:DepartmentService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private commonService: CommonService,
@@ -38,6 +42,7 @@ export class CreateStaffComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPositionList();
+    this.getAllDepartmentList();
     this.activatedRoute.params.subscribe(params => {
       const staffid = params['id'];
       if (staffid) {
@@ -130,19 +135,33 @@ export class CreateStaffComponent implements OnInit {
     });
   }
 
+  getAllDepartmentList(){
+    this.departmentService.getAllDepartmentList().subscribe((response:any)=>{
+      if(response.status){
+        this.departments=response.data;
+      }
+    });
+  }
+
   getById(id: any) {
     this.staffService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.staff = response.data;
-       this.filepath= this.commonService.apiRoute+ this.staff.staffProfilePicture;
+        const selectedDept = this.departments.find(u => u.id === this.staff.staffDepartment?.id);
+        if (selectedDept) {
+          this.department = selectedDept;
+        }
+        this.filepath = this.commonService.apiRoute + this.staff.staffProfilePicture;
         const selectedPos = this.positions.find(u => u.id === this.staff.staffPosition?.id);
+
         if (selectedPos) {
           this.position = selectedPos;
         }
-        } else {
-          window.alert('no record found');
-        }
-      });
+
+      } else {
+        window.alert('no record found');
+      }
+    });
   }
 
   save() {
@@ -195,4 +214,9 @@ export class CreateStaffComponent implements OnInit {
     this.staff.staffPosition = new Position();
     this.staff.staffPosition = (this.position);
   }
+  onChange() {
+    this.staff.staffDepartment = new Department();
+    this.staff.staffDepartment = (this.department);
+  }
+
 }
