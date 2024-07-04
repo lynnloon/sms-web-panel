@@ -11,6 +11,7 @@ import { FamilyMemberService } from 'src/app/service/family-member.service';
 import { StudentService } from 'src/app/service/student.service';
 import { CommonService } from 'src/app/util/common.service';
 import Swal from 'sweetalert2';
+import { AcademicBatch } from 'src/app/model/academic-batch';
 
 @Component({
   selector: 'app-create-student',
@@ -30,6 +31,9 @@ export class CreateStudentComponent implements OnInit {
   father: FamilyMember = new FamilyMember();
   mother: FamilyMember = new FamilyMember();
   emergency: FamilyMember = new FamilyMember();
+  batch: AcademicBatch = new AcademicBatch();
+  batches: AcademicBatch[] = [];
+
 
   form !: FormGroup;
   filepath !: string;
@@ -48,6 +52,7 @@ export class CreateStudentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getAllAcademicBatchList();
     this.father.relationStatus = "FATHER";
     this.mother.relationStatus = "MOTHER";
     this.getCurrentAcademic();
@@ -63,6 +68,14 @@ export class CreateStudentComponent implements OnInit {
       cover: [null],
     })
 
+  }
+  getAllAcademicBatchList() {
+    this.commonService.getAllAcademicBatchList().subscribe((response: any) => {
+      if (response.status) {
+        this.batches = response.data;
+
+      }
+    });
   }
 
   oncoverChange(event: any) {
@@ -165,6 +178,10 @@ export class CreateStudentComponent implements OnInit {
     this.studentService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.student = response.data;
+        const selectedBatch = this.batches.find(u => u.id === this.student.studentBatch?.id);
+        if (selectedBatch) {
+          this.batch = selectedBatch;
+        }
         //data binding to parent edit form and emergency form
         if (this.student.familyMembers) {
           for (var i = 0; i < this.student.familyMembers.length; i++) {
@@ -195,6 +212,7 @@ export class CreateStudentComponent implements OnInit {
         window.alert('no record found');
       }
     });
+   
   }
 
   save() {
@@ -323,11 +341,14 @@ export class CreateStudentComponent implements OnInit {
   //   });
   // }
 
-   onChangeCombo() {
-     this.student.stu_AcademicYear = new AcademicYear();
-     this.student.stu_AcademicYear = (this.year);
-     
+  onChangeCombo() {
+    this.student.stu_AcademicYear = new AcademicYear();
+    this.student.stu_AcademicYear = (this.year);
+    this.student.studentBatch = new AcademicBatch();
+    this.student.studentBatch = (this.batch);
 
-   }
+
+
+  }
 
 }

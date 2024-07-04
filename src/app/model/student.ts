@@ -1,3 +1,4 @@
+import { AcademicBatch } from "./academic-batch";
 import { AcademicYear } from "./academic-year";
 import { FamilyMember } from "./family-member";
 
@@ -21,7 +22,9 @@ export class Student {
     stu_relationshipStat?:string;
     stu_hostel?:string;
     stu_ferry?:string;
+    stu_major?:string;
     stu_AcademicYear?: AcademicYear=new AcademicYear();
     familyMembers ?:FamilyMember[]=[];
+    studentBatch?: AcademicBatch=new AcademicBatch();
 
 }

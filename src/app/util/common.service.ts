@@ -7,7 +7,7 @@ import { User } from '../model/user';
   providedIn: 'root'
 })
 export class CommonService {
-
+ 
   apiRoute = "http://localhost:3060/SMSAPI";
   imageURL = "http://localhost:3060/SMSAPI"
 
@@ -17,8 +17,15 @@ export class CommonService {
 
   login(user: User) {
     return this.httpClient.post(this.apiRoute + "/login/checkUser", user);
+  } 
+  getAllAcademicBatchList() {
+  return this.httpClient.get(this.apiRoute+"/academicBatch/getAll");
   }
 
+
+
+
+// check password for password change in my profile
   checkpass(user:User){
     return this.httpClient.post(this.apiRoute+"/login/checkPassword",user);
   }

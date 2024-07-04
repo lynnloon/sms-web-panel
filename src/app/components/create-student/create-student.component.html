@@ -61,22 +61,29 @@
                                     <!-- input major and academic batch  -->
                                     <div class="col-sm-3">
                                         <label for="inputEmail3" class="col-form-label required">Academic Batch</label>
-                                          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="year"
+                                          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="batch"
                                             [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
                                             <option value="">Choose..</option>
-                                            <option *ngFor="let y of years;" [ngValue]="y">{{y.name}}</option>
+                                            <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
                                         </select> 
-                                    </div>
-                                    <!-- input Email -->
+                                    </div>                             
                                     <div class="col-sm-3">
                                         <label for="inputEmail3" class="col-form-label ">Major</label>
                                         <input type="email" class="form-control" 
-                                            [(ngModel)]="student.stu_email" id="inputEmail"
+                                            [(ngModel)]="student.stu_major" id="inputEmail"
                                             [ngModelOptions]="{standalone: true}">
                                     </div>
 
-
-
+                                   <div class="col-sm-3">
+                                        <label for="inputEmail3" class=" col-form-label  required">Phone No</label>
+                                        <input type="text" class="form-control" [(ngModel)]="student.phone_no"
+                                            id="inputText" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="inputEmail3" class=" col-form-label  required">Email</label>
+                                        <input type="email" class="form-control" id="inputText"
+                                            [(ngModel)]="student.stu_email" [ngModelOptions]="{standalone: true}">
+                                    </div>
                                     <!-- for Profile picture -->
                                     <div class="col-md-6">
                                         <label for="inputEmail3" class="col-form-label required">Student Profile Picture
@@ -114,7 +121,7 @@
                                     <div class="col-sm-3">
                                         <label for="inputEmail3" class=" col-form-label required">Academic Year</label>
                                         <!-- <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="year"
-                                            [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
+                                            [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangzseCombo()">
                                             <option value="">Choose..</option>
                                             <option *ngFor="let y of years;" [ngValue]="y">{{y.name}}</option>
                                         </select> -->
