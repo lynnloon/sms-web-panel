@@ -21,7 +21,7 @@ export class Student {
     stu_relationshipStat?:string;
     stu_hostel?:string;
     stu_ferry?:string;
-    stu_AcademicYear?: AcademicYear=new AcademicYear();
+    stuAcademicYear?: AcademicYear=new AcademicYear();
     familyMembers ?:FamilyMember[]=[];
 
 }

@@ -155,7 +155,7 @@ export class CreateStudentComponent implements OnInit {
       if (response.status) {
         if (response.data != null) {
           this.academic = response.data.name;
-          this.student.stu_AcademicYear = response.data;
+          this.student.stuAcademicYear = response.data;
         }
       }
     });
@@ -186,7 +186,7 @@ export class CreateStudentComponent implements OnInit {
         }
         this.filepath = this.commonService.apiRoute + this.student.stu_pp;
         // to test academic view
-        const selectAcademic = this.years.find(u => u.id === this.student.stu_AcademicYear?.id);
+        const selectAcademic = this.years.find(u => u.id === this.student.stuAcademicYear?.id);
         if (selectAcademic) {
           this.year = selectAcademic;
         }
