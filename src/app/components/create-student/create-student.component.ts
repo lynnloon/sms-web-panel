@@ -323,10 +323,11 @@ export class CreateStudentComponent implements OnInit {
   //   });
   // }
 
-  // onChangeCombo() {
-  //   this.student.stu_AcademicYear = new AcademicYear();
-  //   this.student.stu_AcademicYear = (this.year);
+   onChangeCombo() {
+     this.student.stu_AcademicYear = new AcademicYear();
+     this.student.stu_AcademicYear = (this.year);
+     
 
-  // }
+   }
 
 }
