@@ -44,7 +44,7 @@
                             <tr *ngFor="let stu of students;let i = index;">
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{stu.stu_gender== 'Male'? 'Mg ':'Ma '}}{{stu.stu_name}}</td>
-                                <td>{{stu.stuRoll_no}}</td>
+                                <td>{{stu.studentBatch?.name}}{{stu.stu_major}} {{stu.stuRoll_no}}</td>
                                 <td>{{stu.stu_email}}</td>
                                 <td>{{stu.phone_no}}</td>
                                 <td>{{stu.stu_currAddress}}</td>
