@@ -44,13 +44,18 @@ export class MyProfileComponent implements OnInit {
   batchId: number | undefined;
   batchName: string | undefined;
 
+  showCurrentPassword: boolean = false;
+  showNewtPassword: boolean = false;
+  showReTypePassword: boolean = false;
+
+
 
   constructor(
     private commonService: CommonService,
     public studentService: StudentService,
     public staffService: StaffService,
     public positionService: PositionService,
-    public departmentService: DepartmentService,
+    public departmentService: DepartmentService
   ) { }
 
   ngOnInit() {
@@ -144,14 +149,27 @@ export class MyProfileComponent implements OnInit {
           }
           else
             this.commonService.inputAlert("Password length must be at least 6 character  ", "warning");
-
         }
-
         else {
           this.commonService.inputAlert("Incorrect email or password ", "warning");
         }
       }
-
     });
+  }
+  togglePasswordVisibility(password: string) {
+    if (password == 'a') {
+      this.showCurrentPassword = !this.showCurrentPassword;
+      this.showReTypePassword = false;
+      this.showNewtPassword = false;
+    } else if (password == 'b') {
+      this.showNewtPassword = !this.showNewtPassword;
+      this.showCurrentPassword = false;
+      this.showReTypePassword = false;
+    }
+    else if (password == 'c') {
+      this.showReTypePassword = !this.showReTypePassword;
+      this.showNewtPassword = false;
+      this.showCurrentPassword = false;
+    }
   }
 }
