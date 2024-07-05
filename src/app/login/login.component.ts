@@ -11,6 +11,9 @@ import { CommonService } from '../util/common.service';
 export class LoginComponent implements OnInit {
 
   user: User = new User();
+  showIcon: boolean = false;
+  showPassword: boolean = false;
+
 
   constructor(
     private router: Router,
@@ -29,7 +32,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('userrole', this.user.role as string);
           localStorage.setItem('profile', this.user.userProfile as string);
           localStorage.setItem('userName', this.user.userName as string);
-          localStorage.setItem('email',this.user.email as string);
+          localStorage.setItem('email', this.user.email as string);
 
           if (this.user.role == 'STUDENT')
             this.router.navigate(['/student-dashboard'])
@@ -44,6 +47,13 @@ export class LoginComponent implements OnInit {
     else
       window.alert('Invalid user name or password.')
 
+  }
+  
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+  toggleIcon() {
+    this.showIcon = !this.showIcon;
   }
 
 }

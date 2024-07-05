@@ -66,7 +66,8 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Roll No</div>
-                                    <div class="col-lg-9 col-md-8">{{batchName}}{{student.stu_major+'-'}}{{student.stuRoll_no}}</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        {{batchName}}{{student.stu_major+'-'}}{{student.stuRoll_no}}</div>
                                 </div>
 
                                 <div class="row">
@@ -105,14 +106,18 @@
                                                 Password</label>
 
                                             <div class="input-group">
+                                                <span class="btn btn-outline-secondary btn-primary1">
+                                                    <i class="bi bi-person-lock"></i>
+                                                </span>
                                                 <input name="currentPassword"
                                                     [type]="showCurrentPassword ? 'text' : 'password'"
                                                     class="form-control" id="currentPassword"
                                                     [(ngModel)]="currentPassword" />
-                                                <span class="btn btn-outline-secondary btn-primary" type="button"
-                                                    (click)="togglePasswordVisibility('a')">
-                                                    <i class="bi bi-eye-slash"
-                                                        [ngClass]="showCurrentPassword ? 'fa-eye ' : 'fa-eye-slash'"></i>
+                                                <span class="btn btn-outline-secondary btn-primary1" type="button"
+                                                    (click)="togglePasswordVisibility('a')" (click)="toggleIcon('a')">
+                                                    <i class="bi bi-eye" *ngIf="showIcon1"></i>
+                                                    <i class="bi bi-eye-slash" *ngIf="!showIcon1"></i>
+
                                                 </span>
                                             </div>
 
@@ -120,13 +125,16 @@
                                                 Password</label>
 
                                             <div class="input-group">
+                                                <span class="btn btn-outline-secondary btn-primary1">
+                                                    <i class="bi bi-person-lock"></i>
+                                                </span>
                                                 <input name="newPassword"
                                                     [type]="showNewtPassword ? 'text' : 'password'" class="form-control"
                                                     id="newPassword" [(ngModel)]="newPassword" />
-                                                <span class="btn btn-outline-secondary btn-primary" type="button"
-                                                    (click)="togglePasswordVisibility('b')">
-                                                    <i class="bi bi-eye-slash"
-                                                        [ngClass]="showNewtPassword ? 'fa-eye ' : 'fa-eye-slash'"></i>
+                                                <span class="btn btn-outline-secondary btn-primary1" type="button"
+                                                    (click)="togglePasswordVisibility('b')" (click)="toggleIcon('b')">
+                                                    <i class="bi bi-eye" *ngIf="showIcon2"></i>
+                                                    <i class="bi bi-eye-slash" *ngIf="!showIcon2"></i>
                                                 </span>
                                             </div>
 
@@ -134,14 +142,17 @@
                                                 Password</label>
 
                                             <div class="input-group">
+                                                <span class="btn btn-outline-secondary btn-primary1">
+                                                    <i class="bi bi-person-lock"></i>
+                                                </span>
                                                 <input name="reTypePassword"
                                                     [type]="showReTypePassword ? 'text' : 'password'"
                                                     class="form-control" id="reTypePassword"
                                                     [(ngModel)]="reTypePassword" />
-                                                <span class="btn btn-outline-secondary btn-primary " type="button"
-                                                    (click)="togglePasswordVisibility('c')">
-                                                    <i class="bi bi-eye-slash"
-                                                        [ngClass]="showReTypePassword ? 'fa-eye ' : 'fa-eye-slash'"></i>
+                                                <span class="btn btn-outline-secondary btn-primary1 " type="button"
+                                                    (click)="togglePasswordVisibility('c')" (click)="toggleIcon('c')">
+                                                    <i class="bi bi-eye" *ngIf="showIcon3"></i>
+                                                    <i class="bi bi-eye-slash" *ngIf="!showIcon3"></i>
                                                 </span>
                                             </div>
 
@@ -150,7 +161,7 @@
 
                                             <br>
                                             <div class="text-center">
-                                                <button type="submit" class="btn btn-primary"
+                                                <button type="submit" class="btn btn-primary1"
                                                     (click)="changePassword()">Change
                                                     Password</button>
                                             </div>
@@ -248,14 +259,17 @@
                                                 Password</label>
 
                                             <div class="input-group">
+                                                <span class="btn btn-outline-secondary btn-primary1">
+                                                    <i class="bi bi-person-lock"></i>
+                                                </span>
                                                 <input name="renewpassword"
                                                     [type]="showCurrentPassword ? 'text' : 'password'"
                                                     class="form-control" id="renewPassword"
                                                     [(ngModel)]="currentPassword" />
-                                                <span class="btn btn-outline-secondary btn-primary" type="button"
-                                                    (click)="togglePasswordVisibility('a')">
-                                                    <i class="bi bi-eye-slash"
-                                                        [ngClass]="showCurrentPassword ? 'fa-eye ' : 'fa-eye-slash'"></i>
+                                                <span class="btn btn-outline-secondary btn-primary1" type="button"
+                                                    (click)="togglePasswordVisibility('a')" (click)="toggleIcon('a')">
+                                                    <i class="bi bi-eye" *ngIf="showIcon1"></i>
+                                                    <i class="bi bi-eye-slash" *ngIf="!showIcon1"></i>
                                                 </span>
                                             </div>
 
@@ -263,13 +277,16 @@
                                                 Password</label>
 
                                             <div class="input-group">
+                                                <span class="btn btn-outline-secondary btn-primary1">
+                                                    <i class="bi bi-person-lock"></i>
+                                                </span>
                                                 <input name="renewpassword"
                                                     [type]="showNewtPassword ? 'text' : 'password'" class="form-control"
                                                     id="renewPassword" [(ngModel)]="newPassword" />
-                                                <span class="btn btn-outline-secondary btn-primary" type="button"
-                                                    (click)="togglePasswordVisibility('b')">
-                                                    <i class="bi bi-eye-slash"
-                                                        [ngClass]="showNewtPassword ? 'fa-eye ' : 'fa-eye-slash'"></i>
+                                                <span class="btn btn-outline-secondary btn-primary1" type="button"
+                                                    (click)="togglePasswordVisibility('b')" (click)="toggleIcon('b')">
+                                                    <i class="bi bi-eye" *ngIf="showIcon2"></i>
+                                                    <i class="bi bi-eye-slash" *ngIf="!showIcon2"></i>
                                                 </span>
                                             </div>
 
@@ -277,14 +294,17 @@
                                                 Password</label>
 
                                             <div class="input-group">
+                                                <span class="btn btn-outline-secondary btn-primary1">
+                                                    <i class="bi bi-person-lock"></i>
+                                                </span>
                                                 <input name="renewpassword"
                                                     [type]="showReTypePassword ? 'text' : 'password'"
                                                     class="form-control" id="renewPassword"
                                                     [(ngModel)]="reTypePassword" />
-                                                <span class="btn btn-outline-secondary btn-primary " type="button"
-                                                    (click)="togglePasswordVisibility('c')">
-                                                    <i class="bi bi-eye-slash"
-                                                        [ngClass]="showReTypePassword ? 'fa-eye ' : 'fa-eye-slash'"></i>
+                                                <span class="btn btn-outline-secondary btn-primary1 " type="button"
+                                                    (click)="togglePasswordVisibility('c')" (click)="toggleIcon('c')">
+                                                    <i class="bi bi-eye" *ngIf="showIcon3"></i>
+                                                    <i class="bi bi-eye-slash" *ngIf="!showIcon3"></i>
                                                 </span>
                                             </div>
 
@@ -293,7 +313,7 @@
 
                                             <br>
                                             <div class="text-center">
-                                                <button type="submit" class="btn btn-primary"
+                                                <button type="submit" class="btn btn-primary1"
                                                     (click)="changePassword()">Change
                                                     Password</button>
                                             </div>

@@ -1,34 +1,42 @@
-.btnbtn-outline-secondary  {
-    color: rgb(148, 138, 138);
+.btnbtn-outline-secondary {
+  color: rgb(148, 138, 138);
 }
+
 .btn:hover {
-    color: #fcfbfe;
-    background-color: #08044dca;
-    border-color: var(--bs-btn-hover-border-color);
+  color: #fcfbfe;
+  background-color: #080809c5;
+  border-color: var(--bs-btn-hover-border-color);
 }
 
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-     /* vh stands for viewport height */
-  }
-  
-  form {
-    width: 50%; /* adjust this value to control the form's width */
-  }
-
-  .btn-primary {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #4026d3;
-  }
-
-  element.style {
-    display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* vh stands for viewport height */
 }
-.fa, .fas {
-    font-weight: 900;
+
+form {
+  width: 50%;
+  /* adjust this value to control the form's width */
 }
-.fa, .far, .fas {
-    font-family: "Font Awesome 5 Free";
+
+
+.btn-primary1 {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #68676f;
+}
+
+element.style {
+  display: block;
+}
+
+.fa,
+.fas {
+  font-weight: 900;
+}
+
+.fa,
+.far,
+.fas {
+  font-family: "Font Awesome 5 Free";
 }

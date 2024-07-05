@@ -48,6 +48,9 @@ export class MyProfileComponent implements OnInit {
   showNewtPassword: boolean = false;
   showReTypePassword: boolean = false;
 
+  showIcon1: boolean = false;
+  showIcon2: boolean = false;
+  showIcon3: boolean = false;
 
 
   constructor(
@@ -170,6 +173,23 @@ export class MyProfileComponent implements OnInit {
       this.showReTypePassword = !this.showReTypePassword;
       this.showNewtPassword = false;
       this.showCurrentPassword = false;
+    }
+  }
+
+  toggleIcon(icon: string) {
+    if (icon == 'a') {
+      this.showIcon1 = !this.showIcon1;
+      this.showIcon2 = false;
+      this.showIcon3 = false;
+    } else if (icon == 'b') {
+      this.showIcon2 = !this.showIcon2;
+      this.showIcon1 = false;
+      this.showIcon3 = false;
+    }
+    else if (icon == 'c') {
+      this.showIcon3 = !this.showIcon3;
+      this.showIcon1 = false;
+      this.showIcon2 = false;
     }
   }
 }
