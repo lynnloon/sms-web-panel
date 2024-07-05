@@ -254,7 +254,7 @@ export class CreateStudentComponent implements OnInit {
       return "Fill student name";
     // else if (this.student.stu_email == undefined || this.student.stu_email.trim() == '')
     //   return "Fill email address";
-    else if (this.student.stuRoll_no == undefined || this.student.stuRoll_no.trim() == '')
+    else if (this.student.stuRoll_no == undefined )
       return "Fill Roll number";
     else if (this.student.phone_no == undefined || this.student.phone_no.trim() == '')
       return "Fill phone number";

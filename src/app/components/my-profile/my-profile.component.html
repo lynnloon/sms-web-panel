@@ -23,7 +23,7 @@
 
                         <img [src]="profile" alt="Profile" class="rounded-circle">
                         <h2>{{name}}</h2>
-                        <h3>{{student.stuRoll_no}}</h3>
+                        <h3>{{batchName}}{{student.stu_major+'-'}}{{student.stuRoll_no}}</h3>
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Roll No</div>
-                                    <div class="col-lg-9 col-md-8">{{student.stuRoll_no}}</div>
+                                    <div class="col-lg-9 col-md-8">{{batchName}}{{student.stu_major+'-'}}{{student.stuRoll_no}}</div>
                                 </div>
 
                                 <div class="row">

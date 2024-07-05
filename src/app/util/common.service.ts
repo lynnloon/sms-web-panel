@@ -18,12 +18,14 @@ export class CommonService {
   login(user: User) {
     return this.httpClient.post(this.apiRoute + "/login/checkUser", user);
   } 
+
   getAllAcademicBatchList() {
   return this.httpClient.get(this.apiRoute+"/academicBatch/getAll");
   }
 
-
-
+  getById(id: any) {
+    return this.httpClient.get(this.apiRoute+"/academicBatch/getById?id="+id);
+   }
 
 // check password for password change in my profile
   checkpass(user:User){

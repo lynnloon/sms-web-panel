@@ -8,7 +8,7 @@ export class Student {
     modifyDate?: Date;
     activeStatus?: string;
     stu_name?:string;
-    stuRoll_no?:string;
+    stuRoll_no?:number;
     stu_email?:string;
     phone_no?:string;
     stu_currAddress?:string;

@@ -11,9 +11,9 @@
 
     <div>
         <button type="submit" class="btn btn-primary bi bi-plus-circle" [routerLink]="'/add-student'">
-            Add new student</button> 
+            Add new student</button>
     </div>
-<br/>
+    <br />
     <section class="section">
         <div class="row">
             <div class="card">
@@ -44,7 +44,8 @@
                             <tr *ngFor="let stu of students;let i = index;">
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{stu.stu_gender== 'Male'? 'Mg ':'Ma '}}{{stu.stu_name}}</td>
-                                <td>{{stu.studentBatch?.name}}{{stu.stu_major}} {{stu.stuRoll_no}}</td>
+                                <td>{{getBatchNumber(stu.studentBatch?.name)}}{{stu.stu_major+'-'}}{{stu.stuRoll_no}}
+                                </td>
                                 <td>{{stu.stu_email}}</td>
                                 <td>{{stu.phone_no}}</td>
                                 <td>{{stu.stu_currAddress}}</td>
@@ -58,8 +59,10 @@
                                 <td>{{stu.stu_hostel}}</td>
                                 <td>{{stu.stu_ferry}}</td>
                                 <td>
-                                    <i class="bi bi-pencil-square" title="edit" [routerLink]="['/add-student',stu.id]"></i>&nbsp;
-                                    <i class="bi bi-trash" style="color: red;" title="delete" (click)="delete(stu.id)"></i>
+                                    <i class="bi bi-pencil-square" title="edit"
+                                        [routerLink]="['/add-student',stu.id]"></i>&nbsp;
+                                    <i class="bi bi-trash" style="color: red;" title="delete"
+                                        (click)="delete(stu.id)"></i>
                                 </td>
                             </tr>
                         </tbody>

@@ -1,6 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AcademicBatch } from 'src/app/model/academic-batch';
 import { Department } from 'src/app/model/department';
 import { Position } from 'src/app/model/position';
 import { Staff } from 'src/app/model/staff';
@@ -38,10 +39,10 @@ export class MyProfileComponent implements OnInit {
   staff: Staff = new Staff();
   position: Position = new Position();
   department: Department = new Department();
+  batch: AcademicBatch = new AcademicBatch();
   dept: string | undefined;
-
-
-
+  batchId: number | undefined;
+  batchName: string | undefined;
 
 
   constructor(
@@ -53,6 +54,7 @@ export class MyProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.role = localStorage.getItem('userrole') as string;
     this.name = localStorage.getItem('userName') as string;
     this.profile = localStorage.getItem('profile') as string;
@@ -63,6 +65,16 @@ export class MyProfileComponent implements OnInit {
       this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {
         if (response.status) {
           this.student = response.data;
+
+          //batch name
+          this.batchId = this.student.studentBatch?.id;
+          this.commonService.getById(this.batchId).subscribe((response: any) => {
+            if (response.status) {
+              this.batch = response.data;
+              this.batchName = this.getBatchNumber(this.batch.name);
+            }
+          })
+
         }
       });
     }
@@ -85,11 +97,29 @@ export class MyProfileComponent implements OnInit {
               this.department = response.data;
               this.dept = this.department.name;
             }
-          })
-
-
+          });
         }
       });
+    }
+  }
+
+
+  getBatchNumber(batchName: string | undefined): string {
+    switch (batchName) {
+      case 'FIRST YEAR':
+        return '1';
+      case 'SECOND YEAR':
+        return '2';
+      case 'THIRD YEAR':
+        return '3';
+      case 'FOURTH YEAR':
+        return '4';
+      case 'FIFTH YEAR':
+        return '5';
+      case 'MASTER':
+        return '6';
+      default:
+        return 'Unknown';
     }
   }
 
@@ -102,19 +132,18 @@ export class MyProfileComponent implements OnInit {
     this.commonService.checkpass(this.user).subscribe((response: any) => {
       if (response.status) {
         this.userchange = response.data;
-        
-        if ( this.userchange !=null && this.newPassword == this.reTypePassword  ) {
-         if (this.newPassword.length >=6)
-          {
-          this.userchange.password = this.newPassword;
-          this.commonService.changePass(this.userchange).subscribe((response: any) => {
-            if (response.status) {
-              this.commonService.inputAlert("changed password ", "success");
-            }
-          });
+
+        if (this.userchange != null && this.newPassword == this.reTypePassword) {
+          if (this.newPassword.length >= 6) {
+            this.userchange.password = this.newPassword;
+            this.commonService.changePass(this.userchange).subscribe((response: any) => {
+              if (response.status) {
+                this.commonService.inputAlert("changed password ", "success");
+              }
+            });
           }
-          else 
-          this.commonService.inputAlert("Password length must be at least 6 character  ","warning");
+          else
+            this.commonService.inputAlert("Password length must be at least 6 character  ", "warning");
 
         }
 

@@ -27,6 +27,25 @@ constructor(
    this.getAllStudentList();
   }
 
+  getBatchNumber(batchName: string | undefined): string {
+    switch (batchName) {
+      case 'FIRST YEAR':
+        return '1';
+      case 'SECOND YEAR':
+        return '2';
+      case 'THIRD YEAR':
+        return '3';
+      case 'FOURTH YEAR':
+        return '4';
+        case 'FIFTH YEAR':
+        return '5'
+      case 'MASTER':
+        return '6';
+      default:
+        return 'Unknown';
+    }
+  }
+  
 
   getAllStudentList() {
     this.studentService.getAllStudentList().subscribe((response: any) => {
