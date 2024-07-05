@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./staff-list.component.css']
 })
 export class StaffListComponent implements OnInit {
+  
   staff : Staff = new Staff();
   staffs:Staff[]=[];
   

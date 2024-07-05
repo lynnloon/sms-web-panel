@@ -48,18 +48,18 @@
                                             class="img-fluid img-thumbnail rounded">
                                     </div>
                                     <!-- End of profile when edit -->
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <label for="inputEmail3" class=" col-form-label  required">Name</label>
                                         <input type="text" class="form-control" [(ngModel)]="student.stu_name"
                                             id="inputText" [ngModelOptions]="{standalone: true}">
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <label for="inputEmail3" class=" col-form-label  required">Roll No</label>
                                         <input type="text" class="form-control" id="inputText"
                                             [(ngModel)]="student.stuRoll_no" [ngModelOptions]="{standalone: true}">
                                     </div>
                                     <!-- input major and academic batch  -->
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <label for="inputEmail3" class="col-form-label required">Academic Batch</label>
                                           <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="batch"
                                             [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
@@ -67,19 +67,19 @@
                                             <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
                                         </select> 
                                     </div>                             
-                                    <div class="col-sm-3">
-                                        <label for="inputEmail3" class="col-form-label ">Major</label>
+                                    <div class="col-sm-4">
+                                        <label for="inputEmail3" class="col-form-label required">Major</label>
                                         <input type="email" class="form-control" 
                                             [(ngModel)]="student.stu_major" id="inputEmail"
                                             [ngModelOptions]="{standalone: true}">
                                     </div>
 
-                                   <div class="col-sm-3">
+                                   <div class="col-sm-4">
                                         <label for="inputEmail3" class=" col-form-label  required">Phone No</label>
                                         <input type="text" class="form-control" [(ngModel)]="student.phone_no"
-                                            id="inputText" [ngModelOptions]="{standalone: true}">
+                                            id="inputText" [ngModelOptions]="{standalone: true}" placeholder="09-xxxxxxxxx">
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <label for="inputEmail3" class=" col-form-label  required">Email</label>
                                         <input type="email" class="form-control" id="inputText"
                                             [(ngModel)]="student.stu_email" [ngModelOptions]="{standalone: true}">
@@ -204,7 +204,7 @@
                                     <h5 class="card-title text-center" *ngIf="editStudent == true">Student's Parent
                                         Information Editing Form</h5>
                                     <div class="col-sm-3">
-                                        <label for="firstName" class=" col-form-label required">Father Name</label>
+                                        <label for="firstName" class=" col-form-label required">Father's Name</label>
                                         <input type="text" class="form-control" id="firstName" [(ngModel)]="father.name"
                                             [ngModelOptions]="{standalone: true}">
                                     </div>
@@ -243,13 +243,13 @@
                                     <div class="form-group">
                                         <label for="address" class=" col-form-label required">Address</label>
                                         <textarea rows="2" type="text" class="form-control" id="address"
-                                            placeholder="Street Address" [(ngModel)]="father.address"  [ngModelOptions]="{standalone: true}">
+                                         [(ngModel)]="father.address"  [ngModelOptions]="{standalone: true}">
                                 </textarea>
                                     </div>
                                     <!-- Mother info -->
                                     <div class="col-sm-3">
-                                        <label for="firstName" class=" col-form-label required">Mother Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="Name"
+                                        <label for="firstName" class=" col-form-label required">Mother's Name</label>
+                                        <input type="text" class="form-control" id="firstName" 
                                             [(ngModel)]="mother.name" [ngModelOptions]="{standalone: true}">
                                     </div>
                                     <div class="col-sm-3">
@@ -287,7 +287,7 @@
                                     <div class="form-group">
                                         <label for="address" class=" col-form-label required"> Address</label>
                                         <textarea rows="2" type="text" class="form-control" id="address"
-                                            placeholder="Street Address" [(ngModel)]="mother.address"
+                                             [(ngModel)]="mother.address"
                                             [ngModelOptions]="{standalone: true}">
                                 </textarea>
                                     </div>
@@ -321,7 +321,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <label for="relationship" class=" col-form-label required">Occupation</label>
-                                        <input type="text" class="form-control" id="relationship" placeholder=""
+                                        <input type="text" class="form-control" id="relationship" 
                                             [(ngModel)]="emergency.occupation" [ngModelOptions]="{standalone: true}">
                                     </div>
                                     <div class="col-sm-4">
@@ -349,7 +349,7 @@
                                     <div class="col-sm-8">
                                         <label for="address" class=" col-form-label required">Address Of Person Contact In Case Of Emergency</label>
                                         <textarea rows="2" type="text" class="form-control" id="address"
-                                            placeholder="Street Address" [(ngModel)]="emergency.address" [ngModelOptions]="{standalone: true}">
+                                         [(ngModel)]="emergency.address" [ngModelOptions]="{standalone: true}">
                                     </textarea>
                                     </div>
 
