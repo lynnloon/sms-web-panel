@@ -1,0 +1,42 @@
+/* for timetable */
+.timetable {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+  }
+  
+  .timetable th,
+  .timetable td {
+    border: 1px solid #181717;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .container {
+    display: grid;
+    width: 80%;
+    place-items: center; 
+  }
+   
+  
+  /* diagonal line in timetable */
+  /* .diagonal {
+    border: 1px solid rgb(0, 0, 0);
+    height: 50px;
+    width: 80px;
+    position: relative;
+  }
+  
+  .diagonal:after {
+    content: "Time";
+    position: absolute;
+    border-top: 1px solid rgb(189, 175, 175);
+    width: 120%;
+    left: 0;
+    transform: rotate(33deg);
+    transform-origin: 0% 0%;
+    top: -1px;
+  } */
