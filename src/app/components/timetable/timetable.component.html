@@ -13,12 +13,20 @@
     <form class="row g-3" align="center">
       <div class="col-sm-3">
         <label><b>Academic Batch</b></label>
-        <input type="text" class="form-control">
+        <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="batch" [ngModelOptions]="{standalone: true}">
+          <option value="">Choose..</option>
+          <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
+        </select>
       </div>
 
       <div class="col-sm-3">
         <label><b>Major</b></label>
-        <input type="text" class="form-control">
+        <select class="form-select" id="inputGroupSelect01 ">
+        <option value="">Choose..</option>
+        <option *ngIf="batch.name == 'FIRST YEAR'">CST</option>
+        <option *ngIf="batch.name != 'FIRST YEAR'">CS</option>
+        <option *ngIf="batch.name != 'FIRST YEAR'">CT</option>
+    </select>
       </div>
 
       <div class="col-sm-3">
@@ -27,7 +35,10 @@
       </div>
       <div class="col-sm-3">
         <label><b>Semester</b></label>
-        <input type="text" class="form-control">
+        <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester" [ngModelOptions]="{standalone: true}">
+          <option value="">Choose..</option>
+          <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
+        </select>
       </div>
     </form>
   </section><br />
