@@ -1,0 +1,94 @@
+<div class="main" id="main">
+  <div class="pagetitle">
+    <h1>Timetable for students</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+        <li class="breadcrumb-item">Timetable</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="container">
+    <form class="row g-3" align="center">
+      <div class="col-sm-3">
+        <label><b>Academic Batch</b></label>
+        <input type="text" class="form-control" id="firstName">
+      </div>
+
+      <div class="col-sm-3">
+        <label><b>Major</b></label>
+        <input type="text" class="form-control" id="firstName">
+      </div>
+
+      <div class="col-sm-3">
+        <label><b>Section</b></label>
+        <input type="text" class="form-control" id="firstName">
+      </div>
+    </form>
+  </section><br />
+  <section class="section">
+    <div class="row">
+      <table class="timetable">
+        <tr>
+          <th bgcolor="  #c6e1ff">Day</th>
+          <th bgcolor=" EDC6FC">9:00-9:55</th>
+          <th bgcolor=" EDC6FC">10:05-11:00</th>
+          <th bgcolor=" EDC6FC">11:10-12:05</th>
+          <th bgcolor=" EDC6FC">12:05-1:00</th>
+          <th bgcolor=" EDC6FC">1:00-1:55</th>
+          <th bgcolor=" EDC6FC">2:05-3:00</th>
+          <th bgcolor=" EDC6FC">3:10-4:05</th>
+        </tr>
+        <tr>
+          <td bgcolor="  #c6e1ff"><b>MON</b></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td rowspan="5">
+            <h2>L<br>U<br>N<br>C<br>H</h2>
+          </td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+        </tr>
+        <tr>
+          <td bgcolor="  #c6e1ff"><b>TUE</b></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+        </tr>
+        <tr>
+          <td bgcolor="  #c6e1ff"><b>WED</b></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+        </tr>
+        <tr>
+          <td bgcolor="  #c6e1ff"><b>THU</b></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+        </tr>
+        <tr>
+          <td bgcolor="  #c6e1ff"><b>FRI</b></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+          <td contenteditable="true"></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</div>

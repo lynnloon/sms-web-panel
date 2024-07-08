@@ -343,7 +343,7 @@ h6 {
   margin-bottom: -2px;
   border: none;
   color: #2c384e;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .nav-tabs-bordered .nav-link:hover,
@@ -1147,7 +1147,7 @@ h6 {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
-  
+
 }
 
 .contact .php-email-form input:focus,
@@ -1246,24 +1246,70 @@ h6 {
   color: #012970;
 }
 
-.required::before{
-  content:'*';
+.required::before {
+  content: '*';
   margin-right: 4px;
   color: red;
 }
 
 
-input.form-control, textarea.form-control, select.form-control {
-  border: 1px solid #5f5656; 
+input.form-control,
+textarea.form-control,
+select.form-control {
+  border: 1px solid #5f5656;
 }
 
-.form-select{
-  border: 1px solid #5f5656; 
+.form-select {
+  border: 1px solid #5f5656;
 }
-.profileCss{
+
+.profileCss {
   text-align: center;
 }
 
-.link{
+.link {
   color: #000;
 }
+
+
+/* for timetable */
+.timetable {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.timetable th,
+.timetable td {
+  border: 1px solid #181717;
+  padding: 10px;
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  place-items: center; 
+}
+ 
+
+/* diagonal line in timetable */
+/* .diagonal {
+  border: 1px solid rgb(0, 0, 0);
+  height: 50px;
+  width: 80px;
+  position: relative;
+}
+
+.diagonal:after {
+  content: "Time";
+  position: absolute;
+  border-top: 1px solid rgb(189, 175, 175);
+  width: 120%;
+  left: 0;
+  transform: rotate(33deg);
+  transform-origin: 0% 0%;
+  top: -1px;
+} */

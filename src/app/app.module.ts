@@ -30,6 +30,7 @@ import { StudentDashboardComponent } from './layout/student-dashboard/student-da
 import { DatePipe } from '@angular/common';
 import { ContactComponent } from './components/contact/contact.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { TimetableComponent } from './components/timetable/timetable.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     StudentDashboardComponent,
     ContactComponent,
     MyProfileComponent,
+    TimetableComponent,
   ],
   imports: [
     BrowserModule,

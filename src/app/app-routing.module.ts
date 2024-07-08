@@ -21,6 +21,7 @@ import { StudentListComponent } from './components/student-list/student-list.com
 import { CreateStudentComponent } from './components/create-student/create-student.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { TimetableComponent } from './components/timetable/timetable.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
   { path: 'add-student/:id',component:CreateStudentComponent},
   { path: 'contact',component:ContactComponent},
   { path: 'my-profile',component:MyProfileComponent},
+
+  //Timetable testing
+  { path: 'timetable',component:TimetableComponent},
+
 
   // For Student Dashboard
   { path: 'student-dashboard',component:StudentDashboardComponent},
