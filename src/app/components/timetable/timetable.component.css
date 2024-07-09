@@ -16,7 +16,7 @@
   }
   
   .container {
-    display: grid;
+
     width: 80%;
     place-items: center; 
   }

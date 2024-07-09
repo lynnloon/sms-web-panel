@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'src/app/model/subject';
 import { AcademicBatch } from 'src/app/model/academic-batch';
 import { Section } from 'src/app/model/section';
 import { Semester } from 'src/app/model/semester';
 import { SectionService } from 'src/app/service/section.service';
 import { SemesterService } from 'src/app/service/semester.service';
 import { CommonService } from 'src/app/util/common.service';
+import { SubjectService } from 'src/app/service/subject.service';
 
 @Component({
   selector: 'app-timetable',
@@ -19,19 +21,23 @@ export class TimetableComponent implements OnInit {
   semesters: Semester[] = [];
   section: Section = new Section();
   sections: Section[] = [];
+  subject: Subject = new Subject();
+  subjects: Subject[] = [];
   major: String | undefined;
+  subList?: boolean = false;
 
 
   constructor(
     private commonService: CommonService,
     private semesterService: SemesterService,
     private sectionService: SectionService,
+    private subjectService: SubjectService,
   ) { }
 
   ngOnInit(): void {
     this.getAllAcademicBatchList();
     this.getAllSemester();
-   
+
 
 
   }
@@ -65,11 +71,24 @@ export class TimetableComponent implements OnInit {
   onChangeCombo() {
     this.section.academicBatch = new AcademicBatch();
     this.section.academicBatch = (this.batch);
-  
+
   }
 
-  onChange(){
+  onChange() {
     this.getSectionList();
   }
 
+  // show() {
+  //   this.subjectService.getSubByBatch(this.subject).subscribe((response: any) => {
+  //     if (response.status) {
+  //       if (this.subList)
+  //         this.subjects = response.data;
+  //     }
+  //   });
+  // }
+
+
+
 }
+
+

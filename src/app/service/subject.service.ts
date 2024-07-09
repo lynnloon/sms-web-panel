@@ -2,12 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CommonService } from '../util/common.service';
 import { Subject } from '../model/subject';
+import { AcademicBatch } from '../model/academic-batch';
+import { Semester } from '../model/semester';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubjectService {
  
+  
   constructor(
     private httpClient: HttpClient,
     private commonService: CommonService
@@ -15,7 +18,7 @@ export class SubjectService {
 
  
   getAllSubjectList() {
-    return this.httpClient.get(this.commonService.apiRoute + "/subject/getAll")
+    return this.httpClient.get(this.commonService.apiRoute + "/subject/getAll");
   }
 
   create(subject: Subject) {
@@ -26,6 +29,9 @@ export class SubjectService {
     return this.httpClient.post(this.commonService.apiRoute + "/subject/update", subject);
   }
  
+  getSubByBatch(subject: Subject) {
+    return this.httpClient.get(this.commonService.apiRoute + "/subject/getSubByBatch")
+  } 
 
   getById(id: any) {
     return this.httpClient.get(this.commonService.apiRoute+"/subject/getById?id="+id);
