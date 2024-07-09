@@ -9,101 +9,109 @@
     </nav>
   </div><!-- End Page Title -->
 
-  <section class="container">
-    <form class="row g-3" align="center">
-      <div class="col-sm-3">
-        <label><b>Academic Batch</b></label>
-        <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="batch" [ngModelOptions]="{standalone: true}">
-          <option value="">Choose..</option>
-          <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
-        </select>
-      </div>
+  <div class="card"><br />
+    <section class="container">
+      <form class="row g-3" align="center">
+        <div class="col-sm-3">
+          <label><b>Academic Batch</b></label>
+          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="batch" [ngModelOptions]="{standalone: true}"
+            (ngModelChange)="onChangeCombo()">
+            <option value="">Choose..</option>
+            <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
+          </select>
+        </div>
 
-      <div class="col-sm-3">
-        <label><b>Major</b></label>
-        <select class="form-select" id="inputGroupSelect01 ">
-        <option value="">Choose..</option>
-        <option *ngIf="batch.name == 'FIRST YEAR'">CST</option>
-        <option *ngIf="batch.name != 'FIRST YEAR'">CS</option>
-        <option *ngIf="batch.name != 'FIRST YEAR'">CT</option>
-    </select>
-      </div>
+        <div class="col-sm-3">
+          <label><b>Major</b></label>
+          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="section.major"  >
+            <option value="">Choose..</option>
+            <option *ngIf="batch.name == 'FIRST YEAR'">CST</option>
+            <option *ngIf="batch.name != 'FIRST YEAR'">CS</option>
+            <option *ngIf="batch.name != 'FIRST YEAR'">CT</option>
+          </select>
+        </div>
 
-      <div class="col-sm-3">
-        <label><b>Section</b></label>
-        <input type="text" class="form-control">
+        <div class="col-sm-3">
+          <label><b>Section</b></label>
+          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="section"
+            [ngModelOptions]="{standalone: true}" (click)="onChange()">
+            <option value="">Choose..</option>
+            <option *ngFor="let sec of sections;" [ngValue]="sec">{{sec.name}}</option>
+          </select>
+        </div>
+        <div class="col-sm-3">
+          <label><b>Semester</b></label>
+          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
+            [ngModelOptions]="{standalone: true}">
+            <option value="">Choose..</option>
+            <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
+          </select>
+        </div>
+      </form>
+    </section><br />
+    <section class="section">
+      <div class="row">
+        <table class="timetable">
+          <tr>
+            <th bgcolor="  #c6e1ff">Day</th>
+            <th bgcolor=" EDC6FC">9:00-9:55</th>
+            <th bgcolor=" EDC6FC">10:05-11:00</th>
+            <th bgcolor=" EDC6FC">11:10-12:05</th>
+            <th bgcolor=" EDC6FC">12:05-1:00</th>
+            <th bgcolor=" EDC6FC">1:00-1:55</th>
+            <th bgcolor=" EDC6FC">2:05-3:00</th>
+            <th bgcolor=" EDC6FC">3:10-4:05</th>
+          </tr>
+          <tr>
+            <td bgcolor="  #c6e1ff"><b>MON</b></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td rowspan="5">
+              <h2>L<br>U<br>N<br>C<br>H</h2>
+            </td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+          <tr>
+            <td bgcolor="  #c6e1ff"><b>TUE</b></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+          <tr>
+            <td bgcolor="  #c6e1ff"><b>WED</b></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+          <tr>
+            <td bgcolor="  #c6e1ff"><b>THU</b></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+          <tr>
+            <td bgcolor="  #c6e1ff"><b>FRI</b></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+        </table>
       </div>
-      <div class="col-sm-3">
-        <label><b>Semester</b></label>
-        <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester" [ngModelOptions]="{standalone: true}">
-          <option value="">Choose..</option>
-          <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
-        </select>
-      </div>
-    </form>
-  </section><br />
-  <section class="section">
-    <div class="row">
-      <table class="timetable">
-        <tr>
-          <th bgcolor="  #c6e1ff">Day</th>
-          <th bgcolor=" EDC6FC">9:00-9:55</th>
-          <th bgcolor=" EDC6FC">10:05-11:00</th>
-          <th bgcolor=" EDC6FC">11:10-12:05</th>
-          <th bgcolor=" EDC6FC">12:05-1:00</th>
-          <th bgcolor=" EDC6FC">1:00-1:55</th>
-          <th bgcolor=" EDC6FC">2:05-3:00</th>
-          <th bgcolor=" EDC6FC">3:10-4:05</th>
-        </tr>
-        <tr>
-          <td bgcolor="  #c6e1ff"><b>MON</b></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td rowspan="5">
-            <h2>L<br>U<br>N<br>C<br>H</h2>
-          </td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-        </tr>
-        <tr>
-          <td bgcolor="  #c6e1ff"><b>TUE</b></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-        </tr>
-        <tr>
-          <td bgcolor="  #c6e1ff"><b>WED</b></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-        </tr>
-        <tr>
-          <td bgcolor="  #c6e1ff"><b>THU</b></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-        </tr>
-        <tr>
-          <td bgcolor="  #c6e1ff"><b>FRI</b></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-        </tr>
-      </table>
-    </div>
-  </section>
+    </section><br /><br />
+  </div>
 </div>

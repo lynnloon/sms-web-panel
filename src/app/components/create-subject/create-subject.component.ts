@@ -70,13 +70,7 @@ export class CreateSubjectComponent implements OnInit {
     }
 
   }
-
-
-
-
-
-   
-  }
+ }
   checkValidation() {
     if (this.subject.name == undefined || this.subject.name.trim() == "")
       return "Fill subject name"

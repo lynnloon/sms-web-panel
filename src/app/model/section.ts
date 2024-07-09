@@ -6,6 +6,7 @@ export class Section {
     modifyDate?: Date;
     activeStatus?: string;
     name?:string;
+    major?:String;
     academicBatch?:AcademicBatch=new AcademicBatch();
 
 }

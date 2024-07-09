@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AcademicBatch } from 'src/app/model/academic-batch';
+import { Section } from 'src/app/model/section';
 import { Semester } from 'src/app/model/semester';
+import { SectionService } from 'src/app/service/section.service';
 import { SemesterService } from 'src/app/service/semester.service';
 import { CommonService } from 'src/app/util/common.service';
 
@@ -15,15 +17,32 @@ export class TimetableComponent implements OnInit {
   batches: AcademicBatch[] = [];
   semester: Semester = new Semester();
   semesters: Semester[] = [];
+  section: Section = new Section();
+  sections: Section[] = [];
+  major: String | undefined;
+
 
   constructor(
     private commonService: CommonService,
     private semesterService: SemesterService,
+    private sectionService: SectionService,
   ) { }
 
   ngOnInit(): void {
     this.getAllAcademicBatchList();
     this.getAllSemester();
+   
+
+
+  }
+  getSectionList() {
+    this.sectionService.getSectionList(this.section).subscribe((response: any) => {
+      if (response.status) {
+        this.sections = response.data;
+      }
+    });
+
+
   }
 
   getAllAcademicBatchList() {
@@ -43,12 +62,14 @@ export class TimetableComponent implements OnInit {
     });
   }
 
-  // onChangeCombo() {
-  //   this.student.studentBatch = new AcademicBatch();
-  //   this.student.studentBatch = (this.batch);
+  onChangeCombo() {
+    this.section.academicBatch = new AcademicBatch();
+    this.section.academicBatch = (this.batch);
+  
+  }
 
-
-
-  // }
+  onChange(){
+    this.getSectionList();
+  }
 
 }
