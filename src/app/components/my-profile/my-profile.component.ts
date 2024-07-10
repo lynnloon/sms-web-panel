@@ -86,7 +86,7 @@ export class MyProfileComponent implements OnInit {
         }
       });
     }
-    else if (this.role == "TEACHER") {
+    else if (this.role == "TEACHER" || this.role=="ADMIN") {
       this.staffService.getStaffInfoByEmail(this.email).subscribe((response: any) => {
         if (response.status) {
           this.staff = response.data;
