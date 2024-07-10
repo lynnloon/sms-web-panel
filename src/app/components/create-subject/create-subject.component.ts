@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AcademicBatch } from 'src/app/model/academic-batch';
+import { Semester } from 'src/app/model/semester';
 import { Subject } from 'src/app/model/subject';
+import { SemesterService } from 'src/app/service/semester.service';
 import { SubjectService } from 'src/app/service/subject.service';
 import { CommonService } from 'src/app/util/common.service';
 
@@ -17,27 +19,47 @@ export class CreateSubjectComponent implements OnInit {
 
   subject: Subject = new Subject();
   batch: AcademicBatch = new AcademicBatch();
+  semester: Semester = new Semester();
 
   batches: AcademicBatch[] = [];
+  semesters: Semester[] = [];
 
   constructor(
     private subjectService: SubjectService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private commonService: CommonService
-
-
+    private commonService: CommonService,
+    private semesterService: SemesterService,
   ) { }
 
 
   ngOnInit() {
     this.getAllAcademicBatchList();
+    this.getAllSemester();
     this.activatedRoute.params.subscribe(params => {
       const subjectid = params['id'];
       if (subjectid) {
         this.editSubject = true;
         this.getById(subjectid);
       }
+    });
+  }
+
+  getById(id: any) {
+    this.subjectService.getById(id).subscribe((response: any) => {
+      if (response.status) {
+        this.subject = response.data;
+        const selectedBatch = this.batches.find(u => u.id === this.subject.subjectBatch?.id);
+        if (selectedBatch) {
+          this.batch = selectedBatch;
+        }
+        const selectedSem = this.semesters.find(u => u.id === this.subject.subjectSem?.id);
+        if (selectedSem) {
+          this.semester = selectedSem;
+        }
+      }
+      else
+        window.alert("No record data")
     });
   }
 
@@ -49,23 +71,17 @@ export class CreateSubjectComponent implements OnInit {
       }
     });
   }
-  getById(id: any) {
-    this.subjectService.getById(id).subscribe((response: any) => {
-      if (response.status) {
-        this.subject = response.data;
-        const selectedBatch = this.batches.find(u => u.id === this.subject.subjectBatch?.id);
-        if (selectedBatch) {
-          this.batch = selectedBatch;
-        }
+  getAllSemester() {
+    this.semesterService.getAllSemester().subscribe((respone: any) => {
+      if (respone.status) {
+        this.semesters = respone.data;
       }
-      else
-        window.alert("No record data")
     });
   }
 
   onChangeCombo() {
-    this.subject.subjectBatch = new AcademicBatch();
     this.subject.subjectBatch = (this.batch);
+    this.subject.subjectSem = (this.semester);
   }
 
   save() {

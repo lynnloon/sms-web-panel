@@ -80,7 +80,7 @@
                         <div class="col-sm-6">
 
                             <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="department"
-                                [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange()">
+                                [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
                                 <option value="">Choose..</option>
                                 <option *ngFor="let dept of departments;" [ngValue]="dept">{{dept.name}}</option>
                             </select>
