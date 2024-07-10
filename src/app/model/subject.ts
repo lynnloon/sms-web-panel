@@ -9,6 +9,6 @@ export class Subject {
     name?: string;
     moduleNo?: string;
     major?: String;
-    SubjectBatch?: AcademicBatch = new AcademicBatch();
-    SubjectSem?: Semester = new Semester();
+    subjectBatch?: AcademicBatch = new AcademicBatch();
+    subjectSem?: Semester = new Semester();
 }

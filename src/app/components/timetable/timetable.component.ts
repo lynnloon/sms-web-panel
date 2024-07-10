@@ -114,7 +114,6 @@ export class TimetableComponent implements OnInit {
   onChangeCombo() {
     this.section.academicBatch = new AcademicBatch();
     this.section.academicBatch = (this.batch);
-
   }
 
   onChange() {
