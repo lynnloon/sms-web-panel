@@ -93,6 +93,7 @@ export class TimetableComponent implements OnInit {
     this.sectionService.getSectionList(this.filterDTO).subscribe((response: any) => {
       if (response.status) {
         this.sections = response.data;
+        console.log("section lists>>>"+this.sections);
       }
     });
   }
@@ -125,6 +126,7 @@ export class TimetableComponent implements OnInit {
   }
 
   onMajorChange(){
+    console.log(this.filterDTO.batchId+"  >>> "+this.filterDTO.major);
     this.getSectionList();
   }
   

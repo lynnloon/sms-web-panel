@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/student-dashboard'])
           else if (this.user.role == 'TEACHER')
             this.router.navigate(['/admin-dashboard'])
+          else if (this.user.role == 'ADMIN')
+            this.router.navigate(['/admin-dashboard']);
         } else {
           window.alert(response.message);
         }
@@ -48,7 +50,7 @@ export class LoginComponent implements OnInit {
       window.alert('Invalid user name or password.')
 
   }
-  
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }

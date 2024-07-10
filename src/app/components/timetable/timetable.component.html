@@ -24,7 +24,7 @@
 
         <div class="col-sm-3">
           <label><b>Major</b></label>
-          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="filterDTO.major" (ngModelChange)="onMajorChange()">
+          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="filterDTO.major" [ngModelOptions]="{standalone: true}" (ngModelChange)="onMajorChange()">
             <option value="">Choose..</option>
             <option *ngIf="batch.name == 'FIRST YEAR'">CST</option>
             <option *ngIf="batch.name != 'FIRST YEAR'">CS</option>

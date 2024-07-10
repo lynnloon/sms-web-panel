@@ -4,6 +4,7 @@ import { CommonService } from '../util/common.service';
 import { Route } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AcademicBatch } from '../model/academic-batch';
+import { FilterDTO } from '../model/filter-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class SectionService {
     private httpClient: HttpClient,
   ) { }
 
-  getSectionList(section: Section) {
-    return this.httpClient.get(this.commonService.apiRoute + "/section/getSectionList");
+  getSectionList(filter: FilterDTO) {
+    return this.httpClient.post(this.commonService.apiRoute + "/section/getSectionList",filter);
   }
 
 }
