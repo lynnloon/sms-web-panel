@@ -7,6 +7,7 @@ import { SectionService } from 'src/app/service/section.service';
 import { SemesterService } from 'src/app/service/semester.service';
 import { CommonService } from 'src/app/util/common.service';
 import { SubjectService } from 'src/app/service/subject.service';
+import { FilterDTO } from 'src/app/model/filter-dto';
 
 @Component({
   selector: 'app-timetable',
@@ -16,14 +17,16 @@ import { SubjectService } from 'src/app/service/subject.service';
 export class TimetableComponent implements OnInit {
 
   batch: AcademicBatch = new AcademicBatch();
-  batches: AcademicBatch[] = [];
   semester: Semester = new Semester();
-  semesters: Semester[] = [];
   section: Section = new Section();
-  sections: Section[] = [];
   subject: Subject = new Subject();
+  filterDTO: FilterDTO = new FilterDTO();
+
+  batches: AcademicBatch[] = [];
+  semesters: Semester[] = [];
+  sections: Section[] = [];
   subjects: Subject[] = [];
-  major: String | undefined;
+
   subList?: boolean = false;
 
 
@@ -31,7 +34,7 @@ export class TimetableComponent implements OnInit {
     private commonService: CommonService,
     private semesterService: SemesterService,
     private sectionService: SectionService,
-    private subjectService: SubjectService,
+    public subjectService: SubjectService,
   ) { }
 
   ngOnInit(): void {
@@ -69,23 +72,29 @@ export class TimetableComponent implements OnInit {
   }
 
   onChangeCombo() {
-    this.section.academicBatch = new AcademicBatch();
-    this.section.academicBatch = (this.batch);
+    this.filterDTO.batchId = this.batch.id;
+    this.show();
+  }
 
+  onSemesterChange() {
+    this.filterDTO.semesterId = this.semester.id;
+    this.show();
   }
 
   onChange() {
     this.getSectionList();
   }
 
-  // show() {
-  //   this.subjectService.getSubByBatch(this.subject).subscribe((response: any) => {
-  //     if (response.status) {
-  //       if (this.subList)
-  //         this.subjects = response.data;
-  //     }
-  //   });
-  // }
+  //show subject list
+  show() {
+    this.subList = true;
+    this.subjectService.getSubByBatch(this.filterDTO).subscribe((response: any) => {
+      if (response.status) {
+        this.subjects = response.data;
+        console.log('I am here>>>>>>>>>>>>',this.subjects);
+      }
+    });
+  }
 
 
 
