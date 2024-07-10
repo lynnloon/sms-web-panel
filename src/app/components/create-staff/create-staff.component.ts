@@ -17,23 +17,23 @@ import Swal from 'sweetalert2';
 })
 export class CreateStaffComponent implements OnInit {
 
-
-  editStaff?: boolean = false;
-  staff: Staff = new Staff();
-  staffs: Staff[] = [];
-  position: Position = new Position();
-  positions: Position[] = [];
-
-  department: Department = new Department();
-  departments: Department[] = [];
-
+  editStaff?: boolean = false;  
   form !: FormGroup;
   filepath !: string;
+
+  staff: Staff = new Staff();  
+  position: Position = new Position();  
+  department: Department = new Department();
+  
+  positions: Position[] = [];
+  staffs: Staff[] = [];
+  departments: Department[] = [];
+
 
   constructor(
     private positionService: PositionService,
     private staffService: StaffService,
-    private departmentService:DepartmentService,
+    private departmentService: DepartmentService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private commonService: CommonService,
@@ -135,10 +135,10 @@ export class CreateStaffComponent implements OnInit {
     });
   }
 
-  getAllDepartmentList(){
-    this.departmentService.getAllDepartmentList().subscribe((response:any)=>{
-      if(response.status){
-        this.departments=response.data;
+  getAllDepartmentList() {
+    this.departmentService.getAllDepartmentList().subscribe((response: any) => {
+      if (response.status) {
+        this.departments = response.data;
       }
     });
   }
@@ -211,11 +211,7 @@ export class CreateStaffComponent implements OnInit {
   }
 
   onChangeCombo() {
-    this.staff.staffPosition = new Position();
     this.staff.staffPosition = (this.position);
-  }
-  onChange() {
-    this.staff.staffDepartment = new Department();
     this.staff.staffDepartment = (this.department);
   }
 

@@ -35,7 +35,7 @@
         <div class="col-sm-3">
           <label><b>Section</b></label>
           <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="section"
-            [ngModelOptions]="{standalone: true}" >
+            [ngModelOptions]="{standalone: true}">
             <option value="">Choose..</option>
             <option *ngFor="let sec of sections;" [ngValue]="sec">{{sec.name}}</option>
           </select>
@@ -43,8 +43,7 @@
         <div class="col-sm-3">
           <label><b>Semester</b></label>
           <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
-         [ngModelOptions]="{standalone: true}"
-          (ngModelChange)="onSemesterChange()">
+            [ngModelOptions]="{standalone: true}" (ngModelChange)="onSemesterChange()">
             <option value="">Choose..</option>
             <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
           </select>
@@ -116,11 +115,12 @@
         </table>
       </div>
     </section><br /><br />
-    <div *ngIf="subList==true">
-      <div *ngFor=" let sub of subjects">
-        {{sub.name}}
-      </div>
-    </div>
+    <table class="table table-borderless" *ngIf="subList==true">
+      <tr *ngFor=" let sub of subjects;let i = index;">
+        <td>{{sub.moduleNo}}</td>
+        <td> {{sub.name}}</td>
+      </tr>
+    </table><br />
   </div>
 
   <!-- timetable view for student -->

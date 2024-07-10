@@ -20,27 +20,25 @@ import { AcademicBatch } from 'src/app/model/academic-batch';
 })
 export class CreateStudentComponent implements OnInit {
 
-
-
   editStudent?: boolean = false;
+  form !: FormGroup;
+  filepath !: string;
+  relation!: string;
+  academic?: string;
 
   student: Student = new Student();
   year: AcademicYear = new AcademicYear();
-  academic?: string;
-  years: AcademicYear[] = [];
   father: FamilyMember = new FamilyMember();
   mother: FamilyMember = new FamilyMember();
   emergency: FamilyMember = new FamilyMember();
   batch: AcademicBatch = new AcademicBatch();
+
+  years: AcademicYear[] = [];
   batches: AcademicBatch[] = [];
 
 
-  form !: FormGroup;
-  filepath !: string;
-  relation!: string;
 
   constructor(
-    
     private httpClient: HttpClient,
     private studentService: StudentService,
     private academicService: AcademicService,
@@ -62,7 +60,6 @@ export class CreateStudentComponent implements OnInit {
       if (studentid) {
         this.editStudent = true;
         this.getById(studentid);
-
       }
     });
     this.form = this.fb.group({
@@ -74,7 +71,6 @@ export class CreateStudentComponent implements OnInit {
     this.commonService.getAllAcademicBatchList().subscribe((response: any) => {
       if (response.status) {
         this.batches = response.data;
-
       }
     });
   }
@@ -131,7 +127,6 @@ export class CreateStudentComponent implements OnInit {
   }
 
   saveFile() {
-
     var formData: any = new FormData();
     formData.append('uploadFile', this.form?.get('cover')?.value);
     //formData.append('multipartFile', this.form?.get('cover')?.value);
@@ -213,7 +208,7 @@ export class CreateStudentComponent implements OnInit {
         window.alert('no record found');
       }
     });
-   
+
   }
 
   save() {
@@ -254,7 +249,7 @@ export class CreateStudentComponent implements OnInit {
       return "Fill student name";
     // else if (this.student.stu_email == undefined || this.student.stu_email.trim() == '')
     //   return "Fill email address";
-    else if (this.student.stuRoll_no == undefined )
+    else if (this.student.stuRoll_no == undefined)
       return "Fill Roll number";
     else if (this.student.phone_no == undefined || this.student.phone_no.trim() == '')
       return "Fill phone number";
@@ -332,24 +327,9 @@ export class CreateStudentComponent implements OnInit {
     else
       return "OK";
   }
-
-  // getAllAcademicYearList() {
-
-  //   this.academicService.getAllAcademicYear().subscribe((response: any) => {
-  //     if (response.status) {
-  //       this.years = response.data;
-  //     }
-  //   });
-  // }
-
   onChangeCombo() {
-    this.student.stuAcademicYear = new AcademicYear();
     this.student.stuAcademicYear = (this.year);
-    this.student.studentBatch = new AcademicBatch();
     this.student.studentBatch = (this.batch);
-
-
-
   }
 
 }
