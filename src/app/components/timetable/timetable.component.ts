@@ -90,7 +90,7 @@ export class TimetableComponent implements OnInit {
     }
   }
   getSectionList() {
-    this.sectionService.getSectionList(this.section).subscribe((response: any) => {
+    this.sectionService.getSectionList(this.filterDTO).subscribe((response: any) => {
       if (response.status) {
         this.sections = response.data;
       }
@@ -124,9 +124,10 @@ export class TimetableComponent implements OnInit {
     this.show();
   }
 
-  onChange() {
+  onMajorChange(){
     this.getSectionList();
   }
+  
 
   //show subject list
   show() {

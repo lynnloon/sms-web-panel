@@ -24,7 +24,7 @@
 
         <div class="col-sm-3">
           <label><b>Major</b></label>
-          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="filterDTO.major">
+          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="filterDTO.major" (ngModelChange)="onMajorChange()">
             <option value="">Choose..</option>
             <option *ngIf="batch.name == 'FIRST YEAR'">CST</option>
             <option *ngIf="batch.name != 'FIRST YEAR'">CS</option>
@@ -35,7 +35,7 @@
         <div class="col-sm-3">
           <label><b>Section</b></label>
           <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="section"
-            [ngModelOptions]="{standalone: true}" (click)="onChange()">
+            [ngModelOptions]="{standalone: true}" >
             <option value="">Choose..</option>
             <option *ngFor="let sec of sections;" [ngValue]="sec">{{sec.name}}</option>
           </select>
