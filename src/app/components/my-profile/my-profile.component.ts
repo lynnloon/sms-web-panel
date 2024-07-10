@@ -81,7 +81,7 @@ export class MyProfileComponent implements OnInit {
               this.batch = response.data;
               this.batchName = this.getBatchNumber(this.batch.name);
             }
-          })
+          });
 
         }
       });
