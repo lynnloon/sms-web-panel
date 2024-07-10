@@ -1,29 +1,39 @@
 /* for timetable */
 .timetable {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-collapse: collapse;
-  }
-  
-  .timetable th,
-  .timetable td {
-    border: 1px solid #181717;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
 
-    width: 80%;
-    place-items: center; 
-  }
-   
-  
-  /* diagonal line in timetable */
-  /* .diagonal {
+.table{
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timetable th,
+.timetable td {
+  border: 1px solid #181717;
+  padding: 10px;
+  text-align: center;
+}
+
+.container {
+
+  width: 80%;
+  place-items: center;
+}
+
+.margin {
+  padding-right: 100px;
+  text-align: right;
+}
+
+/* diagonal line in timetable */
+/* .diagonal {
     border: 1px solid rgb(0, 0, 0);
     height: 50px;
     width: 80px;
