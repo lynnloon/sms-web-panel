@@ -24,7 +24,7 @@
 
         <div class="col-sm-3">
           <label><b>Major</b></label>
-          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="subject.major">
+          <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="filterDTO.major">
             <option value="">Choose..</option>
             <option *ngIf="batch.name == 'FIRST YEAR'">CST</option>
             <option *ngIf="batch.name != 'FIRST YEAR'">CS</option>
@@ -43,12 +43,13 @@
         <div class="col-sm-3">
           <label><b>Semester</b></label>
           <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
-            [ngModelOptions]="{standalone: true}">
+         [ngModelOptions]="{standalone: true}"
+          (ngModelChange)="onSemesterChange()">
             <option value="">Choose..</option>
             <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
           </select>
         </div>
-        <!-- <button type="submit" class="btn btn-primary" (click)="show()">Show Subject List</button> -->
+        <button type="submit" class="btn btn-primary" (click)="show()">Show Subject List</button>
       </form>
     </section><br />
     <section class="section">
@@ -115,7 +116,11 @@
         </table>
       </div>
     </section><br /><br />
-    <!-- <div *ngIf="subList==true"></div> -->
+    <div *ngIf="subList==true">
+      <div *ngFor=" let sub of subjects">
+        {{sub.name}}
+      </div>
+    </div>
   </div>
 
   <!-- timetable view for student -->

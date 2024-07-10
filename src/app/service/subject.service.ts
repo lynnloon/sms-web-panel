@@ -4,6 +4,7 @@ import { CommonService } from '../util/common.service';
 import { Subject } from '../model/subject';
 import { AcademicBatch } from '../model/academic-batch';
 import { Semester } from '../model/semester';
+import { FilterDTO } from '../model/filter-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class SubjectService {
     return this.httpClient.post(this.commonService.apiRoute + "/subject/update", subject);
   }
  
-  getSubByBatch(subject: Subject) {
-    return this.httpClient.get(this.commonService.apiRoute + "/subject/getSubByBatch")
+  getSubByBatch(filterDTO: FilterDTO) {
+    return this.httpClient.post(this.commonService.apiRoute + "/subject/getSubByBatch",filterDTO);
   } 
 
   getById(id: any) {
