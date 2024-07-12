@@ -33,6 +33,9 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { TimetableComponent } from './components/timetable/timetable.component';
 import { TeacherDashboardComponent } from './layout/teacher-dashboard/teacher-dashboard.component';
 import { AssignStuToSectionComponent } from './assign-stu-to-section/assign-stu-to-section.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -70,7 +73,8 @@ import { AssignStuToSectionComponent } from './assign-stu-to-section/assign-stu-
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-   
+    MultiSelectModule,
+    NoopAnimationsModule
   ],
   providers: [ DatePipe],
   bootstrap: [AppComponent]

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AcademicBatch } from 'src/app/model/academic-batch';
 import { Semester } from 'src/app/model/semester';
+import { Staff } from 'src/app/model/staff';
 import { Subject } from 'src/app/model/subject';
+import { AcademicBatchService } from 'src/app/service/academic-batch.service';
 import { SemesterService } from 'src/app/service/semester.service';
+import { StaffService } from 'src/app/service/staff.service';
 import { SubjectService } from 'src/app/service/subject.service';
 import { CommonService } from 'src/app/util/common.service';
-
 
 @Component({
   selector: 'app-create-subject',
@@ -23,6 +26,8 @@ export class CreateSubjectComponent implements OnInit {
 
   batches: AcademicBatch[] = [];
   semesters: Semester[] = [];
+  teacher: Staff[] = [];
+  staffs: Staff[] = [];
 
   constructor(
     private subjectService: SubjectService,
@@ -30,12 +35,17 @@ export class CreateSubjectComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private commonService: CommonService,
     private semesterService: SemesterService,
-  ) { }
+    private academicBatchServie: AcademicBatchService,
+    public staffService: StaffService,
+  ) {
+  }
 
 
   ngOnInit() {
+
     this.getAllAcademicBatchList();
     this.getAllSemester();
+    this.getAllStaffList();
     this.activatedRoute.params.subscribe(params => {
       const subjectid = params['id'];
       if (subjectid) {
@@ -57,6 +67,13 @@ export class CreateSubjectComponent implements OnInit {
         if (selectedSem) {
           this.semester = selectedSem;
         }
+        //for data binding of teacher list when editing
+        // const selectedStaff = this.staffs.find(staff => {
+        //   return this.subject.subjectStaff?.some(subjectStaff => staff.id === subjectStaff.id);
+        // });
+        // if (selectedStaff) {
+        //   console.log('Selected Staff:', selectedStaff);
+        // }
       }
       else
         window.alert("No record data")
@@ -64,7 +81,7 @@ export class CreateSubjectComponent implements OnInit {
   }
 
   getAllAcademicBatchList() {
-    this.commonService.getAllAcademicBatchList().subscribe((response: any) => {
+    this.academicBatchServie.getAllAcademicBatchList().subscribe((response: any) => {
       if (response.status) {
         this.batches = response.data;
 
@@ -78,10 +95,18 @@ export class CreateSubjectComponent implements OnInit {
       }
     });
   }
+  getAllStaffList() {
+    this.staffService.getAllStaffList().subscribe((response: any) => {
+      if (response.status) {
+        this.staffs = response.data;
+      }
+    });
+  }
 
   onChangeCombo() {
     this.subject.subjectBatch = (this.batch);
     this.subject.subjectSem = (this.semester);
+    this.subject.subjectStaff = (this.teacher);
   }
 
   save() {

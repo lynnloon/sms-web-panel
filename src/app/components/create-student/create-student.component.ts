@@ -12,6 +12,7 @@ import { StudentService } from 'src/app/service/student.service';
 import { CommonService } from 'src/app/util/common.service';
 import Swal from 'sweetalert2';
 import { AcademicBatch } from 'src/app/model/academic-batch';
+import { AcademicBatchService } from 'src/app/service/academic-batch.service';
 
 @Component({
   selector: 'app-create-student',
@@ -44,6 +45,7 @@ export class CreateStudentComponent implements OnInit {
     private academicService: AcademicService,
     private familyMemberService: FamilyMemberService,
     private commonService: CommonService,
+    private academicBatchServie:AcademicBatchService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -68,7 +70,7 @@ export class CreateStudentComponent implements OnInit {
 
   }
   getAllAcademicBatchList() {
-    this.commonService.getAllAcademicBatchList().subscribe((response: any) => {
+    this.academicBatchServie.getAllAcademicBatchList().subscribe((response: any) => {
       if (response.status) {
         this.batches = response.data;
       }

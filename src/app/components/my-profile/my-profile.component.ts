@@ -7,6 +7,7 @@ import { Position } from 'src/app/model/position';
 import { Staff } from 'src/app/model/staff';
 import { Student } from 'src/app/model/student';
 import { User } from 'src/app/model/user';
+import { AcademicBatchService } from 'src/app/service/academic-batch.service';
 import { DepartmentService } from 'src/app/service/department.service';
 import { PositionService } from 'src/app/service/position.service';
 import { StaffService } from 'src/app/service/staff.service';
@@ -58,7 +59,8 @@ export class MyProfileComponent implements OnInit {
     public studentService: StudentService,
     public staffService: StaffService,
     public positionService: PositionService,
-    public departmentService: DepartmentService
+    public departmentService: DepartmentService,
+    private academicBatchServie:AcademicBatchService,
   ) { }
 
   ngOnInit() {
@@ -76,7 +78,7 @@ export class MyProfileComponent implements OnInit {
 
           //batch name
           this.batchId = this.student.studentBatch?.id;
-          this.commonService.getById(this.batchId).subscribe((response: any) => {
+          this.academicBatchServie.getById(this.batchId).subscribe((response: any) => {
             if (response.status) {
               this.batch = response.data;
               this.batchName = this.getBatchNumber(this.batch.name);
@@ -86,7 +88,7 @@ export class MyProfileComponent implements OnInit {
         }
       });
     }
-    else if (this.role == "TEACHER") {
+    else if (this.role == "TEACHER" || this.role=="ADMIN") {
       this.staffService.getStaffInfoByEmail(this.email).subscribe((response: any) => {
         if (response.status) {
           this.staff = response.data;
