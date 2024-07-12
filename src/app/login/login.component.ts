@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           if (this.user.role == 'STUDENT')
             this.router.navigate(['/student-dashboard'])
           else if (this.user.role == 'TEACHER')
-            this.router.navigate(['/admin-dashboard'])
+            this.router.navigate(['/teacher-dashboard'])
           else if (this.user.role == 'ADMIN')
             this.router.navigate(['/admin-dashboard']);
         } else {

@@ -22,6 +22,7 @@ import { CreateStudentComponent } from './components/create-student/create-stude
 import { ContactComponent } from './components/contact/contact.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { TimetableComponent } from './components/timetable/timetable.component';
+import { TeacherDashboardComponent } from './layout/teacher-dashboard/teacher-dashboard.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,7 @@ const routes: Routes = [
 
   // For Teacher
   { path: 'teacher-sidebar',component:TeacherSidebarComponent},
+  {path:'teacher-dashboard',component:TeacherDashboardComponent}
 
 ];
 

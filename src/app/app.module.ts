@@ -31,6 +31,8 @@ import { DatePipe } from '@angular/common';
 import { ContactComponent } from './components/contact/contact.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { TimetableComponent } from './components/timetable/timetable.component';
+import { TeacherDashboardComponent } from './layout/teacher-dashboard/teacher-dashboard.component';
+import { AssignStuToSectionComponent } from './assign-stu-to-section/assign-stu-to-section.component';
 
 @NgModule({
   declarations: [
@@ -60,12 +62,15 @@ import { TimetableComponent } from './components/timetable/timetable.component';
     ContactComponent,
     MyProfileComponent,
     TimetableComponent,
+    TeacherDashboardComponent,
+    AssignStuToSectionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+   
   ],
   providers: [ DatePipe],
   bootstrap: [AppComponent]
