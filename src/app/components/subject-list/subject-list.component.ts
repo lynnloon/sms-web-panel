@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'src/app/model/subject';
+import { AcademicBatchService } from 'src/app/service/academic-batch.service';
 import { SubjectService } from 'src/app/service/subject.service';
+import { CommonService } from 'src/app/util/common.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,11 +12,14 @@ import Swal from 'sweetalert2';
 })
 export class SubjectListComponent implements OnInit {
 
+  batchName?: string;
+
   subject: Subject = new Subject();
   subjects: Subject[] = []
 
   constructor(
-    private subjectService: SubjectService
+    public subjectService: SubjectService,
+    public academicBatchService: AcademicBatchService,
   ) { }
 
 
@@ -29,6 +34,26 @@ export class SubjectListComponent implements OnInit {
       }
     });
   }
+
+  getBatchNumber(batchName: string | undefined): string {
+    switch (batchName) {
+      case 'FIRST YEAR':
+        return '1';
+      case 'SECOND YEAR':
+        return '2';
+      case 'THIRD YEAR':
+        return '3';
+      case 'FOURTH YEAR':
+        return '4';
+      case 'FIFTH YEAR':
+        return '5'
+      case 'MASTER':
+        return '6';
+      default:
+        return 'Unknown';
+    }
+  }
+
 
   delete(id: any) {
 
@@ -47,7 +72,8 @@ export class SubjectListComponent implements OnInit {
             Swal.fire({
               title: "Deleted!",
               text: response.message,
-              icon: "success"            });
+              icon: "success"
+            });
             this.ngOnInit();
           }
 

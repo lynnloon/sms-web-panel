@@ -10,6 +10,7 @@ import { SubjectService } from 'src/app/service/subject.service';
 import { FilterDTO } from 'src/app/model/filter-dto';
 import { StudentService } from 'src/app/service/student.service';
 import { Student } from 'src/app/model/student';
+import { AcademicBatchService } from 'src/app/service/academic-batch.service';
 
 @Component({
   selector: 'app-timetable',
@@ -40,11 +41,11 @@ export class TimetableComponent implements OnInit {
   majorN?: string;
 
   constructor(
-    private commonService: CommonService,
     private semesterService: SemesterService,
     private sectionService: SectionService,
     public subjectService: SubjectService,
     public studentService: StudentService,
+    private academicBatchServie:AcademicBatchService,
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +64,7 @@ export class TimetableComponent implements OnInit {
 
           //batch name
           this.batchId = this.student.studentBatch?.id;
-          this.commonService.getById(this.batchId).subscribe((response: any) => {
+          this.academicBatchServie.getById(this.batchId).subscribe((response: any) => {
             if (response.status) {
               this.batch = response.data;
               this.batchName = this.batch.name;
@@ -99,7 +100,7 @@ export class TimetableComponent implements OnInit {
   }
 
   getAllAcademicBatchList() {
-    this.commonService.getAllAcademicBatchList().subscribe((response: any) => {
+    this.academicBatchServie.getAllAcademicBatchList().subscribe((response: any) => {
       if (response.status) {
         this.batches = response.data;
 

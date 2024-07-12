@@ -10,7 +10,7 @@
   </div><!-- End Page Title -->
 
   <!-- timetable read and write for teacher view -->
-  <div class="card" *ngIf="role == 'TEACHER'"><br />
+  <div class="card" *ngIf="role == 'ADMIN'"><br />
     <section class="container">
       <form class="row g-3" align="center">
         <div class="col-sm-3">
@@ -48,7 +48,7 @@
             <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="show()">Show Subject List</button>
+        <!-- <button type="submit" class="btn btn-primary" (click)="show()">Show Subject List</button> -->
       </form>
     </section><br />
     <section class="section">

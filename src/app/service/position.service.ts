@@ -7,7 +7,7 @@ import { Position } from '../model/position';
   providedIn: 'root'
 })
 export class PositionService {
- 
+
 
   constructor(
     private httpClient: HttpClient,
@@ -15,26 +15,26 @@ export class PositionService {
   ) { }
 
 
-  getAllPositionList(){
+  getAllPositionList() {
     return this.httpClient.get(this.commonService.apiRoute + "/position/getAll")
   }
 
   create(position: Position) {
     return this.httpClient.post(this.commonService.apiRoute + "/position/save", position);
   }
- 
+
 
   update(position: Position) {
     return this.httpClient.post(this.commonService.apiRoute + "/position/update", position);
   }
 
   getById(id: any) {
-    return this.httpClient.get(this.commonService.apiRoute+"/position/getById?id="+id);
+    return this.httpClient.get(this.commonService.apiRoute + "/position/getById?id=" + id);
   }
 
 
-delete(id: any) {
-  return this.httpClient.delete(this.commonService.apiRoute+"/position/delete?id="+id);
-}
+  delete(id: any) {
+    return this.httpClient.delete(this.commonService.apiRoute + "/position/delete?id=" + id);
+  }
 
 }

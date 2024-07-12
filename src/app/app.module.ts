@@ -31,6 +31,9 @@ import { DatePipe } from '@angular/common';
 import { ContactComponent } from './components/contact/contact.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { TimetableComponent } from './components/timetable/timetable.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -65,7 +68,8 @@ import { TimetableComponent } from './components/timetable/timetable.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MultiSelectModule,NoopAnimationsModule
   ],
   providers: [ DatePipe],
   bootstrap: [AppComponent]
