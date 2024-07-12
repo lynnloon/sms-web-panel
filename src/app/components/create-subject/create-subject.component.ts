@@ -26,7 +26,6 @@ export class CreateSubjectComponent implements OnInit {
 
   batches: AcademicBatch[] = [];
   semesters: Semester[] = [];
-  teacher: Staff[] = [];
   staffs: Staff[] = [];
 
   constructor(
@@ -67,13 +66,6 @@ export class CreateSubjectComponent implements OnInit {
         if (selectedSem) {
           this.semester = selectedSem;
         }
-        //for data binding of teacher list when editing
-        // const selectedStaff = this.staffs.find(staff => {
-        //   return this.subject.subjectStaff?.some(subjectStaff => staff.id === subjectStaff.id);
-        // });
-        // if (selectedStaff) {
-        //   console.log('Selected Staff:', selectedStaff);
-        // }
       }
       else
         window.alert("No record data")
@@ -106,7 +98,6 @@ export class CreateSubjectComponent implements OnInit {
   onChangeCombo() {
     this.subject.subjectBatch = (this.batch);
     this.subject.subjectSem = (this.semester);
-    this.subject.subjectStaff = (this.teacher);
   }
 
   save() {

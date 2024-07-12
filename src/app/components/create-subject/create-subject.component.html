@@ -67,9 +67,8 @@
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Teachers</label>
                         <div class="col-sm-6">
-                            <p-multiSelect [options]="staffs" [(ngModel)]="teacher" [filter]="true"
-                                placeholder="Select Teachers..." optionLabel="staffName"
-                                (ngModelChange)="onChangeCombo()"></p-multiSelect>
+                            <p-multiSelect [options]="staffs" [(ngModel)]="subject.subjectStaff" [filter]="true"
+                                placeholder="Select Teachers..." optionLabel="staffName"></p-multiSelect>
                         </div>
                     </div>
                 </div>
