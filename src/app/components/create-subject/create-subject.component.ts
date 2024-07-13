@@ -90,6 +90,7 @@ export class CreateSubjectComponent implements OnInit {
   getAllStaffList() {
     this.staffService.getAllStaffList().subscribe((response: any) => {
       if (response.status) {
+        console.log('I am here>>>>>>>>>>>>>',response.data)
         this.staffs = response.data;
       }
     });

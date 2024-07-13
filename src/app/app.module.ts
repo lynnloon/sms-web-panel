@@ -35,7 +35,11 @@ import { TeacherDashboardComponent } from './layout/teacher-dashboard/teacher-da
 import { AssignStuToSectionComponent } from './assign-stu-to-section/assign-stu-to-section.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
+// drap and drop
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     MyProfileComponent,
     TimetableComponent,
     TeacherDashboardComponent,
-    AssignStuToSectionComponent,
+    AssignStuToSectionComponent    
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     MultiSelectModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    DragDropModule
   ],
   providers: [ DatePipe],
   bootstrap: [AppComponent]
