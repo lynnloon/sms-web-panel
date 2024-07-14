@@ -11,6 +11,7 @@ import { FilterDTO } from 'src/app/model/filter-dto';
 import { StudentService } from 'src/app/service/student.service';
 import { Student } from 'src/app/model/student';
 import { AcademicBatchService } from 'src/app/service/academic-batch.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-timetable',
@@ -143,8 +144,67 @@ export class TimetableComponent implements OnInit {
     });
   }
 
+// For Drag and drop 
 
+people: Subject[] = [
+  { name: 'Math1', id: 1, type: 1 },
+  { name: 'Math2', id: 2, type: 1 }];
+movies: Subject[] = [
+  { name: 'SE1', id: 1, type: 2 },
+  { name: 'SE2', id: 2, type: 2 }
+];
+sub: Subject[] = [
+  { name: 'IAS', id: 1, type: 3 },
+  { name: 'IAS', id: 2, type: 3 }
+];
+data: Subject[] = [
+  { name: 'Dadta Mining', id: 1, type: 4 },
+  { name: 'Dadta Mining', id: 2, type: 4 }
+];
+aa: Subject[] = [
+  { name: 'Advanced Analysis', id: 1, type: 5 },
+  { name: 'Advanced Analysis', id: 2, type: 5 }
+];
+erp: Subject[] = [
+  { name: 'ERP', id: 1, type: 6 },
+  { name: 'ERP', id: 2, type: 6 }
+];
 
+e11: Subject[] = []; e12: Subject[] = []; e13: Subject[] = []; e14: Subject[] = []; e15: Subject[] = [];
+e16: Subject[] = []; e21: Subject[] = []; e22: Subject[] = []; e23: Subject[] = []; e24: Subject[] = [];
+e25: Subject[] = []; e26: Subject[] = []; e31: Subject[] = []; e32: Subject[] = []; e33: Subject[] = [];
+e34: Subject[] = []; e35: Subject[] = []; e36: Subject[] = []; e41: Subject[] = []; e42: Subject[] = [];
+e43: Subject[] = []; e44: Subject[] = []; e45: Subject[] = []; e46: Subject[] = []; e51: Subject[] = [];
+e52: Subject[] = []; e53: Subject[] = []; e54: Subject[] = []; e55: Subject[] = []; e56: Subject[] = [];
+
+drop(event: CdkDragDrop<Subject[]>) {
+  if (event.previousContainer === event.container) {
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  } else {
+    transferArrayItem(event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
+}
+drop1(event: CdkDragDrop<Subject[]>) {
+  if (event.container.data.length > 0) {
+    return // this will stop item from drop
+  }
+  if (event.previousContainer === event.container) {
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+
+  } else {
+    transferArrayItem(
+      event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex,
+    );
+  }
+}
+// End Drag and drop
 }
 
 

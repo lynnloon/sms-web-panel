@@ -53,66 +53,476 @@
     </section><br />
     <section class="section">
       <div class="row">
-        <table class="timetable">
-          <tr>
-            <th bgcolor="  #c6e1ff">Day</th>
-            <th bgcolor=" EDC6FC">9:00-9:55</th>
-            <th bgcolor=" EDC6FC">10:05-11:00</th>
-            <th bgcolor=" EDC6FC">11:10-12:05</th>
-            <th bgcolor=" EDC6FC">12:05-1:00</th>
-            <th bgcolor=" EDC6FC">1:00-1:55</th>
-            <th bgcolor=" EDC6FC">2:05-3:00</th>
-            <th bgcolor=" EDC6FC">3:10-4:05</th>
-          </tr>
-          <tr>
-            <td bgcolor="  #c6e1ff"><b>MON</b></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td rowspan="5">
-              <h2>L<br>U<br>N<br>C<br>H</h2>
-            </td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-          </tr>
-          <tr>
-            <td bgcolor="  #c6e1ff"><b>TUE</b></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-          </tr>
-          <tr>
-            <td bgcolor="  #c6e1ff"><b>WED</b></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-          </tr>
-          <tr>
-            <td bgcolor="  #c6e1ff"><b>THU</b></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-          </tr>
-          <tr>
-            <td bgcolor="  #c6e1ff"><b>FRI</b></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-            <td contenteditable="true"></td>
-          </tr>
-        </table>
+        <!-- Drag and Drop -->
+        <table mat-table #table class="mat-elevation-z8" cdkDropList>
+          <tbody>
+              <tr>
+                  <th bgcolor="  #c6e1ff" class="text-center">Day</th>
+                  <th bgcolor=" EDC6FC" class="text-center">9:00-9:55</th>
+                  <th bgcolor=" EDC6FC" class="text-center">10:05-11:00</th>
+                  <th bgcolor=" EDC6FC" class="text-center">11:10-12:05</th>
+                  <th bgcolor=" EDC6FC" class="text-center">12:05-1:00</th>
+                  <th bgcolor=" EDC6FC" class="text-center">1:00-1:55</th>
+                  <th bgcolor=" EDC6FC" class="text-center">2:05-3:00</th>
+                  <th bgcolor=" EDC6FC" class="text-center">3:10-4:05</th>
+              </tr>
+              <tr>
+  
+              <tr>
+                  <td bgcolor="  #c6e1ff"><b>MON</b></td>
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l11="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e11" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e11" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l12="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e12" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e12" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l13="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e13" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e13" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td rowspan="5" bgcolor="  #c6e1ff">
+                      <h2 class="text-center">L<br>U<br>N<br>C<br>H</h2>
+                  </td>
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l14="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e14" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e14" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l15="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e15" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e15" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l16="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e16" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e16" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+  
+              </tr>
+              <tr>
+                  <td bgcolor="  #c6e1ff"><b>TUE</b></td>
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l21="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e21" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e21" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l22="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e22" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e22" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l23="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e23" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e23" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+  
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l24="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e24" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e24" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l25="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e25" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e25" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l26="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e26" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e26" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td bgcolor="  #c6e1ff"><b>WED</b></td>
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l31="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e31" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e31" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l32="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e32" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e32" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l33="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e33" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e33" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+  
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l34="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e34" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e34" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l35="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e35" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e35" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l36="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e36" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e36" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td bgcolor="  #c6e1ff"><b>THU</b></td>
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l41="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e41" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e41" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l42="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e42" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e42" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l43="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e43" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e43" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+  
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l44="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e44" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e44" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l45="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e45" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e45" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l46="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e46" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e46" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+              </tr>
+              <tr>
+                  <td bgcolor="  #c6e1ff"><b>FRI</b></td>
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l51="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e51" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e51" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l52="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e52" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e52" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l53="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e53" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e53" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+  
+                  <td>
+  
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l54="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e54" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e54" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l55="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e55" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e55" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div cdkDropList cdkDropListOrientation="horizontal" #l56="cdkDropList"
+                          [cdkDropListConnectedTo]="[mov,peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec,data1,aa1,erp1]"
+                          [cdkDropListData]="e56" class="containS1-list" (cdkDropListDropped)="drop1($event)">
+                          <div class="containS1-box1"
+                              [ngClass]="{'peopleClass':item.type==1,'movieClass':item.type==2,'subClass':item.type==3,'dataClass':item.type==4,'aaClass':item.type==5,'erpClass':item.type==6}"
+                              *ngFor="let item of e56" cdkDrag>
+                              <span>{{item.name}}
+                              </span>
+                          </div>
+                      </div>
+                  </td>
+  
+  
+  
+              </tr>
+          </tbody>
+      </table>
+  
+      <div class="example-container">
+          <h2>SE</h2>
+  
+          <div cdkDropList #mov="cdkDropList" [cdkDropListData]="movies"
+              [cdkDropListConnectedTo]="[mov,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56]"
+              class="example-list" (cdkDropListDropped)="drop($event)">
+              <div class="example-box movieClass" *ngFor="let movie of movies" cdkDrag>
+                  <span>{{movie.name}}</span>
+              </div>
+          </div>
+      </div>
+      <div class="example-container">
+          <h2>Eng</h2>
+  
+          <div cdkDropList #sujec="cdkDropList" [cdkDropListData]="sub"
+              [cdkDropListConnectedTo]="[l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,sujec]"
+              class="example-list" (cdkDropListDropped)="drop($event)">
+              <div class="example-box subClass" *ngFor="let subs of sub" cdkDrag>
+                  <span>{{subs.name}}</span>
+              </div>
+          </div>
+      </div>
+  
+      <div class="example-container">
+          <h2>Math</h2>
+          <div cdkDropList #peo="cdkDropList" [cdkDropListData]="people"
+              [cdkDropListConnectedTo]="[peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56]"
+              class="example-list" (cdkDropListDropped)="drop($event)">
+              <div class=" example-box peopleClass" *ngFor="let item of people" cdkDrag>{{item.name}}</div>
+          </div>
+      </div>
+  
+      <div class="example-container">
+          <h2>DataMining</h2>
+          <div cdkDropList #data1="cdkDropList" [cdkDropListData]="data"
+              [cdkDropListConnectedTo]="[l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,data1]"
+              class="example-list" (cdkDropListDropped)="drop($event)">
+              <div class=" example-box dataClass" *ngFor="let item of data" cdkDrag>{{item.name}}</div>
+          </div>
+      </div>
+      <div class="example-container">
+          <h2>AA</h2>
+          <div cdkDropList #aa1="cdkDropList" [cdkDropListData]="aa"
+              [cdkDropListConnectedTo]="[l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,aa1]"
+              class="example-list" (cdkDropListDropped)="drop($event)">
+              <div class=" example-box aaClass" *ngFor="let item of aa" cdkDrag>{{item.name}}</div>
+          </div>
+      </div>
+      <div class="example-container">
+          <h2>ERP</h2>
+          <div cdkDropList #erp1="cdkDropList" [cdkDropListData]="erp"
+              [cdkDropListConnectedTo]="[l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,erp1]"
+              class="example-list" (cdkDropListDropped)="drop($event)">
+              <div class=" example-box erpClass" *ngFor="let item of erp" cdkDrag>{{item.name}}</div>
+          </div>
+      </div>
       </div>
     </section><br /><br />
     <table class="table table-borderless" *ngIf="subList==true">

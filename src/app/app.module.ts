@@ -34,7 +34,11 @@ import { TimetableComponent } from './components/timetable/timetable.component';
 import { TeacherDashboardComponent } from './layout/teacher-dashboard/teacher-dashboard.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
+// drap and drop
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -64,8 +68,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ContactComponent,
     MyProfileComponent,
     TimetableComponent,
-    TeacherDashboardComponent,
-   
+    TeacherDashboardComponent,  
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     MultiSelectModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    DragDropModule
   ],
   providers: [ DatePipe],
   bootstrap: [AppComponent]
