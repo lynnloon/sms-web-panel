@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import {HttpClient,HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,14 +32,13 @@ import { ContactComponent } from './components/contact/contact.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { TimetableComponent } from './components/timetable/timetable.component';
 import { TeacherDashboardComponent } from './layout/teacher-dashboard/teacher-dashboard.component';
-import { AssignStuToSectionComponent } from './assign-stu-to-section/assign-stu-to-section.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 // drap and drop
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MessageListComponent } from './components/message-list/message-list.component';
 
 @NgModule({
@@ -71,8 +70,7 @@ import { MessageListComponent } from './components/message-list/message-list.com
     MyProfileComponent,
     TimetableComponent,
     TeacherDashboardComponent,
-    AssignStuToSectionComponent,
-    MessageListComponent    
+    MessageListComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +84,7 @@ import { MessageListComponent } from './components/message-list/message-list.com
     MatNativeDateModule,
     DragDropModule
   ],
-  providers: [ DatePipe],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

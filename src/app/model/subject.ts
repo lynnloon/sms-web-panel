@@ -13,5 +13,5 @@ export class Subject {
     subjectBatch?: AcademicBatch = new AcademicBatch();
     subjectSem?: Semester = new Semester();
     subjectStaff?: Staff[]=[];
-    type?:number;
+   
 }
