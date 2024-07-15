@@ -22,7 +22,7 @@
               <i class="bi bi-geo-alt"></i>
               <h3>Address</h3>
               <!-- Address of UCS(MDY) -->
-              <p>(2.6) Miles from Yangon-Mandalay High Way Road, Ta Ohn Village, 
+              <p>(2.6) Miles from Yangon-Mandalay High Way Road, Ta Ohn Village,
                 SintKaing Township, KyautSe District, Mandalay Region,</p>
 
               <!-- Address of UCS(TGO) -->
@@ -30,7 +30,7 @@
                 Taungoo, Bago Region</p> -->
 
               <!-- Address of UCS(TGI) -->
-               <!-- <p>Taunggyi-Hopone St, Naung Lay Village,, Taunggyi Township, Shan State , Myanmar</p> -->
+              <!-- <p>Taunggyi-Hopone St, Naung Lay Village,, Taunggyi Township, Shan State , Myanmar</p> -->
 
             </div>
           </div>
@@ -52,14 +52,14 @@
             <div class="info-box card">
               <i class="bi bi-envelope"></i>
               <h3>Email Us</h3>
-               <!-- email of MDY -->
+              <!-- email of MDY -->
               <p>cumdystudent@gmail.com</p>
 
               <!-- email of TGO -->
               <!-- <p>ucstgostuaffair@gmail.com</p> -->
 
               <!-- email of TGI -->
-               <!-- <p>sandarkhin@ucstgi.edu.mm</p> -->
+              <!-- <p>sandarkhin@ucstgi.edu.mm</p> -->
             </div>
           </div>
           <div class="col-lg-6">
@@ -83,23 +83,25 @@
               </div>
 
               <div class="col-md-6 ">
-                <input type="email" class="form-control" name="email" placeholder="Your Email" value="{{email}}" required>
+                <input type="email" class="form-control" name="email" placeholder="Your Email" value="{{email}}"
+                  required>
               </div>
 
               <div class="col-md-12">
-                <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                <input type="text" class="form-control" name="subject" placeholder="Subject"
+                  [(ngModel)]="reqMessage.title" required>
               </div>
 
               <div class="col-md-12">
-                <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                <textarea class="form-control" name="message" rows="6" placeholder="Message"
+                  [(ngModel)]="reqMessage.message" required></textarea>
               </div>
 
               <div class="col-md-12 text-center">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+               
 
-                <button type="submit">Send Message</button>
+                <button type="submit" (click)="save()">Send Message</button>&nbsp;
+                <button type="reset" class="btn btn-secondary" [routerLink]="'/contact'">Cancel</button>
               </div>
 
             </div>

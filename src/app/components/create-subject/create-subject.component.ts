@@ -90,7 +90,7 @@ export class CreateSubjectComponent implements OnInit {
   getAllStaffList() {
     this.staffService.getAllStaffList().subscribe((response: any) => {
       if (response.status) {
-        console.log('I am here>>>>>>>>>>>>>',response.data)
+        console.log('I am here>>>>>>>>>>>>>', response.data)
         this.staffs = response.data;
       }
     });
@@ -128,6 +128,16 @@ export class CreateSubjectComponent implements OnInit {
   checkValidation() {
     if (this.subject.name == undefined || this.subject.name.trim() == "")
       return "Fill subject name"
+    else if (this.subject.moduleNo == undefined || this.subject.moduleNo.trim() == '')
+      return "Fill moduleNo";
+    else if (this.subject.major == undefined || this.subject.major.trim() == '')
+      return "Fill major";
+    else if (this.subject.subjectBatch == undefined)
+      return "Fill Aademic Batch";
+    else if (this.subject.subjectSem == undefined)
+      return "Fill Semester";
+    else if (this.subject.subjectStaff == undefined)
+      return "Fill Teachers";
     else
       return "OK"
   }
