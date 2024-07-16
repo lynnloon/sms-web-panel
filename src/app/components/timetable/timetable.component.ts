@@ -12,6 +12,9 @@ import { Student } from 'src/app/model/student';
 import { AcademicBatchService } from 'src/app/service/academic-batch.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { count } from 'rxjs/operators';
+import { Timetable } from 'src/app/model/timetable';
+import { AcademicYear } from 'src/app/model/academic-year';
+import { AcademicService } from 'src/app/service/academic.service';
 
 @Component({
   selector: 'app-timetable',
@@ -20,12 +23,16 @@ import { count } from 'rxjs/operators';
 })
 export class TimetableComponent implements OnInit {
 
+
   batch: AcademicBatch = new AcademicBatch();
   semester: Semester = new Semester();
   section: Section = new Section();
   subject: Subject = new Subject();
   filterDTO: FilterDTO = new FilterDTO();
   student: Student = new Student();
+  timetable: Timetable = new Timetable();
+  year: AcademicYear = new AcademicYear();
+
 
   batches: AcademicBatch[] = [];
   semesters: Semester[] = [];
@@ -49,6 +56,7 @@ export class TimetableComponent implements OnInit {
     public subjectService: SubjectService,
     public studentService: StudentService,
     private academicBatchServie: AcademicBatchService,
+    private academicYearSer:AcademicService,
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +66,16 @@ export class TimetableComponent implements OnInit {
     this.name = localStorage.getItem('userName') as string;
     this.email = localStorage.getItem('email') as string;
 
+   //retrieving current Academic  
+this.academicYearSer.getCurrent().subscribe((response: any) => {
+  if (response.status) {
+    if (response.data != null) {
+      this.academicYear = response.data.name;
+      this.timetable.acdemicYear=response.data;
+
+    }
+  }
+});
     if (this.role == "STUDENT") {
       this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {
         if (response.status) {
@@ -147,81 +165,92 @@ export class TimetableComponent implements OnInit {
     });
   }//getting subject list according to academic batch
 
-  // For Drag and drop 
+//save method for timetable and checking arraylist 's data
 
-  // people: Subject[] = [
-  //   { name: 'Math1', id: 1, type: 1 },
-  //   { name: 'Math2', id: 2, type: 1 }];
-  // movies: Subject[] = [
-  //   { name: 'SE1', id: 1, type: 2 },
-  //   { name: 'SE2', id: 2, type: 2 }
-  // ];
-  // subs: Subject[] = [
-  //   { name: 'IAS', id: 1, type: 3 },
-  //   { name: 'IAS', id: 2, type: 3 }
-  // ];
-  // data: Subject[] = [
-  //   { name: 'Dadta Mining', id: 1, type: 4 },
-  //   { name: 'Dadta Mining', id: 2, type: 4 }
-  // ];
-  // aa: Subject[] = [
-  //   { name: 'Advanced Analysis', id: 1, type: 5 },
-  //   { name: 'Advanced Analysis', id: 2, type: 5 }
-  // ];
-  // erp: Subject[] = [
-  //   { name: 'ERP', id: 1, type: 6 },
-  //   { name: 'ERP', id: 2, type: 6 }
-  // ];
+saveIimetable() {
 
-  e11: Subject[] = []; e12: Subject[] = []; e13: Subject[] = []; e14: Subject[] = []; e15: Subject[] = [];
-  e16: Subject[] = []; e21: Subject[] = []; e22: Subject[] = []; e23: Subject[] = []; e24: Subject[] = [];
-  e25: Subject[] = []; e26: Subject[] = []; e31: Subject[] = []; e32: Subject[] = []; e33: Subject[] = [];
-  e34: Subject[] = []; e35: Subject[] = []; e36: Subject[] = []; e41: Subject[] = []; e42: Subject[] = [];
-  e43: Subject[] = []; e44: Subject[] = []; e45: Subject[] = []; e46: Subject[] = []; e51: Subject[] = [];
-  e52: Subject[] = []; e53: Subject[] = []; e54: Subject[] = []; e55: Subject[] = []; e56: Subject[] = [];
-  count?: number = 4;
-  dragSubject?: string;
-  DecCount() {
-    this.count = Number(this.count) - 1;
-    return this.count;
-  }
+  console.log("the last time of the week>>>" + this.e56[0].moduleNo);
+  this.timetable.subject =this.e56[0];
+  this.timetable.teacher_id='1';
 
-  drop(event: CdkDragDrop<Subject[]>) {
-    console.log(" connectedTo  >>>" + event.container.dropped);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      this.subjects = this.copySubject;
-      console.log("log>>" + this.DecCount());
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+
 
     }
+// For Drag and drop 
+
+// people: Subject[] = [
+//   { name: 'Math1', id: 1, type: 1 },
+//   { name: 'Math2', id: 2, type: 1 }];
+// movies: Subject[] = [
+//   { name: 'SE1', id: 1, type: 2 },
+//   { name: 'SE2', id: 2, type: 2 }
+// ];
+// subs: Subject[] = [
+//   { name: 'IAS', id: 1, type: 3 },
+//   { name: 'IAS', id: 2, type: 3 }
+// ];
+// data: Subject[] = [
+//   { name: 'Dadta Mining', id: 1, type: 4 },
+//   { name: 'Dadta Mining', id: 2, type: 4 }
+// ];
+// aa: Subject[] = [
+//   { name: 'Advanced Analysis', id: 1, type: 5 },
+//   { name: 'Advanced Analysis', id: 2, type: 5 }
+// ];
+// erp: Subject[] = [
+//   { name: 'ERP', id: 1, type: 6 },
+//   { name: 'ERP', id: 2, type: 6 }
+// ];
+
+e11: Subject[] = []; e12: Subject[] = []; e13: Subject[] = []; e14: Subject[] = []; e15: Subject[] = [];
+e16: Subject[] = []; e21: Subject[] = []; e22: Subject[] = []; e23: Subject[] = []; e24: Subject[] = [];
+e25: Subject[] = []; e26: Subject[] = []; e31: Subject[] = []; e32: Subject[] = []; e33: Subject[] = [];
+e34: Subject[] = []; e35: Subject[] = []; e36: Subject[] = []; e41: Subject[] = []; e42: Subject[] = [];
+e43: Subject[] = []; e44: Subject[] = []; e45: Subject[] = []; e46: Subject[] = []; e51: Subject[] = [];
+e52: Subject[] = []; e53: Subject[] = []; e54: Subject[] = []; e55: Subject[] = []; e56: Subject[] = [];
+count ?: number = 4;
+dragSubject ?: string;
+DecCount() {
+  this.count = Number(this.count) - 1;
+  return this.count;
+}
+
+drop(event: CdkDragDrop<Subject[]>) {
+  console.log(" connectedTo  >>>" + event.container.dropped);
+  if (event.previousContainer === event.container) {
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  } else {
+    this.subjects = this.copySubject;
+    console.log("log>>" + this.DecCount());
+    transferArrayItem(event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex
+    );
+
   }
-  drop1(event: CdkDragDrop<Subject[]>) {
-    console.log(">>>>>>" + event.item);
+}
+drop1(event: CdkDragDrop<Subject[]>) {
+  console.log(">>>>>>" + event.item);
 
-    if (event.container.data.length > 0) {
-      return // this will stop item from drop
-    }
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-
-      console.log(">>>>" + this.DecCount());
-      console.log(">>>" + this.count);
-    }
-    // End Drag and drop
+  if (event.container.data.length > 0) {
+    return // this will stop item from drop
   }
+  if (event.previousContainer === event.container) {
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+
+  } else {
+    transferArrayItem(
+      event.previousContainer.data,
+      event.container.data,
+      event.previousIndex,
+      event.currentIndex,
+    );
+
+    console.log(">>>>" + this.DecCount());
+    console.log(">>>" + this.count);
+  }
+  // End Drag and drop
+}
 
 }
