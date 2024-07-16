@@ -19,26 +19,26 @@ export class CreateDepartmentComponent implements OnInit {
     private departmentService: DepartmentService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private commonService : CommonService
+    private commonService: CommonService
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      const departmentid=params['id'];
-      if(departmentid){
-        this.editDepartment=true;
+    this.activatedRoute.params.subscribe(params => {
+      const departmentid = params['id'];
+      if (departmentid) {
+        this.editDepartment = true;
         this.getById(departmentid);
       }
-    })
+    });
 
   }
 
-  getById(id:any){
-    this.departmentService.getById(id).subscribe((response:any)=>{
-      if(response.status)
-        this.department=response.data;
+  getById(id: any) {
+    this.departmentService.getById(id).subscribe((response: any) => {
+      if (response.status)
+        this.department = response.data;
       else
-      window.alert("No record data")
+        window.alert("No record data")
     });
   }
 
@@ -47,33 +47,29 @@ export class CreateDepartmentComponent implements OnInit {
   save() {
     var message = this.checkValidation();
     if (message != 'OK')
-      this.commonService.inputAlert(message,'warning')
+      this.commonService.inputAlert(message, 'warning')
     else {
-      if(this.editDepartment){
-        this. departmentService.update(this.department).subscribe((response: any) => {
+      if (this.editDepartment) {
+        this.departmentService.update(this.department).subscribe((response: any) => {
           if (response.status) {
             this.commonService.inputAlert(message, 'success');
             this.router.navigate(['/department-list']);
           }
         });
       }
-    else {
-      this.departmentService.create(this.department).subscribe((response: any) => {
-        if (response.status) {
-          this.commonService.inputAlert(message,'success')
-          this.router.navigate(['/department-list']);
-        }else{
-          this.commonService.inputAlert(response.message,'error')
-        }
-      });
+      else {
+        this.departmentService.create(this.department).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success')
+            this.router.navigate(['/department-list']);
+          } else {
+            this.commonService.inputAlert(response.message, 'error')
+          }
+        });
+      }
+
     }
-
   }
-
-
-
-
-}
   checkValidation() {
     if (this.department.name == undefined || this.department.name.trim() == "")
       return "Fill Department name"

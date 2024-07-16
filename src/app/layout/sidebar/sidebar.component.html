@@ -48,6 +48,11 @@
       </a>
       <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
+          <a [routerLink]="'/section-list'" routerLinkActive="active">
+            <i class="bi bi-card-list fs-6"></i><span>Section</span>
+          </a>
+        </li>
+        <li>
           <a [routerLink]="'/position-list'" routerLinkActive="active">
             <i class="bi bi-list-columns-reverse fs-6"></i><span>Positions Of Teacher List</span>
           </a>
@@ -77,9 +82,9 @@
       </a>
     </li><!-- End Profile Page Nav -->
     <li class="nav-item">
-      <a class="nav-link collapsed" [routerLink]="'/contact'">
+      <a class="nav-link collapsed" [routerLink]="'/message-list'">
         <i class="bi bi-envelope"></i>
-        <span>Contact</span>
+        <span>Messages</span>
       </a>
     </li><!-- End Contact Page Nav -->
 
@@ -126,15 +131,6 @@
         <span> Home</span>
       </a>
     </li><!-- End Dashboard Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#">
-        <i class="bi bi-houses-fill"></i><span>Site Page</span>
-
-      </a>
-
-    </li><!-- End Components Nav -->
-
     <li class="nav-item">
 
       <a class="nav-link collapsed" href="#">

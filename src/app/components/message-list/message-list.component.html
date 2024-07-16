@@ -1,1 +1,45 @@
-<p>message-list works!</p>
+<div class="main" id="main">
+    <div class="pagetitle">
+        <h1>History of Request Message</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item">Message Lists</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let m of messages;let i = index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{m.name}}</td>
+                                <td>{{m.email}}</td>
+                                <td>{{m.title}}</td>
+                                <td>
+                                    <i class="bi bi-arrow-right-square" title="view message"
+                                        [routerLink]="['/read-message',m.id]"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

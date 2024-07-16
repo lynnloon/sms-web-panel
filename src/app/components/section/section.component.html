@@ -1,17 +1,16 @@
 <div class="main" id="main">
     <div class="pagetitle">
-        <h1>Department Lists</h1>
+        <h1>Section List</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
-                <li class="breadcrumb-item">Department Lists</li>
+                <li class="breadcrumb-item">Section Lists</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
-
     <div>
-        <button type="submit" class="btn btn-primary bi bi-plus-circle" [routerLink]="'/add-dept'">
-            Add new department</button>
+        <button type="submit" class="btn btn-primary bi bi-plus-circle" [routerLink]="'/add-section'">
+            Add new Section</button>
     </div>
     <br />
     <section class="section">
@@ -23,19 +22,23 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">Class</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">No Of Students</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let dept of departments;let i = index;">
+                            <tr *ngFor="let sec of sections;let i = index;">
                                 <th scope="row">{{i+1}}</th>
-                                <td>{{dept.name}}</td>
+                                <td>{{getBatchNumber(sec.academicBatch?.name)}}{{sec.major}}</td>
+                                <td>{{sec.name}}</td>
+                                <td>{{sec.noOfStudent}}</td>
                                 <td>
                                     <i class="bi bi-pencil-square" title="edit"
-                                        [routerLink]="['/add-dept',dept.id]"></i>&nbsp;
+                                        [routerLink]="['/add-section',sec.id]"></i>&nbsp;
                                     <i class="bi bi-trash" style="color: red;" title="delete"
-                                        (click)="delete(dept.id)"></i>
+                                        (click)="delete(sec.id)"></i>
                                 </td>
                             </tr>
                         </tbody>

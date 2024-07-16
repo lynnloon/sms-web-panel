@@ -2,47 +2,48 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RequestMessage } from 'src/app/model/request-message';
 import { RequestMessageService } from 'src/app/service/request-message.service';
+import { CommonService } from 'src/app/util/common.service';
 
 @Component({
-  selector: 'app-message-list',
-  templateUrl: './message-list.component.html',
-  styleUrls: ['./message-list.component.css']
+  selector: 'app-read-message',
+  templateUrl: './read-message.component.html',
+  styleUrls: ['./read-message.component.css']
 })
-export class MessageListComponent implements OnInit {
+export class ReadMessageComponent implements OnInit {
 
   reqMessage: RequestMessage = new RequestMessage();
-
-  messages: RequestMessage[] = [];
+  profile?: string;
 
   constructor(
     private requestSer: RequestMessageService,
     private activatedRoute: ActivatedRoute,
+    private commonService: CommonService,
   ) { }
-
   ngOnInit() {
-    this.getAllReqMessage();
     this.activatedRoute.params.subscribe(params => {
       const messageid = params['id'];
       if (messageid) {
         this.getById(messageid);
       }
     });
-  }
-
-  getAllReqMessage() {
-    this.requestSer.getAllReqMessage().subscribe((response: any) => {
-      if (response.status) {
-        this.messages = response.data;
-      }
-    });
+   
   }
 
   getById(id: any) {
     this.requestSer.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.reqMessage = response.data;
+        this.profile = this.commonService.imageURL + this.reqMessage.profile;
+        this.update(this.reqMessage);
       }
     });
+  }
+
+  update(reqMessage: RequestMessage) {
+    this.requestSer.update(reqMessage).subscribe((response: any) => {
+      if (response.status)
+        this.reqMessage = response.data;
+    })
   }
 
 }

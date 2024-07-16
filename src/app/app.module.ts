@@ -40,6 +40,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MessageListComponent } from './components/message-list/message-list.component';
+import { ReadMessageComponent } from './components/read-message/read-message.component';
+import { SectionComponent } from './components/section/section.component';
+import { CreateSectionComponent } from './components/create-section/create-section.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +73,10 @@ import { MessageListComponent } from './components/message-list/message-list.com
     MyProfileComponent,
     TimetableComponent,
     TeacherDashboardComponent,
-    MessageListComponent
+    MessageListComponent,
+    ReadMessageComponent,
+    SectionComponent,
+    CreateSectionComponent
   ],
   imports: [
     BrowserModule,
