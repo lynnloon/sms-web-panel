@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestMessage } from 'src/app/model/request-message';
 import { RequestMessageService } from 'src/app/service/request-message.service';
 import { CommonService } from 'src/app/util/common.service';
@@ -22,8 +23,10 @@ export class HeaderComponent implements OnInit {
 
 
   constructor(
-    private commonService: CommonService,
+    public commonService: CommonService,
     private requestSer: RequestMessageService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit() {
@@ -32,6 +35,20 @@ export class HeaderComponent implements OnInit {
     this.profile = localStorage.getItem('profile') as string;
     this.profile = this.commonService.imageURL + this.profile;
     this.getAllByRequestStatus();
+
+    this.activatedRoute.params.subscribe(params => {
+      const messId = params['id'];
+      if (messId) {
+        this.getById(messId);
+      }
+    });
+  }
+  getById(id: any) {
+    this.requestSer.getById(id).subscribe((response: any) => {
+      if (response.status) {
+        this.reqMessage = response.data;
+      }
+    });
   }
   getAllByRequestStatus() {
     this.requestSer.getAllByRequestStatus().subscribe((response: any) => {

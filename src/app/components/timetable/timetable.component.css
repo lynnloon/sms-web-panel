@@ -34,6 +34,11 @@
 
 /* Drag and Drop time table style */
 
+.margin {
+  padding-right: 100px;
+  text-align: right;
+}
+
 table {
   width: 90%;
   max-width: 850px;

@@ -106,7 +106,7 @@ this.academicYearSer.getCurrent().subscribe((response: any) => {
       case 'CT':
         return 'Computer Technology';
       case 'CST':
-        return 'Computer Science and Technology';
+        return 'CST';
       default:
         return 'Unknown';
     }

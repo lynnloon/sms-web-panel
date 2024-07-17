@@ -22,13 +22,15 @@ export class CreateSectionComponent implements OnInit {
   batch: AcademicBatch = new AcademicBatch();
   filterDTO: FilterDTO = new FilterDTO();
 
+  setStu: Student[] = [];
   sections: Section[] = [];
   batches: AcademicBatch[] = [];
   students: Student[] = [];
+  selectedStuList: Student[] = [];
 
   constructor(
     private studentService: StudentService,
-    private sectionService: SectionService,
+    public sectionService: SectionService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private commonService: CommonService,
@@ -42,17 +44,59 @@ export class CreateSectionComponent implements OnInit {
       if (sectionid) {
         this.editSection = true;
         this.getById(sectionid);
+
       }
     });
   }
 
   onStudentChange() {
+    this.filterDTO.major = this.section.major as string;
     this.filterDTO.batchId = this.batch.id;
     this.studentService.getStudentByBatch(this.filterDTO).subscribe((response: any) => {
       if (response.status) {
         this.students = response.data;
-        console.log('I am here>>>>>>>>>>>>', this.students);
+        console.log(this.students[0].select);
+        this.sortStudentsByRollNo();
       }
+    });
+  }
+
+  onChangeStu($event: any) {
+    const id = $event.target.value;
+    const isChecked = $event.target.checked;
+
+    if(isChecked){
+      const tempselect = this.students.find((x:any)=>x.id == id);
+      if(tempselect)
+      this.selectedStuList.push(tempselect);
+    }
+    else{
+      for(var y = 0; y < this.selectedStuList.length;y++){
+        if(id == this.selectedStuList[y].id){
+          this.selectedStuList.splice(y,1);
+        }
+      }
+    }
+
+    console.log("select list>>",this.selectedStuList);
+
+    // this.selectedStuList = this.students.map((d) => {
+    //   console.log(id, isChecked);
+    //   if (d.id === id) {
+    //     d.select = isChecked;
+
+        
+    //   }
+    //   return d;
+    // });
+
+
+  }
+
+
+  sortStudentsByRollNo() {
+    this.students.sort((a, b) => {
+      return (a.stuRoll_no ?? Number.MAX_SAFE_INTEGER) - (b.stuRoll_no ?? Number.MAX_SAFE_INTEGER);
     });
   }
 
@@ -68,6 +112,10 @@ export class CreateSectionComponent implements OnInit {
     this.sectionService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.section = response.data;
+        const setStu = this.section.students;
+        if (setStu) {
+          this.students = setStu;
+        }
         const selectedBatch = this.batches.find(u => u.id === this.section.academicBatch?.id);
         if (selectedBatch) {
           this.batch = selectedBatch;
@@ -84,6 +132,9 @@ export class CreateSectionComponent implements OnInit {
       this.commonService.inputAlert(message, 'warning')
     else {
       if (this.editSection) {
+        const selectedStudents = this.students.filter(student => student.select);
+        // Prepare section object with selected students
+        this.section.students = selectedStudents;
         this.sectionService.update(this.section).subscribe((response: any) => {
           if (response.status) {
             this.commonService.inputAlert(message, 'success');
@@ -92,7 +143,14 @@ export class CreateSectionComponent implements OnInit {
         });
       }
       else {
-        this.section.noOfStudent=this.section.students?.length;
+        // this.selectedStuList = this.students.filter(student => student.select === true);
+        // console.log(this.selectedStuList);
+        const selectedStudents = this.students.filter(student => student.select);
+        // Prepare section object with selected students
+        this.section.students = selectedStudents;
+        
+        this.section.students = this.selectedStuList;
+        this.section.noOfStudent = this.section.students.length;
         this.sectionService.create(this.section).subscribe((response: any) => {
           if (response.status) {
             this.commonService.inputAlert(message, 'success')
@@ -113,6 +171,7 @@ export class CreateSectionComponent implements OnInit {
   }
 
   onChangeCombo() {
+
     this.section.academicBatch = (this.batch);
   }
 

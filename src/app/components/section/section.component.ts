@@ -20,7 +20,6 @@ export class SectionComponent implements OnInit {
 
   ngOnInit() {
     this.getAllSection();
-
   }
 
   getBatchNumber(batchName: string | undefined): string {
