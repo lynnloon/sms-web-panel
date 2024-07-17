@@ -157,7 +157,7 @@ export class TimetableComponent implements OnInit {
       case 'CT':
         return 'Computer Technology';
       case 'CST':
-        return 'Computer Science and Technology';
+        return 'CST';
       default:
         return 'Unknown';
     }

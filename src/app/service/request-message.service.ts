@@ -8,6 +8,7 @@ import { RequestMessage } from '../model/request-message';
 })
 export class RequestMessageService implements OnInit {
 
+
   constructor(
     private commonService: CommonService,
     private httpClient: HttpClient,
@@ -17,22 +18,30 @@ export class RequestMessageService implements OnInit {
   }
 
   getAllReqMessage() {
-    return this.httpClient.get(this.commonService.apiRoute + "/requetMessage/getAll");
+    return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getAll");
+  }
+
+  getSelfMessage(email: string) {
+    return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getSelfMessage?email=" + email);
+  }
+
+  getAllByRequestStatus() {
+    return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getAllByRequestStatus");
   }
 
   getById(id: any) {
-    return this.httpClient.get(this.commonService.apiRoute + "/requetMessage/getById?id=" + id);
+    return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getById?id=" + id);
   }
 
   create(reqMessage: RequestMessage) {
-    return this.httpClient.post(this.commonService.apiRoute + "/requetMessage/save", reqMessage);
+    return this.httpClient.post(this.commonService.apiRoute + "/requestMessage/save", reqMessage);
   }
 
   update(reqMessage: RequestMessage) {
-    return this.httpClient.post(this.commonService.apiRoute + "/requetMessage/update", reqMessage);
+    return this.httpClient.post(this.commonService.apiRoute + "/requestMessage/update", reqMessage);
   }
 
   delete(id: any) {
-    return this.httpClient.delete(this.commonService.apiRoute + "/requetMessage/delete?id=" + id);
+    return this.httpClient.delete(this.commonService.apiRoute + "/requestMessage/delete?id=" + id);
   }
 }

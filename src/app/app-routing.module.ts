@@ -24,6 +24,9 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { TimetableComponent } from './components/timetable/timetable.component';
 import { TeacherDashboardComponent } from './layout/teacher-dashboard/teacher-dashboard.component';
 import { MessageListComponent } from './components/message-list/message-list.component';
+import { ReadMessageComponent } from './components/read-message/read-message.component';
+import { SectionComponent } from './components/section/section.component';
+import { CreateSectionComponent } from './components/create-section/create-section.component';
 
 
 const routes: Routes = [
@@ -54,6 +57,13 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'message-list', component: MessageListComponent },
+  { path: 'read-message', component: ReadMessageComponent },
+  { path: 'read-message/:id', component: ReadMessageComponent },
+  { path: 'section-list', component: SectionComponent },
+  { path: 'add-section', component: CreateSectionComponent },
+  { path: 'add-section/:id', component: CreateSectionComponent },
+
+
 
   //Timetable testing
   { path: 'timetable', component: TimetableComponent },

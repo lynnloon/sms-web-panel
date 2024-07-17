@@ -5,6 +5,7 @@ export class RequestMessage {
     activeStatus?: string;
     name?: string;
     email?: string;
+    profile?: string;
     title?: string;
     message?: string;
     request_status?: boolean;

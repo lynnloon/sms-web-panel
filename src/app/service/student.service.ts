@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Student } from '../model/student';
 import { HttpClient } from '@angular/common/http';
 import { CommonService } from '../util/common.service';
+import { FilterDTO } from '../model/filter-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class StudentService {
   update(student:Student){
     return this.httpClient.post(this.commonService.apiRoute+"/student/update",student);
   }
+
+  getStudentByBatch(filterDTO: FilterDTO) {
+    return this.httpClient.post(this.commonService.apiRoute + "/student/getStudentByBatch",filterDTO);
+  } 
 
   delete(id: any) {
     return this.httpClient.delete(this.commonService.apiRoute+"/student/delete?id="+id);

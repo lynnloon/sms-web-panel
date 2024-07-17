@@ -32,8 +32,10 @@
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{pos.name}}</td>
                                 <td>
-                                    <i class="bi bi-pencil-square" title="edit"  [routerLink]="['/add-position',pos.id]"></i>&nbsp;
-                                    <i class="bi bi-trash" style="color: red;" title="delete" (click)="delete(pos.id)"></i>
+                                    <i class="bi bi-pencil-square" title="edit"
+                                        [routerLink]="['/add-position',pos.id]"></i>&nbsp;
+                                    <i class="bi bi-trash" style="color: red;" title="delete"
+                                        (click)="delete(pos.id)"></i>
                                 </td>
                             </tr>
                         </tbody>

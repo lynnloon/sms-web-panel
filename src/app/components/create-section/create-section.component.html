@@ -1,0 +1,77 @@
+<div class="main" id="main">
+    <div class="pagetitle">
+        <h1 *ngIf="editSection == false">Add New Section</h1>
+        <h1 *ngIf="editSection == true">Edit Section</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="'/section-list'">Section Lists</a></li>
+                <li class="breadcrumb-item" *ngIf="editSection == false">Add new Section</li>
+                <li class="breadcrumb-item" *ngIf="editSection == true">Edit Section</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center" *ngIf="editSection == false">Section Adding Form</h5>
+                    <h5 class="card-title text-center" *ngIf="editSection == true">Section Editing Form</h5>
+                    <section class="ccontainer">
+                        <form class="row g-3" align="center">
+                            <div class="col-sm-3">
+                                <b><label for="inputEmail3" class=" required">Academic Batch</label></b>
+                                <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="batch"
+                                    [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
+                                    <option value="">Choose..</option>
+                                    <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <b><label for="inputEmail3" class="required">Major</label></b>
+                                <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="section.major"
+                                    [ngModelOptions]="{standalone: true}" (ngModelChange)="onStudentChange()">
+                                    <option value="" selected>Choose..</option>
+                                    <option *ngIf="batch.name == 'FIRST YEAR'">CST</option>
+                                    <option *ngIf="batch.name != 'FIRST YEAR'">CS</option>
+                                    <option *ngIf="batch.name != 'FIRST YEAR'">CT</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <b><label for="inputEmail3" class="required">Section Name</label></b>
+                                <div> <input type="text" class="form-control" [(ngModel)]="section.name"
+                                        [ngModelOptions]="{standalone: true}"></div>
+                            </div>
+                            <div class="col-sm-4"><br />
+                                <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
+                                <button type="reset" class="btn btn-secondary"
+                                    [routerLink]="'/section-list'">Cancel</button>
+                            </div>
+                        </form>
+                    </section><br />
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Roll No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let stu of students;let i = index;">
+                                <td><input type="checkbox" [checked]="stu.select" [value]="stu.id"
+                                        (change)="onChangeStu($event)"></td>
+                                <td scope="row">{{i+1}}</td>
+                                <td>{{stu.stu_name}}</td>
+                                <td>{{stu.stuRoll_no}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -29,6 +29,7 @@ export class ContactComponent implements OnInit {
   save() {
     this.reqMessage.name = localStorage.getItem('userName') as string;
     this.reqMessage.email = localStorage.getItem('email') as string;
+    this.reqMessage.profile = localStorage.getItem('profile') as string;
     var message = this.checkValidation();
     if (message != 'Your message has been sent.')
       this.commonService.inputAlert(message, 'warning');
@@ -46,9 +47,9 @@ export class ContactComponent implements OnInit {
     if (this.reqMessage.name == undefined || this.reqMessage.name.trim() == '')
       return "Fill your name";
     else if (this.reqMessage.email == undefined || this.reqMessage.email.trim() == '')
-      return "Fill Your email";
+      return "Fill your email";
     else if (this.reqMessage.title == undefined || this.reqMessage.title.trim() == '')
-      return "Fill Title of your request";
+      return "Fill subject of your message";
     else if (this.reqMessage.message == undefined || this.reqMessage.message.trim() == '')
       return "Fill your message";
     else

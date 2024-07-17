@@ -55,3 +55,16 @@
 .dropdown-menu.profile .dropdown-item span {
     flex: 1;
 }
+
+a{
+    color: rgb(0, 0, 0);
+}
+
+.t {
+    display: block;
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+

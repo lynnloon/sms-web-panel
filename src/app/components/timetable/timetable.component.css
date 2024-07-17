@@ -53,6 +53,7 @@ td{
   max-width: 50px;
   text-align: center;
 }
+
 .example-container {
   width: 160px;
   max-width: 100%;
@@ -88,8 +89,8 @@ td{
   box-sizing: border-box;
   border-radius: 4px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {
@@ -107,27 +108,30 @@ td{
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-.peopleClass
-{
-   background:rgb(19, 222, 240)!important;
+
+.peopleClass {
+  background: rgb(19, 222, 240) !important;
 }
-.movieClass
-{
-  background:rgb(201, 98, 178)!important;
-  color:white!important;
+
+.movieClass {
+  background: rgb(201, 98, 178) !important;
+  color: white !important;
 }
-  .subClass
-{
-  background:rgb(55, 239, 58);
+
+.subClass {
+  background: rgb(55, 239, 58);
 }
-.dataClass{
-background:rgb(210, 102, 102);
+
+.dataClass {
+  background: rgb(210, 102, 102);
 }
-.aaClass{
-background:rgb(212, 146, 191);
+
+.aaClass {
+  background: rgb(212, 146, 191);
 }
-.erpClass{
-background:rgb(54, 236, 106);
+
+.erpClass {
+  background: rgb(54, 236, 106);
 }
 
 .studio-list {
@@ -169,7 +173,7 @@ background:rgb(54, 236, 106);
 }
 
 
-.containS1-list{
+.containS1-list {
   width: 100%;
   max-width: 100%;
   border: solid 1px #ccc;
@@ -180,7 +184,8 @@ background:rgb(54, 236, 106);
   border-radius: 4px;
   overflow: hidden;
 }
-.containS1-box1{
+
+.containS1-box1 {
   width: 100%;
   max-width: 100%;
   padding: 20px 10px;
@@ -195,6 +200,7 @@ background:rgb(54, 236, 106);
 
   font-size: 14px;
 }
+
 .containS1-box1:last-child {
   border: none;
 }
