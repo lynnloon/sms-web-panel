@@ -71,7 +71,7 @@
                         <tr>
 
                         <tr>
-                            <td bgcolor="  #c6e1ff"><b>MON</b></td>
+                            <td bgcolor=" #c6e1ff" class="text--center"><b>MON</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l11="cdkDropList"
@@ -140,7 +140,7 @@
 
                         </tr>
                         <tr>
-                            <td bgcolor="  #c6e1ff"><b>TUE</b></td>
+                            <td bgcolor="  #c6e1ff" class="text--center"><b>TUE</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l21="cdkDropList"
@@ -206,7 +206,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="  #c6e1ff"><b>WED</b></td>
+                            <td bgcolor="  #c6e1ff" class="text--center"><b>WED</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l31="cdkDropList"
@@ -272,7 +272,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="  #c6e1ff"><b>THU</b></td>
+                            <td bgcolor="  #c6e1ff" class="text--center"><b>THU</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l41="cdkDropList"
@@ -338,7 +338,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="  #c6e1ff"><b>FRI</b></td>
+                            <td bgcolor="  #c6e1ff" class="text--center"><b>FRI</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l51="cdkDropList"
@@ -408,8 +408,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-primary bi bi-plus-circle" (click)="saveIimetable()">
-                   Confirm</button>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary " (click)="saveTimetable()">
+                        Confirm</button>
+                </div>
                 <div class="example-container">
 
 
@@ -419,14 +421,14 @@
                         [cdkDropListConnectedTo]="[sub,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56]"
                         class="example-list" (cdkDropListDropped)="drop($event)">
                         <div class="example-box subjectClass" *ngFor="let sub of subjects" cdkDrag>
-                            <span>{{sub.name}}</span><span>{{sub.subjectSem?.semesterName}}</span>
+                            <span>{{sub.name}}</span>
                         </div>
                     </div>
                 </div>
                 <!-- <div class="example-container">
 
 
-          <h2>SE</h2>
+<h2>SE</h2>
   
           <div cdkDropList #mov="cdkDropList" [cdkDropListData]="movies"
               [cdkDropListConnectedTo]="[mov,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56]"
@@ -436,7 +438,7 @@
               </div>
           </div>
       </div>
-     
+               
       <div class="example-container">
           <h2>Math</h2>
           <div cdkDropList #peo="cdkDropList" [cdkDropListData]="people"
@@ -476,6 +478,13 @@
             <tr *ngFor=" let sub of subjects;let i = index;">
                 <td>{{sub.moduleNo}}</td>
                 <td> {{sub.name}}</td>
+                <td>
+                    <select class="form-select" id="inputGroupSelect01 " *ngFor="let subStaff of sub.subjectStaff"
+                        (change)="assignTeacher(sub,subStaff)">
+                        <option value="">Choose..</option>
+                        <option>{{subStaff.staffName}}</option>
+                    </select>
+                </td>
             </tr>
         </table><br />
     </div>
@@ -490,8 +499,15 @@
                 <h5><span>{{batchName}}</span><span> {{majorN}}</span> Timetable</h5>
                 <h5>First Semester</h5>
             </b>
-            <h5 class="margin">Section-A</h5>
+
+
         </div>
+        <div style="text-align: right;" col-sm-4>
+            <input type="text" class="sec" [(ngModel)]="sectionTitle" id="inputText">
+        </div>
+        <br />
+        
+
         <section class="section">
             <div class="row">
                 <table class="timetable">

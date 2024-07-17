@@ -33,11 +33,19 @@
 } */
 
 /* Drag and Drop time table style */
-
+button{
+  width: 100px;
+  margin:0 auto;
+  text-align: center;
+}
 table{
   width: 90%;
   max-width: 850px;
   margin: 0 auto;
+}
+th{
+  height: 60px;
+  font-size:larger;
 }
 td{
 
@@ -193,6 +201,13 @@ background:rgb(54, 236, 106);
 
 .containS1-list.cdk-drop-list-dragging .containS1-box1:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+
+
+sec{
+width :60px;
 }
 
 /* End Drag and drop time table style */
