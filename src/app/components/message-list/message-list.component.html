@@ -1,4 +1,5 @@
-<div class="main" id="main">
+<!-- ADMIN ROLE -->
+<div class="main" id="main" *ngIf="role=='ADMIN'">
     <div class="pagetitle">
         <h1>Message History</h1>
         <nav>
@@ -31,7 +32,9 @@
                                 <td>{{m.title}}</td>
                                 <td>
                                     <i class="bi bi-arrow-right-square" title="view message"
-                                        [routerLink]="['/read-message',m.id]"></i>
+                                        [routerLink]="['/read-message',m.id]"></i>&nbsp;
+                                    <i class="bi bi-trash" style="color: red;" title="delete"
+                                        (click)="delete(m.id)"></i>
                                 </td>
                             </tr>
                         </tbody>
@@ -43,3 +46,48 @@
         </div>
     </section>
 </div>
+<!-- end of ADMIN role -->
+
+<!-- STUDENT OR TEACHER -->
+<div class="main" id="main" *ngIf="role=='STUDENT' || role=='TEACHER'">
+    <div class="pagetitle">
+        <h1>Your Message History</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" *ngIf="role=='TEACHER'"><a [routerLink]="'/teacher-dashboard'">Home</a></li>
+                <li class="breadcrumb-item" *ngIf="role=='STUDENT'"><a [routerLink]="'/teacher-dashboard'">Home</a></li>
+                <li class="breadcrumb-item">Message List</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col" class="w">Date </th>
+                                <th scope="col" class="w">Title</th>
+                                <th scope="col">Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let m of requestM;let i = index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{m.creationDate | date:'dd-MM-yyyy'}}</td>
+                                <td>{{m.title}}</td>
+                                <td scope="row">{{m.message}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- END OF STUDENT OR TEACHER -->

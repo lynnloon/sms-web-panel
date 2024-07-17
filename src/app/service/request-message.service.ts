@@ -8,6 +8,7 @@ import { RequestMessage } from '../model/request-message';
 })
 export class RequestMessageService implements OnInit {
 
+
   constructor(
     private commonService: CommonService,
     private httpClient: HttpClient,
@@ -20,9 +21,13 @@ export class RequestMessageService implements OnInit {
     return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getAll");
   }
 
-getAllByRequestStatus(){
-  return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getAllByRequestStatus");
-}
+  getSelfMessage(email: string) {
+    return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getSelfMessage?email=" + email);
+  }
+
+  getAllByRequestStatus() {
+    return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getAllByRequestStatus");
+  }
 
   getById(id: any) {
     return this.httpClient.get(this.commonService.apiRoute + "/requestMessage/getById?id=" + id);

@@ -26,10 +26,39 @@
 
             <li class="nav-item dropdown">
 
-                <a class="nav-link nav-icon"  data-bs-toggle="dropdown" (click)="toggleDropdown('noti')">
+                <a class="nav-link nav-icon" data-bs-toggle="dropdown" (click)="toggleDropdown('noti')">
                     <i class="bi bi-bell"></i>
                     <span class="badge bg-primary badge-number" *ngIf="(messages.length>0)">{{messages.length}}</span>
                 </a><!-- End Notification Icon -->
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
+                    [ngClass]="{ 'show': isNotiDropdownOpen }">
+                    <li class="dropdown-header">
+                        You have <b>{{messages.length}}</b> new notifications
+                        <a [routerLink]="'/message-list'"><span class="badge rounded-pill bg-primary p-2 ms-2"
+                                (click)="toggleDropdown('showAll')">View all</span></a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <table>
+                            <tr *ngFor="let m of messages;">
+                                <section>
+                                    <td> <img src="assets/images/A.jpg"
+                                            style="margin: 5px;max-width: 60px; height: 60px;" alt=" Profile"
+                                            class="rounded-circle"></td>
+                                    <td><a [routerLink]="['/read-message',m.id]"
+                                            (click)="toggleDropdown('showAll')"><b>{{m.name}}</b> sent a message.</a>
+                                    </td>
+                                </section>
+                                <hr class="dropdown-divider">
+                            </tr>
+                        </table>
+                    </li>
+                    <li class="dropdown-footer">
+                        <a href="#">Show all notifications</a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item dropdown pe-3">
 
@@ -41,9 +70,12 @@
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages"
                     [ngClass]="{ 'show': isMessagesDropdownOpen }">
                     <li class="dropdown-header">
-                        You have {{messages.length}} new messages
+                        You have <b>{{messages.length}}</b> new messages
                         <a [routerLink]="'/message-list'"><span class="badge rounded-pill bg-primary p-2 ms-2"
                                 (click)="toggleDropdown('showAll')">View all</span></a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
                     </li>
 
                     <li>
@@ -53,8 +85,8 @@
                                     <td> <img src="{{ this.commonService.imageURL+m.profile}}"
                                             style="margin: 5px;max-width: 60px; height: 60px;" alt=" Profile"
                                             class="rounded-circle"></td>
-                                    <td><a [routerLink]="['/read-message',m.id]"
-                                            (click)="toggleDropdown('showAll')" color="black">{{m.message}}</a></td>
+                                    <td><a [routerLink]="['/read-message',m.id]" (click)="toggleDropdown('showAll')"
+                                            class="t">{{m.message}}</a></td>
                                 </section>
                                 <hr class="dropdown-divider">
                             </tr>
