@@ -36,7 +36,7 @@ export class TimetableComponent implements OnInit {
   filterDTO: FilterDTO = new FilterDTO();
   student: Student = new Student();
   year: AcademicYear = new AcademicYear();
-  sectionTitle?:string;
+  student_section?:Section=new Section();
   //declaring timetable objects to store records
   timetable: Timetable = new Timetable();
   timetable1: Timetable = new Timetable();
@@ -126,7 +126,8 @@ export class TimetableComponent implements OnInit {
           this.majorN = this.getMajor(this.student.stu_major);
          //batch name
           this.batchId = this.student.studentBatch?.id;
-          this.filterDTO.studentId=this.student.id;        
+          this.filterDTO.studentId=this.student.id;
+          console.log(this.filterDTO.studentId)  ;      
           this.academicBatchServie.getById(this.batchId).subscribe((response: any) => {
             if (response.status) {
               this.batch = response.data;
@@ -144,7 +145,11 @@ export class TimetableComponent implements OnInit {
   getSection() {
     this.timetableService.getSection(this.filterDTO).subscribe((response:any)=>{
       if(response.status){
-        this.sectionTitle=response.data.name;
+        this.student_section=response.data;
+        console.log(this.student_section?.name);
+      }
+      else {
+        console.log(response.data)
       }
     })
   }

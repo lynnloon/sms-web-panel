@@ -55,7 +55,7 @@ export class CreateSectionComponent implements OnInit {
     this.studentService.getStudentByBatch(this.filterDTO).subscribe((response: any) => {
       if (response.status) {
         this.students = response.data;
-        console.log(this.students[0].select);
+      //  console.log(this.students[0].select);
         this.sortStudentsByRollNo();
       }
     });

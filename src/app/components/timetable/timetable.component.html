@@ -496,23 +496,23 @@
         <div align="center"><b>
                 <h5>University Of Computer Studies(Mandalay)</h5>
                 <h5><span>{{academicYear}}</span> Academic Year</h5>
-                <h5><span>{{batchName}}</span><span> {{majorN}}</span> Timetable</h5>
+                <h5><span>{{this.batchName}}</span><span> {{majorN}}</span> Timetable</h5>
                 <h5>First Semester</h5>
             </b>
 
 
         </div>
         <div style="text-align: right;" col-sm-4>
-            <input type="text" class="sec" [(ngModel)]="sectionTitle" id="inputText">
+            <h1>{{student_section?.name}}</h1>
         </div>
         <br />
-        
+
 
         <section class="section">
             <div class="row">
                 <table class="timetable">
                     <tr>
-                        <th bgcolor="  #c6e1ff">Day</th>
+                        <th bgcolor="  #c6e1ff" class="text-center">Day</th>
                         <th bgcolor=" EDC6FC">9:00-9:55</th>
                         <th bgcolor=" EDC6FC">10:05-11:00</th>
                         <th bgcolor=" EDC6FC">11:10-12:05</th>
@@ -523,51 +523,80 @@
                     </tr>
                     <tr>
                         <td bgcolor="  #c6e1ff"><b>MON</b></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
+                        <td class="border ">{{e11[0].moduleNo}}</td>
+                        <td class="border ">{{e12[0].moduleNo}}</td>
+
+                        <td class="border ">{{e13[0].moduleNo}}</td>
+
                         <td rowspan="5">
                             <h2>L<br>U<br>N<br>C<br>H</h2>
                         </td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
+                        <td class="border ">{{e14[0].moduleNo}}</td>
+
+                        <td class="border ">{{e15[0].moduleNo}}</td>
+
+                        <td class="border ">{{e16[0].moduleNo}}</td>
+
                     </tr>
                     <tr>
                         <td bgcolor="  #c6e1ff"><b>TUE</b></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
+                        <td class="border ">{{e21[0].moduleNo}}</td>
+
+                        <td class="border ">{{e22[0].moduleNo}}</td>
+
+                        <td class="border ">{{e23[0].moduleNo}}</td>
+
+                        <td class="border ">{{e24[0].moduleNo}}</td>
+
+                        <td class="border ">{{e25[0].moduleNo}}</td>
+
+                        <td class="border ">{{e26[0].moduleNo}}</td>
+
                     </tr>
                     <tr>
                         <td bgcolor="  #c6e1ff"><b>WED</b></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
+                        <td class="border ">{{e31[0].moduleNo}}</td>
+
+                        <td class="border ">{{e32[0].moduleNo}}</td>
+
+                        <td class="border ">{{e33[0].moduleNo}}</td>
+
+                        <td class="border ">{{e34[0].moduleNo}}</td>
+
+                        <td class="border ">{{e35[0].moduleNo}}</td>
+
+                        <td class="border ">{{e36[0].moduleNo}}</td>
+
                     </tr>
                     <tr>
                         <td bgcolor="  #c6e1ff"><b>THU</b></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
+                        <td class="border ">{{e41[0].moduleNo}}</td>
+
+                        <td class="border ">{{e42[0].moduleNo}}</td>
+
+                        <td class="border ">{{e43[0].moduleNo}}</td>
+
+                        <td class="border ">{{e44[0].moduleNo}}</td>
+
+                        <td class="border ">{{e45[0].moduleNo}}</td>
+
+                        <td class="border ">{{e46[0].moduleNo}}</td>
+
                     </tr>
                     <tr>
                         <td bgcolor="  #c6e1ff"><b>FRI</b></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
+                        <td class="border ">{{e51[0].moduleNo}}</td>
+
+                        <td class="border ">{{e52[0].moduleNo}}</td>
+
+                        <td class="border ">{{e53[0].moduleNo}}</td>
+
+                        <td class="border ">{{e54[0].moduleNo}}</td>
+
+                        <td class="border ">{{e55[0].moduleNo}}</td>
+
+                        <td class="border ">{{e56[0].moduleNo}}</td>
+
                     </tr>
                 </table>
             </div><br />
