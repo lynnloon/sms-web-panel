@@ -43,6 +43,8 @@ import { MessageListComponent } from './components/message-list/message-list.com
 import { ReadMessageComponent } from './components/read-message/read-message.component';
 import { SectionComponent } from './components/section/section.component';
 import { CreateSectionComponent } from './components/create-section/create-section.component';
+import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
+import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { CreateSectionComponent } from './components/create-section/create-secti
     MessageListComponent,
     ReadMessageComponent,
     SectionComponent,
-    CreateSectionComponent
+    CreateSectionComponent,
+    NoticeBoardComponent,
+    CreateNoticeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,37 +1,12 @@
-.dashboard .card-icon {
-    font-size: 32px;
-    line-height: 0;
-    width: 30px;
-    height: 30px;
-    flex-shrink: 0;
-    flex-grow: 0;
-  }
-  
-  .dashboard .sales-card .card-icon {
-    color: #4154f1;
-    background: #d3dde9;
-  }
-  
-  .card-icon {
-    content: "\f6fd";
-    margin-left: 50px; 
-    float: right;
+.limit {
+    display: block;
+    width: 110px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
-  
-  .dashboard .revenue-card .card-icon {
-    color: #2eca6a;
-    background: #e0f8e9;
-  }
-  
-  .dashboard .dept .card-icon {
-    color: #ff771d;
-    background: #ffecdf;
-  }
-  
-  .dashboard .sub .card-icon {
-    color: #ac1dff;
-    background: #efd4ff;
-  }
-  .bi-mortarboard-fill{
-    size:0cm;
-  }
+/* .dashboard .news p{
+    font-size: 17px;
+    color: #777777;
+    margin-left: 95px;
+} */

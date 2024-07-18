@@ -27,6 +27,8 @@ import { MessageListComponent } from './components/message-list/message-list.com
 import { ReadMessageComponent } from './components/read-message/read-message.component';
 import { SectionComponent } from './components/section/section.component';
 import { CreateSectionComponent } from './components/create-section/create-section.component';
+import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
+import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
 
 
 const routes: Routes = [
@@ -62,6 +64,11 @@ const routes: Routes = [
   { path: 'section-list', component: SectionComponent },
   { path: 'add-section', component: CreateSectionComponent },
   { path: 'add-section/:id', component: CreateSectionComponent },
+
+  //notice board
+  { path: 'notice-board', component: NoticeBoardComponent },
+  { path: 'add-notice', component: CreateNoticeComponent },
+  { path: 'add-notice/:id', component: CreateNoticeComponent },
 
 
 
