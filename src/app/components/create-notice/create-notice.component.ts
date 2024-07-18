@@ -34,40 +34,48 @@ export class CreateNoticeComponent implements OnInit {
     })
 
   }
+
   save() {
     var message = this.checkValidation();
     if (message != 'OK')
       this.commonService.inputAlert(message, 'warning');
-   else {
-    if (this.editNotice) {
-      this.noticeService.update(this.notice).subscribe((response:any)=>{
-        if(response.status){
-          this.commonService.inputAlert(message,'success');
-          this.router.navigate(['/notice-board']);
-        }
-      });
-    } else {
-      this.noticeService.create(this.notice).subscribe((response: any) => {
-        if (response.status) {
-          this.commonService.inputAlert(message, 'success');
-          this.router.navigate(['/notice-board']);
-        }
-      });
-    }
-     
+    else {
+      if (this.editNotice) {
+        this.noticeService.update(this.notice).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/notice-board']);
+          }
+        });
+      } else {
+        this.noticeService.create(this.notice).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert(message, 'success');
+            this.router.navigate(['/notice-board']);
+          }
+        });
+      }
+
     }
   }
 
   getById(id: any) {
     this.noticeService.getById(id).subscribe((response: any) => {
       if (response.status) {
-        this.notice = response.data; 
-        console.log("I am Here>>>>>>>"+this.notice);      
-      } else {
-        window.alert('record not found');
+        this.notice = response.data;
+        this.decrease(this.notice);
       }
     });
   }
+
+  decrease(notice: Notice) {
+    this.noticeService.update(notice).subscribe((response: any) => {
+      if (response.status) {
+        this.notice = response.data;
+      }
+    });
+  }
+
   checkValidation() {
     if (this.notice.title == undefined || this.notice.title.trim() == '')
       return "Fill Notice Title";

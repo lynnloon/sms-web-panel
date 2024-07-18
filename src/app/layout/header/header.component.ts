@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Notice } from 'src/app/model/notice';
 import { RequestMessage } from 'src/app/model/request-message';
+import { NoticeService } from 'src/app/service/notice.service';
 import { RequestMessageService } from 'src/app/service/request-message.service';
 import { CommonService } from 'src/app/util/common.service';
 
@@ -18,14 +20,17 @@ export class HeaderComponent implements OnInit {
   isNotiDropdownOpen: boolean = false;
 
   reqMessage: RequestMessage = new RequestMessage();
+  notice: Notice = new Notice();
 
   messages: RequestMessage[] = [];
+  notices: Notice[] = [];
 
 
   constructor(
     public commonService: CommonService,
     private requestSer: RequestMessageService,
-    private router: Router,
+    private noticeSer: NoticeService,
+    private route:Router,
     private activatedRoute: ActivatedRoute,
   ) { }
 
@@ -34,15 +39,38 @@ export class HeaderComponent implements OnInit {
     this.userName = localStorage.getItem('userName') as string;
     this.profile = localStorage.getItem('profile') as string;
     this.profile = this.commonService.imageURL + this.profile;
+    debugger
     this.getAllByRequestStatus();
+    this.getAllByNoticeStatus();
 
-    this.activatedRoute.params.subscribe(params => {
-      const messId = params['id'];
-      if (messId) {
-        this.getById(messId);
+
+    if (this.role == 'ADMIN') {
+      this.activatedRoute.params.subscribe(params => {
+        const messId = params['id'];
+        if (messId) {
+          this.getById(messId);
+        }
+      });
+    }
+    else if (this.role === 'STUDENT' || this.role === 'TEACHER') {
+      
+      this.activatedRoute.params.subscribe(params => {
+        const noticeId = params['id'];
+        if (noticeId) {
+          this.getId(noticeId);
+        }
+      });
+    }
+  }
+  
+  getId(id: any) {
+    this.noticeSer.getById(id).subscribe((response: any) => {
+      if (response.status) {
+        this.notice = response.data;
       }
     });
   }
+
   getById(id: any) {
     this.requestSer.getById(id).subscribe((response: any) => {
       if (response.status) {
@@ -50,6 +78,15 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+
+  getAllByNoticeStatus() {
+    this.noticeSer.getAllByNoticeStatus().subscribe((response: any) => {
+      if (response.status) {
+        this.notices = response.data;
+      }
+    });
+  }
+
   getAllByRequestStatus() {
     this.requestSer.getAllByRequestStatus().subscribe((response: any) => {
       if (response.status) {

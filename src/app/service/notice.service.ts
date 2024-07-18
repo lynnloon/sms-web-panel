@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NoticeService implements OnInit {
 
+
   constructor(
     private commonService: CommonService,
     private httpClient: HttpClient
@@ -17,6 +18,10 @@ export class NoticeService implements OnInit {
 
   getAll() {
     return this.httpClient.get(this.commonService.apiRoute + "/notice/getAll");
+  }
+
+  getAllByNoticeStatus() {
+    return this.httpClient.get(this.commonService.apiRoute + "/notice/getAllByNoticeStatus");
   }
 
   getById(id: any) {
