@@ -1,0 +1,11 @@
+.t {
+    display: block;
+    width: 600px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.w{
+    width: 150px;
+}

@@ -171,7 +171,7 @@
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown" (click)="toggleDropdown('noti')">
                     <i class="bi bi-bell"></i>
-                    <span class="badge bg-primary badge-number">{{notices.length}}</span>
+                    <span class="badge bg-primary badge-number" *ngIf="(notices.length>0)">{{notices.length}}</span>
                 </a><!-- End Notification Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
