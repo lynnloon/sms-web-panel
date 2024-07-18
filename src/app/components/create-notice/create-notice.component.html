@@ -1,0 +1,57 @@
+<div class="main" id="main">
+    <div class="pagetitle">
+        <h1 *ngIf="editNotice == false">Add New Notice</h1>
+        <h1 *ngIf="editNotice == true">Edit Notice</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="'/notice-board'">Notice Lists</a></li>
+                <li class="breadcrumb-item" *ngIf="editNotice == false">Add New Notice</li>
+                <li class="breadcrumb-item" *ngIf="editNotice == true">Edit Notice</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center" *ngIf="editNotice == false">Notice Adding Form</h5>
+                    <h5 class="card-title text-center" *ngIf="editNotice == true">Notice Editing Form</h5>
+                    <!-- Horizontal Form -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Title</label>
+                        <div class="col-sm-6">
+                            <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="notice.title"
+                        [ngModelOptions]="{standalone: true}" >
+                        <option value="">Choose..</option>
+                        <option >EVENT</option>
+                        <option >ANNOUNCEMENT</option>
+                        <option >HEALTH</option>
+                        <option >SCHOOL ACTIVITY</option>
+                    </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Content</label>
+                        <div class="col-sm-6">
+                            <textarea type="text" class="form-control" [(ngModel)]="notice.content" id="inputText"></textarea>
+                        </div>
+                    </div>
+                    <!-- <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Date</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" [(ngModel)]="notice.date" id="inputEmail">
+                        </div>
+                    </div> -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
+                        <button type="reset" class="btn btn-secondary" [routerLink]="'/notice-board'">Cancel</button>
+                    </div>
+                    <!-- End Horizontal Form -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
