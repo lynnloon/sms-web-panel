@@ -1,4 +1,5 @@
-<div class="main" id="main">
+<!-- ADMIN -->
+<div class="main" id="main" *ngIf="role=='ADMIN'">
     <div class="pagetitle">
         <h1 *ngIf="editNotice == false">Add New Notice</h1>
         <h1 *ngIf="editNotice == true">Edit Notice</h1>
@@ -39,15 +40,54 @@
                                 id="inputText"></textarea>
                         </div>
                     </div>
-                    <div class="text-center" *ngIf="role=='ADMIN'">
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
                         <button type="reset" class="btn btn-secondary" [routerLink]="'/notice-board'">Cancel</button>
                     </div>
-                    <div class="text-center" *ngIf="role=='STUDENT'|| role=='TEACHER'">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+<!-- STUDENT OR TEACHER  -->
+<div class="main" id="main" *ngIf="role=='STUDENT'|| role=='TEACHER'">
+    <div class="pagetitle">
+        <h1>Notice Detail</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="'/notice-board'">Notice Lists</a></li>
+                <li class="breadcrumb-item">Notice Detail</li>
+            </ol>
+        </nav>
+    </div>
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Notice Detail</h5>
+                    <!-- Horizontal Form -->
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Title</b></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control " [(ngModel)]="notice.title"
+                                [ngModelOptions]="{standalone: true}" disabled>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Content</b></label>
+                        <div class="col-sm-6">
+                            <textarea type="text" rows="10" class="form-control" [(ngModel)]="notice.content"
+                                id="inputText"></textarea>
+                        </div>
+                    </div>
+                    <div class="text-center">
                         <button type="reset" class="btn btn-secondary" [routerLink]="'/notice-board'">Backword</button>
                     </div>
-                    <!-- End Horizontal Form -->
-
                 </div>
             </div>
         </div>

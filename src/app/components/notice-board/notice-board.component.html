@@ -76,7 +76,7 @@
                                 <th scope="col">No</th>
                                 <th scope="col" class="w">Date</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">View Content</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,7 +84,7 @@
                                 <th scope="row">{{i+1}}</th>
                                 <td>{{not.creationDate | date:'dd-MM-yyyy'}}</td>
                                 <td>{{not.title}}</td>
-                                <td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <i class="bi bi-arrow-right-square" title="view content"
                                         [routerLink]="['/add-notice',not.id]"></i>
                                 </td>
