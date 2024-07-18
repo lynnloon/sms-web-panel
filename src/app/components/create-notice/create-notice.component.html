@@ -19,6 +19,18 @@
                     <h5 class="card-title text-center" *ngIf="editNotice == true">Notice Editing Form</h5>
                     <!-- Horizontal Form -->
                     <div class="row mb-3">
+                        <div *ngIf="editNotice == true" class="profileCss">
+                            <img src="{{ this.commonService.imageURL+notice.noticePicture}}" alt="notice"
+                                            style="margin: 5px;max-width: 25%; height: 80%;"
+                                            class="rounded-circle">
+                        </div>
+                        <label for="inputPassword3" class="col-sm-3 col-form-label required">Notice Picture</label>
+                        <div class="col-sm-6">
+                            <input id="file" type="file" name="cover" class="form-control" accept=".png , .jpg , .jpeg"
+                                (change)="oncoverChange($event)" [(ngModel)]="notice.noticePicture">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Title</label>
                         <div class="col-sm-6">
                             <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="notice.title"
@@ -38,6 +50,7 @@
                             <textarea type="text" class="form-control" [(ngModel)]="notice.content" id="inputText"></textarea>
                         </div>
                     </div>
+
                     <!-- <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Date</label>
                         <div class="col-sm-6">
