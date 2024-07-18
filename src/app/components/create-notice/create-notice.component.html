@@ -22,31 +22,29 @@
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Title</label>
                         <div class="col-sm-6">
                             <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="notice.title"
-                        [ngModelOptions]="{standalone: true}" >
-                        <option value="">Choose..</option>
-                        <option >EVENT</option>
-                        <option >ANNOUNCEMENT</option>
-                        <option >HEALTH</option>
-                        <option >SCHOOL ACTIVITY</option>
-                    </select>
+                                [ngModelOptions]="{standalone: true}">
+                                <option value="">Choose..</option>
+                                <option>EVENT</option>
+                                <option>ANNOUNCEMENT</option>
+                                <option>HEALTH</option>
+                                <option>SCHOOL ACTIVITY</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-3">
 
                         <label for="inputEmail3" class="col-sm-3 col-form-label required">Content</label>
                         <div class="col-sm-6">
-                            <textarea type="text" rows="10" class="form-control" [(ngModel)]="notice.content" id="inputText"></textarea>
+                            <textarea type="text" rows="10" class="form-control" [(ngModel)]="notice.content"
+                                id="inputText"></textarea>
                         </div>
                     </div>
-                    <!-- <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Date</label>
-                        <div class="col-sm-6">
-                            <input type="date" class="form-control" [(ngModel)]="notice.date" id="inputEmail">
-                        </div>
-                    </div> -->
-                    <div class="text-center">
+                    <div class="text-center" *ngIf="role=='ADMIN'">
                         <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
                         <button type="reset" class="btn btn-secondary" [routerLink]="'/notice-board'">Cancel</button>
+                    </div>
+                    <div class="text-center" *ngIf="role=='STUDENT'|| role=='TEACHER'">
+                        <button type="reset" class="btn btn-secondary" [routerLink]="'/notice-board'">Backword</button>
                     </div>
                     <!-- End Horizontal Form -->
 

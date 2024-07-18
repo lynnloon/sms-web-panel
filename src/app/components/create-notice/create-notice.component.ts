@@ -12,6 +12,7 @@ import { CommonService } from 'src/app/util/common.service';
   styleUrls: ['./create-notice.component.css']
 })
 export class CreateNoticeComponent implements OnInit {
+  role?:string;
 
   notice: Notice = new Notice();
   editNotice?: boolean = false;
@@ -25,6 +26,7 @@ export class CreateNoticeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.role = localStorage.getItem('userrole') as string;
     this.activateRoute.params.subscribe(params => {
       const noticeid = params['id'];
       if (noticeid) {
