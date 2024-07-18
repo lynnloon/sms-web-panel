@@ -494,7 +494,6 @@
     <!-- timetable view for student -->
     <div class="card" *ngIf="role == 'STUDENT'"><br />
         <div align="center"><b>
-                <h5>University Of Computer Studies(Mandalay)</h5>
                 <h5><span>{{academicYear}}</span> Academic Year</h5>
                 <h5><span>{{this.batchName}}</span><span> {{majorN}}</span> Timetable</h5>
                 <h5>First Semester</h5>
@@ -503,7 +502,7 @@
 
         </div>
         <div style="text-align: right;" col-sm-4>
-            <h1>{{student_section.name}}</h1>
+            <h5>{{student_section.name}}</h5>
         </div>
         <br />
 

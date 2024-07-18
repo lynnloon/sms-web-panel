@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create-notice.component.css']
 })
 export class CreateNoticeComponent implements OnInit {
+  role?:string;
 
   notice: Notice = new Notice();
   editNotice?: boolean = false;
@@ -31,6 +32,7 @@ export class CreateNoticeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.role = localStorage.getItem('userrole') as string;
     this.activateRoute.params.subscribe(params => {
       const noticeid = params['id'];
       if (noticeid) {
@@ -42,6 +44,7 @@ export class CreateNoticeComponent implements OnInit {
       cover: [null],
     });
   }
+
   save() {
     var message = this.checkValidation();
     if (message != 'OK')
@@ -86,14 +89,19 @@ export class CreateNoticeComponent implements OnInit {
     this.noticeService.getById(id).subscribe((response: any) => {
       if (response.status) {
         this.notice = response.data;
-       
-        // this.filepath = this.commonService.imageURL + this.notice.noticePicture;
-        console.log("Picture>>>>>>>>>"+this.filepath);
-      } else {
-        window.alert('record not found');
+        this.decrease(this.notice);
       }
     });
   }
+
+  decrease(notice: Notice) {
+    this.noticeService.update(notice).subscribe((response: any) => {
+      if (response.status) {
+        this.notice = response.data;
+      }
+    });
+  }
+
   checkValidation() {
     if (this.notice.title == undefined || this.notice.title.trim() == '' && (this.notice.content != undefined || this.notice.noticePicture != undefined))
       return "Fill Notice Title";

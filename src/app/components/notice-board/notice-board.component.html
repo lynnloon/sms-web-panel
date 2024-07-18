@@ -1,4 +1,5 @@
-<div class="main" id="main">
+<!-- ADMIN  -->
+<div class="main" id="main" *ngIf="role=='ADMIN'">
     <div class="pagetitle">
         <h1>Notice Lists</h1>
         <nav>
@@ -11,7 +12,7 @@
 
     <div>
         <button type="submit" class="btn btn-primary bi bi-plus-circle  float-right " [routerLink]="'/add-notice'">
-            Add new Teacher</button>
+            Add new Notice</button>
     </div>
     <br />
     <section class="section">
@@ -23,23 +24,69 @@
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col" class="w">Date</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Content</th>
-                                <th scope="col">Date</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let not of notices;let i = index;">
                                 <th scope="row">{{i+1}}</th>
-                                <td>{{not.title}}</td>
-                                <td>{{not.content}}</td>
                                 <td>{{not.creationDate | date:'dd-MM-yyyy'}}</td>
+                                <td>{{not.title}}</td>
                                 <td>
+                                    <i class="bi bi-arrow-right-square" title="view content"
+                                        [routerLink]="['/add-notice',not.id]"></i>&nbsp;
                                     <i class="bi bi-pencil-square" title="edit"
                                         [routerLink]="['/add-notice',not.id]"></i>&nbsp;
                                     <i class="bi bi-trash" style="color: red;" title="delete"
                                         (click)="delete(not.id)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- STUDENT OF TEACHER  -->
+<div class="main" id="main" *ngIf="role=='STUDENT' || role=='TEACHER'">
+    <div class="pagetitle">
+        <h1>Notice Lists</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item">Notice Lists</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col" class="w">Date</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let not of notices;let i = index;">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{not.creationDate | date:'dd-MM-yyyy'}}</td>
+                                <td>{{not.title}}</td>
+                                <td>
+                                    <i class="bi bi-arrow-right-square" title="view content"
+                                        [routerLink]="['/add-notice',not.id]"></i>
                                 </td>
                             </tr>
                         </tbody>
