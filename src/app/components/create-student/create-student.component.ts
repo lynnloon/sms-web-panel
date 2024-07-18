@@ -206,6 +206,8 @@ export class CreateStudentComponent implements OnInit {
           this.year = selectAcademic;
         }
         this.student.stu_dob = this.datePipe.transform(this.student.stu_dob, "yyyy-MM-dd");
+        if(this.student.stuAcademicYear == undefined)
+          this.getCurrentAcademic();
       } else {
         window.alert('no record found');
       }
@@ -224,7 +226,7 @@ export class CreateStudentComponent implements OnInit {
       this.student.familyMembers.push(this.mother);
       if (!this.father.guardianStatus && !this.mother.guardianStatus)
         this.student.familyMembers.push(this.emergency);
-      if (this.editStudent) {
+      if (this.editStudent) {        
         this.studentService.update(this.student).subscribe((response: any) => {
           if (response.status) {
             this.commonService.inputAlert(message, 'success');

@@ -19,7 +19,6 @@
                     <h5 class="card-title text-center" *ngIf="editSection == true">Section Editing Form</h5>
                     <section class="ccontainer">
                         <form class="row g-3" align="center">
-                            <div class="col-sm-2"></div>
                             <div class="col-sm-3">
                                 <b><label for="inputEmail3" class=" required">Academic Batch</label></b>
                                 <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="batch"
@@ -28,7 +27,7 @@
                                     <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
                                 </select>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-2">
                                 <b><label for="inputEmail3" class="required">Major</label></b>
                                 <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="section.major"
                                     [ngModelOptions]="{standalone: true}" (ngModelChange)="onStudentChange()">
@@ -39,12 +38,17 @@
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                            <b><label for="inputEmail3" class="required">Section Name</label></b>
-                                <input type="text" class="form-control" [(ngModel)]="section.name" id="inputText">
+                                <b><label for="inputEmail3" class="required">Section Name</label></b>
+                                <div> <input type="text" class="form-control" [(ngModel)]="section.name"
+                                        [ngModelOptions]="{standalone: true}"></div>
                             </div>
-                            <div class="col-sm-1"></div>
+                            <div class="col-sm-4"><br />
+                                <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>&nbsp;
+                                <button type="reset" class="btn btn-secondary"
+                                    [routerLink]="'/section-list'">Cancel</button>
+                            </div>
                         </form>
-                    </section><br/>
+                    </section><br />
 
                     <table class="table table-striped">
                         <thead>
@@ -57,7 +61,8 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let stu of students;let i = index;">
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" [checked]="stu.select" [value]="stu.id"
+                                        (change)="onChangeStu($event)"></td>
                                 <td scope="row">{{i+1}}</td>
                                 <td>{{stu.stu_name}}</td>
                                 <td>{{stu.stuRoll_no}}</td>
