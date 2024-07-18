@@ -14,12 +14,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create-notice.component.css']
 })
 export class CreateNoticeComponent implements OnInit {
-  role?:string;
+  role?: string;
 
   notice: Notice = new Notice();
   editNotice?: boolean = false;
   form!: FormGroup;
   filepath!: string;
+
 
 
   constructor(
@@ -88,7 +89,9 @@ export class CreateNoticeComponent implements OnInit {
   getById(id: any) {
     this.noticeService.getById(id).subscribe((response: any) => {
       if (response.status) {
-        this.notice = response.data;
+        this.notice = response.data;{
+            this.filepath = this.commonService.apiRoute + this.notice.noticePicture;
+        }
         this.decrease(this.notice);
       }
     });
@@ -103,7 +106,7 @@ export class CreateNoticeComponent implements OnInit {
   }
 
   checkValidation() {
-    if (this.notice.title == undefined || this.notice.title.trim() == '' && (this.notice.content != undefined || this.notice.noticePicture != undefined))
+    if ((this.notice.title == undefined || this.notice.title.trim() == '') && (this.notice.content != undefined || this.notice.noticePicture != undefined))
       return "Fill Notice Title";
     // else if (this.notice.content == undefined || this.notice.content.trim() == '')
     //   return "Fill Notice Content Please ";

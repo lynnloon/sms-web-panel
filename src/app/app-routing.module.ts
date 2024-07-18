@@ -29,6 +29,7 @@ import { SectionComponent } from './components/section/section.component';
 import { CreateSectionComponent } from './components/create-section/create-section.component';
 import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
 import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
+import { NoticeContentComponent } from './components/notice-content/notice-content.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,8 @@ const routes: Routes = [
   { path: 'notice-board', component: NoticeBoardComponent },
   { path: 'add-notice', component: CreateNoticeComponent },
   { path: 'add-notice/:id', component: CreateNoticeComponent },
+  { path: 'content', component: NoticeContentComponent },
+  { path: 'content/:id', component: NoticeContentComponent },
 
 
 

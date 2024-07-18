@@ -45,6 +45,7 @@ import { SectionComponent } from './components/section/section.component';
 import { CreateSectionComponent } from './components/create-section/create-section.component';
 import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
 import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
+import { NoticeContentComponent } from './components/notice-content/notice-content.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { CreateNoticeComponent } from './components/create-notice/create-notice.
     SectionComponent,
     CreateSectionComponent,
     NoticeBoardComponent,
-    CreateNoticeComponent
+    CreateNoticeComponent,
+    NoticeContentComponent
   ],
   imports: [
     BrowserModule,
