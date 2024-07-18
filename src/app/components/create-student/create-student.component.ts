@@ -165,6 +165,7 @@ export class CreateStudentComponent implements OnInit {
     this.academicService.getCurrent().subscribe((response: any) => {
       if (response.status) {
         if (response.data != null) {
+          debugger
           this.academic = response.data.name;
           this.student.stuAcademicYear = response.data;
         }
@@ -331,8 +332,9 @@ export class CreateStudentComponent implements OnInit {
     else
       return "OK";
   }
+
   onChangeCombo() {
-    this.student.stuAcademicYear = (this.year);
+    
     this.student.studentBatch = (this.batch);
   }
 

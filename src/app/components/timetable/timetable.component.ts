@@ -36,7 +36,7 @@ export class TimetableComponent implements OnInit {
   filterDTO: FilterDTO = new FilterDTO();
   student: Student = new Student();
   year: AcademicYear = new AcademicYear();
-  student_section?:Section=new Section();
+  student_section: Section = new Section();
   //declaring timetable objects to store records
   timetable: Timetable = new Timetable();
   timetable1: Timetable = new Timetable();
@@ -112,7 +112,7 @@ export class TimetableComponent implements OnInit {
       if (response.status) {
         if (response.data != null) {
           this.academicYear = response.data.name;
-          this.year=response.data;
+          this.year = response.data;
 
 
         }
@@ -124,10 +124,10 @@ export class TimetableComponent implements OnInit {
           this.student = response.data;
           this.academicYear = this.student.stuAcademicYear?.name;
           this.majorN = this.getMajor(this.student.stu_major);
-         //batch name
+          //batch name
           this.batchId = this.student.studentBatch?.id;
-          this.filterDTO.studentId=this.student.id;
-          console.log(this.filterDTO.studentId)  ;      
+          this.filterDTO.studentId = this.student.id;
+          console.log(this.filterDTO.studentId);
           this.academicBatchServie.getById(this.batchId).subscribe((response: any) => {
             if (response.status) {
               this.batch = response.data;
@@ -135,18 +135,18 @@ export class TimetableComponent implements OnInit {
             }
 
           });
-
+          this.getSection();
         }
       });
     }
-  this.getSection();
-  
+    
+
   }
   getSection() {
-    this.timetableService.getSection(this.filterDTO).subscribe((response:any)=>{
-      if(response.status){
-        this.student_section=response.data;
-        console.log(this.student_section?.name);
+    this.timetableService.getSection(this.filterDTO).subscribe((response: any) => {
+      if (response.status) {
+        this.student_section = response.data;
+        console.log(this.student_section.name);
       }
       else {
         console.log(response.data)
@@ -222,24 +222,24 @@ export class TimetableComponent implements OnInit {
   }//getting subject list according to academic batch
 
   //assigning teacher-id from option onchange
-  assignTeacher(subject:Subject,staff: Staff) {
-   
-    }
+  assignTeacher(subject: Subject, staff: Staff) {
+
+  }
   //save method for timetable and checking arraylist 's data
 
   saveTimetable() {
     //assigning data to objects
-    this.section.academicBatch=this.batch;
-    this.timetable.academicYear=this.year;
-    this.timetable.section=this.section;
+    this.section.academicBatch = this.batch;
+    this.timetable.academicYear = this.year;
+    this.timetable.section = this.section;
     this.timetable.subject = this.e11[0];
     this.timetable.teacher_id = '1';
     this.timetable.scheduleTime = 1;
-   // this.timetable.section = this.section;
+    // this.timetable.section = this.section;
     this.timetables.push(this.timetable);
     //end of assigning data to object
-    this.timetable1.academicYear=this.year;
-    this.timetable1.section=this.section;
+    this.timetable1.academicYear = this.year;
+    this.timetable1.section = this.section;
     this.timetable1.subject = this.e12[0];
     this.timetable1.teacher_id = '3';
     this.timetable1.scheduleTime = 2;

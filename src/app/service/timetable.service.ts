@@ -26,7 +26,7 @@ export class TimetableService implements OnInit {
   }
 getSection(filter:FilterDTO)
 {
-  return this.httpClient.post(this.commonService.apiRoute+"/timetable/getSection",filter);
+  return this.httpClient.post(this.commonService.apiRoute+"/section/getSection",filter);
   
 } 
 }
