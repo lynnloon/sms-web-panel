@@ -5,5 +5,6 @@ export class Notice {
     activeStatus?: string;
     title?: string;
     content?: string;
+    noticePicture?: string;
     notice_status?: boolean;
 }

@@ -7,21 +7,17 @@ import { NoticeService } from 'src/app/service/notice.service';
 import { CommonService } from 'src/app/util/common.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
-  selector: 'app-create-notice',
-  templateUrl: './create-notice.component.html',
-  styleUrls: ['./create-notice.component.css']
+  selector: 'app-notice-content',
+  templateUrl: './notice-content.component.html',
+  styleUrls: ['./notice-content.component.css']
 })
-export class CreateNoticeComponent implements OnInit {
-  role?: string;
+export class NoticeContentComponent implements OnInit {
 
   notice: Notice = new Notice();
   editNotice?: boolean = false;
   form!: FormGroup;
   filepath!: string;
-
-
 
   constructor(
     private noticeService: NoticeService,
@@ -32,8 +28,8 @@ export class CreateNoticeComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
-  ngOnInit() {
-    this.role = localStorage.getItem('userrole') as string;
+
+  ngOnInit(): void {
     this.activateRoute.params.subscribe(params => {
       const noticeid = params['id'];
       if (noticeid) {
@@ -46,51 +42,11 @@ export class CreateNoticeComponent implements OnInit {
     });
   }
 
-  save() {
-    var message = this.checkValidation();
-    if (message != 'OK')
-      this.commonService.inputAlert(message, 'warning');
-    else {
-      if (this.editNotice) {
-        this.noticeService.update(this.notice).subscribe((response: any) => {
-          if (response.status) {
-            this.commonService.inputAlert(message, 'success');
-            this.router.navigate(['/notice-board']);
-          }
-        });
-      } else {
-        this.noticeService.create(this.notice).subscribe((response: any) => {
-          if (response.status) {
-            this.commonService.inputAlert(message, 'success');
-            this.router.navigate(['/notice-board']);
-          }
-        });
-      }
-
-    }
-  }
-
-  saveNoticeFile() {
-    var formData: any = new FormData();
-    formData.append('uploadFile', this.form?.get('cover')?.value);
-    this.noticeService.saveNoticeFile(formData).subscribe({
-      next: (response: any) => {
-        if (response) {
-          this.notice.noticePicture = response.data;
-        } else {
-          this.commonService.inputAlert(response.message, 'warning');
-        }
-      },
-      error: (err: any) => {
-        Swal.fire("Please Choose image file");
-      }
-    });
-  }
   getById(id: any) {
     this.noticeService.getById(id).subscribe((response: any) => {
       if (response.status) {
-        this.notice = response.data;{
-            this.filepath = this.commonService.apiRoute + this.notice.noticePicture;
+        this.notice = response.data; {
+          this.filepath = this.commonService.apiRoute + this.notice.noticePicture;
         }
         this.decrease(this.notice);
       }
@@ -105,13 +61,6 @@ export class CreateNoticeComponent implements OnInit {
     });
   }
 
-  checkValidation() {
-    if ((this.notice.title == undefined || this.notice.title.trim() == '') && (this.notice.content != undefined || this.notice.noticePicture != undefined))
-      return "Fill Notice Title";
-    // else if (this.notice.content == undefined || this.notice.content.trim() == '')
-    //   return "Fill Notice Content Please ";
-    else return "OK";
-  }
   oncoverChange(event: any) {
     const tempfile = event.target.files[0];
     if (tempfile.type == "image/png" || tempfile.type == "image/jpg" || tempfile.type == "image/jpeg") {
@@ -163,5 +112,21 @@ export class CreateNoticeComponent implements OnInit {
     }
   }
 
-}
+  saveNoticeFile() {
+    var formData: any = new FormData();
+    formData.append('uploadFile', this.form?.get('cover')?.value);
+    this.noticeService.saveNoticeFile(formData).subscribe({
+      next: (response: any) => {
+        if (response) {
+          this.notice.noticePicture = response.data;
+        } else {
+          this.commonService.inputAlert(response.message, 'warning');
+        }
+      },
+      error: (err: any) => {
+        Swal.fire("Please Choose image file");
+      }
+    });
+  }
 
+}

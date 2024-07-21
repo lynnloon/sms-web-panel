@@ -10,13 +10,17 @@ import Swal from 'sweetalert2';
 })
 export class NoticeBoardComponent implements OnInit {
 
-  notice: Notice = new Notice;
+  role?: string;
+
+  notice: Notice = new Notice();
+  
   notices: Notice[] = [];
 
   constructor(
     private noticeService: NoticeService
   ) { }
   ngOnInit() {
+    this.role = localStorage.getItem('userrole') as string;
     this.getAllNotice();
   }
   delete(id: any) {

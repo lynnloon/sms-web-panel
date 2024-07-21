@@ -39,4 +39,8 @@ export class NoticeService implements OnInit {
   delete(id: any) {
     return this.httpClient.delete(this.commonService.apiRoute + "/notice/delete?id=" + id);
   }
+
+  saveNoticeFile(formData:any){
+    return this.httpClient.post(this.commonService.apiRoute+"/notice/uploadNoticeFile",formData);
+  }
 }
