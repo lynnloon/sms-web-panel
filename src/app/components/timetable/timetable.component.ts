@@ -114,7 +114,6 @@ export class TimetableComponent implements OnInit {
           this.academicYear = response.data.name;
           this.year = response.data;
 
-
         }
       }
     });
@@ -136,21 +135,130 @@ export class TimetableComponent implements OnInit {
 
           });
           this.getSection();
+          this.filterDTO.section = this.student_section.id;
+          //retrieve timetable list according to section id
+          this.timetableService.getTimetableList(this.filterDTO).subscribe((response: any) => {
+          debugger
+            if (response.status) {
+              this.timetables = response.data;
+              for (var i = 0; i < this.timetables.length; i++) {
+                if (this.timetables[i].scheduleTime == 1) {
+                  this.e11.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 2) {
+                  this.e12.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 3) {
+                  this.e13.push(this.timetables[i].subject as Subject);
+                  
+                }
+                else if (this.timetables[i].scheduleTime == 4) {
+                  this.e14.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 5) {
+                  this.e15.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 6) {
+                  this.e16.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 7) {
+                  this.e21.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 8) {
+                  this.e22.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 9) {
+                  this.e23.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 10) {
+                  this.e24.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 11) {
+                  this.e25.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 12) {
+                  this.e26.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 13) {
+                  this.e31.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 14) {
+                  this.e32.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 15) {
+                  this.e33.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 16) {
+                  this.e34.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 17) {
+                  this.e35.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 18) {
+                  this.e36.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 19) {
+                  this.e41.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 20) {
+                  this.e42.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 21) {
+                  this.e43.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 22) {
+                  this.e44.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 23) {
+                  this.e45.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 24) {
+                  this.e46.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 25) {
+                  this.e51.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 26) {
+                  this.e52.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 27) {
+                  this.e53.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 28) {
+                  this.e54.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 29) {
+                  this.e55.push(this.timetables[i].subject as Subject);
+                }
+                else if (this.timetables[i].scheduleTime == 30) {
+                  this.e56.push(this.timetables[i].subject as Subject);
+                }
+              }
+              this.subjectService.getSubByBatch(this.filterDTO).subscribe((response: any) => {
+                if (response.status) {
+                  this.subjects = response.data;
+                  console.log('I am here>>>>>>>>>>>>', this.subjects);
+                }
+              });
+            }
+
+            
+          });
+         
+
         }
       });
     }
-    
+
 
   }
   getSection() {
     this.timetableService.getSection(this.filterDTO).subscribe((response: any) => {
       if (response.status) {
         this.student_section = response.data;
-        console.log(this.student_section.name);
+        //   console.log(this.student_section.name);
       }
-      else {
-        console.log(response.data)
-      }
+
     })
   }
 
