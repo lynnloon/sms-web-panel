@@ -1,0 +1,245 @@
+<div class="main" id="main">
+
+    <div class="pagetitle">
+
+        <h1>Student Details</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item"><a [routerLink]="'/student-list'">Student Lists</a></li>
+                <li class="breadcrumb-item">Student Details Information</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <!-- For Student Profile -->
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-4">
+
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                        <img [src]="filepath" alt="Profile" class="rounded-circle">
+                        <h2>{{student.stu_name}}</h2>
+                        <h3>{{student.studentBatch?.id}}{{student.stu_major+'-'}}{{student.stuRoll_no}}</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-8">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab"
+                                    data-bs-target="#p1">Student Info</button>
+                            </li>
+
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#parent-info">
+                                    Parent Info</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#emergency">Emergency
+                                    Contact</button>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content pt-2">
+                            <!-- student form -->
+                            <div class="tab-pane fade show active profile-overview" id="p1">
+
+                                <h5 class="card-title ">Student Infomation</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_gender== 'Male'? 'Mg ':'Ma '}}{{student.stu_name}}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Roll No</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        {{student.studentBatch?.id}}{{student.stu_major+'-'}}{{student.stuRoll_no}}
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Email</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_email}}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Phone No</div>
+                                    <div class="col-lg-9 col-md-8">{{student.phone_no}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">NRC No</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_nrc}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Nation</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_national}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Religion</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_religion}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Hostel Status</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_hostel}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Ferry</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_ferry}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Date Of Birth</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_dob | date:'dd-MM-yyyy'}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Current Address</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_currAddress}}</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Home Address</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_homeAdd}}</div>
+                                </div>
+                            </div>
+                        
+
+                            <!-- Parent Info Form -->
+                            
+                            <div class="tab-pane fade  profile-overview" id="parent-info">
+
+
+                                <h5 class="card-title ">Father Infomation</h5>
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Father's Name</div>
+                                    <div class="col-lg-9 col-md-8">{{'U '}}{{this.father.name}}</div>
+                                </div>
+                                <!-- <div class="row" >
+                                            <div class="col-lg-3 col-md-4 label" >Relation</div>
+                                            <div class="col-lg-9 col-md-8">{{this.father.relationStatus}}</div>
+                                        </div> -->
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">NRC No</div>
+                                    <div class="col-lg-9 col-md-8">{{this.father.nrcNo}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Phone</div>
+                                    <div class="col-lg-9 col-md-8">{{this.father.phoneNo}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Occupation</div>
+                                    <div class="col-lg-9 col-md-8">{{this.father.occupation}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Nation</div>
+                                    <div class="col-lg-9 col-md-8">{{this.father.nation}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Religion</div>
+                                    <div class="col-lg-9 col-md-8">{{this.father.religion}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Address</div>
+                                    <div class="col-lg-9 col-md-8">{{this.father.address}}</div>
+                                </div>
+                                <br>
+                                <h5 class="card-title ">Mother Infomation</h5>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Mother's Name</div>
+                                    <div class="col-lg-9 col-md-8">{{'Daw '}}{{this.mother.name}}</div>
+                                </div>
+                                <!-- <div class="row" >
+                                            <div class="col-lg-3 col-md-4 label" >Relation</div>
+                                            <div class="col-lg-9 col-md-8">{{this.mother.relationStatus}}</div>
+                                        </div> -->
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">NRC No</div>
+                                    <div class="col-lg-9 col-md-8">{{this.mother.nrcNo}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Phone</div>
+                                    <div class="col-lg-9 col-md-8">{{this.mother.phoneNo}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Occupation</div>
+                                    <div class="col-lg-9 col-md-8">{{this.mother.occupation}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Nation</div>
+                                    <div class="col-lg-9 col-md-8">{{this.mother.nation}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Religion</div>
+                                    <div class="col-lg-9 col-md-8">{{this.mother.religion}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Address</div>
+                                    <div class="col-lg-9 col-md-8">{{this.mother.address}}</div>
+                                </div>
+                            </div>
+                       
+
+
+                            <!-- Emergency Info form -->
+                           
+                            <div class="tab-pane fade  profile-overview" id="emergency">
+
+                                <h5 class="card-title">Guardian Infomation</h5>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label"> Name</div>
+                                    <div class="col-lg-9 col-md-8">{{this.emergency.name}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Relation</div>
+                                    <div class="col-lg-9 col-md-8">{{this.emergency.relationStatus}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">NRC No</div>
+                                    <div class="col-lg-9 col-md-8">{{this.emergency.nrcNo}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Phone</div>
+                                    <div class="col-lg-9 col-md-8">{{this.emergency.phoneNo}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Occupation</div>
+                                    <div class="col-lg-9 col-md-8">{{this.emergency.occupation}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Nation</div>
+                                    <div class="col-lg-9 col-md-8">{{this.emergency.nation}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Religion</div>
+                                    <div class="col-lg-9 col-md-8">{{this.emergency.religion}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Address</div>
+                                    <div class="col-lg-9 col-md-8">{{this.emergency.address}}</div>
+                                </div>
+
+                            </div>
+                          
+                        </div>
+
+                        <!-- End Bordered Tabs -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

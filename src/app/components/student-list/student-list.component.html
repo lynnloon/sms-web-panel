@@ -37,7 +37,7 @@
                                 <th scope="col">Relationship Status</th> -->
                                 <th scope="col">Hostel</th>
                                 <th scope="col">Ferry</th>
-                                <th *ngIf="role=='ADMIN'">Action</th>
+                                <th *ngIf="role=='ADMIN'" class="x">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,7 +58,10 @@
                                 <td>{{stu.stu_relationshipStat}}</td> -->
                                 <td>{{stu.stu_hostel}}</td>
                                 <td>{{stu.stu_ferry}}</td>
-                                <td *ngIf="role=='ADMIN'">
+                                <td *ngIf="role=='ADMIN'" class="x">
+                                     <!-- student details                                     -->
+                                     <i class="bi bi-arrow-right-square" title="view detail"
+                                     [routerLink]="['/student-detail',stu.id]"></i>&nbsp;
                                     <i class="bi bi-pencil-square" title="edit"
                                         [routerLink]="['/add-student',stu.id]"></i>&nbsp;
                                     <i class="bi bi-trash" style="color: red;" title="delete"

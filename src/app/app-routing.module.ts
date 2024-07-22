@@ -30,6 +30,7 @@ import { CreateSectionComponent } from './components/create-section/create-secti
 import { NoticeBoardComponent } from './components/notice-board/notice-board.component';
 import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
 import { NoticeContentComponent } from './components/notice-content/notice-content.component';
+import { StudentDetailsComponent } from './components/student-details/student-details.component';
 
 
 const routes: Routes = [
@@ -85,7 +86,12 @@ const routes: Routes = [
 
   // For Teacher
   { path: 'teacher-sidebar', component: TeacherSidebarComponent },
-  { path: 'teacher-dashboard', component: TeacherDashboardComponent }
+  { path: 'teacher-dashboard', component: TeacherDashboardComponent },
+
+  // student details
+  { path: 'student-detail',component:StudentDetailsComponent},
+  { path: 'student-detail/:id',component:StudentDetailsComponent}
+
 
 ];
 

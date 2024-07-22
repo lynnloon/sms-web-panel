@@ -159,7 +159,6 @@ export class CreateSectionComponent implements OnInit {
   }
 
   onChangeCombo() {
-
     this.section.academicBatch = (this.batch);
   }
 
