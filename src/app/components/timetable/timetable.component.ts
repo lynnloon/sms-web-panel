@@ -457,6 +457,7 @@ export class TimetableComponent implements OnInit {
       this.timetable2.teacher_id = 1;
       this.timetable2.scheduleTime = 3;
       this.timetable2.section = this.section;
+      this.timetable2.academicYear = this.year;
       this.timetables.push(this.timetable2);
     }
     // //end of assigning data to object
@@ -467,6 +468,7 @@ export class TimetableComponent implements OnInit {
       this.timetable3.teacher_id = 1;
       this.timetable3.scheduleTime = 4;
       this.timetable3.section = this.section;
+      this.timetable3.academicYear = this.year;
       this.timetables.push(this.timetable3);
     }
     //end of assigning data to object
@@ -478,6 +480,7 @@ export class TimetableComponent implements OnInit {
       this.timetable4.teacher_id = 1;
       this.timetable4.scheduleTime = 5;
       this.timetable4.section = this.section;
+      this.timetable4.academicYear = this.year;
       this.timetables.push(this.timetable4);
     }
     //end of assigning data to object
@@ -489,6 +492,7 @@ export class TimetableComponent implements OnInit {
       this.timetable5.teacher_id = 1;
       this.timetable5.scheduleTime = 6;
       this.timetable5.section = this.section;
+      this.timetable5.academicYear = this.year;
       this.timetables.push(this.timetable5);
     }
     // //end of assigning data to object
@@ -500,6 +504,7 @@ export class TimetableComponent implements OnInit {
       this.timetable6.teacher_id = 1;
       this.timetable6.scheduleTime = 7;
       this.timetable6.section = this.section;
+      this.timetable6.academicYear = this.year;
       this.timetables.push(this.timetable6);
     }
     // //end of assigning data to object
@@ -511,6 +516,7 @@ export class TimetableComponent implements OnInit {
       this.timetable7.teacher_id = 1;
       this.timetable7.scheduleTime = 8;
       this.timetable7.section = this.section;
+      this.timetable7.academicYear = this.year;
       this.timetables.push(this.timetable7);
     }
     //end of assigning data to object
@@ -521,6 +527,7 @@ export class TimetableComponent implements OnInit {
       this.timetable8.teacher_id = 1;
       this.timetable8.scheduleTime = 9;
       this.timetable8.section = this.section;
+      this.timetable8.academicYear = this.year;
       this.timetables.push(this.timetable8);
     }
     // //end of assigning data to object
@@ -532,6 +539,7 @@ export class TimetableComponent implements OnInit {
       this.timetable9.teacher_id = 1;
       this.timetable9.scheduleTime = 10;
       this.timetable9.section = this.section;
+      this.timetable9.academicYear = this.year;
       this.timetables.push(this.timetable9);
     }
     //end of assigning data to object
@@ -543,6 +551,7 @@ export class TimetableComponent implements OnInit {
       this.timetable10.teacher_id = 1;
       this.timetable10.scheduleTime = 11;
       this.timetable10.section = this.section;
+      this.timetable10.academicYear = this.year;
       this.timetables.push(this.timetable10);
     }
     //end of assigning data to object
@@ -554,6 +563,7 @@ export class TimetableComponent implements OnInit {
       this.timetable11.teacher_id = 1;
       this.timetable11.scheduleTime = 12;
       this.timetable11.section = this.section;
+      this.timetable11.academicYear = this.year;
       this.timetables.push(this.timetable11);
     }
     //end of assigning data to object
@@ -565,6 +575,7 @@ export class TimetableComponent implements OnInit {
       this.timetable12.teacher_id = 1;
       this.timetable12.scheduleTime = 13;
       this.timetable12.section = this.section;
+      this.timetable12.academicYear = this.year;
       this.timetables.push(this.timetable12);
     }
     // //end of assigning data to object
@@ -576,6 +587,7 @@ export class TimetableComponent implements OnInit {
       this.timetable13.teacher_id = 1;
       this.timetable13.scheduleTime = 14;
       this.timetable13.section = this.section;
+      this.timetable13.academicYear = this.year;
       this.timetables.push(this.timetable13);
     }
     //end of assigning data to object
@@ -587,6 +599,7 @@ export class TimetableComponent implements OnInit {
       this.timetable14.teacher_id = 1;
       this.timetable14.scheduleTime = 15;
       this.timetable14.section = this.section;
+      this.timetable14.academicYear = this.year;
       this.timetables.push(this.timetable14);
     }
     //end of assigning data to object
@@ -598,6 +611,7 @@ export class TimetableComponent implements OnInit {
       this.timetable15.teacher_id = 1;
       this.timetable15.scheduleTime = 16;
       this.timetable15.section = this.section;
+      this.timetable15.academicYear = this.year;
       this.timetables.push(this.timetable15);
     }
     //end of assigning data to object
@@ -609,6 +623,7 @@ export class TimetableComponent implements OnInit {
       this.timetable16.teacher_id = 1;
       this.timetable16.scheduleTime = 17;
       this.timetable16.section = this.section;
+      this.timetable16.academicYear = this.year;
       this.timetables.push(this.timetable16);
     }
     //end of assigning data to object
@@ -620,6 +635,7 @@ export class TimetableComponent implements OnInit {
       this.timetable17.teacher_id = 1;
       this.timetable17.scheduleTime = 18;
       this.timetable17.section = this.section;
+      this.timetable17.academicYear = this.year;
       this.timetables.push(this.timetable17);
     }
     //end of assigning data to object
@@ -632,6 +648,7 @@ export class TimetableComponent implements OnInit {
       this.timetable18.teacher_id = 1;
       this.timetable18.scheduleTime = 19;
       this.timetable18.section = this.section;
+      this.timetable18.academicYear = this.year;
       this.timetables.push(this.timetable18);
     }
     //end of assigning data to object
@@ -643,6 +660,7 @@ export class TimetableComponent implements OnInit {
       this.timetable19.teacher_id = 1;
       this.timetable19.scheduleTime = 20;
       this.timetable19.section = this.section;
+      this.timetable19.academicYear = this.year;
       this.timetables.push(this.timetable19);
     }
     //end of assigning data to object
@@ -653,6 +671,7 @@ export class TimetableComponent implements OnInit {
       this.timetable20.teacher_id = 1;
       this.timetable20.scheduleTime = 21;
       this.timetable20.section = this.section;
+      this.timetable20.academicYear = this.year;
       this.timetables.push(this.timetable20);
     }
     //end of assigning data to object
@@ -664,6 +683,7 @@ export class TimetableComponent implements OnInit {
       this.timetable21.teacher_id = 1;
       this.timetable21.scheduleTime = 22;
       this.timetable21.section = this.section;
+      this.timetable21.academicYear = this.year;
       this.timetables.push(this.timetable21);
     }
     //end of assigning data to object
@@ -674,6 +694,7 @@ export class TimetableComponent implements OnInit {
       this.timetable22.teacher_id = 1;
       this.timetable22.scheduleTime = 23;
       this.timetable22.section = this.section;
+      this.timetable22.academicYear = this.year;
       this.timetables.push(this.timetable22);
     }
     //end of assigning data to object
@@ -684,6 +705,7 @@ export class TimetableComponent implements OnInit {
       this.timetable23.teacher_id = 1;
       this.timetable23.scheduleTime = 24;
       this.timetable23.section = this.section;
+      this.timetable23.academicYear = this.year;
       this.timetables.push(this.timetable23);
     }
     //end of assigning data to object
@@ -694,6 +716,7 @@ export class TimetableComponent implements OnInit {
       this.timetable24.teacher_id = 1;
       this.timetable24.scheduleTime = 25;
       this.timetable24.section = this.section;
+      this.timetable24.academicYear = this.year;
       this.timetables.push(this.timetable24);
     }
     //end of assigning data to object
@@ -704,6 +727,7 @@ export class TimetableComponent implements OnInit {
       this.timetable25.teacher_id = 1;
       this.timetable25.scheduleTime = 26;
       this.timetable25.section = this.section;
+      this.timetable25.academicYear = this.year;
       this.timetables.push(this.timetable25);
     }
     //end of assigning data to object
@@ -714,6 +738,7 @@ export class TimetableComponent implements OnInit {
       this.timetable26.teacher_id = 1;
       this.timetable26.scheduleTime = 27;
       this.timetable26.section = this.section;
+      this.timetable26.academicYear = this.year;
       this.timetables.push(this.timetable26);
     }
     // //end of assigning data to object
@@ -725,6 +750,7 @@ export class TimetableComponent implements OnInit {
       this.timetable27.teacher_id = 1;
       this.timetable27.scheduleTime = 28;
       this.timetable27.section = this.section;
+      this.timetable27.academicYear = this.year;
       this.timetables.push(this.timetable27);
     }
     // //end of assigning data to object
@@ -736,6 +762,7 @@ export class TimetableComponent implements OnInit {
       this.timetable28.teacher_id = 1;
       this.timetable28.scheduleTime = 29;
       this.timetable28.section = this.section;
+      this.timetable28.academicYear = this.year;
       this.timetables.push(this.timetable28);
     }
     // //end of assigning data to object
@@ -747,6 +774,7 @@ export class TimetableComponent implements OnInit {
       this.timetable29.teacher_id = 1;
       this.timetable29.scheduleTime = 30;
       this.timetable29.section = this.section;
+      this.timetable29.academicYear = this.year;
       this.timetables.push(this.timetable29);
     }
 
