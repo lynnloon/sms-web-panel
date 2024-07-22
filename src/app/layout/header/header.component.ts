@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit {
     this.userName = localStorage.getItem('userName') as string;
     this.profile = localStorage.getItem('profile') as string;
     this.profile = this.commonService.imageURL + this.profile;
-    debugger
     this.getAllByRequestStatus();
     this.getAllByNoticeStatus();
 
