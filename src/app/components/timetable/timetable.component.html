@@ -426,63 +426,16 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- <div class="example-container">
-
-
-<h2>SE</h2>
-  
-          <div cdkDropList #mov="cdkDropList" [cdkDropListData]="movies"
-              [cdkDropListConnectedTo]="[mov,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56]"
-              class="example-list" (cdkDropListDropped)="drop($event)">
-              <div class="example-box movieClass" *ngFor="let movie of movies" cdkDrag>
-                  <span>{{movie.name}}</span>
-              </div>
-          </div>
-      </div>
-               
-      <div class="example-container">
-          <h2>Math</h2>
-          <div cdkDropList #peo="cdkDropList" [cdkDropListData]="people"
-              [cdkDropListConnectedTo]="[peo,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56]"
-              class="example-list" (cdkDropListDropped)="drop($event)">
-              <div class=" example-box peopleClass" *ngFor="let item of people" cdkDrag>{{item.name}}</div>
-          </div>
-      </div>
-  
-      <div class="example-container">
-          <h2>DataMining</h2>
-          <div cdkDropList #data1="cdkDropList" [cdkDropListData]="data"
-              [cdkDropListConnectedTo]="[l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,data1]"
-              class="example-list" (cdkDropListDropped)="drop($event)">
-              <div class=" example-box dataClass" *ngFor="let item of data" cdkDrag>{{item.name}}</div>
-          </div>
-      </div>
-      <div class="example-container">
-          <h2>AA</h2>
-          <div cdkDropList #aa1="cdkDropList" [cdkDropListData]="aa"
-              [cdkDropListConnectedTo]="[l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,aa1]"
-              class="example-list" (cdkDropListDropped)="drop($event)">
-              <div class=" example-box aaClass" *ngFor="let item of aa" cdkDrag>{{item.name}}</div>
-          </div>
-      </div>
-      <div class="example-container">
-          <h2>ERP</h2>
-          <div cdkDropList #erp1="cdkDropList" [cdkDropListData]="erp"
-              [cdkDropListConnectedTo]="[l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56,erp1]"
-              class="example-list" (cdkDropListDropped)="drop($event)">
-              <div class=" example-box erpClass" *ngFor="let item of erp" cdkDrag>{{item.name}}</div>
-          </div>
-      </div> -->
             </div>
         </section><br /><br />
+        
         <table class="table table-borderless" *ngIf="subList==true">
             <tr *ngFor=" let sub of subjects;let i = index;">
                 <td>{{sub.moduleNo}}</td>
                 <td> {{sub.name}}</td>
                 <td>
                     <select class="form-select" id="staffSelect" [(ngModel)]="sub.subjectStaff"
-                        [ngModelOptions]="{standalone: true}">
+                        [ngModelOptions]="{standalone: true}" >
                         <option value="">Choose..</option>
                         <option *ngFor="let subStaff of sub.subjectStaff">{{subStaff.staffName}}</option>
                     </select>
@@ -490,7 +443,6 @@
             </tr>
         </table><br />
     </div>
-
 
 
     <!-- timetable view for student -->
@@ -610,10 +562,10 @@
                     <td>{{sub.moduleNo}}</td>
                     <td> {{sub.name}}</td>
                     <td>
-                        <div class="form-select" id="staffSelect" [(ngModel)]="sub.subjectStaff"
+                        <div class="form-select" style="width: 50px;" id="staffSelect" [(ngModel)]="sub.subjectStaff"
                             [ngModelOptions]="{standalone: true}">
                             <div *ngFor="let subStaff of sub.subjectStaff">
-                                {{subStaff.staffName}}/
+                                {{subStaff.staffName}}
                             </div>
                         </div>
                     </td>

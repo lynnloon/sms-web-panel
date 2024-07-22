@@ -134,10 +134,10 @@ export class TimetableComponent implements OnInit {
             }
 
           });
-      
-          this.filterDTO.batchId=this.batch.id;
-          this.filterDTO.semesterId=this.semester.id;
-          this.filterDTO.major=this.student.stu_major;
+
+          this.filterDTO.batchId = this.batch.id;
+          this.filterDTO.semesterId = this.semester.id;
+          this.filterDTO.major = this.student.stu_major;
           this.subjectService.getSubByBatch(this.filterDTO).subscribe((response: any) => {
             if (response.status) {
               this.subjects = response.data;
@@ -243,7 +243,7 @@ export class TimetableComponent implements OnInit {
                   this.e56.push(this.timetables[i].subject as Subject);
                 }
               }
-             
+
             }
 
 
@@ -257,6 +257,9 @@ export class TimetableComponent implements OnInit {
 
 
   }
+ 
+  
+
   getSection() {
     this.timetableService.getSection(this.filterDTO).subscribe((response: any) => {
       if (response.status) {
@@ -430,13 +433,14 @@ export class TimetableComponent implements OnInit {
   }
   saveTimetable() {
 
+   
     //assigning data to objects
     if (this.e11[0] != null) {
       this.section.academicBatch = this.batch;
       this.timetable.academicYear = this.year;
       this.timetable.section = this.section;
       this.timetable.subject = this.e11[0];
-      this.timetable.teacher_id = 1;
+      //this.timetable.teacher_id = 1;
       this.timetable.scheduleTime = 1;
       // this.timetable.section = this.section;
       this.timetables.push(this.timetable);
@@ -446,7 +450,7 @@ export class TimetableComponent implements OnInit {
       this.timetable1.academicYear = this.year;
       this.timetable1.section = this.section;
       this.timetable1.subject = this.e12[0];
-      this.timetable1.teacher_id = 3;
+     // this.timetable1.teacher_id = 3;
       this.timetable1.scheduleTime = 2;
       //this.timetable1.section = this.section;
       this.timetables.push(this.timetable1);
@@ -454,7 +458,7 @@ export class TimetableComponent implements OnInit {
     //assigning data to objects
     if (this.e13[0] != null) {
       this.timetable2.subject = this.e13[0];
-      this.timetable2.teacher_id = 1;
+     // this.timetable2.teacher_id = 1;
       this.timetable2.scheduleTime = 3;
       this.timetable2.section = this.section;
       this.timetables.push(this.timetable2);
@@ -464,7 +468,7 @@ export class TimetableComponent implements OnInit {
     // //assigning data to objects
     if (this.e14[0] != null) {
       this.timetable3.subject = this.e14[0];
-      this.timetable3.teacher_id = 1;
+     // this.timetable3.teacher_id = 1;
       this.timetable3.scheduleTime = 4;
       this.timetable3.section = this.section;
       this.timetables.push(this.timetable3);
@@ -475,7 +479,7 @@ export class TimetableComponent implements OnInit {
     if (this.e15[0] != null) {
 
       this.timetable4.subject = this.e15[0];
-      this.timetable4.teacher_id = 1;
+      //this.timetable4.teacher_id = 1;
       this.timetable4.scheduleTime = 5;
       this.timetable4.section = this.section;
       this.timetables.push(this.timetable4);
@@ -486,7 +490,7 @@ export class TimetableComponent implements OnInit {
     if (this.e16[0] != null) {
 
       this.timetable5.subject = this.e16[0];
-      this.timetable5.teacher_id = 1;
+     // this.timetable5.teacher_id = 1;
       this.timetable5.scheduleTime = 6;
       this.timetable5.section = this.section;
       this.timetables.push(this.timetable5);
@@ -497,7 +501,7 @@ export class TimetableComponent implements OnInit {
     if (this.e21[0] != null) {
 
       this.timetable6.subject = this.e21[0];
-      this.timetable6.teacher_id = 1;
+      //this.timetable6.teacher_id = 1;
       this.timetable6.scheduleTime = 7;
       this.timetable6.section = this.section;
       this.timetables.push(this.timetable6);
@@ -508,7 +512,7 @@ export class TimetableComponent implements OnInit {
     if (this.e22[0] != null) {
 
       this.timetable7.subject = this.e22[0];
-      this.timetable7.teacher_id = 1;
+      //this.timetable7.teacher_id = 1;
       this.timetable7.scheduleTime = 8;
       this.timetable7.section = this.section;
       this.timetables.push(this.timetable7);
@@ -518,7 +522,7 @@ export class TimetableComponent implements OnInit {
     if (this.e23[0] != null) {
 
       this.timetable8.subject = this.e23[0];
-      this.timetable8.teacher_id = 1;
+      //this.timetable8.teacher_id = 1;
       this.timetable8.scheduleTime = 9;
       this.timetable8.section = this.section;
       this.timetables.push(this.timetable8);
@@ -529,7 +533,7 @@ export class TimetableComponent implements OnInit {
     if (this.e24[0] != null) {
 
       this.timetable9.subject = this.e24[0];
-      this.timetable9.teacher_id = 1;
+      //this.timetable9.teacher_id = 1;
       this.timetable9.scheduleTime = 10;
       this.timetable9.section = this.section;
       this.timetables.push(this.timetable9);
@@ -540,7 +544,7 @@ export class TimetableComponent implements OnInit {
     if (this.e25[0] != null) {
 
       this.timetable10.subject = this.e25[0];
-      this.timetable10.teacher_id = 1;
+      //this.timetable10.teacher_id = 1;
       this.timetable10.scheduleTime = 11;
       this.timetable10.section = this.section;
       this.timetables.push(this.timetable10);
@@ -551,7 +555,7 @@ export class TimetableComponent implements OnInit {
     if (this.e26[0] != null) {
 
       this.timetable11.subject = this.e26[0];
-      this.timetable11.teacher_id = 1;
+     // this.timetable11.teacher_id = 1;
       this.timetable11.scheduleTime = 12;
       this.timetable11.section = this.section;
       this.timetables.push(this.timetable11);
@@ -562,7 +566,7 @@ export class TimetableComponent implements OnInit {
     if (this.e31[0] != null) {
 
       this.timetable12.subject = this.e31[0];
-      this.timetable12.teacher_id = 1;
+      //this.timetable12.teacher_id = 1;
       this.timetable12.scheduleTime = 13;
       this.timetable12.section = this.section;
       this.timetables.push(this.timetable12);
@@ -573,7 +577,7 @@ export class TimetableComponent implements OnInit {
     if (this.e32[0] != null) {
 
       this.timetable13.subject = this.e32[0];
-      this.timetable13.teacher_id = 1;
+     // this.timetable13.teacher_id = 1;
       this.timetable13.scheduleTime = 14;
       this.timetable13.section = this.section;
       this.timetables.push(this.timetable13);
@@ -584,7 +588,7 @@ export class TimetableComponent implements OnInit {
     if (this.e33[0] != null) {
 
       this.timetable14.subject = this.e33[0];
-      this.timetable14.teacher_id = 1;
+     // this.timetable14.teacher_id = 1;
       this.timetable14.scheduleTime = 15;
       this.timetable14.section = this.section;
       this.timetables.push(this.timetable14);
@@ -595,7 +599,7 @@ export class TimetableComponent implements OnInit {
     if (this.e34[0] != null) {
 
       this.timetable15.subject = this.e34[0];
-      this.timetable15.teacher_id = 1;
+      //this.timetable15.teacher_id = 1;
       this.timetable15.scheduleTime = 16;
       this.timetable15.section = this.section;
       this.timetables.push(this.timetable15);
@@ -606,7 +610,7 @@ export class TimetableComponent implements OnInit {
     if (this.e35[0] != null) {
 
       this.timetable16.subject = this.e35[0];
-      this.timetable16.teacher_id = 1;
+      //this.timetable16.teacher_id = 1;
       this.timetable16.scheduleTime = 17;
       this.timetable16.section = this.section;
       this.timetables.push(this.timetable16);
@@ -617,7 +621,7 @@ export class TimetableComponent implements OnInit {
     if (this.e36[0] != null) {
 
       this.timetable17.subject = this.e36[0];
-      this.timetable17.teacher_id = 1;
+      //this.timetable17.teacher_id = 1;
       this.timetable17.scheduleTime = 18;
       this.timetable17.section = this.section;
       this.timetables.push(this.timetable17);
@@ -629,7 +633,7 @@ export class TimetableComponent implements OnInit {
     if (this.e41[0] != null) {
 
       this.timetable18.subject = this.e41[0];
-      this.timetable18.teacher_id = 1;
+      //this.timetable18.teacher_id = 1;
       this.timetable18.scheduleTime = 19;
       this.timetable18.section = this.section;
       this.timetables.push(this.timetable18);
@@ -640,7 +644,7 @@ export class TimetableComponent implements OnInit {
     if (this.e42[0] != null) {
 
       this.timetable19.subject = this.e42[0];
-      this.timetable19.teacher_id = 1;
+      //this.timetable19.teacher_id = 1;
       this.timetable19.scheduleTime = 20;
       this.timetable19.section = this.section;
       this.timetables.push(this.timetable19);
@@ -650,7 +654,7 @@ export class TimetableComponent implements OnInit {
     if (this.e43[0] != null) {
 
       this.timetable20.subject = this.e43[0];
-      this.timetable20.teacher_id = 1;
+      //this.timetable20.teacher_id = 1;
       this.timetable20.scheduleTime = 21;
       this.timetable20.section = this.section;
       this.timetables.push(this.timetable20);
@@ -661,7 +665,7 @@ export class TimetableComponent implements OnInit {
     if (this.e44[0] != null) {
 
       this.timetable21.subject = this.e44[0];
-      this.timetable21.teacher_id = 1;
+      //this.timetable21.teacher_id = 1;
       this.timetable21.scheduleTime = 22;
       this.timetable21.section = this.section;
       this.timetables.push(this.timetable21);
@@ -671,7 +675,7 @@ export class TimetableComponent implements OnInit {
     if (this.e45[0] != null) {
 
       this.timetable22.subject = this.e45[0];
-      this.timetable22.teacher_id = 1;
+      //this.timetable22.teacher_id = 1;
       this.timetable22.scheduleTime = 23;
       this.timetable22.section = this.section;
       this.timetables.push(this.timetable22);
@@ -681,7 +685,7 @@ export class TimetableComponent implements OnInit {
     if (this.e46[0] != null) {
 
       this.timetable23.subject = this.e46[0];
-      this.timetable23.teacher_id = 1;
+      //this.timetable23.teacher_id = 1;
       this.timetable23.scheduleTime = 24;
       this.timetable23.section = this.section;
       this.timetables.push(this.timetable23);
@@ -691,7 +695,7 @@ export class TimetableComponent implements OnInit {
     if (this.e51[0] != null) {
 
       this.timetable24.subject = this.e51[0];
-      this.timetable24.teacher_id = 1;
+      //this.timetable24.teacher_id = 1;
       this.timetable24.scheduleTime = 25;
       this.timetable24.section = this.section;
       this.timetables.push(this.timetable24);
@@ -701,7 +705,7 @@ export class TimetableComponent implements OnInit {
     if (this.e52[0] != null) {
 
       this.timetable25.subject = this.e52[0];
-      this.timetable25.teacher_id = 1;
+      //this.timetable25.teacher_id = 1;
       this.timetable25.scheduleTime = 26;
       this.timetable25.section = this.section;
       this.timetables.push(this.timetable25);
@@ -711,7 +715,7 @@ export class TimetableComponent implements OnInit {
     if (this.e53[0] != null) {
 
       this.timetable26.subject = this.e53[0];
-      this.timetable26.teacher_id = 1;
+      //this.timetable26.teacher_id = 1;
       this.timetable26.scheduleTime = 27;
       this.timetable26.section = this.section;
       this.timetables.push(this.timetable26);
@@ -722,7 +726,7 @@ export class TimetableComponent implements OnInit {
     if (this.e54[0] != null) {
 
       this.timetable27.subject = this.e54[0];
-      this.timetable27.teacher_id = 1;
+     // this.timetable27.teacher_id = 1;
       this.timetable27.scheduleTime = 28;
       this.timetable27.section = this.section;
       this.timetables.push(this.timetable27);
@@ -733,7 +737,7 @@ export class TimetableComponent implements OnInit {
     if (this.e55[0] != null) {
 
       this.timetable28.subject = this.e55[0];
-      this.timetable28.teacher_id = 1;
+      //this.timetable28.teacher_id = 1;
       this.timetable28.scheduleTime = 29;
       this.timetable28.section = this.section;
       this.timetables.push(this.timetable28);
@@ -744,12 +748,103 @@ export class TimetableComponent implements OnInit {
     if (this.e56[0] != null) {
 
       this.timetable29.subject = this.e56[0];
-      this.timetable29.teacher_id = 1;
+      //this.timetable29.teacher_id = 1;
       this.timetable29.scheduleTime = 30;
       this.timetable29.section = this.section;
       this.timetables.push(this.timetable29);
     }
-
+    for (let i=0;i<this.subjects.length;i++){
+      if (this.subjects[i].id==this.timetable.subject?.id){
+        this.timetable.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable1.subject?.id){
+        this.timetable1.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable2.subject?.id){
+        this.timetable2.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable3.subject?.id){
+        this.timetable3.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable4.subject?.id){
+        this.timetable4.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable5.subject?.id){
+        this.timetable5.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable6.subject?.id){
+        this.timetable6.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable7.subject?.id){
+        this.timetable7.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable8.subject?.id){
+        this.timetable8.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable9.subject?.id){
+        this.timetable9.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable10.subject?.id){
+        this.timetable10.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable11.subject?.id){
+        this.timetable11.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable12.subject?.id){
+        this.timetable12.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable13.subject?.id){
+        this.timetable13.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable14.subject?.id){
+        this.timetable14.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable15.subject?.id){
+        this.timetable15.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable16.subject?.id){
+        this.timetable16.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable17.subject?.id){
+        this.timetable17.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable18.subject?.id){
+        this.timetable18.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable19.subject?.id){
+        this.timetable19.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable20.subject?.id){
+        this.timetable20.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable21.subject?.id){
+        this.timetable21.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable22.subject?.id){
+        this.timetable22.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable23.subject?.id){
+        this.timetable23.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable24.subject?.id){
+        this.timetable24.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable25.subject?.id){
+        this.timetable25.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable26.subject?.id){
+        this.timetable26.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable27.subject?.id){
+        this.timetable27.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable28.subject?.id){
+        this.timetable28.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+      else if(this.subjects[i].id==this.timetable29.subject?.id){
+        this.timetable29.teacher=this.subjects[i].subjectStaff as Staff;
+      }
+    }
     //end of assigning data to object
 
 

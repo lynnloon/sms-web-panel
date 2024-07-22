@@ -2,6 +2,7 @@ import { Subject } from "./subject";
 import { Schedule } from "./schedule";
 import { AcademicYear } from "./academic-year";
 import { Section } from "./section";
+import { Staff } from "./staff";
 
 
 export class Timetable {
@@ -11,7 +12,7 @@ export class Timetable {
     activeStatus?: string;
     scheduleTime?:number;
     subject?:Subject=new Subject();   
-    teacher_id?:number;
+    teacher?:Staff=new Staff();
     academicYear?:AcademicYear=new AcademicYear();
     section?:Section=new Section();
 
