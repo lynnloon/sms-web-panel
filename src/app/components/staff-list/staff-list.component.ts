@@ -9,25 +9,27 @@ import Swal from 'sweetalert2';
   styleUrls: ['./staff-list.component.css']
 })
 export class StaffListComponent implements OnInit {
-  
-  staff : Staff = new Staff();
-  staffs:Staff[]=[];
-  
-  constructor(
-    private staffService:StaffService
-  ){}
 
-  
-  ngOnInit(){
- this.getAllStaffList();
+  staff: Staff = new Staff();
+  staffs: Staff[] = [];
+  role?: string;
+
+  constructor(
+    private staffService: StaffService
+  ) { }
+
+
+  ngOnInit() {
+    this.role = localStorage.getItem('userrole') as string;
+    this.getAllStaffList();
   }
 
-  getAllStaffList(){
- this.staffService.getAllStaffList().subscribe((response:any)=>{
-  if (response.status) {
-    this.staffs = response.data;
- }
-  });
+  getAllStaffList() {
+    this.staffService.getAllStaffList().subscribe((response: any) => {
+      if (response.status) {
+        this.staffs = response.data;
+      }
+    });
   }
 
   delete(id: any) {
@@ -43,25 +45,25 @@ export class StaffListComponent implements OnInit {
       cancelButtonText: "No"
 
     }//end delete,cancel alert
-  
-  ).then((result) => {
+
+    ).then((result) => {
       if (result.isConfirmed) {
 
         this.staffService.delete(id).subscribe((response: any) => {
           if (response.status) {
-          Swal.fire({
-          title: "Deleted!",
-           text: response.message,
-           icon: "success"
-         });
+            Swal.fire({
+              title: "Deleted!",
+              text: response.message,
+              icon: "success"
+            });
             this.ngOnInit();
           }
         });
-        
+
       }
     });
 
-    
+
   }
 
 

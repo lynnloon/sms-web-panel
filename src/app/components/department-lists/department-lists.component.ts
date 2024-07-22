@@ -10,23 +10,25 @@ import Swal from 'sweetalert2';
 })
 export class DepartmentListsComponent implements OnInit {
 
-department: Department=new Department();
+  department: Department = new Department();
 
-departments: Department[]=[]
+  departments: Department[] = []
+  role?: string;
 
-constructor(
-  private departmentService: DepartmentService
-){}
+  constructor(
+    private departmentService: DepartmentService
+  ) { }
 
 
-  ngOnInit(){
-    this. getAllDepartmentList();
+  ngOnInit() {
+    this.role = localStorage.getItem('userrole') as string;
+    this.getAllDepartmentList();
   }
 
-  getAllDepartmentList(){
-    this.departmentService.getAllDepartmentList().subscribe((response:any)=>{
-      if(response.status){
-        this.departments=response.data;
+  getAllDepartmentList() {
+    this.departmentService.getAllDepartmentList().subscribe((response: any) => {
+      if (response.status) {
+        this.departments = response.data;
       }
     });
   }
@@ -40,24 +42,24 @@ constructor(
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes",
-      cancelButtonText:"No",
-      position:'top'
+      cancelButtonText: "No",
+      position: 'top'
     }).then((result) => {
       if (result.isConfirmed) {
         this.departmentService.delete(id).subscribe((response: any) => {
           if (response.status) {
             Swal.fire({
               title: "Deleted!",
-            text: "This  record  has been deleted.",
-           icon: "success"
-          });
+              text: "This  record  has been deleted.",
+              icon: "success"
+            });
             this.ngOnInit();
           }
 
         });
-        
+
       }
     });
 
-}
+  }
 }

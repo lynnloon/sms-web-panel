@@ -1,0 +1,103 @@
+.slider-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slider {
+    width: 80%;
+    height: 300px; /* Adjust height as needed */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+  
+  .slide.active {
+    display: block;
+  }
+  
+  /* Optional: Add transition effect */
+  .slide {
+    transition: transform 1s ease;
+  }
+
+  .dropdown-divider {
+    margin: 5px 0;
+    border-top: 1px solid #0876e4;
+}
+
+
+  
+
+/* style */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calendar {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 300px;
+}
+
+.calendar-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar-header h2 {
+    margin: 0;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar-table th {
+    background-color: #f0f0f0;
+}
+
+.calendar-table td {
+    cursor: pointer;
+}
+
+.current-day {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.prev-month,
+.next-month {
+    color: #ccc;
+}
+
+.today {
+    font-weight: bold;
+}

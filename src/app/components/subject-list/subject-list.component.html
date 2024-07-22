@@ -9,7 +9,7 @@
         </nav>
     </div><!-- End Page Title -->
 
-    <div>
+    <div *ngIf="role=='ADMIN'">
         <button type="submit" class="btn btn-primary bi bi-plus-circle" [routerLink]="'/add-subject'">
             Add new subject</button>
     </div>
@@ -27,7 +27,7 @@
                                 <th scope="col">ModuleNo</th>
                                 <th scope="col">Class</th>
                                 <th scope="col">Semester</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" *ngIf="role=='ADMIN'">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,7 +37,7 @@
                                 <td>{{sub.moduleNo}}</td>
                                 <td>{{getBatchNumber(sub.subjectBatch?.name)}}{{sub.major}}</td>
                                 <td>{{sub.subjectSem?.semesterName}}</td>
-                                <td>
+                                <td *ngIf="role=='ADMIN'">
                                     <i class="bi bi-pencil-square" title="edit"
                                         [routerLink]="['/add-subject',sub.id]"></i>&nbsp;
                                     <i class="bi bi-trash" style="color: red;" title="delete"

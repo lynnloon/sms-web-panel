@@ -79,18 +79,6 @@ export class CreateSectionComponent implements OnInit {
     }
 
     console.log("select list>>",this.selectedStuList);
-
-    // this.selectedStuList = this.students.map((d) => {
-    //   console.log(id, isChecked);
-    //   if (d.id === id) {
-    //     d.select = isChecked;
-
-        
-    //   }
-    //   return d;
-    // });
-
-
   }
 
 

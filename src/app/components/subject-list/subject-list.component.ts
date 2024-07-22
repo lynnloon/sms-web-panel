@@ -16,6 +16,7 @@ export class SubjectListComponent implements OnInit {
 
   subject: Subject = new Subject();
   subjects: Subject[] = []
+  role?: string;
 
   constructor(
     public subjectService: SubjectService,
@@ -24,6 +25,7 @@ export class SubjectListComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.role = localStorage.getItem('userrole') as string;
     this.getAllSubjectList();
   }
 
