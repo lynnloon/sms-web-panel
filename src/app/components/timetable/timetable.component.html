@@ -21,7 +21,14 @@
                         <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
                     </select>
                 </div>
-
+                <div class="col-sm-3">
+                    <label><b>Semester</b></label>
+                    <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
+                        [ngModelOptions]="{standalone: true}" (ngModelChange)="onSemesterChange()">
+                        <option value="">Choose..</option>
+                        <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
+                    </select>
+                </div>
                 <div class="col-sm-3">
                     <label><b>Major</b></label>
                     <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="filterDTO.major"
@@ -41,14 +48,7 @@
                         <option *ngFor="let sec of sections;" [ngValue]="sec">{{sec.name}}</option>
                     </select>
                 </div>
-                <div class="col-sm-3">
-                    <label><b>Semester</b></label>
-                    <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
-                        [ngModelOptions]="{standalone: true}" (ngModelChange)="onSemesterChange()">
-                        <option value="">Choose..</option>
-                        <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
-                    </select>
-                </div>
+               
                 <!-- <button type="submit" class="btn btn-primary" (click)="show()">Show Subject List</button> -->
             </form>
         </section><br />
@@ -56,6 +56,7 @@
             <div class="row">
                 <!-- Drag and Drop -->
                 <table mat-table #table class="mat-elevation-z8" cdkDropList>
+                    
 
                     <tbody>
                         <tr>
@@ -425,6 +426,7 @@
                         </div>
                     </div>
                 </div>
+            
                 <!-- <div class="example-container">
 
 
@@ -479,10 +481,9 @@
                 <td>{{sub.moduleNo}}</td>
                 <td> {{sub.name}}</td>
                 <td>
-                    <select class="form-select" id="inputGroupSelect01 " *ngFor="let subStaff of sub.subjectStaff"
-                        (change)="assignTeacher(sub,subStaff)">
+                    <select class="form-select" id="staffSelect" [(ngModel)]="sub.subjectStaff" [ngModelOptions]="{standalone: true}" >
                         <option value="">Choose..</option>
-                        <option>{{subStaff.staffName}}</option>
+                        <option *ngFor="let subStaff of sub.subjectStaff" >{{subStaff.staffName}}</option>
                     </select>
                 </td>
             </tr>
