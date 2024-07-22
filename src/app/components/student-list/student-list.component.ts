@@ -10,21 +10,23 @@ import Swal from 'sweetalert2';
 })
 export class StudentListComponent implements OnInit {
 
-student: Student= new Student();
+  student: Student = new Student();
 
-students: Student[]=[]
-
-
-
+  students: Student[] = []
+  role?: string;
 
 
-constructor(
-  private studentService: StudentService
-){}
 
 
-  ngOnInit(): void {
-   this.getAllStudentList();
+
+  constructor(
+    private studentService: StudentService
+  ) { }
+
+
+  ngOnInit() {
+    this.role = localStorage.getItem('userrole') as string;
+    this.getAllStudentList();
   }
 
   getBatchNumber(batchName: string | undefined): string {
@@ -37,7 +39,7 @@ constructor(
         return '3';
       case 'FOURTH YEAR':
         return '4';
-        case 'FIFTH YEAR':
+      case 'FIFTH YEAR':
         return '5'
       case 'MASTER':
         return '6';
@@ -45,12 +47,12 @@ constructor(
         return 'Unknown';
     }
   }
-  
+
 
   getAllStudentList() {
     this.studentService.getAllStudentList().subscribe((response: any) => {
       if (response.status) {
-        this.students= response.data;
+        this.students = response.data;
       }
     });
   }
@@ -59,39 +61,39 @@ constructor(
   delete(id: any) {
 
     Swal.fire({
-      
-        // delete,cancel alert
-        title: "Delete Comfirmation",
-        text: "Are you sure to delete this record?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes",
-        cancelButtonText: "No"
-  
-      }//end delete,cancel alert
-    
-    ).then((result) => {
-        if (result.isConfirmed) {
-  
-          this.studentService.delete(id).subscribe((response: any) => {
-            if (response.status) {
-            Swal.fire({
-            title: "Deleted!",
-             text: response.message,
-             icon: "success"
-           });
-              this.ngOnInit();
-            }
-          });
-          
-        }
-      });
-  
-     
 
-    
+      // delete,cancel alert
+      title: "Delete Comfirmation",
+      text: "Are you sure to delete this record?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No"
+
+    }//end delete,cancel alert
+
+    ).then((result) => {
+      if (result.isConfirmed) {
+
+        this.studentService.delete(id).subscribe((response: any) => {
+          if (response.status) {
+            Swal.fire({
+              title: "Deleted!",
+              text: response.message,
+              icon: "success"
+            });
+            this.ngOnInit();
+          }
+        });
+
+      }
+    });
+
+
+
+
   }
 
 
