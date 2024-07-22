@@ -11,7 +11,7 @@ export class Timetable {
     activeStatus?: string;
     scheduleTime?:number;
     subject?:Subject=new Subject();   
-    teacher_id?:string;
+    teacher_id?:number;
     academicYear?:AcademicYear=new AcademicYear();
     section?:Section=new Section();
 

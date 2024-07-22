@@ -6,5 +6,6 @@ export class FilterDTO {
     section?:number;
     studentId?: number;
     academicYear?: number;
+    teacherId?:number;
 
 }

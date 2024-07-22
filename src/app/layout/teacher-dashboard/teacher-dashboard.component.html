@@ -1,174 +1,191 @@
 <main id="main" class="main">
 
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
 
-    <!-- test -->
     <section class="section dashboard">
-
         <div class="row">
-            <!-- Student-->
-            <div class=" col-sm-3 col-md-3">
-                <div class="card info-card sales-card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <h3 class="card-title">Number of students </h3>
 
-                            <div class="card-icon rounded-circle d-flex  justify-content-center">
-                                <i class="bi bi-mortarboard-fill "></i>
+            <!-- Left side columns -->
+            <div class="col-lg-8">
+                <div class="row">
+
+
+                    <!-- Student-->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card sales-card">
+                            <div class="filter">
+                                <a class="icon" [routerLink]="'/student-list'" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots" title="student list"></i></a>
                             </div>
+
+
+
+                            <div class="card-body">
+                                <h5 class="card-title"><span>Number of </span>
+                                    <a class="link" [routerLink]="'/student-list'"> Students</a>
+                                </h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-mortarboard-fill "></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{students.length}}</h6>
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-                </div>
-            </div><!-- End Student -->
+                    </div><!-- End Student -->
 
-            <!-- Staff  -->
-            <div class=" col-sm-3 col-md-3">
-                <div class="card info-card revenue-card">
-                    <div class="filter">
-                        <a class="icon" [routerLink]="'/staff-list'" data-bs-toggle="dropdown">
-                            <i class="bi bi-three-dots" title="Staff list"></i></a>
-                    </div>
+                    <!-- Staff  -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card revenue-card">
+
+                            <div class="filter">
+                                <a class="icon" [routerLink]="'/staff-list'" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots" title="Staff list"></i></a>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title"><span>Number of </span>
+                                    <a class="link" [routerLink]="'/staff-list'">Teachers</a>
+                                </h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-person-workspace"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{staffs.length}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Staff -->
+
+                    <!-- Departments -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card dept">
+
+                            <div class="filter">
+                                <a class="icon" [routerLink]="'/department-list'" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots" title="Department list"></i></a>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title"><span>Number of </span>
+                                    <a class="link" [routerLink]="'/department-list'">Departments</a>
+                                </h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-building-fill "></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{departments.length}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End  Departments -->
+
+                    <!-- Subjects -->
+                    <div class="col-xxl-4 col-md-6">
+                        <div class="card info-card sub">
+
+                            <div class="filter">
+                                <a class="icon" [routerLink]="'/subject-list'" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots" title="Subject list"></i></a>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title"><span>Number of </span>
+                                    <a class="link" [routerLink]="'/subject-list'">Subjects</a>
+                                </h5>
+
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-book-half"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{subjects.length}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- End Subjects -->
+                </div>
+            </div><!-- End Left side columns -->
+
+            <!-- Right side columns -->
+            <div class="col-lg-4">
+
+                <!-- Recent Activity -->
+                <div class="card">
+                   
+
                     <div class="card-body">
-                        <h5 class="card-title"><span>Number of </span>
-                            <a class="link" [routerLink]="'/staff-list'">Teachers</a>
-                        </h5>
-                        <!-- <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-person-workspace"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6></h6>
-                                </div>
-                            </div> -->
-                    </div>
+                        <h5 class="card-title">Recently notices</h5>
+                        <hr class="dropdown-divider">
 
-                </div>
-            </div><!-- End Staff -->
+                        <div class="activity">
 
-            <!-- Departments -->
-            <div class="col-sm-3 col-md-3">
-                <div class="card info-card dept">
+                            <table>
+                               <tr *ngFor="let n of notices;">
+                                    <section>
+                                        <td> <img src="{{ this.commonService.imageURL+n.noticePicture}}"
+                                                style="margin: 5px;max-width: 60px; height: 60px;" alt=" notice"></td>
+                                        <td><a [routerLink]="['/add-notice',n.id]" 
+                                                class="t">{{n.content}}</a>
+                                        </td>
+                                    </section>
+                                    <hr class="dropdown-divider">
+                                </tr>
+                                <tr *ngIf="notices.length === 0">
+                                    <td colspan="2">No notices found.</td>
+                                  </tr>
+                            </table>
 
-                    <div class="filter">
-                        <a class="icon" [routerLink]="'/department-list'" data-bs-toggle="dropdown">
-                            <i class="bi bi-three-dots" title="Department list"></i></a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><span>Number of </span>
-                            <a class="link" [routerLink]="'/department-list'">Departments</a>
-                        </h5>
-                        <!-- <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-building-fill "></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6></h6>
-                                </div>
-                            </div> -->
-                    </div>
+                        </div>
 
-                </div>
-            </div><!-- End  Departments -->
-
-            <!-- Subjects -->
-            <div class=" col-sm-3 col-md-3">
-                <div class="card info-card sub">
-                    <div class="filter">
-                        <a class="icon" [routerLink]="'/subject-list'" data-bs-toggle="dropdown">
-                            <i class="bi bi-three-dots" title="Subject list"></i></a>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title"><span>Number of </span>
-                            <a class="link" [routerLink]="'/subject-list'">Subjects</a>
-                        </h5>
-                        <!-- <div class="d-flex align-items-center">
-                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <i class="bi bi-book-half"></i>
-                                </div>
-                                <div class="ps-3">
-                                    <h6></h6>
-                                </div>
-                            </div> -->
-                    </div>
-                </div>
-            </div><!-- End Subjects -->
+                </div><!-- End Recent Activity -->
+            </div><!-- End Right side columns -->
         </div>
-
-        
     </section>
-    <!-- end test -->
-    <!-- Recent Sales -->
-    <!-- <div class="col-12">
-        
-        <div class="card recent-sales overflow-auto">
-            <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                    </li>
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide active">
+                Slide 1 Content
             </div>
-
-            <div class="card-body">
-                <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
-                <table class="table table-borderless datatable">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row"><a href="#">#2457</a></th>
-                            <td>Brandon Jacob</td>
-                            <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                            <td>$64</td>
-                            <td><span class="badge bg-success">Approved</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#">#2147</a></th>
-                            <td>Bridie Kessler</td>
-                            <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a>
-                            </td>
-                            <td>$47</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#">#2049</a></th>
-                            <td>Ashleigh Langosh</td>
-                            <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                            <td>$147</td>
-                            <td><span class="badge bg-success">Approved</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#">#2644</a></th>
-                            <td>Angus Grady</td>
-                            <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                            <td>$67</td>
-                            <td><span class="badge bg-danger">Rejected</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#">#2644</a></th>
-                            <td>Raheem Lehner</td>
-                            <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                            <td>$165</td>
-                            <td><span class="badge bg-success">Approved</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-
+            <div class="slide">
+                Slide 2 Content
             </div>
-
+            <div class="slide">
+                Slide 3 Content
+            </div>
         </div>
-    </div> -->
-    <!-- End Recent Sales -->
-</main>
+    </div>
+
+
+
+</main><!-- End #main -->

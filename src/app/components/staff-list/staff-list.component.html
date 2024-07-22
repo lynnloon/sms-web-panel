@@ -9,7 +9,7 @@
         </nav>
     </div><!-- End Page Title -->
 
-    <div>
+    <div *ngIf="role=='ADMIN'">
         <button type="submit" class="btn btn-primary bi bi-plus-circle  float-right " [routerLink]="'/add-staff'">
             Add new Teacher</button>
     </div>
@@ -29,7 +29,7 @@
                                 <th scope="col">Address</th>
                                 <th scope="col">Position</th>
                                 <th scope="col">Department</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" *ngIf="role=='ADMIN'">Action</th>
 
                             </tr>
                         </thead>
@@ -42,7 +42,7 @@
                                 <td>{{sta.staffAddress}}</td>
                                 <td>{{ sta.staffPosition?.name }}</td>
                                 <td>{{ sta.staffDepartment?.name }}</td>
-                                <td>
+                                <td *ngIf="role=='ADMIN'">
                                     <i class="bi bi-pencil-square" title="edit"
                                         [routerLink]="['/add-staff',sta.id]"></i>&nbsp;
                                     <i class="bi bi-trash" style="color: red;" title="delete"
