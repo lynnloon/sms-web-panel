@@ -62,7 +62,10 @@
                                     <i class="bi bi-pencil-square" title="edit"
                                         [routerLink]="['/add-student',stu.id]"></i>&nbsp;
                                     <i class="bi bi-trash" style="color: red;" title="delete"
-                                        (click)="delete(stu.id)"></i>
+                                        (click)="delete(stu.id)"></i>&nbsp;
+                                    <!-- student details                                     -->
+                                    <i class="bi bi-card-list" title="detail"
+                                        [routerLink]="['/student-detail',stu.id]"></i>
                                 </td>
                             </tr>
                         </tbody>

@@ -48,7 +48,7 @@
                         <option *ngFor="let sec of sections;" [ngValue]="sec">{{sec.name}}</option>
                     </select>
                 </div>
-               
+
                 <!-- <button type="submit" class="btn btn-primary" (click)="show()">Show Subject List</button> -->
             </form>
         </section><br />
@@ -56,7 +56,7 @@
             <div class="row">
                 <!-- Drag and Drop -->
                 <table mat-table #table class="mat-elevation-z8" cdkDropList>
-                    
+
 
                     <tbody>
                         <tr>
@@ -426,7 +426,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <!-- <div class="example-container">
 
 
@@ -481,9 +481,10 @@
                 <td>{{sub.moduleNo}}</td>
                 <td> {{sub.name}}</td>
                 <td>
-                    <select class="form-select" id="staffSelect" [(ngModel)]="sub.subjectStaff" [ngModelOptions]="{standalone: true}" >
+                    <select class="form-select" id="staffSelect" [(ngModel)]="sub.subjectStaff"
+                        [ngModelOptions]="{standalone: true}">
                         <option value="">Choose..</option>
-                        <option *ngFor="let subStaff of sub.subjectStaff" >{{subStaff.staffName}}</option>
+                        <option *ngFor="let subStaff of sub.subjectStaff">{{subStaff.staffName}}</option>
                     </select>
                 </td>
             </tr>
@@ -497,7 +498,12 @@
         <div align="center"><b>
                 <h5><span>{{academicYear}}</span> Academic Year</h5>
                 <h5><span>{{this.batchName}}</span><span> {{majorN}}</span> Timetable</h5>
-                <h5>First Semester</h5>
+                <div class="col-sm-3">
+                    <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
+                        [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let sem of semesters;" [ngValue]="sem">{{sem.semesterName}}</option>
+                    </select>
+                </div>
             </b>
 
 
@@ -505,10 +511,11 @@
         <div style="text-align: right; margin-right: 100px;" col-sm-6>
             <h5>{{student_section.name}}</h5>
         </div>
-        
+
         <section class="section">
             <div class="row">
-                <table class="timetable " style="height:400px;" >
+                <table class="timetable " style="height:400px;">
+
                     <tr>
                         <th bgcolor="  #c6e1ff" class="text-center">Day</th>
                         <th bgcolor=" EDC6FC">9:00-9:55</th>
@@ -598,42 +605,20 @@
                     </tr>
                 </table>
             </div><br />
-            <table class="table table-borderless">
-                <tr>
-                    <td>M-1222</td>
-                    <td>Myanmar Language</td>
-                    <td>Daw Aye Aye Thein</td>
+            <table class="table">
+                <tr *ngFor=" let sub of subjects;let i = index;">
+                    <td>{{sub.moduleNo}}</td>
+                    <td> {{sub.name}}</td>
+                    <td>
+                        <div class="form-select" id="staffSelect" [(ngModel)]="sub.subjectStaff"
+                            [ngModelOptions]="{standalone: true}">
+                            <div *ngFor="let subStaff of sub.subjectStaff">
+                                {{subStaff.staffName}}/
+                            </div>
+                        </div>
+                    </td>
                 </tr>
-                <tr>
-                    <td>M-1222</td>
-                    <td>Myanmar Language</td>
-                    <td>Daw Aye Aye Thein</td>
-                </tr>
-                <tr>
-                    <td>M-1222</td>
-                    <td>Myanmar Language</td>
-                    <td>Daw Aye Aye Thein</td>
-                </tr>
-                <tr>
-                    <td>M-1222</td>
-                    <td>Myanmar Language</td>
-                    <td>Daw Aye Aye Thein</td>
-                </tr>
-                <tr>
-                    <td>M-1222</td>
-                    <td>Myanmar Language</td>
-                    <td>Daw Aye Aye Thein</td>
-                </tr>
-                <tr>
-                    <td>M-1222</td>
-                    <td>Myanmar Language</td>
-                    <td>Daw Aye Aye Thein</td>
-                </tr>
-                <tr>
-                    <td>M-1222</td>
-                    <td>Myanmar Language</td>
-                    <td>Daw Aye Aye Thein</td>
-                </tr>
+
             </table>
         </section><br />
         <br />
