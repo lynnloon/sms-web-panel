@@ -30,33 +30,4 @@
 .sch {
     background-color:#D8BFD8;
 }
-.table-striped {
-    width: 100%;
-    border-collapse: collapse; /* Ensure borders collapse for consistent styling */
-  }
-  
-  .table-striped th,
-  .table-striped td {
-    padding: 8px; /* Adjust padding as needed */
-    text-align: left; /* Align text within cells */
-  }
-  
-  .table-striped tbody tr:nth-child(odd) {
-    background-color: #f2f2f2; /* Light gray background for odd rows */
-  }
-  
-  .table-striped tbody tr:nth-child(even) {
-    background-color: #ffffff; /* White background for even rows */
-  }
-  
-  .table-striped th {
-    background-color: #cee0f3; /* Dark background for table headers */
-    color: #0c0000; /* White text color for table headers */
-  }
-  
-
-  .table-striped tr {
-    border: 1px solid #dddddd; /* Light gray border for cells */
-  }
-   
   

@@ -137,7 +137,7 @@
     </section>
 
     <section class="section sublists">
-        <div class="row">
+        <div class="row">          
             <div class="col-sm-6">
                 <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
                     [legend]="barChartLegend">
@@ -146,17 +146,25 @@
             <div class="col-sm-6 ">
                 <br />
                 <h3 style="font-family: cursive;"><u>Subject List</u></h3>
-                <table class="table table-borderless">
+                <div class="card">
+                    <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
                         <th>Name</th>
                         <th>Module NO</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr *ngFor=" let sub of subjects;let i = index;">
                         <td> {{sub.name}}</td>
                         <td>{{sub.moduleNo}}</td>
                         
                     </tr>
+                    </tbody>
                 </table>
+                </div>
+                </div>
             </div>
             
         </div>
