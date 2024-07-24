@@ -20,6 +20,9 @@ export class TimetableService implements OnInit {
   save(timetable:Timetable[]){
     return this.httpClient.post(this.commonService.apiRoute+"/timetable/save",timetable);
   }
+  update(timetable:Timetable[]){
+    return this.httpClient.post(this.commonService.apiRoute+"/timetable/update",timetable);
+  }
   getTimetableList(filter:FilterDTO)
   {
     return this.httpClient.post(this.commonService.apiRoute+"/timetable/retrieveTimetable",filter);
