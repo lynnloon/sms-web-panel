@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { NoticeBoardComponent } from 'src/app/components/notice-board/notice-board.component';
 
 import { Department } from 'src/app/model/department';
+import { FilterDTO } from 'src/app/model/filter-dto';
 import { Notice } from 'src/app/model/notice';
 import { Staff } from 'src/app/model/staff';
 import { Student } from 'src/app/model/student';
 import { Subject } from 'src/app/model/subject';
 import { NoticeService } from 'src/app/service/notice.service';
 import { StudentService } from 'src/app/service/student.service';
+import { SubjectService } from 'src/app/service/subject.service';
 import { CommonService } from 'src/app/util/common.service';
 
 @Component({
@@ -25,6 +27,7 @@ export class StudentDashboardComponent implements OnInit {
   health: Notice = new Notice();
   school: Notice = new Notice();
   event: Notice = new Notice();
+  filterDto: FilterDTO = new FilterDTO();
 
 
   notices: Notice[] = [];
@@ -32,6 +35,7 @@ export class StudentDashboardComponent implements OnInit {
   announcements: Notice[] = [];
   healths: Notice[] = [];
   schools: Notice[] = [];
+  subjects: Subject[] = [];
 
 
   public barChartLabels: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -54,11 +58,31 @@ export class StudentDashboardComponent implements OnInit {
     private noticeService: NoticeService,
     public commonService: CommonService,
     public studentService: StudentService,
+    private subjectService: SubjectService,
   ) { }
   ngOnInit() {
     this.email = localStorage.getItem('email') as string;
     this.getAllNotice();
+    debugger
+    this.getSubjectForStudent();
+
     // this.studentInfo();
+  }
+  getSubjectForStudent() {
+    this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {
+      if (response.status) {
+        this.student=response.data;
+        this.filterDto.batchId = this.student.studentBatch?.id;
+        this.filterDto.major =this.student.stu_major;
+        this.subjectService.getSubByBatch(this.filterDto).subscribe((response: any) => {
+          if (response.status) {
+            this.subjects = response.data;
+          }
+        })
+
+      }
+    })
+
   }
   // studentInfo() {
   //   this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {

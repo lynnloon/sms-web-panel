@@ -548,8 +548,6 @@ export class TimetableComponent implements OnInit {
   saveTimetable() {
 
     //assigning data to objects
-    if (this.exitData == false) {
-
       if (this.e11[0] != null) {
 
         this.section.academicBatch = this.batch;
@@ -1012,6 +1010,7 @@ export class TimetableComponent implements OnInit {
       //   console.log(" schedule time"+this.timetables[i].scheduleTime);
       //   console.log(" schedule time"+this.timetables[i].scheduleTime)
       // }
+      if (this.exitData == false) {
       this.timetableService.save(this.timetables).subscribe((response: any) => {
         if (response.status) {
           this.commonService.inputAlert("Timetable adding complete", 'success');
@@ -1019,7 +1018,11 @@ export class TimetableComponent implements OnInit {
       });
     }
     else {
-      this.commonService.inputAlert("Timetable for this section is already exist, Now your record ","warning");
+      this.commonService.inputAlert("Timetable for this section is already exist, Now your record will be update","warning");
+      this.timetableService.update(this.timetables).subscribe((resoponse:any)=>{
+        if (resoponse.status)
+          this.commonService.inputAlert("Your timetable is updated .","success");
+              })
     }
   }
 
