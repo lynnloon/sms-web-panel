@@ -13,126 +13,122 @@
     <section class="section dashboard">
         <div class="row">
 
-            <!-- Left side columns -->
             <div class="col-lg-8">
                 <div class="row">
 
 
                     <!-- Student-->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-                            <div class="filter">
-                                <a class="icon"  data-bs-toggle="dropdown" [routerLink]="'/student-list'">
-                                    <i class="bi bi-three-dots" title="student list"></i></a>
-                            </div>
-
-
-
-                            <div class="card-body">
-                                <h5 class="card-title"><span>Number of </span>
-                                    <a class="link" [routerLink]="'/student-list'"> Students</a>
-                                </h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div
-                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-mortarboard-fill "></i>
-                                    </div>
-                                    <div class="ps-3">
+                        <div class="card info-card sales-card bg">
+                            <table class="table-borderless">
+                                <tr>
+                                    <td>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><span>Total </span><br />
+                                                <a class="link" [routerLink]="'/student-list'"> Students</a>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-mortarboard-fill fs-2"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
                                         <h6>{{students.length}}</h6>
+                                    </td>
 
-                                    </div>
-                                </div>
-                            </div>
-
+                                </tr>
+                            </table>
                         </div>
                     </div><!-- End Student -->
 
                     <!-- Staff  -->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card revenue-card">
+                        <div class="card info-card revenue-card bg">
 
-                            <div class="filter">
-                                <a class="icon" [routerLink]="'/staff-list'" data-bs-toggle="dropdown">
-                                    <i class="bi bi-three-dots" title="Staff list"></i></a>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title"><span>Number of </span>
-                                    <a class="link" [routerLink]="'/staff-list'">Teachers</a>
-                                </h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div
-                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-person-workspace"></i>
-                                    </div>
-                                    <div class="ps-3">
+                            <table class="table-borderless">
+                                <tr>
+                                    <td>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><span>Total </span><br />
+                                                <a class="link" [routerLink]="'/staff-list'"> Teachers</a>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-person-workspace fs-2"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
                                         <h6>{{staffs.length}}</h6>
-                                    </div>
-                                </div>
-                            </div>
+                                    </td>
+
+                                </tr>
+                            </table>
 
                         </div>
                     </div><!-- End Staff -->
 
                     <!-- Departments -->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card dept">
-
-                            <div class="filter">
-                                <a class="icon" [routerLink]="'/department-list'" data-bs-toggle="dropdown">
-                                    <i class="bi bi-three-dots" title="Department list"></i></a>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title"><span>Number of </span>
-                                    <a class="link" [routerLink]="'/department-list'">Departments</a>
-                                </h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div
-                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-building-fill "></i>
-                                    </div>
-                                    <div class="ps-3">
+                        <div class="card info-card dept bg">
+                            <table class="table-borderless">
+                                <tr>
+                                    <td>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><span>Total </span><br />
+                                                <a class="link" [routerLink]="'/department-list'"> Depatments</a>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-building-fill fs-2"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
                                         <h6>{{departments.length}}</h6>
-                                    </div>
-                                </div>
-                            </div>
-
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div><!-- End  Departments -->
 
                     <!-- Subjects -->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sub">
-
-                            <div class="filter">
-                                <a class="icon" [routerLink]="'/subject-list'" data-bs-toggle="dropdown">
-                                    <i class="bi bi-three-dots" title="Subject list"></i></a>
-                            </div>
-
-                            <div class="card-body">
-                                <h5 class="card-title"><span>Number of </span>
-                                    <a class="link" [routerLink]="'/subject-list'">Subjects</a>
-                                </h5>
-
-                                <div class="d-flex align-items-center">
-                                    <div
-                                        class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-book-half"></i>
-                                    </div>
-                                    <div class="ps-3">
+                        <div class="card info-card sub bg">
+                            <table class="table-borderless">
+                                <tr>
+                                    <td>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><span>Total </span><br />
+                                                <a class="link" [routerLink]="'/subject-list'"> Subjects</a>
+                                            </h5>
+                                            <div class="d-flex align-items-center">
+                                                <div
+                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-book-half fs-2"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
                                         <h6>{{subjects.length}}</h6>
-                                    </div>
-                                </div>
-                            </div>
+                                    </td>
+
+                                </tr>
+                            </table>
 
                         </div>
                     </div><!-- End Subjects -->
                 </div>
             </div><!-- End Left side columns -->
+
 
             <!-- Right side columns -->
             <div class="col-lg-4">

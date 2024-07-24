@@ -120,10 +120,8 @@ export class AdminDashboardComponent implements OnInit {
     this.staffService.getAllStaffList().subscribe((response: any) => {
       if (response.status) {
         this.staffs = response.data;
-        this.staff_count = new Array(this.staffs.length).fill(0); // Initialize an array with 9 elements, all initialized to 0
-
+        this.staff_count = new Array(this.staffs.length).fill(0);
         for (let staff of this.staffs) {
-          // Increment the count based on staffDepartment.id
           switch (staff.staffDepartment?.id) {
             case 1:
               this.staff_count[0]++;

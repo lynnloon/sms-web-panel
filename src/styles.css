@@ -809,10 +809,11 @@ h6 {
 /* Info Cards */
 .dashboard .info-card {
   padding-bottom: 10px;
+  border-radius: 25px;
 }
 
 .dashboard .info-card h6 {
-  font-size: 28px;
+  font-size: 35px;
   color: #012970;
   font-weight: 700;
   margin: 0;
@@ -828,26 +829,40 @@ h6 {
   flex-grow: 0;
 }
 
-.dashboard .sales-card .card-icon {
+.dashboard .sales-card {
   color: #4154f1;
   background: #d3dde9;
 }
 
+.dashboard .sales-card .card-icon {
+  background-color: #c3c4eb;
+}
 
+.dashboard .revenue-card {
+  color: #25c247;
+  background: #baeece;
+}
 
 .dashboard .revenue-card .card-icon {
-  color: #2eca6a;
-  background: #e0f8e9;
+  background-color: #87eeaf;
+}
+
+.dashboard .dept {
+  color:#0fa30f;
+  background:#b2f3b2;
 }
 
 .dashboard .dept .card-icon {
-  color: #ff771d;
-  background: #f8d3ba;
+  background-color:#6cda6c;
+}
+
+.dashboard .sub {
+  color: #ac1dff;
+  background: #e5c8f7;
 }
 
 .dashboard .sub .card-icon {
-  color: #ac1dff;
-  background: #e5c8f7;
+  background: #d099f1;
 }
 
 /* Activity */
@@ -1278,12 +1293,9 @@ select.form-control {
   min-width: 15rem;
   max-width: 54rem;
   border: 1px solid #5f5656;
-  height:45px;
+  height: 45px;
 }
 
-.v{
+.v {
   width: 100px;
 }
-
-
-

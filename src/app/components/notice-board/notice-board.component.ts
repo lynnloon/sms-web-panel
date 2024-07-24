@@ -13,7 +13,7 @@ export class NoticeBoardComponent implements OnInit {
   role?: string;
 
   notice: Notice = new Notice();
-  
+
   notices: Notice[] = [];
 
   constructor(
@@ -51,6 +51,9 @@ export class NoticeBoardComponent implements OnInit {
     this.noticeService.getAll().subscribe((response: any) => {
       if (response.status) {
         this.notices = response.data;
+        this.notices.sort((a, b) => {
+          return (b.id ?? Number.MIN_SAFE_INTEGER) - (a.id ?? Number.MIN_SAFE_INTEGER);
+        });
       }
     });
   }
