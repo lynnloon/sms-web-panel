@@ -11,9 +11,9 @@
 
     <!-- timetable read and write for teacher view -->
     <div class="card" *ngIf="role == 'ADMIN'"><br />
-        <section class="container">
+        <section class="container" style="margin-left: 60px  ;text-align: center;">
             <form class="row g-3" align="center">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <label><b>Academic Batch</b></label>
                     <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="batch"
                         [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
@@ -21,7 +21,7 @@
                         <option *ngFor="let b of batches;" [ngValue]="b">{{b.name}}</option>
                     </select>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <label><b>Semester</b></label>
                     <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
                         [ngModelOptions]="{standalone: true}" (ngModelChange)="onSemesterChange()">
@@ -29,7 +29,7 @@
                         <option *ngFor="let s of semesters;" [ngValue]="s">{{s.semesterName}}</option>
                     </select>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <label><b>Major</b></label>
                     <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="filterDTO.major"
                         [ngModelOptions]="{standalone: true}" (ngModelChange)="onMajorChange()">
@@ -40,10 +40,10 @@
                     </select>
                 </div>
 
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <label><b>Section</b></label>
                     <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="section"
-                        [ngModelOptions]="{standalone: true}">
+                        [ngModelOptions]="{standalone: true}" (ngModelChange)="onSectionChange()">
                         <option value="">Choose..</option>
                         <option *ngFor="let sec of sections;" [ngValue]="sec">{{sec.name}}</option>
                     </select>
@@ -413,12 +413,12 @@
                     <button type="submit" class="btn btn-primary " (click)="saveTimetable()">
                         Confirm</button>
                 </div>
-                <div class="example-container">
+                <div class="example-container ">
 
 
-                    <h2>Subjects</h2>
+                    <h3 style="margin-left: 70px; width: 150px;">Subjects</h3>
 
-                    <div cdkDropList #sub="cdkDropList" [cdkDropListData]="subjects"
+                    <div cdkDropList cdkDropListOrientation="horizontal" #sub="cdkDropList" [cdkDropListData]="subjects" 
                         [cdkDropListConnectedTo]="[sub,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56]"
                         class="example-list" (cdkDropListDropped)="drop($event)">
                         <div class="example-box subjectClass" *ngFor="let sub of subjects" cdkDrag>
@@ -427,17 +427,18 @@
                     </div>
                 </div>
             </div>
-        </section><br /><br />
+        </section>
         
-        <table class="table table-borderless" *ngIf="subList==true">
+        <table class="table table-borderless"  id="subTable" *ngIf="subList==true">
+            
             <tr *ngFor=" let sub of subjects;let i = index;">
                 <td>{{sub.moduleNo}}</td>
                 <td> {{sub.name}}</td>
                 <td>
-                    <select class="form-select" id="staffSelect" [(ngModel)]="sub.subjectStaff"
+                    <select class="form-select" id="staffSelect" [(ngModel)]="temp_staffs[i]" (change)="onClickStaff(tempStaff)"
                         [ngModelOptions]="{standalone: true}" >
                         <option value="">Choose..</option>
-                        <option *ngFor="let subStaff of sub.subjectStaff">{{subStaff.staffName}}</option>
+                        <option *ngFor="let subStaff of sub.subjectStaff" [ngValue]="subStaff">{{subStaff.staffName}}</option>
                     </select>
                 </td>
             </tr>
@@ -452,7 +453,7 @@
                 <h5><span>{{this.batchName}}</span><span> {{majorN}}</span> Timetable</h5>
                 <div class="col-sm-3">
                     <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
-                        [ngModelOptions]="{standalone: true}">
+                        [ngModelOptions]="{standalone: true}"(ngModelChange)="getSection()">
                         <option *ngFor="let sem of semesters;" [ngValue]="sem">{{sem.semesterName}}</option>
                     </select>
                 </div>
@@ -467,6 +468,7 @@
         <section class="section">
             <div class="row">
                 <table class="timetable " style="height:400px;">
+                    
 
                     <tr>
                         <th bgcolor="  #c6e1ff" class="text-center">Day</th>
@@ -557,17 +559,19 @@
                     </tr>
                 </table>
             </div><br />
-            <table class="table">
+            <table class="table" id ="subTable">
                 <tr *ngFor=" let sub of subjects;let i = index;">
                     <td>{{sub.moduleNo}}</td>
                     <td> {{sub.name}}</td>
-                    <td>
-                        <div class="form-select" style="width: 50px;" id="staffSelect" [(ngModel)]="sub.subjectStaff"
+                    <td>  <div *ngFor="let subStaff of sub.subjectStaff">
+                           {{subStaff.staffName}}
+                    </div>
+                        <!-- <div class="form-select" style="width: 50px;" id="staffSelect" [(ngModel)]="sub.subjectStaff"
                             [ngModelOptions]="{standalone: true}">
                             <div *ngFor="let subStaff of sub.subjectStaff">
                                 {{subStaff.staffName}}
                             </div>
-                        </div>
+                        </div> -->
                     </td>
                 </tr>
 

@@ -1,0 +1,24 @@
+<main id="main" class="main">
+    <section class="container">
+        <form class="row g-3" align="center">
+            <div class="col-sm-3">
+                <label><b>Subjects</b></label>
+                <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="subject"
+                    [ngModelOptions]="{standalone: true}" (ngModelChange)="onChangeCombo()">
+                    <option value="" selected>Choose..</option>
+                    <option *ngFor="let sub of subjects;" [ngValue]="sub">{{sub.name}}</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <label><b>Section</b></label>
+                <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="section"
+                    [ngModelOptions]="{standalone: true}" (ngModelChange)="onSectionChange()">
+                    <option value="" selected>Choose..</option>
+                    <option *ngFor="let sec of sections;" [ngValue]="sec">{{sec.academicBatch?.name}}/{{sec.name}}</option>
+                </select>
+            </div>
+            </form>
+
+        </section>
+
+</main>

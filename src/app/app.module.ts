@@ -47,6 +47,7 @@ import { NoticeBoardComponent } from './components/notice-board/notice-board.com
 import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
 import { NoticeContentComponent } from './components/notice-content/notice-content.component';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
+import { ClassComponent } from './components/class/class.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { StudentDetailsComponent } from './components/student-details/student-de
     NoticeBoardComponent,
     CreateNoticeComponent,
     NoticeContentComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    ClassComponent
   ],
   imports: [
     BrowserModule,
