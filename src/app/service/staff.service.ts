@@ -7,13 +7,6 @@ import { Staff } from '../model/staff';
   providedIn: 'root'
 })
 export class StaffService {
- 
-
-  filesave(formData: FormData) {
-    return this.httpClient.post(this.commonService.apiRoute+"/staff/uploadStaffFile", formData);
-  }
-
-  
 
   constructor(
     private commonService:CommonService,
@@ -21,6 +14,9 @@ export class StaffService {
 
   ) { }
 
+  filesave(formData: FormData) {
+    return this.httpClient.post(this.commonService.apiRoute+"/staff/uploadStaffFile", formData);
+  }
   getAllStaffList(){
     return this.httpClient.get(this.commonService.apiRoute+"/staff/getAll");
     }
