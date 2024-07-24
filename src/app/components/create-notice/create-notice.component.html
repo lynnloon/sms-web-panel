@@ -81,25 +81,37 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Notice Detail</h5>
                     <!-- Horizontal Form -->
-                        <div class="row mb-3">
-                            <div *ngIf="editNotice == true" class="profileCss">
-                                <img [src]="filepath" alt="notice photo doesn't include" style="margin: 5px;max-width: 50%; height: 80%;"
-                                    class="img-fluid img-thumbnail rounded">
-                            </div>
+                    <div class="mb-3">
+                        
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Title</b></label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control " [(ngModel)]="notice.title"
-                                [ngModelOptions]="{standalone: true}" disabled>
+                        <div class="col-sm-9">
+                            <p>
+                                {{notice.title}}
+                            </p>
+                            <!-- <input type="text" class="form-control " [(ngModel)]="notice.title"
+                                [ngModelOptions]="{standalone: true}" disabled> -->
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="mb-3">
 
                         <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Content</b></label>
-                        <div class="col-sm-6">
-                            <textarea type="text" rows="10" class="form-control" [(ngModel)]="notice.content"
-                                id="inputText" disabled></textarea>
+                        <div class="col-sm-9">
+                            <p>
+                                {{notice.content}}
+                            </p>
+                            <!-- <textarea type="text" rows="10" class="form-control" [(ngModel)]="notice.content"
+                                id="inputText" disabled></textarea> -->
                         </div>
                     </div>
+                    <div class="mb-3" *ngIf="editNotice == true">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Notice Picture</b></label>
+                        <div class="col-sm-9">
+                            <img [src]="filepath" alt="Noticepicture"
+                            style="margin: 5px;max-width: 15%; height: 80%;"
+                            class="img-fluid img-thumbnail rounded">
+                            </div>
+                    </div>
+                   
                     <div class="text-center">
                         <button type="reset" class="btn btn-secondary" [routerLink]="'/notice-board'">Backword</button>
                     </div>

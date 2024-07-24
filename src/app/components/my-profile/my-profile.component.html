@@ -17,37 +17,33 @@
 
     <!-- For Student Profile -->
     <section class="section profile" *ngIf="role == 'STUDENT'">
-        <div class="row">
-            <div class="col-xl-4">
+        <div class="card">
+            <div class="row">
+                <div class="col-xl-4">
 
-                <div class="card">
+
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                         <img [src]="profile" alt="Profile" class="rounded-circle">
                         <h2>{{name}}</h2>
                         <h3>{{batchName}}{{student.stu_major+'-'}}{{student.stuRoll_no}}</h3>
                     </div>
+
+
                 </div>
 
-            </div>
+                <div class="col-xl-8">
 
-            <div class="col-xl-8">
 
-                <div class="card">
                     <div class="card-body pt-3">
                         <!-- Bordered Tabs -->
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
-                            <li class="nav-item">
+                            <li class="nav-item f">
                                 <button class="nav-link active" data-bs-toggle="tab"
                                     data-bs-target="#profile-overview">Profile Info</button>
                             </li>
-
-                            <!-- <li class="nav-item">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">
-                                    Profile Details</button>
-                            </li> -->
-                            <li class="nav-item">
+                            <li class="nav-item f">
                                 <button class="nav-link" data-bs-toggle="tab"
                                     data-bs-target="#profile-change-password">Change Password</button>
                             </li>
@@ -96,8 +92,8 @@
 
 
                             <!-- Change Password Form -->
-                            <div class="form-container">
-                                <form class="row g-3 form-container">
+                            <div class="">
+                                <form class="row g-3 ">
                                     <div class="tab-pane fade pt-3" id="profile-change-password">
 
 
@@ -156,7 +152,7 @@
                                                 </span>
                                             </div>
 
-                                         
+
 
                                             <br>
                                             <div class="text-center">
@@ -173,6 +169,7 @@
 
                         </div><!-- End Bordered Tabs -->
                     </div>
+
                 </div>
             </div>
         </div>
@@ -180,32 +177,33 @@
     </section>
     <!-- For Staff Profile -->
     <section class="section profile" *ngIf="role == 'TEACHER'">
-        <div class="row">
-            <div class="col-xl-4">
+        <div class="card">
+            <div class="row">
+                <div class="col-xl-4">
 
-                <div class="card">
+
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                         <img [src]="profile" alt="Profile" class="rounded-circle">
                         <h2>{{name}}</h2>
                         <h3>{{pos}}</h3>
                     </div>
+
+
                 </div>
 
-            </div>
+                <div class="col-xl-8">
 
-            <div class="col-xl-8">
 
-                <div class="card">
                     <div class="card-body pt-3">
                         <!-- Bordered Tabs -->
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
-                            <li class="nav-item">
+                            <li class="nav-item f">
                                 <button class="nav-link active" data-bs-toggle="tab"
                                     data-bs-target="#profile-overview">Profile Info</button>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item f">
                                 <button class="nav-link" data-bs-toggle="tab"
                                     data-bs-target="#profile-change-password">Change Password</button>
                             </li>
@@ -248,8 +246,8 @@
                             </div>
 
                             <!-- Change Teachar Password Form -->
-                            <div class="form-container">
-                                <form class="row g-3 form-container">
+                            <div class="">
+                                <form class="row g-3 ">
                                     <div class="tab-pane fade pt-3" id="profile-change-password">
 
 
@@ -326,84 +324,82 @@
                         </div><!-- End Bordered Tabs -->
 
                     </div>
+
                 </div>
             </div>
         </div>
-
     </section>
 
- <!-- For Admin Profile -->
- <section class="section profile" *ngIf="role == 'ADMIN'">
-    <div class="row">
-        <div class="col-xl-4">
+    <!-- For Admin Profile -->
+    <section class="section profile" *ngIf="role == 'ADMIN'">
+        <div class="card">
+            <div class="row">
+                <div class="col-xl-4">
 
-            <div class="card">
-                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                    <img [src]="profile" alt="Profile" class="rounded-circle">
-                    <h2>{{name}}</h2>
-                    <h3>{{pos}}</h3>
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                        <img [src]="profile" alt="Profile" class="rounded-circle">
+                        <h2>{{name}}</h2>
+                        <h3>{{pos}}</h3>
+                    </div>
+
                 </div>
-            </div>
 
-        </div>
+                <div class="col-xl-8">
 
-        <div class="col-xl-8">
 
-            <div class="card">
-                <div class="card-body pt-3">
-                    <!-- Bordered Tabs -->
-                    <ul class="nav nav-tabs nav-tabs-bordered">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
 
-                        <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="tab"
-                                data-bs-target="#profile-overview">Profile Info</button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab"
-                                data-bs-target="#profile-change-password">Change Password</button>
-                        </li>
+                            <li class="nav-item f">
+                                <button class="nav-link active" data-bs-toggle="tab"
+                                    data-bs-target="#profile-overview">Profile Info</button>
+                            </li>
+                            <li class="nav-item f">
+                                <button class="nav-link" data-bs-toggle="tab"
+                                    data-bs-target="#profile-change-password">Change Password</button>
+                            </li>
 
-                    </ul>
+                        </ul>
 
 
 
-                    <!-- profile info for TEACHER -->
-                    <div class="tab-content pt-2">
+                        <!-- profile info for ADMIN -->
+                        <div class="tab-content pt-2">
 
-                        <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
 
-                            <h5 class="card-title">Your Profile</h5>
+                                <h5 class="card-title">Your Profile</h5>
 
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                <div class="col-lg-9 col-md-8">{{name}}</div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                                    <div class="col-lg-9 col-md-8">{{name}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Phone No</div>
+                                    <div class="col-lg-9 col-md-8">{{ staff.staffPhoneNo}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Email</div>
+                                    <div class="col-lg-9 col-md-8">{{email}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Address</div>
+                                    <div class="col-lg-9 col-md-8">{{staff.staffAddress}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Position</div>
+                                    <div class="col-lg-9 col-md-8">{{pos}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Department</div>
+                                    <div class="col-lg-9 col-md-8">{{dept}}</div>
+                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Phone No</div>
-                                <div class="col-lg-9 col-md-8">{{ staff.staffPhoneNo}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Email</div>
-                                <div class="col-lg-9 col-md-8">{{email}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Address</div>
-                                <div class="col-lg-9 col-md-8">{{staff.staffAddress}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Position</div>
-                                <div class="col-lg-9 col-md-8">{{pos}}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 col-md-4 label">Department</div>
-                                <div class="col-lg-9 col-md-8">{{dept}}</div>
-                            </div>
-                        </div>
-
-                        <!-- Change Admin Password Form -->
-                        <div class="form-container">
-                            <form class="row g-3 form-container">
+                            <!-- Change Admin Password Form -->
+                            <form class="row g-3 ">
                                 <div class="tab-pane fade pt-3" id="profile-change-password">
 
 
@@ -416,9 +412,8 @@
                                                 <i class="bi bi-person-lock"></i>
                                             </span>
                                             <input name="renewpassword"
-                                                [type]="showCurrentPassword ? 'text' : 'password'"
-                                                class="form-control" id="renewPassword"
-                                                [(ngModel)]="currentPassword" />
+                                                [type]="showCurrentPassword ? 'text' : 'password'" class="form-control"
+                                                id="renewPassword" [(ngModel)]="currentPassword" />
                                             <span class="btn btn-outline-secondary btn-primary1" type="button"
                                                 (click)="togglePasswordVisibility('a')" (click)="toggleIcon('a')">
                                                 <i class="bi bi-eye" *ngIf="showIcon1"></i>
@@ -433,9 +428,8 @@
                                             <span class="btn btn-outline-secondary btn-primary1">
                                                 <i class="bi bi-person-lock"></i>
                                             </span>
-                                            <input name="renewpassword"
-                                                [type]="showNewtPassword ? 'text' : 'password'" class="form-control"
-                                                id="renewPassword" [(ngModel)]="newPassword" />
+                                            <input name="renewpassword" [type]="showNewtPassword ? 'text' : 'password'"
+                                                class="form-control" id="renewPassword" [(ngModel)]="newPassword" />
                                             <span class="btn btn-outline-secondary btn-primary1" type="button"
                                                 (click)="togglePasswordVisibility('b')" (click)="toggleIcon('b')">
                                                 <i class="bi bi-eye" *ngIf="showIcon2"></i>
@@ -451,9 +445,8 @@
                                                 <i class="bi bi-person-lock"></i>
                                             </span>
                                             <input name="renewpassword"
-                                                [type]="showReTypePassword ? 'text' : 'password'"
-                                                class="form-control" id="renewPassword"
-                                                [(ngModel)]="reTypePassword" />
+                                                [type]="showReTypePassword ? 'text' : 'password'" class="form-control"
+                                                id="renewPassword" [(ngModel)]="reTypePassword" />
                                             <span class="btn btn-outline-secondary btn-primary1 " type="button"
                                                 (click)="togglePasswordVisibility('c')" (click)="toggleIcon('c')">
                                                 <i class="bi bi-eye" *ngIf="showIcon3"></i>
@@ -475,16 +468,18 @@
 
                                 </div>
                             </form>
-                        </div>
-                        <!-- End Change Admin  Password -->
-                    </div><!-- End Bordered Tabs -->
+
+                            <!-- End Change Admin  Password -->
+                        </div><!-- End Bordered Tabs -->
+
+                    </div>
 
                 </div>
             </div>
         </div>
-    </div>
 
-</section>
+
+    </section>
 
 
 </main><!-- End #main -->

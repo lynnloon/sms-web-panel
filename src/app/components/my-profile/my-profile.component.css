@@ -8,12 +8,11 @@
   border-color: var(--bs-btn-hover-border-color);
 }
 
-.form-container {
+/* .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* vh stands for viewport height */
-}
+} */
 
 form {
   width: 50%;
@@ -39,4 +38,10 @@ element.style {
 .far,
 .fas {
   font-family: "Font Awesome 5 Free";
+}
+
+.f{
+  /* font-family: emoji; */
+  font-size: 18px;
+  font-weight: bold;
 }

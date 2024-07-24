@@ -16,7 +16,7 @@ import { CommonService } from 'src/app/util/common.service';
   templateUrl: './teacher-dashboard.component.html',
   styleUrls: ['./teacher-dashboard.component.css']
 })
-export class TeacherDashboardComponent implements OnInit{
+export class TeacherDashboardComponent implements OnInit {
 
   students: Student[] = [];
   staffs: Staff[] = [];
@@ -33,30 +33,39 @@ export class TeacherDashboardComponent implements OnInit{
     public commonService: CommonService,
   ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.getAllNoti();
-
-    this.studentService.getAllStudentList().subscribe((response: any) => {
+    this.getAllStudentList();
+    this.getAllStaffList();
+    this.getAllDepartmentList();
+    this.getAllSubjectList();
+  }
+  
+  getAllSubjectList() {
+    this.subjectService.getAllSubjectList().subscribe((response: any) => {
       if (response.status) {
-        this.students = response.data;
+        this.subjects = response.data;
       }
     });
-
-    this.staffService.getAllStaffList().subscribe((response: any) => {
-      if (response.status) {
-        this.staffs = response.data;
-      }
-    });
-
+  }
+  getAllDepartmentList() {
     this.departmentService.getAllDepartmentList().subscribe((response: any) => {
       if (response.status) {
         this.departments = response.data;
       }
     });
-
-    this.subjectService.getAllSubjectList().subscribe((response: any) => {
+  }
+  getAllStaffList() {
+    this.staffService.getAllStaffList().subscribe((response: any) => {
       if (response.status) {
-        this.subjects = response.data;
+        this.staffs = response.data;
+      }
+    });
+  }
+  getAllStudentList() {
+    this.studentService.getAllStudentList().subscribe((response: any) => {
+      if (response.status) {
+        this.students = response.data;
       }
     });
   }

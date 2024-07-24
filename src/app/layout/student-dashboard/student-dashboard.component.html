@@ -32,7 +32,7 @@
                                                 <img src="{{ this.commonService.imageURL+not.noticePicture}}"
                                                     alt="notice" style="margin: 5px;max-width: 40px; height: 40px;">
                                             </td>
-                                            <td class="limit">
+                                            <td [routerLink]="['/add-notice',not.id]" class="limit">
                                                 {{not.content}}
                                             </td>
                                         </tr><br />
@@ -58,7 +58,7 @@
                                                 <img src="{{ this.commonService.imageURL+not.noticePicture}}"
                                                     alt="notice" style="margin: 5px;max-width: 40px; height: 40px;">
                                             </td>
-                                            <td class="limit">
+                                            <td [routerLink]="['/add-notice',not.id]" class="limit">
                                                 {{not.content}}
                                             </td>
                                         </tr><br />
@@ -87,7 +87,7 @@
                                                 <img src="{{ this.commonService.imageURL+not.noticePicture}}"
                                                     alt="notice" style="margin: 5px;max-width: 40px; height: 40px;">
                                             </td>
-                                            <td class="limit">
+                                            <td [routerLink]="['/add-notice',not.id]" class="limit">
                                                 {{not.content}}
                                             </td>
                                         </tr><br />
@@ -114,7 +114,7 @@
                                                 <img src="{{ this.commonService.imageURL+not.noticePicture}}"
                                                     alt="notice" style="margin: 5px;max-width: 40px; height: 40px;">
                                             </td>
-                                            <td class="limit">
+                                            <td [routerLink]="['/add-notice',not.id]" class="limit">
                                                 {{not.content}}
                                             </td>
                                         </tr><br />
