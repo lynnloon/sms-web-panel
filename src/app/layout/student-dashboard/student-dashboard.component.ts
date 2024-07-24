@@ -63,6 +63,7 @@ export class StudentDashboardComponent implements OnInit {
   ngOnInit() {
     this.email = localStorage.getItem('email') as string;
     this.getAllNotice();
+    debugger
     this.getSubjectForStudent();
 
     // this.studentInfo();

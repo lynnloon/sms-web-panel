@@ -136,14 +136,31 @@
         </div>
     </section>
 
-    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-        [legend]="barChartLegend">
-    </canvas>
-
-    <h3>Courses</h3>
-    <div class="subjectList" *ngFor="let sub of subjects">
-    {{sub.name}}
-    </div>
+    <section class="section sublists">
+        <div class="row">
+            <div class="col-sm-6">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [legend]="barChartLegend">
+                </canvas>
+            </div>
+            <div class="col-sm-6 ">
+                <br />
+                <h3 style="font-family: cursive;"><u>Subject List</u></h3>
+                <table class="table table-borderless">
+                    <tr>
+                        <th>Name</th>
+                        <th>Module NO</th>
+                    </tr>
+                    <tr *ngFor=" let sub of subjects;let i = index;">
+                        <td> {{sub.name}}</td>
+                        <td>{{sub.moduleNo}}</td>
+                        
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+    </section>
 
 
 </main><!-- End #main -->
