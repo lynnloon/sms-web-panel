@@ -8,6 +8,7 @@ import { User } from '../model/user';
 })
 export class CommonService {
  
+ 
   apiRoute = "http://localhost:3060/SMSAPI";
   imageURL = "http://localhost:3060/SMSAPI"
 

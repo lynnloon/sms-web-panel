@@ -25,7 +25,6 @@ export class SubjectService {
   create(subject: Subject) {
     return this.httpClient.post(this.commonService.apiRoute + "/subject/save", subject);
   }
-
   update(subject: Subject) {
     return this.httpClient.post(this.commonService.apiRoute + "/subject/update", subject);
   }
@@ -41,5 +40,8 @@ export class SubjectService {
   delete(id: any) {
     return this.httpClient.delete(this.commonService.apiRoute+"/subject/delete?id="+id);
   }
+getSubjectByTr(filter:FilterDTO){
+  return this.httpClient.post(this.commonService.apiRoute + "/subject/getsubjectByTr",filter);
 
+}
 }

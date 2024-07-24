@@ -48,7 +48,7 @@ import { CreateNoticeComponent } from './components/create-notice/create-notice.
 import { NoticeContentComponent } from './components/notice-content/notice-content.component';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
 import { NgChartsModule } from 'ng2-charts';
-
+import { ClassComponent } from './components/class/class.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +86,8 @@ import { NgChartsModule } from 'ng2-charts';
     NoticeBoardComponent,
     CreateNoticeComponent,
     NoticeContentComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    ClassComponent
   ],
   imports: [
     BrowserModule,

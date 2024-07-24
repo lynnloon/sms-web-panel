@@ -29,4 +29,8 @@ getSection(filter:FilterDTO)
   return this.httpClient.post(this.commonService.apiRoute+"/section/getSection",filter);
   
 } 
+getSectionByTr(filter:FilterDTO)
+{
+  return this.httpClient.post(this.commonService.apiRoute+"/timetable/getSectionByTr",filter);
+}
 }
