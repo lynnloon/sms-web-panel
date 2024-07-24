@@ -106,10 +106,10 @@ export class CreateNoticeComponent implements OnInit {
   }
 
   checkValidation() {
-    if ((this.notice.title == undefined || this.notice.title.trim() == '') && (this.notice.content != undefined || this.notice.noticePicture != undefined))
+    if (this.notice.title == undefined || this.notice.title.trim() == '')
       return "Fill Notice Title";
-    // else if (this.notice.content == undefined || this.notice.content.trim() == '')
-    //   return "Fill Notice Content Please ";
+    else if (this.notice.content == undefined || this.notice.content.trim() == '')
+      return "Fill Notice Content Please ";
     else return "OK";
   }
   oncoverChange(event: any) {

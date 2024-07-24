@@ -7,6 +7,8 @@ import { Staff } from 'src/app/model/staff';
 import { Student } from 'src/app/model/student';
 import { Subject } from 'src/app/model/subject';
 import { NoticeService } from 'src/app/service/notice.service';
+import { StudentService } from 'src/app/service/student.service';
+import { CommonService } from 'src/app/util/common.service';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -15,33 +17,94 @@ import { NoticeService } from 'src/app/service/notice.service';
 })
 export class StudentDashboardComponent implements OnInit {
 
+  email?: string;
+
+  student: Student = new Student();
   notice: Notice = new Notice();
-  notices: Notice[] = [];
-
-  event: Notice = new Notice();
-  events: Notice[] = [];
-
   announcement: Notice = new Notice();
-  announcements: Notice[] = [];
-
   health: Notice = new Notice();
-  healths: Notice[] = [];
-
   school: Notice = new Notice();
+  event: Notice = new Notice();
+
+
+  notices: Notice[] = [];
+  events: Notice[] = [];
+  announcements: Notice[] = [];
+  healths: Notice[] = [];
   schools: Notice[] = [];
 
+
+  public barChartLabels: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public barChartType: string = 'bar';
+  public barChartLegend: boolean = true;
+
+  public barChartData: any[] = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+  ];
+
+
+  public barChartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+
+
   constructor(
-    private noticeService: NoticeService
+    private noticeService: NoticeService,
+    public commonService: CommonService,
+    public studentService: StudentService,
   ) { }
   ngOnInit() {
+    this.email = localStorage.getItem('email') as string;
     this.getAllNotice();
+    // this.studentInfo();
   }
+  // studentInfo() {
+  //   this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {
+  //     if (response.status) {
+  //       this.student = response.data;
+  //     }
+  //   });
+  // }
   getAllNotice() {
     this.noticeService.getAll().subscribe((response: any) => {
       if (response.status) {
         this.notices = response.data;
+        this.onChange();
+
       }
     });
   }
 
+  onChange() {
+    this.notices.sort((a, b) => (b.id ?? Number.MAX_SAFE_INTEGER) - (a.id ?? Number.MAX_SAFE_INTEGER));
+
+    // Iterate through notices and categorize based on title
+    for (let notice of this.notices) {
+      if (notice.title === 'ANNOUNCEMENT') {
+        if (this.announcements.length < 3) {
+          this.announcements.push(notice);
+        }
+      } else if (notice.title === 'EVENT') {
+        if (this.events.length < 3) {
+          this.events.push(notice);
+        }
+      } else if (notice.title === 'HEALTH') {
+        if (this.healths.length < 3) {
+          this.healths.push(notice);
+        }
+      } else if (notice.title === 'SCHOOL ACTIVITY') {
+        if (this.schools.length < 3) {
+          this.schools.push(notice);
+        }
+      }
+    }
+    // Reverse each list to maintain the correct order (most recent at the end)
+    this.announcements.reverse();
+    this.events.reverse();
+    this.healths.reverse();
+    this.schools.reverse();
+
+  }
 }

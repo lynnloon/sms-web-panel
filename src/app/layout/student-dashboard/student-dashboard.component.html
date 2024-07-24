@@ -14,164 +14,130 @@
         <div class="row">
 
             <!-- Left side columns -->
-            <div class="col-lg-8">
-                <div class="row">
 
-                    <!-- Anonuncement-->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Anonuncement </h5>
+            <div class="row">
 
-                                <div class="news" *ngFor="let not of notices">
-                                    <div class="post-item clearfix" *ngIf="(not.title=='ANNOUNCEMENT')">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <img src="assets/img/news-1.jpg" alt="">
-                                                </td>
-                                                <td>
-                                                    <h4><a href="#">&nbsp;&nbsp;</a><span>{{not.creationDate
-                                                            |date:'dd-MM-yyyy'}}</span></h4>
-                                                    <p class="limit">{{not.content}}</p>
-                                                </td>
-                                            </tr>
-                                        </table>
+                <!-- Anonuncement-->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card an">
+                        <div class="card-body" style="height: 280px;">
+                            <h4 class=" text-center" style="margin-top: 8px;">Anonuncement </h4>
+                            <hr>
 
-                                    </div>
+                            <div class="news">
+                                <div class="post-item clearfix ">
+                                    <table *ngFor="let not of announcements">
+                                        <tr *ngIf="(not.title=='ANNOUNCEMENT')">
+                                            <td>
+                                                <img src="{{ this.commonService.imageURL+not.noticePicture}}"
+                                                    alt="notice" style="margin: 5px;max-width: 40px; height: 40px;">
+                                            </td>
+                                            <td class="limit">
+                                                {{not.content}}
+                                            </td>
+                                        </tr><br />
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End Anonuncement -->
+                    </div>
+                </div><!-- End Anonuncement -->
 
 
-                    <!-- Event-->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Events</h5>
-
-                                <div class="news" *ngFor="let not of notices">
-                                    <div class="post-item clearfix " *ngIf="(not.title=='EVENT') ">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <img src="assets/img/news-1.jpg" alt="">
-                                                </td>
-                                                <td>
-                                                    <h4><span>{{not.creationDate |date:'dd-MM-yyyy'}}</span></h4>
-                                                    <marquee>
-                                                        <p class="limit">{{not.content}}</p>
-                                                    </marquee>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                <!-- Event-->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card ev">
+                        <div class="card-body" style="height: 280px;">
+                            <h4 class="text-center" style="margin-top: 8px;">Events</h4>
+                            <hr>
+                            <div class="news">
+                                <div class="post-item clearfix ">
+                                    <table *ngFor="let not of events">
+                                        <tr *ngIf="(not.title=='EVENT')">
+                                            <td>
+                                                <img src="{{ this.commonService.imageURL+not.noticePicture}}"
+                                                    alt="notice" style="margin: 5px;max-width: 40px; height: 40px;">
+                                            </td>
+                                            <td class="limit">
+                                                {{not.content}}
+                                            </td>
+                                        </tr><br />
+                                    </table>
                                 </div>
+                            </div>
 
+
+                        </div>
+                    </div>
+                </div><!-- End Event -->
+
+
+
+                <!-- Health-->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card he">
+                        <div class="card-body" style="height: 280px;">
+                            <h4 class="text-center" style="margin-top: 8px;">Health</h4>
+                            <hr>
+                            <div class="news">
+                                <div class="post-item clearfix ">
+                                    <table *ngFor="let not of healths">
+                                        <tr *ngIf="(not.title=='HEALTH')">
+                                            <td>
+                                                <img src="{{ this.commonService.imageURL+not.noticePicture}}"
+                                                    alt="notice" style="margin: 5px;max-width: 40px; height: 40px;">
+                                            </td>
+                                            <td class="limit">
+                                                {{not.content}}
+                                            </td>
+                                        </tr><br />
+                                    </table>
+                                </div>
 
                             </div>
                         </div>
-                    </div><!-- End Event -->
+                    </div>
+                </div><!-- End Health -->
 
+                <!-- School Activity-->
+                <div class="col-xxl-4 col-md-3">
+                    <div class="card info-card sales-card sch">
+                        <div class="card-body" style="height: 280px;">
+                            <h4 class="text-center" style="margin-top: 8px;">School Activity </h4>
+                            <hr>
 
-
-                    <!-- Health-->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Health</h5>
-
-                                <div class="news" *ngFor="let not of notices">
-                                    <div class="post-item clearfix" *ngIf="(not.title=='HEALTH')">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <img src="assets/img/news-1.jpg" alt="">
-                                                </td>
-                                                <td>
-                                                    <h4><a href="#">&nbsp;&nbsp;</a><span>{{not.creationDate
-                                                            |date:'dd-MM-yyyy'}}</span></h4>
-                                                    <p class="limit">{{not.content}}</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
+                            <div class="news">
+                                <div class="post-item clearfix">
+                                    <table *ngFor="let not of schools">
+                                        <tr *ngIf="(not.title=='SCHOOL ACTIVITY')">
+                                            <td>
+                                                <img src="{{ this.commonService.imageURL+not.noticePicture}}"
+                                                    alt="notice" style="margin: 5px;max-width: 40px; height: 40px;">
+                                            </td>
+                                            <td class="limit">
+                                                {{not.content}}
+                                            </td>
+                                        </tr><br />
+                                    </table>
                                 </div>
+
                             </div>
                         </div>
-                    </div><!-- End Health -->
+                    </div>
+                </div><!-- End School Activity -->
+            </div>
 
-                    <!-- School Activity-->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
-                            <div class="card-body">
-                                <h5 class="card-title">School Acticity </h5>
-
-                                <div class="news" *ngFor="let not of notices">
-                                    <div class="post-item clearfix" *ngIf="(not.title=='SCHOOL ACTIVITY')">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <img src="assets/img/news-1.jpg" alt="">
-                                                </td>
-                                                <td>
-                                                    <h4><a href="#">&nbsp;&nbsp;</a><span>{{not.creationDate
-                                                            |date:'dd-MM-yyyy'}}</span></h4>
-                                                    <p class="limit">{{not.content}}</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End School Activity -->
-                </div>
-            </div><!-- End Left side columns -->
 
             <!-- Right side columns -->
             <div class="col-lg-4">
-
-                <!-- Recent Activity -->
-
-
-                <!-- News & Updates Traffic -->
-                <div class="card">
-                    <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                            </li>
-
-                            <li><a class="dropdown-item" href="#">Today</a></li>
-                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="card-body pb-0">
-                        <h5 class="card-title">NoticeBoard <span>| Today</span></h5>
-
-                        <div class="news" *ngFor="let not of notices">
-                            <div class="post-item clearfix">
-                                <img src="assets/img/news-1.jpg" alt="">
-                                <h4><a href="#">{{not.title}}&nbsp;&nbsp;</a><span>{{not.creationDate
-                                        |date:'dd-MM-yyyy'}}</span></h4>
-                                <p>{{not.content}}</p>
-                            </div>
-                            <br>
-                        </div><!-- End sidebar recent posts-->
-
-                    </div>
-                </div><!-- End News & Updates -->
 
             </div><!-- End Right side columns -->
 
         </div>
     </section>
+
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [legend]="barChartLegend">
+    </canvas>
 
 </main><!-- End #main -->

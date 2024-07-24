@@ -20,16 +20,13 @@
 
                     <!-- Student-->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card">
+                        <div class="card info-card sales-card bg">
                             <div class="filter">
                                 <a class="icon" [routerLink]="'/student-list'" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots" title="student list"></i></a>
                             </div>
-
-
-
                             <div class="card-body">
-                                <h5 class="card-title"><span>Number of </span>
+                                <h5 class="card-title"><span>Total </span>
                                     <a class="link" [routerLink]="'/student-list'"> Students</a>
                                 </h5>
 
@@ -50,7 +47,7 @@
 
                     <!-- Staff  -->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card revenue-card">
+                        <div class="card info-card revenue-card bg">
 
                             <div class="filter">
                                 <a class="icon" [routerLink]="'/staff-list'" data-bs-toggle="dropdown">
@@ -78,7 +75,7 @@
 
                     <!-- Departments -->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card dept">
+                        <div class="card info-card dept bg">
 
                             <div class="filter">
                                 <a class="icon" [routerLink]="'/department-list'" data-bs-toggle="dropdown">
@@ -106,7 +103,7 @@
 
                     <!-- Subjects -->
                     <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sub">
+                        <div class="card info-card sub bg">
 
                             <div class="filter">
                                 <a class="icon" [routerLink]="'/subject-list'" data-bs-toggle="dropdown">
@@ -131,6 +128,11 @@
 
                         </div>
                     </div><!-- End Subjects -->
+
+                    <div style="display: block; width: 600px; height: 600px;" class="card">
+                        <canvas id="myChart" width="300" height="300" class="c"></canvas>
+                    </div>
+
                 </div>
             </div><!-- End Left side columns -->
 
@@ -140,7 +142,8 @@
                 <!-- Recent Activity -->
                 <div class="card">
                     <div class="filter">
-                        <a class="icon" [routerLink]="'/notice-board'" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        <a class="icon" [routerLink]="'/notice-board'" data-bs-toggle="dropdown"><i
+                                class="bi bi-three-dots"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                             <li class="dropdown-header text-start">
                                 <h6>Filter</h6>
@@ -148,26 +151,25 @@
                         </ul>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title">Recently notices</h5>
                         <hr class="dropdown-divider">
 
                         <div class="activity">
 
                             <table>
-                               <tr *ngFor="let n of notices;">
+                                <tr *ngFor="let n of notices;">
                                     <section>
                                         <td> <img src="{{ this.commonService.imageURL+n.noticePicture}}"
                                                 style="margin: 5px;max-width: 60px; height: 60px;" alt=" notice"></td>
-                                        <td><a [routerLink]="['/add-notice',n.id]" 
-                                                class="t">{{n.content}}</a>
+                                        <td><a [routerLink]="['/add-notice',n.id]" class="link">{{n.content}}</a>
                                         </td>
                                     </section>
                                     <hr class="dropdown-divider">
                                 </tr>
                                 <tr *ngIf="notices.length === 0">
                                     <td colspan="2">No notices found.</td>
-                                  </tr>
+                                </tr>
                             </table>
 
                         </div>
@@ -177,21 +179,9 @@
             </div><!-- End Right side columns -->
         </div>
     </section>
-
-
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slide active">
-                Slide 1 Content
-            </div>
-            <div class="slide">
-                Slide 2 Content
-            </div>
-            <div class="slide">
-                Slide 3 Content
-            </div>
-        </div>
-    </div>
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [legend]="barChartLegend">
+    </canvas>
 
 
 

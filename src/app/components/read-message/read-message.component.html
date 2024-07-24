@@ -12,7 +12,7 @@
 
     <section class="section">
         <div class="row">
-            <div class="card">
+            <div class="card m">
                 <div class="card-body">
                     <h5 class="card-title text-center">Message detail</h5>
                     <div class="profileCss">
@@ -20,28 +20,28 @@
                             class="rounded-circle">
                     </div>
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Name</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Name</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="reqMessage.name" id="inputText">
+                            <input type="text"  class="form-control" [(ngModel)]="reqMessage.name" id="inputText" disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Email</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label ">Email</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="reqMessage.email" id="inputText">
+                            <input type="text" class="form-control" [(ngModel)]="reqMessage.email" id="inputText" disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Title</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label ">Title</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="reqMessage.title" id="inputText">
+                            <input type="text" class="form-control" [(ngModel)]="reqMessage.title" id="inputText" disabled>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label required">Message</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label ">Message</label>
                         <div class="col-sm-6">
                             <textarea rows="7" class="form-control" [(ngModel)]="reqMessage.message"
-                                id="inputText"></textarea>
+                                id="inputText" disabled></textarea>
                         </div>
                     </div>
                     <div class="text-center">

@@ -15,29 +15,29 @@
     <!-- For Student Profile -->
     <section class="section profile">
         <div class="row">
-            <div class="col-xl-4">
-
-                <div class="card">
-                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-                        <img [src]="filepath" alt="Profile" class="rounded-circle">
-                        <h2>{{student.stu_name}}</h2>
-                        <h3>{{student.studentBatch?.id}}{{student.stu_major+'-'}}{{student.stuRoll_no}}</h3>
+            <div class="col-xl-4 centered-div">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 ">
+                        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                            <img [src]="filepath" alt="Profile">
+                        </div>
+                        <div class="col-lg-3 col-md-8  ">
+                            <h2>{{student.stu_name}}</h2>
+                            <h3>{{student.studentBatch?.id}}{{student.stu_major+'-'}}{{student.stuRoll_no}}</h3>
+                        </div>
                     </div>
                 </div>
-
             </div>
 
-            <div class="col-xl-8">
-
+            <div class="col-xl-8 ">
                 <div class="card">
-                    <div class="card-body pt-3">
+                    <div class="card-body pt-3 centered-div">
                         <!-- Bordered Tabs -->
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
                             <li class="nav-item">
-                                <button class="nav-link active" data-bs-toggle="tab"
-                                    data-bs-target="#p1">Student Info</button>
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#p1">Student
+                                    Info</button>
                             </li>
 
                             <li class="nav-item">
@@ -58,7 +58,8 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                    <div class="col-lg-9 col-md-8">{{student.stu_gender== 'Male'? 'Mg ':'Ma '}}{{student.stu_name}}</div>
+                                    <div class="col-lg-9 col-md-8">{{student.stu_gender== 'Male'? 'Mg ':'Ma
+                                        '}}{{student.stu_name}}</div>
                                 </div>
 
                                 <div class="row">
@@ -112,10 +113,10 @@
                                     <div class="col-lg-9 col-md-8">{{student.stu_homeAdd}}</div>
                                 </div>
                             </div>
-                        
+
 
                             <!-- Parent Info Form -->
-                            
+
                             <div class="tab-pane fade  profile-overview" id="parent-info">
 
 
@@ -190,11 +191,11 @@
                                     <div class="col-lg-9 col-md-8">{{this.mother.address}}</div>
                                 </div>
                             </div>
-                       
+
 
 
                             <!-- Emergency Info form -->
-                           
+
                             <div class="tab-pane fade  profile-overview" id="emergency">
 
                                 <h5 class="card-title">Guardian Infomation</h5>
@@ -232,7 +233,7 @@
                                 </div>
 
                             </div>
-                          
+
                         </div>
 
                         <!-- End Bordered Tabs -->

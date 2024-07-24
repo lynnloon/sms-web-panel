@@ -11,80 +11,22 @@
   </div><!-- End Page Title -->
 
   <section class="section contact">
+    
 
-    <div class="row gy-4">
-
+    <form class="row g-2">
       <div class="col-xl-6">
-
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="info-box card">
-              <i class="bi bi-geo-alt"></i>
-              <h3>Address</h3>
-              <!-- Address of UCS(MDY) -->
-              <p>(2.6) Miles from Yangon-Mandalay High Way Road, Ta Ohn Village,
-                SintKaing Township, KyautSe District, Mandalay Region,</p>
-
-              <!-- Address of UCS(TGO) -->
-              <!-- <p>Yangon Mandalay Highway Road, Kanyo Village, 3 miles from northern
-                Taungoo, Bago Region</p> -->
-
-              <!-- Address of UCS(TGI) -->
-              <!-- <p>Taunggyi-Hopone St, Naung Lay Village,, Taunggyi Township, Shan State , Myanmar</p> -->
-
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="info-box card">
-              <i class="bi bi-telephone"></i>
-              <h3>Call Us</h3>
-              <!-- MDY -->
-              <p>+95 9 205 9604</p>
-
-              <!-- Taungoo -->
-              <p></p>
-
-              <!-- TGI -->
-              <!-- <p>+95 9 256 126 584</p> -->
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="info-box card">
-              <i class="bi bi-envelope"></i>
-              <h3>Email Us</h3>
-              <!-- email of MDY -->
-              <p>cumdystudent@gmail.com</p>
-
-              <!-- email of TGO -->
-              <!-- <p>ucstgostuaffair@gmail.com</p> -->
-
-              <!-- email of TGI -->
-              <!-- <p>sandarkhin@ucstgi.edu.mm</p> -->
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="info-box card">
-              <i class="bi bi-clock"></i>
-              <h3>Open Hours</h3>
-              <p>Monday - Friday<br>9:00AM - 4:00PM</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="col-xl-6">
-        <div class="card p-4">
+        <div class="card p-4 bgColor">
           <form action="forms/contact.php" method="post" class="php-email-form">
-            <div class="row gy-4">
-
+            <div class="row gy-4 ">
+              <div class="col-md-12">
+              <input type="text"  class="form-control" placeholder="Your Name" value="To Admin" disabled></div>
               <div class="col-md-6">
-                <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{name}}" required>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" value="{{name}}" disabled>
               </div>
 
               <div class="col-md-6 ">
                 <input type="email" class="form-control" name="email" placeholder="Your Email" value="{{email}}"
-                  required>
+                disabled>
               </div>
 
               <div class="col-md-12">
@@ -98,8 +40,6 @@
               </div>
 
               <div class="col-md-12 text-center">
-               
-
                 <button type="submit" (click)="save()">Send Message</button>&nbsp;
                 <button type="reset" class="btn btn-secondary" [routerLink]="'/contact'">Cancel</button>
               </div>
@@ -107,10 +47,81 @@
             </div>
           </form>
         </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="p-4">
+          <div class="row gy-4">
+            <div class="info-box card bgColor">
+              <i class="bi bi-geo-alt"></i>
+              <h3>Address</h3>
+              <!-- Address of UCS(MDY) -->
+              <p>(2.6) Miles from Yangon-Mandalay High Way Road, Ta Ohn Village,
+                SintKaing Township, KyautSe District, Mandalay Region,</p>
+
+              <!-- Address of UCS(TGO) -->
+              <!-- <p>Yangon Mandalay Highway Road, Kanyo Village, 3 miles from northern
+              Taungoo, Bago Region</p> -->
+
+              <!-- Address of UCS(TGI) -->
+              <!-- <p>Taunggyi-Hopone St, Naung Lay Village,, Taunggyi Township, Shan State , Myanmar</p> -->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+    <div class="p-4 ">
+      <div class="col-xl-12">
+        <div class="row">
+          <div class="col-sm-4">
+
+            <div class="info-box card bgColor">
+              <i class="bi bi-telephone"></i>
+              <h3>Call Us</h3>
+              <!-- MDY -->
+              <p>+95 9 205 9604</p><br/>
+
+              <!-- Taungoo -->
+              <p></p>
+
+              <!-- TGI -->
+              <!-- <p>+95 9 256 126 584</p> -->
+            </div>
+
+          </div>
+          <div class="col-sm-4">
+
+            <div class="info-box card bgColor">
+              <i class="bi bi-envelope"></i>
+              <h3>Email Us</h3>
+              <!-- email of MDY -->
+              <p>cumdystudent@gmail.com</p><br/>
+
+              <!-- email of TGO -->
+              <!-- <p>ucstgostuaffair@gmail.com</p> -->
+
+              <!-- email of TGI -->
+              <!-- <p>sandarkhin@ucstgi.edu.mm</p> -->
+            </div>
+
+          </div>
+          <div class="col-sm-4">
+
+            <div class="info-box card bgColor">
+              <i class="bi bi-clock"></i>
+              <h3>Open Hours</h3>
+              <p>Monday - Friday<br>9:00AM - 4:00PM</p>
+            </div>
+
+          </div>
+        </div>
 
       </div>
-
     </div>
+
 
   </section>
 

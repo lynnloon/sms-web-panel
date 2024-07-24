@@ -136,7 +136,7 @@ export class CreateSubjectComponent implements OnInit {
       return "Fill Aademic Batch";
     else if (this.subject.subjectSem == undefined)
       return "Fill Semester";
-    else if (this.subject.subjectStaff == undefined)
+    else if (this.subject.subjectStaff == undefined || this.subject.subjectStaff == null)
       return "Fill Teachers";
     else
       return "OK"

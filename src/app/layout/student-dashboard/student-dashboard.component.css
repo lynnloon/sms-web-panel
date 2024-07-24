@@ -1,12 +1,29 @@
 .limit {
     display: block;
-    width: 110px;
+    width: 120px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 /* .dashboard .news p{
     font-size: 17px;
     color: #777777;
     margin-left: 95px;
 } */
+
+.an {
+    background-color:#C8C4DF;
+}
+
+.ev {
+    background-color:#CCCCFF;
+}
+
+.he {
+    background-color:#DCD0FF;
+}
+
+.sch {
+    background-color:#D8BFD8;
+}

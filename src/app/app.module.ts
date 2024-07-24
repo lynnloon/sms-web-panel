@@ -47,6 +47,8 @@ import { NoticeBoardComponent } from './components/notice-board/notice-board.com
 import { CreateNoticeComponent } from './components/create-notice/create-notice.component';
 import { NoticeContentComponent } from './components/notice-content/notice-content.component';
 import { StudentDetailsComponent } from './components/student-details/student-details.component';
+import { NgChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -96,7 +98,8 @@ import { StudentDetailsComponent } from './components/student-details/student-de
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    DragDropModule
+    DragDropModule,
+    NgChartsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
