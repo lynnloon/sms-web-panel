@@ -22,7 +22,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
+  background: #a5bdee;
   color: #444444;
 }
 
@@ -829,40 +829,30 @@ h6 {
   flex-grow: 0;
 }
 
-.dashboard .sales-card {
+.dashboard .sales-card .card-icon {
   color: #4154f1;
   background: #d3dde9;
 }
 
-.dashboard .sales-card .card-icon {
-  background-color: #c3c4eb;
-}
 
-.dashboard .revenue-card {
+.dashboard .revenue-card .card-icon {
   color: #25c247;
   background: #baeece;
 }
-
-.dashboard .revenue-card .card-icon {
-  background-color: #87eeaf;
+.dashboard .revenue-card{
+width:100%;height:60%
 }
 
-.dashboard .dept {
-  color:#0fa30f;
-  background:#b2f3b2;
-}
 
 .dashboard .dept .card-icon {
-  background-color:#6cda6c;
+  color: #ee8c1c;
+  background: #ecdbc5;
 }
 
-.dashboard .sub {
-  color: #ac1dff;
-  background: #e5c8f7;
-}
 
 .dashboard .sub .card-icon {
-  background: #d099f1;
+  color: #ac1dff;
+  background: #e5c8f7;
 }
 
 /* Activity */

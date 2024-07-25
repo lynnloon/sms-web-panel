@@ -45,10 +45,10 @@
                             <tr *ngFor="let m of messages;">
                                 <section>
                                     <td> <img src="assets/images/A.jpg"
-                                            style="margin: 5px;max-width: 60px; height: 60px;" alt=" Profile"
+                                            style="margin: 5px;max-width: 50px; height: 50px;" alt=" Profile"
                                             class="rounded-circle"></td>
                                     <td><a [routerLink]="['/read-message',m.id]"
-                                            (click)="toggleDropdown('showAll')"><b>{{m.name}}</b> sent a message.</a>
+                                            (click)="toggleDropdown('showAll')" style="font-size: 13px;"><b>{{m.name}}</b> sent a message.</a>
                                     </td>
                                 </section>
                                 <hr class="dropdown-divider">
@@ -83,7 +83,7 @@
                             <tr *ngFor="let m of messages;">
                                 <section>
                                     <td><img src="{{ this.commonService.imageURL+m.profile}}"
-                                            style="margin: 5px;max-width: 60px; height: 60px;" alt=" Profile"
+                                            style="margin: 5px;max-width: 50px; height: 50px;" alt=" Profile"
                                             class="rounded-circle"></td>
                                     <td><a [routerLink]="['/read-message',m.id]" (click)="toggleDropdown('showAll')"
                                             class="t">{{m.message}}</a></td>
@@ -189,8 +189,8 @@
                         <table>
                             <tr *ngFor="let n of notices;">
                                 <section>
-                                    <td> <img src="assets/images/A.jpg"
-                                            style="margin: 5px;max-width: 60px; height: 60px;" alt=" notice"
+                                    <td> <img  src="{{ this.commonService.imageURL+n.noticePicture}}"
+                                            style="margin: 5px;max-width: 50px; height: 50px;" alt=" notice"
                                             class="rounded-circle"></td>
                                     <td><a [routerLink]="['/add-notice',n.id]" (click)="toggleDropdown('showAll')"
                                             class="t">{{n.content}}</a>

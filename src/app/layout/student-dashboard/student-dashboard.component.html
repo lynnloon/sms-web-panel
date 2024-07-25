@@ -14,14 +14,12 @@
         <div class="row">
 
             <!-- Left side columns -->
-
             <div class="row">
-
                 <!-- Anonuncement-->
                 <div class="col-xxl-4 col-md-3">
                     <div class="card info-card an">
                         <div class="card-body" style="height: 280px;">
-                            <h4 class=" text-center" style="margin-top: 8px;">Anonuncement </h4>
+                            <h5 class=" text-center" style="margin-top: 10px;font-weight: bold;">Anonuncement </h5>
                             <hr>
 
                             <div class="news">
@@ -46,9 +44,9 @@
 
                 <!-- Event-->
                 <div class="col-xxl-4 col-md-3">
-                    <div class="card info-card ev">
+                    <div class="card info-card an">
                         <div class="card-body" style="height: 280px;">
-                            <h4 class="text-center" style="margin-top: 8px;">Events</h4>
+                            <h5 class="text-center" style="margin-top: 10px;font-weight: bold;">Events</h5>
                             <hr>
                             <div class="news">
                                 <div class="post-item clearfix ">
@@ -75,9 +73,9 @@
 
                 <!-- Health-->
                 <div class="col-xxl-4 col-md-3">
-                    <div class="card info-card he">
+                    <div class="card info-card an">
                         <div class="card-body" style="height: 280px;">
-                            <h4 class="text-center" style="margin-top: 8px;">Health</h4>
+                            <h5 class="text-center" style="margin-top: 10px;font-weight: bold;">Health</h5>
                             <hr>
                             <div class="news">
                                 <div class="post-item clearfix ">
@@ -101,9 +99,9 @@
 
                 <!-- School Activity-->
                 <div class="col-xxl-4 col-md-3">
-                    <div class="card info-card sch">
+                    <div class="card info-card an">
                         <div class="card-body" style="height: 280px;">
-                            <h4 class="text-center" style="margin-top: 8px;">School Activity </h4>
+                            <h5 class="text-center" style="margin-top: 10px;font-weight: bold;">School Activity </h5>
                             <hr>
 
                             <div class="news">
@@ -126,47 +124,49 @@
                     </div>
                 </div><!-- End School Activity -->
             </div>
-
-
-            <!-- Right side columns -->
-            <div class="col-lg-4">
-
-            </div><!-- End Right side columns -->
-
         </div>
     </section>
 
     <section class="section sublists">
-        <div class="row">          
-            <div class="col-sm-6">
-                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                    [legend]="barChartLegend">
-                </canvas>
-            </div>
-            <div class="col-sm-6 ">
-                <br />
-                <h3 style="font-family: cursive;"><u>Subject List</u></h3>
+        <div class="row">
+            <div class="col-sm-7">
                 <div class="card">
-                    <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Module NO</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor=" let sub of subjects;let i = index;">
-                        <td> {{sub.name}}</td>
-                        <td>{{sub.moduleNo}}</td>
-                        
-                    </tr>
-                    </tbody>
-                </table>
-                </div>
+                    <div class="b">
+                        <p>Gender Breakdown by Academic Batch</p>
+                    </div>
+                    <div class="c"> <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                            [options]="barChartOptions" [legend]="barChartLegend"
+                            style="width: 100%; height: 500px;">
+                        </canvas></div>
+
                 </div>
             </div>
-            
+            <div class=" col-sm-5">
+                <div class=" card">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="tr" colspan="2" style="border-bottom: 1px solid black;">
+                                    <th  style="margin-top: 4px;">{{academicBatch}}
+                                   Subject List </th>
+                                </tr>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Module No</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size: 16px;">
+
+                                <tr *ngFor=" let sub of subjects;let i = index;">
+                                    <td> {{sub.name}}</td>
+                                    <td>{{sub.moduleNo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
