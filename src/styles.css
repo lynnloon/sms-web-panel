@@ -807,7 +807,7 @@ h6 {
 
 /* Info Cards */
 .dashboard .info-card {
-  padding-bottom: 10px;
+  padding-bottom: 50px;
   border-radius: 25px;
 }
 
@@ -833,13 +833,17 @@ h6 {
   background: #d3dde9;
 }
 
+.dashboard .sales-card {
+  box-shadow: 10px 10px 20px #887878;
+}
 
 .dashboard .revenue-card .card-icon {
   color: #25c247;
   background: #baeece;
 }
-.dashboard .revenue-card{
-width:100%;height:60%
+
+.dashboard .revenue-card {
+  box-shadow: 10px 10px 20px #887878;
 }
 
 
@@ -848,11 +852,20 @@ width:100%;height:60%
   background: #ecdbc5;
 }
 
+.dashboard .dept {
+  box-shadow: 10px 10px 20px #887878;
+}
 
 .dashboard .sub .card-icon {
   color: #ac1dff;
   background: #e5c8f7;
 }
+
+.dashboard .sub {
+  box-shadow: 10px 10px 20px #887878;
+}
+
+
 
 /* Activity */
 .dashboard .activity {

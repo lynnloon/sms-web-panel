@@ -1,45 +1,59 @@
-
-  .dropdown-divider {
-    margin: 5px 0;
-    border-top: 1px solid #0876e4;
+.dropdown-divider {
+  margin: 5px 0;
+  border-top: 1px solid #0876e4;
 }
 
-.c{
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: auto;
-}
 
-.t{
-  background-color:#DCD0FF;
+.t {
+  background-color: #DCD0FF;
 }
 
 
 
 .an {
-  background-color:#C8C4DF;
+  background-color: #C8C4DF;
 }
 
 .ev {
-  background-color:#CCCCFF;
+  background-color: #CCCCFF;
 }
 
 .he {
-  background-color:#DCD0FF;
+  background-color: #DCD0FF;
 }
 
 .sch {
-  background-color:#D8BFD8;
+  background-color: #D8BFD8;
 }
 
 
-.nt{
+.nt {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 13px;
-  color:black;
+  color: black;
+}
+
+
+.size {
+  font-size: 50px;
+  font-weight: x-large;
+  padding-right: 5px;
+  color: black
+}
+
+.b {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 10px;
+  padding-top: 3%;
+}
+
+.c {
+  margin: 0% 5% 0% 5%;
 }

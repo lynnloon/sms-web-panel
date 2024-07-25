@@ -11,6 +11,8 @@ import { StudentService } from 'src/app/service/student.service';
 import { SubjectService } from 'src/app/service/subject.service';
 import { CommonService } from 'src/app/util/common.service';
 import { Chart } from 'chart.js';
+import { AcademicBatch } from 'src/app/model/academic-batch';
+import { AcademicBatchService } from 'src/app/service/academic-batch.service';
 
 
 @Component({
@@ -20,45 +22,39 @@ import { Chart } from 'chart.js';
 })
 export class AdminDashboardComponent implements OnInit {
 
+  batch: AcademicBatch = new AcademicBatch();
+
 
   students: Student[] = [];
   staffs: Staff[] = [];
   departments: Department[] = [];
   subjects: Subject[] = [];
   notices: Notice[] = [];
+  batches: AcademicBatch[] = [];
 
-  public doughnutChartLabels: string[] = ['Label 1', 'Label 2', 'Label 3'];
-  public doughnutChartData: number[] = [350, 450, 100];
-  public doughnutChartOptions: any = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      tooltip: {
-        callbacks: {
-          label: function (tooltipItem: any) {
-            return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2);
-          }
-        }
-      }
-    },
-    type: 'doughnut' // Set chart type here
-  };
+
+  public barChartLabels: string[] = [];
+  public barChartType: string = 'bar';
+  public barChartLegend: boolean = true;
+  public barChartData: any[] = [];
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    scales: {
+      x: {
+        ticks: {
+          display: true,
+        },
+      },
+      y: {
+        ticks: {
+          display: true,
+          stepSize: 1
+        },
+      },
+    }
   };
-
-  public barChartLabels: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public barChartType: string = 'bar';
-  public barChartLegend: boolean = true;
-
-  public barChartData: any[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  ];
 
   staff_count: number[] = [];
 
@@ -69,22 +65,28 @@ export class AdminDashboardComponent implements OnInit {
     public subjectService: SubjectService,
     private noticeSer: NoticeService,
     public commonService: CommonService,
+    private academicBatchSer: AcademicBatchService,
   ) { }
   ngOnInit() {
+    this.getStudentList();
     this.getAllNoti();
     this.getSubjects();
     this.getStudentList();
     this.getDepartments();
   }
 
-  getAllNoti() {
-    this.noticeSer.getAll().subscribe((response: any) => {
+  getBatch() {
+    this.academicBatchSer.getAllAcademicBatchList().subscribe((response: any) => {
       if (response.status) {
-        this.notices = response.data;
-        this.notices = this.notices.slice(Math.max(this.notices.length - 5, 0));
-        this.notices.sort((a, b) => {
-          return (b.id ?? Number.MIN_SAFE_INTEGER) - (a.id ?? Number.MIN_SAFE_INTEGER);
+        this.batches = response.data;
+        this.calculateCountsByBatch();
+        this.barChartLabels = [];
+        console.log(this.batches)
+        // Extract names from batches and assign to barChartLabels
+        this.batches.forEach(batch => {
+          return this.barChartLabels.push(batch.name as string);
         });
+
       }
     });
   }
@@ -93,9 +95,83 @@ export class AdminDashboardComponent implements OnInit {
     this.studentService.getAllStudentList().subscribe((response: any) => {
       if (response.status) {
         this.students = response.data;
+        this.getBatch();
       }
     });
   }
+
+  calculateCountsByBatch() {
+    // Check if this.batches is defined and has length greater than 0
+    if (!this.batches || this.batches.length === 0) {
+      console.error('Batches data is not available.');
+      return;
+    }
+
+    const batchCounts: { [key: string]: { maleCount: number, femaleCount: number } } = {};
+
+    // Initialize batchCounts object with zero counts for each batch
+    this.batches.forEach(batch => {
+      // Assert batch as AcademicBatch to avoid TypeScript error
+      const academicBatch = batch?.name as string;
+      batchCounts[academicBatch] = {
+        maleCount: 0,
+        femaleCount: 0
+      };
+    });
+
+    // Count males and females for each batch
+    this.students.forEach(student => {
+      try {
+        const batchName = student.studentBatch?.name as string; // Check the property path
+        switch (student.stu_gender) {
+          case 'Male':
+            batchCounts[batchName].maleCount++;
+            break;
+          case 'Female':
+            batchCounts[batchName].femaleCount++;
+            break;
+          default:
+            // Log unexpected genders for debugging
+            console.log('Unexpected Gender:', student.stu_gender);
+            break;
+        }
+      } catch (error) {
+        console.log('Error counting gender:', error);
+      }
+    });
+
+    // Prepare barChartData array in the desired format
+    this.barChartData = [
+      {
+        label: 'Female',
+        data: Object.keys(batchCounts).map(batchName => batchCounts[batchName].maleCount),
+      },
+      {
+        label: 'Male',
+        data: Object.keys(batchCounts).map(batchName => batchCounts[batchName].femaleCount),
+      }
+    ];
+
+    // Adjust barChartLabels accordingly if needed
+    this.barChartLabels = Object.keys(batchCounts);
+
+    console.log(this.barChartData);
+
+  }
+
+
+  getAllNoti() {
+    this.noticeSer.getAll().subscribe((response: any) => {
+      if (response.status) {
+        this.notices = response.data;
+        this.notices = this.notices.slice(Math.max(this.notices.length - 9, 0));
+        this.notices.sort((a, b) => {
+          return (b.id ?? Number.MIN_SAFE_INTEGER) - (a.id ?? Number.MIN_SAFE_INTEGER);
+        });
+      }
+    });
+  }
+
 
   getDepartments() {
     this.departmentService.getAllDepartmentList().subscribe((response: any) => {
@@ -165,15 +241,18 @@ export class AdminDashboardComponent implements OnInit {
           label: 'Teacher counts by Departments',
           data: this.staff_count,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
+            '#CFECEC',
+            '#BCC6CC',
+            '#DBE9FA',
+            '#D5D6EA',
+            '#CCFFFF',
             'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)'
+            'rgba(128, 177, 211, 0.2)',
+            'rgba(210, 180, 140, 0.2)'
           ],
           borderColor: [
             'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
+            'rgb(255, 100, 64)',
             'rgb(255, 205, 86)',
             'rgb(75, 192, 192)',
             'rgb(54, 162, 235)'

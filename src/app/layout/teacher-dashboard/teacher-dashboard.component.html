@@ -10,33 +10,32 @@
         </nav>
     </div><!-- End Page Title -->
 
-    <section class="section dashboard">
+    <section class=" dashboard">
         <div class="row">
 
+            <!-- Left side columns -->
             <div class="col-lg-8">
                 <div class="row">
-
-
                     <!-- Student-->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sales-card bg">
+                    <div class="col-6">
+                        <div class="card sales-card">
                             <table class="table-borderless">
                                 <tr>
                                     <td>
                                         <div class="card-body">
-                                            <h5 class="card-title"><span>Total </span><br />
+                                            <h5 class="card-title"><span>Total </span>
                                                 <a class="link" [routerLink]="'/student-list'"> Students</a>
                                             </h5>
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-mortarboard-fill fs-2"></i>
-                                                </div>
+
+                                            <div
+                                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-mortarboard-fill fs-2"></i>
                                             </div>
+
                                         </div>
                                     </td>
                                     <td>
-                                        <h6>{{students.length}}</h6>
+                                        <p class="size">{{students.length}}</p>
                                     </td>
 
                                 </tr>
@@ -45,26 +44,23 @@
                     </div><!-- End Student -->
 
                     <!-- Staff  -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card revenue-card bg">
-
+                    <div class=" col-6">
+                        <div class="card revenue-card">
                             <table class="table-borderless">
                                 <tr>
                                     <td>
                                         <div class="card-body">
-                                            <h5 class="card-title"><span>Total </span><br />
+                                            <h5 class="card-title"><span>Total </span>
                                                 <a class="link" [routerLink]="'/staff-list'"> Teachers</a>
                                             </h5>
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-person-workspace fs-2"></i>
-                                                </div>
+                                            <div
+                                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-person-workspace fs-2"></i>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <h6>{{staffs.length}}</h6>
+                                        <p class="size">{{staffs.length}}</p>
                                     </td>
 
                                 </tr>
@@ -72,91 +68,103 @@
 
                         </div>
                     </div><!-- End Staff -->
+                </div>
 
-                    <!-- Departments -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card dept bg">
+                <!-- Departments -->
+                <div class="row">
+                    <div class=" col-6">
+                        <div class="card dept">
                             <table class="table-borderless">
                                 <tr>
                                     <td>
                                         <div class="card-body">
-                                            <h5 class="card-title"><span>Total </span><br />
+                                            <h5 class="card-title"><span>Total </span>
                                                 <a class="link" [routerLink]="'/department-list'"> Depatments</a>
                                             </h5>
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-building-fill fs-2"></i>
-                                                </div>
+
+                                            <div
+                                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-building-fill fs-2"></i>
                                             </div>
+
                                         </div>
                                     </td>
                                     <td>
-                                        <h6>{{departments.length}}</h6>
+                                        <p class="size">{{departments.length}}</p>
                                     </td>
                                 </tr>
                             </table>
                         </div>
-                    </div><!-- End  Departments -->
+                    </div>
+                    <!-- End  Departments -->
 
                     <!-- Subjects -->
-                    <div class="col-xxl-4 col-md-6">
-                        <div class="card info-card sub bg">
+                    <div class=" col-6">
+                        <div class="card sub">
                             <table class="table-borderless">
                                 <tr>
                                     <td>
                                         <div class="card-body">
-                                            <h5 class="card-title"><span>Total </span><br />
+                                            <h5 class="card-title"><span>Total </span>
                                                 <a class="link" [routerLink]="'/subject-list'"> Subjects</a>
                                             </h5>
-                                            <div class="d-flex align-items-center">
-                                                <div
-                                                    class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                    <i class="bi bi-book-half fs-2"></i>
-                                                </div>
+
+                                            <div
+                                                class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                <i class="bi bi-book-half fs-2"></i>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <h6>{{subjects.length}}</h6>
+                                        <p class="size">{{subjects.length}}</p>
                                     </td>
 
                                 </tr>
                             </table>
-
                         </div>
                     </div><!-- End Subjects -->
                 </div>
-            </div><!-- End Left side columns -->
+                <div style="display: block; width: 600px; height: 500px;" class="card">
 
+                    <p class="b">Gender Breakdown by Academic Batch</p>
+
+                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                        [legend]="barChartLegend" style="width: 100%; height: 450px;margin:0% 5% 5% 5%;">
+                    </canvas>
+
+                </div>
+
+
+            </div><!-- End Left side columns -->
 
             <!-- Right side columns -->
             <div class="col-lg-4">
 
                 <!-- Recent Activity -->
                 <div class="card">
-                   
 
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title">Recently notices</h5>
                         <hr class="dropdown-divider">
 
-                        <div class="activity">
+                        <div class="activity" style="max-height:1000px;">
 
                             <table>
-                               <tr *ngFor="let n of notices;">
+                                <tr *ngFor="let n of notices;">
                                     <section>
                                         <td> <img src="{{ this.commonService.imageURL+n.noticePicture}}"
                                                 style="margin: 5px;max-width: 60px; height: 60px;" alt=" notice"></td>
-                                        <td><a [routerLink]="['/add-notice',n.id]" 
-                                                class="t">{{n.content}}</a>
+                                        <td><a [routerLink]="['/add-notice',n.id]" class="nt">{{n.content}}</a>
                                         </td>
                                     </section>
                                     <hr class="dropdown-divider">
                                 </tr>
                                 <tr *ngIf="notices.length === 0">
                                     <td colspan="2">No notices found.</td>
-                                  </tr>
+                                </tr>
+                                <tr style="text-align: center;font-style: poppin;"><a [routerLink]="'/notice-board'"
+                                        class="link"><u>View All
+                                            notification</u></a></tr>
                             </table>
 
                         </div>
@@ -166,22 +174,6 @@
             </div><!-- End Right side columns -->
         </div>
     </section>
-
-
-    <!-- <div class="slider-container">
-        <div class="slider">
-            <div class="slide active">
-                Slide 1 Content
-            </div>
-            <div class="slide">
-                Slide 2 Content
-            </div>
-            <div class="slide">
-                Slide 3 Content
-            </div>
-        </div>
-    </div> -->
-
 
 
 </main><!-- End #main -->
