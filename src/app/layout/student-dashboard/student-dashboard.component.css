@@ -1,33 +1,59 @@
 .limit {
-    display: block;
-    width: 120px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 13px;
 }
 
-.dashboard .news p{
+.dashboard .news p {
     font-size: 17px;
     color: #777777;
     margin-left: 95px;
-} 
- canvas {
-    height: 400px;  
- }
-  
-.an {
-    background-color:#C8C4DF;
 }
 
-.ev {
-    background-color:#CCCCFF;
+canvas {
+    height: 400px;
+}
+
+.an {
+    box-shadow:10px 10px 20px  #887878;
+}
+
+/* .ev {
+    background-color: #CCCCFF;
 }
 
 .he {
-    background-color:#DCD0FF;
+    background-color: #DCD0FF;
 }
 
 .sch {
-    background-color:#D8BFD8;
+    background-color: #D8BFD8;
+} */
+
+.tr {
+    font-weight: bold;
+    font-style: italic;
 }
-  
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #ded5f7;
+}
+
+.b {
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+
+.c {
+    width: 100%;
+    height: 528px;
+    padding-right: 8%;
+}

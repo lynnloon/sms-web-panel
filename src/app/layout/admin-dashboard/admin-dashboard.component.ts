@@ -10,7 +10,6 @@ import { StaffService } from 'src/app/service/staff.service';
 import { StudentService } from 'src/app/service/student.service';
 import { SubjectService } from 'src/app/service/subject.service';
 import { CommonService } from 'src/app/util/common.service';
-import { Input } from '@angular/core';
 import { Chart } from 'chart.js';
 
 
