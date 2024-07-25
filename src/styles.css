@@ -227,7 +227,7 @@ h6 {
 .card {
   margin-bottom: 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
 }
 
@@ -240,10 +240,9 @@ h6 {
 }
 
 .card-title {
-  padding: 20px 0 15px 0;
-  font-size: 25px;
+  padding: 10px 0 5px 0;
+  font-size: 20px;
   font-weight: 500;
-  color: #012970;
   font-family: "Poppins", sans-serif;
 }
 
@@ -314,25 +313,25 @@ h6 {
 .breadcrumb {
   font-size: 14px;
   font-family: "Nunito", sans-serif;
-  color: #899bbd;
+  color: #000000;
   font-weight: 600;
 }
 
 .breadcrumb a {
-  color: #899bbd;
+  color: #050505;
   transition: 0.3s;
 }
 
 .breadcrumb a:hover {
-  color: #51678f;
+  color: #000000;
 }
 
 .breadcrumb .breadcrumb-item::before {
-  color: #899bbd;
+  color: #000000;
 }
 
 .breadcrumb .active {
-  color: #51678f;
+  color: #000000;
   font-weight: 600;
 }
 
@@ -821,7 +820,7 @@ h6 {
 }
 
 .dashboard .card-icon {
-  font-size: 32px;
+  font-size: 10px;
   line-height: 0;
   width: 64px;
   height: 64px;
