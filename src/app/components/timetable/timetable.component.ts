@@ -19,6 +19,7 @@ import { TimetableService } from 'src/app/service/timetable.service';
 import { CommonService } from 'src/app/util/common.service';
 import { Time } from '@angular/common';
 import { Staff } from 'src/app/model/staff';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-timetable',
@@ -100,6 +101,7 @@ export class TimetableComponent implements OnInit {
     private academicYearSer: AcademicService,
     private timetableService: TimetableService,
     private commonService: CommonService,
+    private router:Router,
   ) { }
 
   ngOnInit(): void {
@@ -121,6 +123,7 @@ export class TimetableComponent implements OnInit {
         }
       }
     });
+
     if (this.role == "STUDENT") {
 
       this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {
@@ -131,7 +134,6 @@ export class TimetableComponent implements OnInit {
           //batch name
           this.batchId = this.student.studentBatch?.id;
           this.filterDTO.studentId = this.student.id;
-          console.log(this.filterDTO.studentId);
           this.academicBatchServie.getById(this.batchId).subscribe((response: any) => {
             if (response.status) {
               this.batch = response.data;
@@ -146,7 +148,6 @@ export class TimetableComponent implements OnInit {
           this.subjectService.getSubByBatch(this.filterDTO).subscribe((response: any) => {
             if (response.status) {
               this.subjects = response.data;
-              console.log('I am here>>>>>>>>>>>>', this.subjects);
             }
           });
 
@@ -329,15 +330,50 @@ export class TimetableComponent implements OnInit {
   }
   onSectionChange() {
     this.semesterId = this.semester.id;
+    this.filterDTO.section = this.section.id;
+    this.e11  = []; 
+    this.e12  = []; 
+    this.e13  = []; 
+    this.e14  = []; 
+    this.e15  = []; 
+    this.e16  = []; 
+    this.e21  = []; 
+    this.e22  = []; 
+    this.e23  = []; 
+    this.e24  = []; 
+    this.e25  = []; 
+    this.e26  = []; 
+    this.e31  = []; 
+    this.e32  = []; 
+    this.e33  = []; 
+    this.e34  = []; 
+    this.e35  = []; 
+    this.e36  = [];
+    this.e41  = []; 
+    this.e42  = []; 
+    this.e43  = []; 
+    this.e44  = []; 
+    this.e45  = []; 
+    this.e46  = [];
+    this.e51  = []; 
+    this.e52  = []; 
+    this.e53  = []; 
+    this.e54  = []; 
+    this.e55  = []; 
+    this.e56  = []; 
+
+    this.timetables = [];
     this.testTimetableExistOrNot();
     this.show();
   }
   testTimetableExistOrNot() {
+    debugger
     this.timetableService.getTimetableList(this.filterDTO).subscribe((response: any) => {
       if (response.status) {
         this.timetables = response.data;
-        this.exitData = true;
+        this.exitData=true;
         for (var i = 0; i < this.timetables.length; i++) {
+
           if (this.timetables[i].scheduleTime == 1) {
             this.e11.push(this.timetables[i].subject as Subject);
           }
@@ -430,10 +466,7 @@ export class TimetableComponent implements OnInit {
             this.e56.push(this.timetables[i].subject as Subject);
           }
         }
-
       }
-
-
     });
   }
 
@@ -442,8 +475,6 @@ export class TimetableComponent implements OnInit {
     this.show();
 
   }
-
-
   //show subject list
   show() {
     this.subList = true;
@@ -546,585 +577,481 @@ export class TimetableComponent implements OnInit {
     // End Drag and drop
   }
   saveTimetable() {
+    this.timetables=[];
+    this.section.academicBatch = this.batch;
+    //assigning data to objects
+    if (this.e11[0] != null) {
+      this.timetable.academicYear = this.year;
+      this.timetable.section = this.section;
+      this.timetable.subject = this.e11[0];
+      //this.timetable.teacher_id = 1;
+      this.timetable.scheduleTime = 1;
+      this.timetable.semesterId = this.semesterId;
+      // this.timetable.section = this.section;
+      this.timetables.push(this.timetable);
+    }
+    //end of assigning data to object
+    if (this.e12[0] != null) {
+      this.timetable1.academicYear = this.year;
+      this.timetable1.section = this.section;
+      this.timetable1.subject = this.e12[0];
+      // this.timetable1.teacher_id = 3;
+      this.timetable1.scheduleTime = 2;
+      this.timetable1.semesterId = this.semesterId;
+      this.timetables.push(this.timetable1);
+      //this.timetable1.section = this.section;
+    }
+    
+    //assigning data to objects
+    if (this.e13[0] != null) {
+
+      this.timetable2.subject = this.e13[0];
+      // this.timetable2.teacher_id = 1;
+      this.timetable2.scheduleTime = 3;
+      this.timetable2.semesterId = this.semesterId;
+      this.timetable2.section = this.section;
+      this.timetable2.academicYear = this.year;
+      this.timetables.push(this.timetable2);
+    }
+    // //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e14[0] != null) {
+
+      this.timetable3.subject = this.e14[0];
+      // this.timetable3.teacher_id = 1;
+      this.timetable3.scheduleTime = 4;
+      this.timetable3.semesterId = this.semesterId;
+      this.timetable3.section = this.section;
+      this.timetable3.academicYear = this.year;
+      this.timetables.push(this.timetable3);
+    }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e15[0] != null) {
+
+      this.timetable4.subject = this.e15[0];
+      //this.timetable4.teacher_id = 1;
+      this.timetable4.scheduleTime = 5;
+      this.timetable4.semesterId = this.semesterId;
+      this.timetable4.section = this.section;
+      this.timetable4.academicYear = this.year;
+      this.timetables.push(this.timetable4);
+    }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e16[0] != null) {
+      this.timetable5.subject = this.e16[0];
+      // this.timetable5.teacher_id = 1;
+      this.timetable5.scheduleTime = 6;
+      this.timetable5.semesterId = this.semesterId;
+      this.timetable5.section = this.section;
+      this.timetable5.academicYear = this.year;
+      this.timetables.push(this.timetable5);
+    }
+    // //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e21[0] != null) {
+      this.timetable6.subject = this.e21[0];
+      //this.timetable6.teacher_id = 1;
+      this.timetable6.scheduleTime = 7;
+      this.timetable6.semesterId = this.semesterId;
+      this.timetable6.section = this.section;
+      this.timetable6.academicYear = this.year;
+      this.timetables.push(this.timetable6);
+    }
+    // //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e22[0] != null) {
+      this.timetable7.subject = this.e22[0];
+      //this.timetable7.teacher_id = 1;
+      this.timetable7.scheduleTime = 8;
+      this.timetable7.semesterId = this.semesterId;
+      this.timetable7.section = this.section;
+      this.timetable7.academicYear = this.year;
+      this.timetables.push(this.timetable7);
+    }
+    //end of assigning data to object
+    //assigning data to objects
+    if (this.e23[0] != null) {
+      this.timetable8.subject = this.e23[0];
+      //this.timetable8.teacher_id = 1;
+      this.timetable8.scheduleTime = 9;
+      this.timetable8.semesterId = this.semesterId;
+      this.timetable8.section = this.section;
+      this.timetable8.academicYear = this.year;
+      this.timetables.push(this.timetable8);
+    }
+    // //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e24[0] != null) {
+      this.timetable9.subject = this.e24[0];
+      //this.timetable9.teacher_id = 1;
+      this.timetable9.scheduleTime = 10;
+      this.timetable9.semesterId = this.semesterId;
+      this.timetable9.section = this.section;
+      this.timetable9.academicYear = this.year;
+      this.timetables.push(this.timetable9);
+    }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e25[0] != null) {
+      this.timetable10.subject = this.e25[0];
+      //this.timetable10.teacher_id = 1;
+      this.timetable10.scheduleTime = 11;
+      this.timetable10.semesterId = this.semesterId;
+      this.timetable10.section = this.section;
+      this.timetable10.academicYear = this.year;
+      this.timetables.push(this.timetable10);
+    }
+    //end of assigning data to object
 
     //assigning data to objects
-      if (this.e11[0] != null) {
-
-        this.section.academicBatch = this.batch;
-        this.timetable.academicYear = this.year;
-        this.timetable.section = this.section;
-        this.timetable.subject = this.e11[0];
-        //this.timetable.teacher_id = 1;
-        this.timetable.scheduleTime = 1;
-        // this.timetable.section = this.section;
-        this.timetables.push(this.timetable);
-      }
-      //end of assigning data to object
-      if (this.e12[0] != null) {
-
-        this.timetable1.academicYear = this.year;
-        this.timetable1.section = this.section;
-        this.timetable1.subject = this.e12[0];
-        // this.timetable1.teacher_id = 3;
-        this.timetable1.scheduleTime = 2;
-        this.timetables.push(this.timetable1);
-        //this.timetable1.section = this.section;
-      }
-      //assigning data to objects
-      if (this.e13[0] != null) {
-        this.timetable2.subject = this.e13[0];
-        // this.timetable2.teacher_id = 1;
-        this.timetable2.scheduleTime = 3;
-        this.timetable2.section = this.section;
-        this.timetable2.academicYear = this.year;
-        this.timetables.push(this.timetable2);
-      }
-      // //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e14[0] != null) {
-        this.timetable3.subject = this.e14[0];
-        // this.timetable3.teacher_id = 1;
-        this.timetable3.scheduleTime = 4;
-        this.timetable3.section = this.section;
-        this.timetable3.academicYear = this.year;
-        this.timetables.push(this.timetable3);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e15[0] != null) {
-
-        this.timetable4.subject = this.e15[0];
-        //this.timetable4.teacher_id = 1;
-        this.timetable4.scheduleTime = 5;
-        this.timetable4.section = this.section;
-        this.timetable4.academicYear = this.year;
-        this.timetables.push(this.timetable4);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e16[0] != null) {
-
-        this.timetable5.subject = this.e16[0];
-        // this.timetable5.teacher_id = 1;
-        this.timetable5.scheduleTime = 6;
-        this.timetable5.section = this.section;
-        this.timetable5.academicYear = this.year;
-        this.timetables.push(this.timetable5);
-      }
-      // //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e21[0] != null) {
-
-        this.timetable6.subject = this.e21[0];
-        //this.timetable6.teacher_id = 1;
-        this.timetable6.scheduleTime = 7;
-        this.timetable6.section = this.section;
-        this.timetable6.academicYear = this.year;
-        this.timetables.push(this.timetable6);
-      }
-      // //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e22[0] != null) {
-
-        this.timetable7.subject = this.e22[0];
-        //this.timetable7.teacher_id = 1;
-        this.timetable7.scheduleTime = 8;
-        this.timetable7.section = this.section;
-        this.timetable7.academicYear = this.year;
-        this.timetables.push(this.timetable7);
-      }
-      //end of assigning data to object
-      //assigning data to objects
-      if (this.e23[0] != null) {
-
-        this.timetable8.subject = this.e23[0];
-        //this.timetable8.teacher_id = 1;
-        this.timetable8.scheduleTime = 9;
-        this.timetable8.section = this.section;
-        this.timetable8.academicYear = this.year;
-        this.timetables.push(this.timetable8);
-      }
-      // //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e24[0] != null) {
-
-        this.timetable9.subject = this.e24[0];
-        //this.timetable9.teacher_id = 1;
-        this.timetable9.scheduleTime = 10;
-        this.timetable9.section = this.section;
-        this.timetable9.academicYear = this.year;
-        this.timetables.push(this.timetable9);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e25[0] != null) {
-
-        this.timetable10.subject = this.e25[0];
-        //this.timetable10.teacher_id = 1;
-        this.timetable10.scheduleTime = 11;
-        this.timetable10.section = this.section;
-        this.timetable10.academicYear = this.year;
-        this.timetables.push(this.timetable10);
-      }
-      //end of assigning data to object
-
-      //assigning data to objects
-      if (this.e26[0] != null) {
-
-        this.timetable11.subject = this.e26[0];
-        // this.timetable11.teacher_id = 1;
-        this.timetable11.scheduleTime = 12;
-        this.timetable11.section = this.section;
-        this.timetable11.academicYear = this.year;
-        this.timetables.push(this.timetable11);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e31[0] != null) {
-
-        this.timetable12.subject = this.e31[0];
-        //this.timetable12.teacher_id = 1;
-        this.timetable12.scheduleTime = 13;
-        this.timetable12.section = this.section;
-        this.timetable12.academicYear = this.year;
-        this.timetables.push(this.timetable12);
-      }
-      // //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e32[0] != null) {
-
-        this.timetable13.subject = this.e32[0];
-        // this.timetable13.teacher_id = 1;
-        this.timetable13.scheduleTime = 14;
-        this.timetable13.section = this.section;
-        this.timetable13.academicYear = this.year;
-        this.timetables.push(this.timetable13);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e33[0] != null) {
-
-        this.timetable14.subject = this.e33[0];
-        // this.timetable14.teacher_id = 1;
-        this.timetable14.scheduleTime = 15;
-        this.timetable14.section = this.section;
-        this.timetable14.academicYear = this.year;
-        this.timetables.push(this.timetable14);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e34[0] != null) {
-
-        this.timetable15.subject = this.e34[0];
-        //this.timetable15.teacher_id = 1;
-        this.timetable15.scheduleTime = 16;
-        this.timetable15.section = this.section;
-        this.timetable15.academicYear = this.year;
-        this.timetables.push(this.timetable15);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e35[0] != null) {
-
-        this.timetable16.subject = this.e35[0];
-        //this.timetable16.teacher_id = 1;
-        this.timetable16.scheduleTime = 17;
-        this.timetable16.section = this.section;
-        this.timetable16.academicYear = this.year;
-        this.timetables.push(this.timetable16);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e36[0] != null) {
-
-        this.timetable17.subject = this.e36[0];
-        //this.timetable17.teacher_id = 1;
-        this.timetable17.scheduleTime = 18;
-        this.timetable17.section = this.section;
-        this.timetable17.academicYear = this.year;
-        this.timetables.push(this.timetable17);
-      }
-      //end of assigning data to object
-
-
-      // //assigning data to objects
-      if (this.e41[0] != null) {
-
-        this.timetable18.subject = this.e41[0];
-        //this.timetable18.teacher_id = 1;
-        this.timetable18.scheduleTime = 19;
-        this.timetable18.section = this.section;
-        this.timetable18.academicYear = this.year;
-        this.timetables.push(this.timetable18);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e42[0] != null) {
-
-        this.timetable19.subject = this.e42[0];
-        //this.timetable19.teacher_id = 1;
-        this.timetable19.scheduleTime = 20;
-        this.timetable19.section = this.section;
-        this.timetable19.academicYear = this.year;
-        this.timetables.push(this.timetable19);
-      }
-      //end of assigning data to object
-      //assigning data to objects
-      if (this.e43[0] != null) {
-
-        this.timetable20.subject = this.e43[0];
-        //this.timetable20.teacher_id = 1;
-        this.timetable20.scheduleTime = 21;
-        this.timetable20.section = this.section;
-        this.timetable20.academicYear = this.year;
-        this.timetables.push(this.timetable20);
-      }
-      //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e44[0] != null) {
-
-        this.timetable21.subject = this.e44[0];
-        //this.timetable21.teacher_id = 1;
-        this.timetable21.scheduleTime = 22;
-        this.timetable21.section = this.section;
-        this.timetable21.academicYear = this.year;
-        this.timetables.push(this.timetable21);
-      }
-      //end of assigning data to object
-      //assigning data to objects
-      if (this.e45[0] != null) {
-
-        this.timetable22.subject = this.e45[0];
-        //this.timetable22.teacher_id = 1;
-        this.timetable22.scheduleTime = 23;
-        this.timetable22.section = this.section;
-        this.timetable22.academicYear = this.year;
-        this.timetables.push(this.timetable22);
-      }
-      //end of assigning data to object
-      //assigning data to objects
-      if (this.e46[0] != null) {
-
-        this.timetable23.subject = this.e46[0];
-        //this.timetable23.teacher_id = 1;
-        this.timetable23.scheduleTime = 24;
-        this.timetable23.section = this.section;
-        this.timetable23.academicYear = this.year;
-        this.timetables.push(this.timetable23);
-      }
-      //end of assigning data to object
-      //assigning data to objects
-      if (this.e51[0] != null) {
-
-        this.timetable24.subject = this.e51[0];
-        //this.timetable24.teacher_id = 1;
-        this.timetable24.scheduleTime = 25;
-        this.timetable24.section = this.section;
-        this.timetable24.academicYear = this.year;
-        this.timetables.push(this.timetable24);
-      }
-      //end of assigning data to object
-      //assigning data to objects
-      if (this.e52[0] != null) {
-
-        this.timetable25.subject = this.e52[0];
-        //this.timetable25.teacher_id = 1;
-        this.timetable25.scheduleTime = 26;
-        this.timetable25.section = this.section;
-        this.timetable25.academicYear = this.year;
-        this.timetables.push(this.timetable25);
-      }
-      //end of assigning data to object
-      //assigning data to objects
-      if (this.e53[0] != null) {
-
-        this.timetable26.subject = this.e53[0];
-        //this.timetable26.teacher_id = 1;
-        this.timetable26.scheduleTime = 27;
-        this.timetable26.section = this.section;
-        this.timetable26.academicYear = this.year;
-        this.timetables.push(this.timetable26);
-      }
-      // //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e54[0] != null) {
-
-        this.timetable27.subject = this.e54[0];
-        // this.timetable27.teacher_id = 1;
-        this.timetable27.scheduleTime = 28;
-        this.timetable27.section = this.section;
-        this.timetable27.academicYear = this.year;
-        this.timetables.push(this.timetable27);
-      }
-      // //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e55[0] != null) {
-
-        this.timetable28.subject = this.e55[0];
-        //this.timetable28.teacher_id = 1;
-        this.timetable28.scheduleTime = 29;
-        this.timetable28.section = this.section;
-        this.timetable28.academicYear = this.year;
-        this.timetables.push(this.timetable28);
-      }
-      // //end of assigning data to object
-
-      // //assigning data to objects
-      if (this.e56[0] != null) {
-
-        this.timetable29.subject = this.e56[0];
-        //this.timetable29.teacher_id = 1;
-        this.timetable29.scheduleTime = 30;
-        this.timetable29.section = this.section;
-        this.timetable29.academicYear = this.year;
-        this.timetables.push(this.timetable29);
-      }
-      //  for(var j=0;j<this.temp_staffs.length;j++){
-      //   for (let i=0;i<this.subjects.length;i++){
-      //     if(this.subjects[i].id==this.timetable.subject?.id)
-      //     {
-      //       this.timetable.teacher=this.temp_staffs[j];
-      //     }
-      //   }
-      //  }
-      // for (let i=0;i<this.subjects.length;i++){
-
-      //   if (this.subjects[i].id==this.timetable.subject?.id){
-      //  //   this.timetable.teacher=this.subjects[i].subjectStaff as Staff;
-
-
-      //   }
-      //   else if(this.subjects[i].id==this.timetable1.subject?.id){
-      //     this.timetable1.teacher=this.subjects[i].subjectStaff as Staff;
-      //     this.timetables.push(this.timetable1);
-
-      //   }
-      //   else if(this.subjects[i].id==this.timetable2.subject?.id){
-      //     this.timetable2.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable3.subject?.id){
-      //     this.timetable3.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable4.subject?.id){
-      //     this.timetable4.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable5.subject?.id){
-      //     this.timetable5.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable6.subject?.id){
-      //     this.timetable6.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable7.subject?.id){
-      //     this.timetable7.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable8.subject?.id){
-      //     this.timetable8.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable9.subject?.id){
-      //     this.timetable9.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable10.subject?.id){
-      //     this.timetable10.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable11.subject?.id){
-      //     this.timetable11.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable12.subject?.id){
-      //     this.timetable12.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable13.subject?.id){
-      //     this.timetable13.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable14.subject?.id){
-      //     this.timetable14.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable15.subject?.id){
-      //     this.timetable15.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable16.subject?.id){
-      //     this.timetable16.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable17.subject?.id){
-      //     this.timetable17.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable18.subject?.id){
-      //     this.timetable18.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable19.subject?.id){
-      //     this.timetable19.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable20.subject?.id){
-      //     this.timetable20.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable21.subject?.id){
-      //     this.timetable21.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable22.subject?.id){
-      //     this.timetable22.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable23.subject?.id){
-      //     this.timetable23.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable24.subject?.id){
-      //     this.timetable24.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable25.subject?.id){
-      //     this.timetable25.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable26.subject?.id){
-      //     this.timetable26.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable27.subject?.id){
-      //     this.timetable27.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable28.subject?.id){
-      //     this.timetable28.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable29.subject?.id){
-      //     this.timetable29.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      // }
-      //end of assigning data to object
-
-
-      // for(let i=0;i<=30;i++){
-      //   this.timetables[i].scheduleTime=Number(i+1);
-      //   this.timetables[i].sections=this.section; 
-      //   console.log(" schedule time"+this.timetables[i].scheduleTime);
-      //   console.log(" schedule time"+this.timetables[i].scheduleTime)
-      // }
-      if (this.exitData == false) {
-      this.timetableService.save(this.timetables).subscribe((response: any) => {
-        if (response.status) {
-          this.commonService.inputAlert("Timetable adding complete", 'success');
-        }
-      });
+    if (this.e26[0] != null) {
+      this.timetable11.subject = this.e26[0];
+      // this.timetable11.teacher_id = 1;
+      this.timetable11.scheduleTime = 12;
+      this.timetable11.semesterId = this.semesterId;
+      this.timetable11.section = this.section;
+      this.timetable11.academicYear = this.year;
+      this.timetables.push(this.timetable11);
     }
-    else {
-      this.commonService.inputAlert("Timetable for this section is already exist, Now your record will be update","warning");
-      this.timetableService.update(this.timetables).subscribe((resoponse:any)=>{
-        if (resoponse.status)
-          this.commonService.inputAlert("Your timetable is updated .","success");
-              })
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e31[0] != null) {
+      this.timetable12.subject = this.e31[0];
+      //this.timetable12.teacher_id = 1;
+      this.timetable12.scheduleTime = 13;
+      this.timetable12.semesterId = this.semesterId;
+      this.timetable12.section = this.section;
+      this.timetable12.academicYear = this.year;
+      this.timetables.push(this.timetable12);
     }
-  }
+    // //end of assigning data to object
 
-  onClickStaff(event: any) {
-    for (let i = 0; i < this.subjects.length; i++) {
-      if (this.subjects[i].id == event.id) {
-        this.subjects[i].subjectStaff = event;
-      }
-      //   if (this.subjects[i].id==event.id){
-      //   this.timetable.teacher=this.subjects[i].subjectStaff as Staff;
+    // //assigning data to objects
+    if (this.e32[0] != null) {
 
-
-      //   }
-      //  else if(this.subjects[i].id==event.id){
-      //     this.timetable1.teacher=this.subjects[i].subjectStaff as Staff;
-
-      //  }
-      //   else if(this.subjects[i].id==this.timetable2.subject?.id){
-      //     this.timetable2.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable3.subject?.id){
-      //     this.timetable3.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable4.subject?.id){
-      //     this.timetable4.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable5.subject?.id){
-      //     this.timetable5.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable6.subject?.id){
-      //     this.timetable6.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable7.subject?.id){
-      //     this.timetable7.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable8.subject?.id){
-      //     this.timetable8.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable9.subject?.id){
-      //     this.timetable9.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable10.subject?.id){
-      //     this.timetable10.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable11.subject?.id){
-      //     this.timetable11.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable12.subject?.id){
-      //     this.timetable12.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable13.subject?.id){
-      //     this.timetable13.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable14.subject?.id){
-      //     this.timetable14.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable15.subject?.id){
-      //     this.timetable15.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable16.subject?.id){
-      //     this.timetable16.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable17.subject?.id){
-      //     this.timetable17.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable18.subject?.id){
-      //     this.timetable18.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable19.subject?.id){
-      //     this.timetable19.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable20.subject?.id){
-      //     this.timetable20.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable21.subject?.id){
-      //     this.timetable21.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable22.subject?.id){
-      //     this.timetable22.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable23.subject?.id){
-      //     this.timetable23.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable24.subject?.id){
-      //     this.timetable24.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable25.subject?.id){
-      //     this.timetable25.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable26.subject?.id){
-      //     this.timetable26.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable27.subject?.id){
-      //     this.timetable27.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable28.subject?.id){
-      //     this.timetable28.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
-      //   else if(this.subjects[i].id==this.timetable29.subject?.id){
-      //     this.timetable29.teacher=this.subjects[i].subjectStaff as Staff;
-      //   }
+      this.timetable13.subject = this.e32[0];
+      // this.timetable13.teacher_id = 1;
+      this.timetable13.scheduleTime = 14;
+      this.timetable13.semesterId = this.semesterId;
+      this.timetable13.section = this.section;
+      this.timetable13.academicYear = this.year;
+      this.timetables.push(this.timetable13);
     }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e33[0] != null) {
+
+
+      this.timetable14.subject = this.e33[0];
+      // this.timetable14.teacher_id = 1;
+      this.timetable14.scheduleTime = 15;
+      this.timetable14.semesterId = this.semesterId;
+      this.timetable14.section = this.section;
+      this.timetable14.academicYear = this.year;
+      this.timetables.push(this.timetable14);
+    }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e34[0] != null) {
+
+
+      this.timetable15.subject = this.e34[0];
+      //this.timetable15.teacher_id = 1;
+      this.timetable15.scheduleTime = 16;
+      this.timetable15.semesterId = this.semesterId;
+      this.timetable15.section = this.section;
+      this.timetable15.academicYear = this.year;
+      this.timetables.push(this.timetable15);
+    }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e35[0] != null) {
+
+
+      this.timetable16.subject = this.e35[0];
+      //this.timetable16.teacher_id = 1;
+      this.timetable16.scheduleTime = 17;
+      this.timetable16.semesterId = this.semesterId;
+      this.timetable16.section = this.section;
+      this.timetable16.academicYear = this.year;
+      this.timetables.push(this.timetable16);
+    }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e36[0] != null) {
+      this.timetable17.semesterId = this.semesterId;
+      this.timetable17.subject = this.e36[0];
+      //this.timetable17.teacher_id = 1;
+      this.timetable17.scheduleTime = 18;
+      this.timetable17.section = this.section;
+      this.timetable17.academicYear = this.year;
+      this.timetables.push(this.timetable17);
+    }
+    //end of assigning data to object
+
+
+    // //assigning data to objects
+    if (this.e41[0] != null) {
+      this.timetable18.semesterId = this.semesterId;
+      this.timetable18.subject = this.e41[0];
+      //this.timetable18.teacher_id = 1;
+      this.timetable18.scheduleTime = 19;
+      this.timetable18.section = this.section;
+      this.timetable18.academicYear = this.year;
+      this.timetables.push(this.timetable18);
+    }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e42[0] != null) {
+      this.timetable19.semesterId = this.semesterId;
+      this.timetable19.subject = this.e42[0];
+      //this.timetable19.teacher_id = 1;
+      this.timetable19.scheduleTime = 20;
+      this.timetable19.section = this.section;
+      this.timetable19.academicYear = this.year;
+      this.timetables.push(this.timetable19);
+    }
+    //end of assigning data to object
+    //assigning data to objects
+    if (this.e43[0] != null) {
+      this.timetable20.semesterId = this.semesterId;
+      this.timetable20.subject = this.e43[0];
+      //this.timetable20.teacher_id = 1;
+      this.timetable20.scheduleTime = 21;
+      this.timetable20.section = this.section;
+      this.timetable20.academicYear = this.year;
+      this.timetables.push(this.timetable20);
+    }
+    //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e44[0] != null) {
+
+      this.timetable21.semesterId = this.semesterId;
+      this.timetable21.subject = this.e44[0];
+      //this.timetable21.teacher_id = 1;
+      this.timetable21.scheduleTime = 22;
+      this.timetable21.section = this.section;
+      this.timetable21.academicYear = this.year;
+      this.timetables.push(this.timetable21);
+    }
+
+    //end of assigning data to object
+    //assigning data to objects
+    if (this.e45[0] != null) {
+      this.timetable22.semesterId = this.semesterId;
+      this.timetable22.subject = this.e45[0];
+      //this.timetable22.teacher_id = 1;
+      this.timetable22.scheduleTime = 23;
+      this.timetable22.section = this.section;
+      this.timetable22.academicYear = this.year;
+      this.timetables.push(this.timetable22);
+    }
+    //end of assigning data to object
+    //assigning data to objects
+    if (this.e46[0] != null) {
+      this.timetable23.semesterId = this.semesterId;
+
+      this.timetable23.subject = this.e46[0];
+      //this.timetable23.teacher_id = 1;
+      this.timetable23.scheduleTime = 24;
+      this.timetable23.section = this.section;
+      this.timetable23.academicYear = this.year;
+      this.timetables.push(this.timetable23);
+    }
+    //end of assigning data to object
+    //assigning data to objects
+    if (this.e51[0] != null) {
+      this.timetable24.semesterId = this.semesterId;
+      this.timetable24.subject = this.e51[0];
+      //this.timetable24.teacher_id = 1;
+      this.timetable24.scheduleTime = 25;
+      this.timetable24.section = this.section;
+      this.timetable24.academicYear = this.year;
+      this.timetables.push(this.timetable24);
+    }
+    //end of assigning data to object
+    //assigning data to objects
+    if (this.e52[0] != null) {
+      this.timetable25.semesterId = this.semesterId;
+      this.timetable25.subject = this.e52[0];
+      //this.timetable25.teacher_id = 1;
+      this.timetable25.scheduleTime = 26;
+      this.timetable25.section = this.section;
+      this.timetable25.academicYear = this.year;
+      this.timetables.push(this.timetable25);
+    }
+
+    //end of assigning data to object
+    //assigning data to objects
+    if (this.e53[0] != null) {
+      this.timetable26.semesterId = this.semesterId;
+      this.timetable26.subject = this.e53[0];
+      //this.timetable26.teacher_id = 1;
+      this.timetable26.scheduleTime = 27;
+      this.timetable26.section = this.section;
+      this.timetable26.academicYear = this.year;
+      this.timetables.push(this.timetable26);
+    }
+    // //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e54[0] != null) {
+
+      this.timetable27.semesterId = this.semesterId;
+      this.timetable27.subject = this.e54[0];
+      // this.timetable27.teacher_id = 1;
+      this.timetable27.scheduleTime = 28;
+      this.timetable27.section = this.section;
+      this.timetable27.academicYear = this.year;
+      this.timetables.push(this.timetable27);
+    }
+    // //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e55[0] != null) {
+      this.timetable28.semesterId = this.semesterId;
+
+      this.timetable28.subject = this.e55[0];
+      //this.timetable28.teacher_id = 1;
+      this.timetable28.scheduleTime = 29;
+      this.timetable28.section = this.section;
+      this.timetable28.academicYear = this.year;
+      this.timetables.push(this.timetable28);
+    }
+    // //end of assigning data to object
+
+    // //assigning data to objects
+    if (this.e56[0] != null) {
+      this.timetable29.semesterId = this.semesterId;
+
+      this.timetable29.subject = this.e56[0];
+      //this.timetable29.teacher_id = 1;
+      this.timetable29.scheduleTime = 30;
+      this.timetable29.section = this.section;
+      this.timetable29.academicYear = this.year;
+      this.timetables.push(this.timetable29);
+    }
+    //  for(var j=0;j<this.temp_staffs.length;j++){
+    //   for (let i=0;i<this.subjects.length;i++){
+    //     if(this.subjects[i].id==this.timetable.subject?.id)
+    //     {
+    //       this.timetable.teacher=this.temp_staffs[j];
+    //     }
+    //   }
+    //  }
+    // for (let i=0;i<this.subjects.length;i++){
+
+    //   if (this.subjects[i].id==this.timetable.subject?.id){
+    //  //   this.timetable.teacher=this.subjects[i].subjectStaff as Staff;
+
+
+    //   }
+    //   else if(this.subjects[i].id==this.timetable1.subject?.id){
+    //     this.timetable1.teacher=this.subjects[i].subjectStaff as Staff;
+    //     this.timetables.push(this.timetable1);
+
+    //   }
+    //   else if(this.subjects[i].id==this.timetable2.subject?.id){
+    //     this.timetable2.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable3.subject?.id){
+    //     this.timetable3.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable4.subject?.id){
+    //     this.timetable4.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable5.subject?.id){
+    //     this.timetable5.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable6.subject?.id){
+    //     this.timetable6.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable7.subject?.id){
+    //     this.timetable7.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable8.subject?.id){
+    //     this.timetable8.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable9.subject?.id){
+    //     this.timetable9.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable10.subject?.id){
+    //     this.timetable10.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable11.subject?.id){
+    //     this.timetable11.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable12.subject?.id){
+    //     this.timetable12.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable13.subject?.id){
+    //     this.timetable13.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable14.subject?.id){
+    //     this.timetable14.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable15.subject?.id){
+    //     this.timetable15.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable16.subject?.id){
+    //     this.timetable16.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable17.subject?.id){
+    //     this.timetable17.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable18.subject?.id){
+    //     this.timetable18.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable19.subject?.id){
+    //     this.timetable19.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable20.subject?.id){
+    //     this.timetable20.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable21.subject?.id){
+    //     this.timetable21.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable22.subject?.id){
+    //     this.timetable22.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable23.subject?.id){
+    //     this.timetable23.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable24.subject?.id){
+    //     this.timetable24.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable25.subject?.id){
+    //     this.timetable25.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable26.subject?.id){
+    //     this.timetable26.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable27.subject?.id){
+    //     this.timetable27.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable28.subject?.id){
+    //     this.timetable28.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    //   else if(this.subjects[i].id==this.timetable29.subject?.id){
+    //     this.timetable29.teacher=this.subjects[i].subjectStaff as Staff;
+    //   }
+    // }
     //end of assigning data to object
 
 
@@ -1135,8 +1062,140 @@ export class TimetableComponent implements OnInit {
     //   console.log(" schedule time"+this.timetables[i].scheduleTime)
     // }
 
+    if (this.exitData == false) {
+      if (this.timetables.length == 30) {
+        this.timetableService.save(this.timetables).subscribe((response: any) => {
+          if (response.status) {
+            this.commonService.inputAlert("Timetable adding complete", 'success');
+          }
+        });
+      }
+      else this.commonService.inputAlert("Incomplete timetable , please add some more schedule", 'warning');
 
-    // this.temp_staffs.push(event);
+    }
+
+else 
+{
+  this.commonService.inputAlert("Timetable for this section is already exit","info");
+  this.router.navigate(['/admin-dashboard']);
+}
+    // this.timetableService.update(this.timetables).subscribe((resoponse: any) => {
+    //   if (resoponse.status)
+    //     this.commonService.inputAlert("Your timetable is updated .", "success");
+    // });
+
   }
+
+
+  // onClickStaff(sub: Subject, event: any) {
+  //   for (let i = 0; i < this.subjects.length; i++) {
+  //     if (this.subjects[i].id == this.e11[0].id) {
+  //       this.timetable.teacher = event;
+  //     }
+  //     if (this.subjects[i].id == this.e12[0].id) {
+  //       this.timetable1.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e13[0].id) {
+  //       this.timetable2.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e14[0].id) {
+  //       this.timetable3.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e15[0].id) {
+  //       this.timetable4.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e16[0].id) {
+  //       this.timetable5.teacher = event;
+  //     }
+
+  //     else if (this.subjects[i].id == this.e21[0].id) {
+  //       this.timetable6.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e22[0].id) {
+  //       this.timetable7.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e23[0].id) {
+  //       this.timetable8.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e24[0].id) {
+  //       this.timetable9.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e25[0].id) {
+  //       this.timetable10.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e26[0].id) {
+  //       this.timetable11.teacher = event;
+  //     }
+
+  //     else if (this.subjects[i].id == this.e31[0].id) {
+  //       this.timetable12.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e32[0].id) {
+  //       this.timetable13.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e33[0].id) {
+  //       this.timetable14.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e34[0].id) {
+  //       this.timetable15.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e35[0].id) {
+  //       this.timetable16.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e36[0].id) {
+  //       this.timetable17.teacher = event;
+  //     }
+
+  //     else if (this.subjects[i].id == this.e41[0].id) {
+  //       this.timetable18.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e42[0].id) {
+  //       this.timetable19.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e43[0].id) {
+  //       this.timetable20.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e44[0].id) {
+  //       this.timetable21.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e45[0].id) {
+  //       this.timetable22.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e46[0].id) {
+  //       this.timetable23.teacher = event;
+  //     }
+
+  //     else if (this.subjects[i].id == this.e51[0].id) {
+  //       this.timetable24.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e52[0].id) {
+  //       this.timetable25.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e53[0].id) {
+  //       this.timetable26.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e54[0].id) {
+  //       this.timetable27.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e55[0].id) {
+  //       this.timetable28.teacher = event;
+  //     }
+  //     else if (this.subjects[i].id == this.e56[0].id) {
+  //       this.timetable29.teacher = event;
+  //     }
+  //   }
+  //   //end of assigning data to object
+
+
+  //   // for(let i=0;i<=30;i++){
+  //   //   this.timetables[i].scheduleTime=Number(i+1);
+  //   //   this.timetables[i].sections=this.section; 
+  //   //   console.log(" schedule time"+this.timetables[i].scheduleTime);
+  //   //   console.log(" schedule time"+this.timetables[i].scheduleTime)
+  //   // }
+
+
+  //   // this.temp_staffs.push(event);
+  // }
 }
 

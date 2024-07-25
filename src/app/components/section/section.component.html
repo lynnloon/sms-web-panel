@@ -1,15 +1,22 @@
 <div class="main" id="main">
     <div class="pagetitle">
-        <h1>Section List</h1>
+        <h1 *ngIf="role=='ADMIN'">Section List</h1>
+        <h1 *ngIf="role=='TEACHER'">Class List</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a [routerLink]="'/admin-dashboard'">Home</a></li>
-                <li class="breadcrumb-item">Section Lists</li>
+                <li class="breadcrumb-item" *ngIf="role=='ADMIN'"><a [routerLink]="'/admin-dashboard'">Home</a></li>
+
+                <li class="breadcrumb-item" *ngIf="role=='TEACHER'"><a [routerLink]="'/teacher-dashboard'">Home</a></li>
+                <li class="breadcrumb-item" *ngIf="role=='ADMIN'">Section Lists</li>
+                <li class="breadcrumb-item" *ngIf="role=='TEACHER'">Class List</li>
+
+
             </ol>
         </nav>
     </div><!-- End Page Title -->
     <div>
-        <button type="submit" class="btn btn-primary bi bi-plus-circle" [routerLink]="'/add-section'">
+        <button type="submit" class="btn btn-primary bi bi-plus-circle" *ngIf="role!='TEACHER'"
+            [routerLink]="'/add-section'">
             Add new Section</button>
     </div>
     <br />
@@ -25,7 +32,7 @@
                                 <th scope="col">Class</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">No Of Students</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" *ngIf="role!='TEACHER'">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,7 +41,8 @@
                                 <td>{{getBatchNumber(sec.academicBatch?.name)}}{{sec.major}}</td>
                                 <td>{{sec.name}}</td>
                                 <td>{{sec.noOfStudent}}</td>
-                                <td>
+
+                                <td *ngIf="role!='TEACHER'">
                                     <i class="bi bi-pencil-square" title="edit"
                                         [routerLink]="['/add-section',sec.id]"></i>&nbsp;
                                     <i class="bi bi-trash" style="color: red;" title="delete"
