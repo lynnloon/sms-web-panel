@@ -13,6 +13,7 @@ export class SectionComponent implements OnInit {
   section: Section = new Section();
 
   sections: Section[] = [];
+  role=localStorage.getItem('userrole') as string;
 
   constructor(
     private sectionService: SectionService,

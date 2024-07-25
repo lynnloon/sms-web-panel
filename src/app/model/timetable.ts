@@ -12,10 +12,9 @@ export class Timetable {
     activeStatus?: string;
     scheduleTime?: number;
     subject?: Subject = new Subject();
-    //teacher?: Staff = new Staff();
+   // teacher?: Staff[] = [];
     academicYear?: AcademicYear = new AcademicYear();
     section?: Section = new Section();
     semesterId?:number;
-
 
 }
