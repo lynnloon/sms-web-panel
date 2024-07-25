@@ -33,8 +33,19 @@
 } */
 
 /* Drag and Drop time table style */
+.border{
+  border: 1px solid black; /* Add a solid black border around each th and td */
+  border-radius: 10px; /* Add border radius to round corners */
+  font-size:15px;
+
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
 .card {
-  background-color: antiquewhite;
+  background-color: white;
 }
 
 #inputGroupSelect01 {
@@ -52,17 +63,33 @@ table {
   width: 90%;
   max-width: 850px;
   margin: 0 auto;
+  padding: 15px; /* Add padding inside each cell */
+  text-align: center; /* Center align text/content in cells */
+  border-collapse: separate; /* Separate borders for each cell */
+  border-spacing: 5px;
 }
 
 th {
   height: 60px;
   font-size: larger;
+  padding: 15px; /* Add padding inside each cell */
+  text-align: center; /* Center align text/content in cells */
+  border: 1px solid black;
 }
 
 td {
   width: 50px;
   max-width: 50px;
   text-align: center;
+}
+
+.j{
+  padding-left: 20%;
+  text-align: left;
+  font-size: large;
+  font-family: poppin;
+  font-weight: 600;
+ 
 }
 
 .example-container {
@@ -93,8 +120,6 @@ td {
   /* Optional: Set minimum height */
   width: 600px;
   margin-left: 60px;
-  ;
-
 }
 
 
@@ -102,9 +127,10 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ee8383;
+  background-color: #c1a1e6;
   border: 1px solid #ddd;
   padding: 8px;
+  border-radius: 10px;
   margin-right: 5px;
   /* Optional: Add space between items */
   cursor: move;

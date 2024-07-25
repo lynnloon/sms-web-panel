@@ -54,6 +54,14 @@
   padding-top: 3%;
 }
 
+.d{
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 10px;
+}
+
 .c {
   margin: 0% 5% 0% 5%;
 }

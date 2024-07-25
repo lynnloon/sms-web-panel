@@ -34,13 +34,16 @@ export class SectionComponent implements OnInit {
       case 'FOURTH YEAR':
         return '4';
       case 'FIFTH YEAR':
-        return '5'
+        return '5';
       case 'MASTER':
         return '6';
       default:
         return 'Unknown';
     }
+    
   }
+
+  
 
   getAllSection() {
     return this.sectionService.getAllSection().subscribe((response: any) => {

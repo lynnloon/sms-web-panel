@@ -56,23 +56,21 @@
             <div class="row">
                 <!-- Drag and Drop -->
                 <table mat-table #table class="mat-elevation-z8" cdkDropList>
-
-
                     <tbody>
                         <tr>
-                            <th bgcolor="  #c6e1ff" class="text-center">Day</th>
-                            <th bgcolor=" EDC6FC" class="text-center">9:00-9:55</th>
-                            <th bgcolor=" EDC6FC" class="text-center">10:05-11:00</th>
-                            <th bgcolor=" EDC6FC" class="text-center">11:10-12:05</th>
-                            <th bgcolor=" EDC6FC" class="text-center">12:05-1:00</th>
-                            <th bgcolor=" EDC6FC" class="text-center">1:00-1:55</th>
-                            <th bgcolor=" EDC6FC" class="text-center">2:05-3:00</th>
-                            <th bgcolor=" EDC6FC" class="text-center">3:10-4:05</th>
+                            <th bgcolor="  #a5bdee" class="text-center border">Day</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">9:00-9:55</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">10:05-11:00</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">11:10-12:05</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">12:05-1:00</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">1:00-1:55</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">2:05-3:00</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">3:10-4:05</th>
                         </tr>
                         <tr>
 
                         <tr>
-                            <td bgcolor=" #c6e1ff" class="text--center"><b>MON</b></td>
+                            <td bgcolor=" #a5bdee" class="text-center border"><b>MON</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l11="cdkDropList"
@@ -104,8 +102,8 @@
                                     </div>
                                 </div>
                             </td>
-                            <td rowspan="5" bgcolor="  #c6e1ff">
-                                <h2 class="text-center">L<br>U<br>N<br>C<br>H</h2>
+                            <td rowspan="5" bgcolor="  #a5bdee" class="border">
+                                <h2 class="text-center center">L<br>U<br>N<br>C<br>H</h2>
                             </td>
                             <td>
 
@@ -141,7 +139,7 @@
 
                         </tr>
                         <tr>
-                            <td bgcolor="  #c6e1ff" class="text--center"><b>TUE</b></td>
+                            <td bgcolor="  #a5bdee" class="text--center border"><b>TUE</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l21="cdkDropList"
@@ -207,7 +205,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="  #c6e1ff" class="text--center"><b>WED</b></td>
+                            <td bgcolor="  #a5bdee" class="text--center border"><b>WED</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l31="cdkDropList"
@@ -273,7 +271,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="  #c6e1ff" class="text--center"><b>THU</b></td>
+                            <td bgcolor="  #a5bdee" class="text--center border"><b>THU</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l41="cdkDropList"
@@ -339,7 +337,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="  #c6e1ff" class="text--center"><b>FRI</b></td>
+                            <td bgcolor="  #a5bdee" class="text--center border"><b>FRI</b></td>
                             <td>
 
                                 <div cdkDropList cdkDropListOrientation="horizontal" #l51="cdkDropList"
@@ -410,38 +408,44 @@
                     </tbody>
                 </table>
                 <div class="row">
-                    <button type="submit" class="btn btn-primary "  (click)="saveTimetable()">
-                        Confirm</button>
+
                 </div>
                 <div class="example-container ">
+                    <h3 style="margin-left: 70px; width: 150px;padding-top: 20%;font-family: poppin;">Subjects</h3>
 
-
-                    <h3 style="margin-left: 70px; width: 150px;">Subjects</h3>
-
-                    <div cdkDropList cdkDropListOrientation="horizontal" #sub="cdkDropList" [cdkDropListData]="subjects" 
+                    <div cdkDropList cdkDropListOrientation="horizontal" #sub="cdkDropList" [cdkDropListData]="subjects"
                         [cdkDropListConnectedTo]="[sub,l11,l12,l13,l14,l15,l16,l21,l22,l23,l24,l25,l26,l31,l32,l33,l34,l35,l36,l41,l42,l43,l44,l45,l46,l51,l52,l53,l54,l55,l56]"
                         class="example-list" (cdkDropListDropped)="drop($event)">
                         <div class="example-box subjectClass" *ngFor="let sub of subjects" cdkDrag>
-                            <span>{{sub.name}}</span>
+                            <span>{{sub.moduleNo}}</span>
                         </div>
                     </div>
                 </div>
+
             </div>
+            <table class="table table-borderless" id="subTable">
+                <!-- <tr>
+                    <th scope="col">Module No</th>
+                    <th scope="col">Subject Name</th>
+                </tr> -->
+                <tr *ngFor=" let sub of subjects;let i = index;">
+                    <td class="j">{{sub.moduleNo}}</td>
+                    <td class="j"> {{sub.name}}</td>
+                    <!-- <td>
+                        <select class="form-select" id="staffSelect" [(ngModel)]="temp_staffs[i]" (change)="onClickStaff(sub,temp_staffs[i])"
+                            [ngModelOptions]="{standalone: true}" >
+                            <option value="">Choose..</option>
+                            <option *ngFor="let subStaff of sub.subjectStaff" [ngValue]="subStaff">{{subStaff.staffName}}</option>
+                        </select>
+                    </td> -->
+                </tr>
+            </table><br />
+            <div class="row">
+                <button type="submit" class="btn btn-primary " (click)="saveTimetable()">
+                    Confirm</button>
+            </div><br />
         </section>
-        
-        <table class="table table-borderless"  id="subTable" >
-            <tr *ngFor=" let sub of subjects;let i = index;">
-                <td>{{sub.moduleNo}}</td>
-                <td> {{sub.name}}</td>
-                <!-- <td>
-                    <select class="form-select" id="staffSelect" [(ngModel)]="temp_staffs[i]" (change)="onClickStaff(sub,temp_staffs[i])"
-                        [ngModelOptions]="{standalone: true}" >
-                        <option value="">Choose..</option>
-                        <option *ngFor="let subStaff of sub.subjectStaff" [ngValue]="subStaff">{{subStaff.staffName}}</option>
-                    </select>
-                </td> -->
-            </tr>
-        </table><br />
+
     </div>
 
 
@@ -452,7 +456,7 @@
                 <h5><span>{{this.batchName}}</span><span> {{majorN}}</span> Timetable</h5>
                 <div class="col-sm-3">
                     <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
-                        [ngModelOptions]="{standalone: true}"(ngModelChange)="getSection()">
+                        [ngModelOptions]="{standalone: true}" (ngModelChange)="getSection()">
                         <option *ngFor="let sem of semesters;" [ngValue]="sem">{{sem.semesterName}}</option>
                     </select>
                 </div>
@@ -467,26 +471,26 @@
         <section class="section">
             <div class="row">
                 <table class="timetable " style="height:400px;">
-                    
+
 
                     <tr>
-                        <th bgcolor="  #c6e1ff" class="text-center">Day</th>
-                        <th bgcolor=" EDC6FC">9:00-9:55</th>
-                        <th bgcolor=" EDC6FC">10:05-11:00</th>
-                        <th bgcolor=" EDC6FC">11:10-12:05</th>
-                        <th bgcolor=" EDC6FC">12:05-1:00</th>
-                        <th bgcolor=" EDC6FC">1:00-1:55</th>
-                        <th bgcolor=" EDC6FC">2:05-3:00</th>
-                        <th bgcolor=" EDC6FC">3:10-4:05</th>
+                        <th bgcolor="  #a5bdee" class="text-center border">Day</th>
+                        <th bgcolor=" #c1a1e6" class="text-center border">9:00-9:55</th>
+                        <th bgcolor=" #c1a1e6" class="text-center border">10:05-11:00</th>
+                        <th bgcolor=" #c1a1e6" class="text-center border">11:10-12:05</th>
+                        <th bgcolor=" #c1a1e6" class="text-center border">12:05-1:00</th>
+                        <th bgcolor=" #c1a1e6" class="text-center border">1:00-1:55</th>
+                        <th bgcolor=" #c1a1e6" class="text-center border">2:05-3:00</th>
+                        <th bgcolor=" #c1a1e6" class="text-center border">3:10-4:05</th>
                     </tr>
                     <tr>
-                        <td bgcolor="  #c6e1ff"><b>MON</b></td>
+                        <td bgcolor="  #a5bdee" class="border"><b>MON</b></td>
                         <td class="border ">{{e11[0].moduleNo}}</td>
                         <td class="border ">{{e12[0].moduleNo}}</td>
 
                         <td class="border ">{{e13[0].moduleNo}}</td>
 
-                        <td rowspan="5" bgcolor="  #c6e1ff">
+                        <td rowspan="5" bgcolor="  #a5bdee" class="border">
                             <h2>L<br>U<br>N<br>C<br>H</h2>
                         </td>
                         <td class="border ">{{e14[0].moduleNo}}</td>
@@ -497,7 +501,7 @@
 
                     </tr>
                     <tr>
-                        <td bgcolor="  #c6e1ff"><b>TUE</b></td>
+                        <td bgcolor="  #a5bdee" class="border"><b>TUE</b></td>
                         <td class="border ">{{e21[0].moduleNo}}</td>
 
                         <td class="border ">{{e22[0].moduleNo}}</td>
@@ -512,7 +516,7 @@
 
                     </tr>
                     <tr>
-                        <td bgcolor="  #c6e1ff"><b>WED</b></td>
+                        <td bgcolor="  #a5bdee" class="border"><b>WED</b></td>
                         <td class="border ">{{e31[0].moduleNo}}</td>
 
                         <td class="border ">{{e32[0].moduleNo}}</td>
@@ -527,7 +531,7 @@
 
                     </tr>
                     <tr>
-                        <td bgcolor="  #c6e1ff"><b>THU</b></td>
+                        <td bgcolor="  #a5bdee" class="border"><b>THU</b></td>
                         <td class="border ">{{e41[0].moduleNo}}</td>
 
                         <td class="border ">{{e42[0].moduleNo}}</td>
@@ -542,7 +546,7 @@
 
                     </tr>
                     <tr>
-                        <td bgcolor="  #c6e1ff"><b>FRI</b></td>
+                        <td bgcolor="  #a5bdee" class="border"><b>FRI</b></td>
                         <td class="border ">{{e51[0].moduleNo}}</td>
 
                         <td class="border ">{{e52[0].moduleNo}}</td>
@@ -558,7 +562,7 @@
                     </tr>
                 </table>
             </div><br />
-            <table class="table" id ="subTable">
+            <table class="table" id="subTable">
                 <tr *ngFor=" let sub of subjects;let i = index;">
                     <td>{{sub.moduleNo}}</td>
                     <td> {{sub.name}}</td>
