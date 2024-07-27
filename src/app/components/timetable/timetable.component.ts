@@ -76,7 +76,7 @@ export class TimetableComponent implements OnInit {
   sections: Section[] = [];
   subjects: Subject[] = [];//subject list to drag
   copySubject: Subject[] = [];//renew subject list
-
+  Stu_Semester: Semester[] = [];
   major: String | undefined;
   subList?: boolean = false;
   role!: string;
@@ -90,7 +90,9 @@ export class TimetableComponent implements OnInit {
 
   temp_staffs: Staff[] = [];
   tempStaff: Staff = new Staff();
+  stu_sem: Semester = new Semester();
   exitData?: boolean = false;
+  showtimetable?: boolean = false;
 
   constructor(
     private semesterService: SemesterService,
@@ -101,14 +103,14 @@ export class TimetableComponent implements OnInit {
     private academicYearSer: AcademicService,
     private timetableService: TimetableService,
     private commonService: CommonService,
-    private router:Router,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
 
+
     this.getAllAcademicBatchList();
     this.getAllSemester();
-
     this.role = localStorage.getItem('userrole') as string;
     this.name = localStorage.getItem('userName') as string;
     this.email = localStorage.getItem('email') as string;
@@ -125,7 +127,7 @@ export class TimetableComponent implements OnInit {
     });
 
     if (this.role == "STUDENT") {
-
+      debugger
       this.studentService.getStudentInfoByEmail(this.email).subscribe((response: any) => {
         if (response.status) {
           this.student = response.data;
@@ -141,17 +143,7 @@ export class TimetableComponent implements OnInit {
             }
 
           });
-
-          this.filterDTO.batchId = this.batch.id;
-          this.filterDTO.semesterId = this.semester.id;
-          this.filterDTO.major = this.student.stu_major;
-          this.subjectService.getSubByBatch(this.filterDTO).subscribe((response: any) => {
-            if (response.status) {
-              this.subjects = response.data;
-            }
-          });
-
-
+          this.getSection();
 
 
         }
@@ -161,118 +153,32 @@ export class TimetableComponent implements OnInit {
 
 
   }
-
-
-
-  getSection() {
+  OnsemClick() {
+    this.filterDTO.batchId = this.batch.id;
+    this.filterDTO.major = this.student.stu_major;
     this.filterDTO.semesterId = this.semester.id;
+    this.subjectService.getSubByBatch(this.filterDTO).subscribe((response: any) => {
+      if (response.status) {
+        this.subjects = response.data;
+      }
+    });
+
+    this.e11 = []; this.e12 = []; this.e13 = []; this.e14 = []; this.e15 = []; this.e16 = []; this.e21 = []; this.e22 = [];
+    this.e23 = []; this.e24 = []; this.e25 = []; this.e26 = []; this.e31 = []; this.e32 = []; this.e33 = []; this.e34 = []; this.e35 = []; this.e36 = [];
+    this.e41 = []; this.e42 = []; this.e43 = []; this.e44 = []; this.e45 = []; this.e46 = []; this.e51 = []; this.e52 = []; this.e53 = [];
+    this.e54 = []; this.e55 = []; this.e56 = [];
+    this.testTimetableExistOrNot();
+   
+
+  }
+  getSection() {
+
     this.timetableService.getSection(this.filterDTO).subscribe((response: any) => {
       if (response.status) {
         this.student_section = response.data;
         //   console.log(this.student_section.name);
         this.filterDTO.section = this.student_section.id;
         //retrieve timetable list according to section id
-        this.timetableService.getTimetableList(this.filterDTO).subscribe((response: any) => {
-          if (response.status) {
-            this.timetables = response.data;
-            for (var i = 0; i < this.timetables.length; i++) {
-              if (this.timetables[i].scheduleTime == 1) {
-                this.e11.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 2) {
-                this.e12.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 3) {
-                this.e13.push(this.timetables[i].subject as Subject);
-
-              }
-              else if (this.timetables[i].scheduleTime == 4) {
-                this.e14.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 5) {
-                this.e15.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 6) {
-                this.e16.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 7) {
-                this.e21.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 8) {
-                this.e22.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 9) {
-                this.e23.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 10) {
-                this.e24.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 11) {
-                this.e25.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 12) {
-                this.e26.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 13) {
-                this.e31.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 14) {
-                this.e32.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 15) {
-                this.e33.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 16) {
-                this.e34.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 17) {
-                this.e35.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 18) {
-                this.e36.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 19) {
-                this.e41.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 20) {
-                this.e42.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 21) {
-                this.e43.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 22) {
-                this.e44.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 23) {
-                this.e45.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 24) {
-                this.e46.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 25) {
-                this.e51.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 26) {
-                this.e52.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 27) {
-                this.e53.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 28) {
-                this.e54.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 29) {
-                this.e55.push(this.timetables[i].subject as Subject);
-              }
-              else if (this.timetables[i].scheduleTime == 30) {
-                this.e56.push(this.timetables[i].subject as Subject);
-              }
-            }
-
-          }
-
-
-        });
       }
 
     })
@@ -310,7 +216,6 @@ export class TimetableComponent implements OnInit {
   }
 
   getAllSemester() {
-
     this.semesterService.getAllSemester().subscribe((respone: any) => {
       if (respone.status) {
         this.semesters = respone.data;
@@ -331,47 +236,49 @@ export class TimetableComponent implements OnInit {
   onSectionChange() {
     this.semesterId = this.semester.id;
     this.filterDTO.section = this.section.id;
-    this.e11  = []; 
-    this.e12  = []; 
-    this.e13  = []; 
-    this.e14  = []; 
-    this.e15  = []; 
-    this.e16  = []; 
-    this.e21  = []; 
-    this.e22  = []; 
-    this.e23  = []; 
-    this.e24  = []; 
-    this.e25  = []; 
-    this.e26  = []; 
-    this.e31  = []; 
-    this.e32  = []; 
-    this.e33  = []; 
-    this.e34  = []; 
-    this.e35  = []; 
-    this.e36  = [];
-    this.e41  = []; 
-    this.e42  = []; 
-    this.e43  = []; 
-    this.e44  = []; 
-    this.e45  = []; 
-    this.e46  = [];
-    this.e51  = []; 
-    this.e52  = []; 
-    this.e53  = []; 
-    this.e54  = []; 
-    this.e55  = []; 
-    this.e56  = []; 
+    this.e11 = [];
+    this.e12 = [];
+    this.e13 = [];
+    this.e14 = [];
+    this.e15 = [];
+    this.e16 = [];
+    this.e21 = [];
+    this.e22 = [];
+    this.e23 = [];
+    this.e24 = [];
+    this.e25 = [];
+    this.e26 = [];
+    this.e31 = [];
+    this.e32 = [];
+    this.e33 = [];
+    this.e34 = [];
+    this.e35 = [];
+    this.e36 = [];
+    this.e41 = [];
+    this.e42 = [];
+    this.e43 = [];
+    this.e44 = [];
+    this.e45 = [];
+    this.e46 = [];
+    this.e51 = [];
+    this.e52 = [];
+    this.e53 = [];
+    this.e54 = [];
+    this.e55 = [];
+    this.e56 = [];
 
     this.timetables = [];
     this.testTimetableExistOrNot();
     this.show();
   }
   testTimetableExistOrNot() {
-    debugger
+    this.showtimetable = false;
     this.timetableService.getTimetableList(this.filterDTO).subscribe((response: any) => {
+      debugger
       if (response.status) {
         this.timetables = response.data;
-        this.exitData=true;
+        this.exitData = true;
+        this.showtimetable = true;
         for (var i = 0; i < this.timetables.length; i++) {
 
           if (this.timetables[i].scheduleTime == 1) {
@@ -466,6 +373,8 @@ export class TimetableComponent implements OnInit {
             this.e56.push(this.timetables[i].subject as Subject);
           }
         }
+      } else {
+
       }
     });
   }
@@ -577,7 +486,8 @@ export class TimetableComponent implements OnInit {
     // End Drag and drop
   }
   saveTimetable() {
-    this.timetables=[];
+
+    this.timetables = [];
     this.section.academicBatch = this.batch;
     //assigning data to objects
     if (this.e11[0] != null) {
@@ -601,7 +511,7 @@ export class TimetableComponent implements OnInit {
       this.timetables.push(this.timetable1);
       //this.timetable1.section = this.section;
     }
-    
+
     //assigning data to objects
     if (this.e13[0] != null) {
 
@@ -751,8 +661,6 @@ export class TimetableComponent implements OnInit {
 
     // //assigning data to objects
     if (this.e33[0] != null) {
-
-
       this.timetable14.subject = this.e33[0];
       // this.timetable14.teacher_id = 1;
       this.timetable14.scheduleTime = 15;
@@ -765,8 +673,6 @@ export class TimetableComponent implements OnInit {
 
     // //assigning data to objects
     if (this.e34[0] != null) {
-
-
       this.timetable15.subject = this.e34[0];
       //this.timetable15.teacher_id = 1;
       this.timetable15.scheduleTime = 16;
@@ -776,11 +682,8 @@ export class TimetableComponent implements OnInit {
       this.timetables.push(this.timetable15);
     }
     //end of assigning data to object
-
     // //assigning data to objects
     if (this.e35[0] != null) {
-
-
       this.timetable16.subject = this.e35[0];
       //this.timetable16.teacher_id = 1;
       this.timetable16.scheduleTime = 17;
@@ -795,20 +698,16 @@ export class TimetableComponent implements OnInit {
     if (this.e36[0] != null) {
       this.timetable17.semesterId = this.semesterId;
       this.timetable17.subject = this.e36[0];
-      //this.timetable17.teacher_id = 1;
       this.timetable17.scheduleTime = 18;
       this.timetable17.section = this.section;
       this.timetable17.academicYear = this.year;
       this.timetables.push(this.timetable17);
     }
     //end of assigning data to object
-
-
     // //assigning data to objects
     if (this.e41[0] != null) {
       this.timetable18.semesterId = this.semesterId;
       this.timetable18.subject = this.e41[0];
-      //this.timetable18.teacher_id = 1;
       this.timetable18.scheduleTime = 19;
       this.timetable18.section = this.section;
       this.timetable18.academicYear = this.year;
@@ -820,7 +719,6 @@ export class TimetableComponent implements OnInit {
     if (this.e42[0] != null) {
       this.timetable19.semesterId = this.semesterId;
       this.timetable19.subject = this.e42[0];
-      //this.timetable19.teacher_id = 1;
       this.timetable19.scheduleTime = 20;
       this.timetable19.section = this.section;
       this.timetable19.academicYear = this.year;
@@ -1074,11 +972,10 @@ export class TimetableComponent implements OnInit {
 
     }
 
-else 
-{
-  this.commonService.inputAlert("Timetable for this section is already exit","info");
-  this.router.navigate(['/admin-dashboard']);
-}
+    else {
+      this.commonService.inputAlert("Timetable for this section is already exit", "info");
+      this.router.navigate(['/admin-dashboard']);
+    }
     // this.timetableService.update(this.timetables).subscribe((resoponse: any) => {
     //   if (resoponse.status)
     //     this.commonService.inputAlert("Your timetable is updated .", "success");
@@ -1198,4 +1095,5 @@ else
   //   // this.temp_staffs.push(event);
   // }
 }
+
 

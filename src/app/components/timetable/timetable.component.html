@@ -10,7 +10,7 @@
     </div><!-- End Page Title -->
 
     <!-- timetable read and write for teacher view -->
-    <div class="card" *ngIf="role == 'ADMIN'"><br />
+    <div class="card" *ngIf="role == 'ADMIN'" ><br />
         <section class="container" style="margin-left: 60px  ;text-align: center;">
             <form class="row g-3" align="center">
                 <div class="col-sm-2">
@@ -454,9 +454,9 @@
         <div align="center"><b>
                 <h5><span>{{academicYear}}</span> Academic Year</h5>
                 <h5><span>{{this.batchName}}</span><span> {{majorN}}</span> Timetable</h5>
-                <div class="col-sm-3">
+                <div class="col-sm-3">                    
                     <select class="form-select" id="inputGroupSelect01 " [(ngModel)]="semester"
-                        [ngModelOptions]="{standalone: true}" (ngModelChange)="getSection()">
+                        [ngModelOptions]="{standalone: true}"(ngModelChange)="OnsemClick()">
                         <option *ngFor="let sem of semesters;" [ngValue]="sem">{{sem.semesterName}}</option>
                     </select>
                 </div>
@@ -468,29 +468,27 @@
             <h5>{{student_section.name}}</h5>
         </div>
 
-        <section class="section">
+        <section class="section"  >
             <div class="row">
-                <table class="timetable " style="height:400px;">
-
-
-                    <tr>
+                <table class="timetable " style="height:400px;" > 
+                    <tr *ngIf="showtimetable==true">
                         <th bgcolor="  #a5bdee" class="text-center border">Day</th>
-                        <th bgcolor=" #c1a1e6" class="text-center border">9:00-9:55</th>
-                        <th bgcolor=" #c1a1e6" class="text-center border">10:05-11:00</th>
-                        <th bgcolor=" #c1a1e6" class="text-center border">11:10-12:05</th>
-                        <th bgcolor=" #c1a1e6" class="text-center border">12:05-1:00</th>
-                        <th bgcolor=" #c1a1e6" class="text-center border">1:00-1:55</th>
-                        <th bgcolor=" #c1a1e6" class="text-center border">2:05-3:00</th>
-                        <th bgcolor=" #c1a1e6" class="text-center border">3:10-4:05</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">9:00-9:55</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">10:05-11:00</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">11:10-12:05</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">12:05-1:00</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">1:00-1:55</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">2:05-3:00</th>
+                            <th bgcolor=" #c1a1e6" class="text-center border">3:10-4:05</th>
                     </tr>
-                    <tr>
+                    <tr *ngIf="e11.length >0">
                         <td bgcolor="  #a5bdee" class="border"><b>MON</b></td>
                         <td class="border ">{{e11[0].moduleNo}}</td>
                         <td class="border ">{{e12[0].moduleNo}}</td>
 
                         <td class="border ">{{e13[0].moduleNo}}</td>
 
-                        <td rowspan="5" bgcolor="  #a5bdee" class="border">
+                        <td rowspan="5" bgcolor="  #c6e1ff" class="border">
                             <h2>L<br>U<br>N<br>C<br>H</h2>
                         </td>
                         <td class="border ">{{e14[0].moduleNo}}</td>
@@ -500,7 +498,7 @@
                         <td class="border ">{{e16[0].moduleNo}}</td>
 
                     </tr>
-                    <tr>
+                    <tr *ngIf="e21.length >0">
                         <td bgcolor="  #a5bdee" class="border"><b>TUE</b></td>
                         <td class="border ">{{e21[0].moduleNo}}</td>
 
@@ -515,7 +513,7 @@
                         <td class="border ">{{e26[0].moduleNo}}</td>
 
                     </tr>
-                    <tr>
+                    <tr *ngIf="e31.length >0">
                         <td bgcolor="  #a5bdee" class="border"><b>WED</b></td>
                         <td class="border ">{{e31[0].moduleNo}}</td>
 
@@ -530,7 +528,7 @@
                         <td class="border ">{{e36[0].moduleNo}}</td>
 
                     </tr>
-                    <tr>
+                    <tr *ngIf="e41.length >0">
                         <td bgcolor="  #a5bdee" class="border"><b>THU</b></td>
                         <td class="border ">{{e41[0].moduleNo}}</td>
 
@@ -545,7 +543,7 @@
                         <td class="border ">{{e46[0].moduleNo}}</td>
 
                     </tr>
-                    <tr>
+                    <tr *ngIf="e51.length >0">
                         <td bgcolor="  #a5bdee" class="border"><b>FRI</b></td>
                         <td class="border ">{{e51[0].moduleNo}}</td>
 
@@ -562,10 +560,10 @@
                     </tr>
                 </table>
             </div><br />
-            <table class="table" id="subTable">
+            <table class="table" id ="subTable">
                 <tr *ngFor=" let sub of subjects;let i = index;">
-                    <td>{{sub.moduleNo}}</td>
-                    <td> {{sub.name}}</td>
+                    <td class="j">{{sub.moduleNo}}</td>
+                    <td class="j"> {{sub.name}}</td>
                     <!-- <td>  <div *ngFor="let subStaff of sub.subjectStaff">
                            {{subStaff.staffName}}
                     </div>
